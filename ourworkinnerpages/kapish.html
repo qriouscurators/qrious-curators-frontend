@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Kapish Jewels digital case study by Qrious Curators — website development, SEO, social media, photography and digital marketing." name="description"/>
+<meta content="#2b0b34" name="theme-color"/>
+<title>Kapish Jewels — Digital Case Study | Qrious Curators</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>:root {
+  --plum: #2b0b34;
+  --plum-2: #40144c;
+  --plum-3: #6f2b74;
+  --gold: #c9a45a;
+  --gold-light: #e5cf9b;
+  --ivory: #fbf7ef;
+  --paper: #fffdf8;
+  --ink: #261d27;
+  --muted: #6f6670;
+  --line: rgba(43, 11, 52, .13);
+  --white: #ffffff;
+  --container: min(1240px, calc(100% - 48px));
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+img { display: block; width: 100%; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, p, figure { margin-top: 0; }
+button, a { -webkit-tap-highlight-color: transparent; }
+
+.container { width: var(--container); margin-inline: auto; }
+.section { padding: 132px 0; }
+
+.section-label {
+  color: var(--plum-3);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.section-label.light { color: var(--gold-light); }
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  padding: 34px 0 62px;
+  color: var(--white);
+  background:
+    radial-gradient(circle at 75% 20%, rgba(141, 74, 145, .28), transparent 30%),
+    linear-gradient(135deg, #1d071f 0%, var(--plum) 52%, #18061c 100%);
+  overflow: hidden;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
+  background-size: 74px 74px;
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
+}
+.hero-glow {
+  position: absolute;
+  border: 1px solid rgba(229, 207, 155, .16);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.hero-glow-one {
+  width: 560px;
+  height: 560px;
+  right: -160px;
+  top: -210px;
+  box-shadow: 0 0 0 70px rgba(229,207,155,.018), 0 0 0 140px rgba(229,207,155,.012);
+}
+.hero-glow-two {
+  width: 280px;
+  height: 280px;
+  left: -140px;
+  bottom: -130px;
+  box-shadow: 0 0 0 52px rgba(229,207,155,.018);
+}
+.hero-topline {
+  position: relative;
+  z-index: 2;
+  width: var(--container);
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  color: rgba(255,255,255,.56);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.hero-grid {
+  position: relative;
+  z-index: 2;
+  min-height: calc(100svh - 100px);
+  display: grid;
+  grid-template-columns: .88fr 1.12fr;
+  align-items: center;
+  gap: clamp(52px, 7vw, 112px);
+  padding-top: 64px;
+}
+.kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+  color: var(--gold-light);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.kicker span { width: 36px; height: 1px; background: currentColor; }
+.hero h1 {
+  margin-bottom: 30px;
+  font-size: clamp(68px, 8.5vw, 138px);
+  font-weight: 500;
+  line-height: .83;
+  letter-spacing: -.065em;
+}
+.hero h1 em {
+  color: var(--gold-light);
+  font-style: normal;
+  font-weight: 300;
+}
+.hero-copy > p {
+  max-width: 580px;
+  margin-bottom: 38px;
+  color: rgba(255,255,255,.72);
+  font-size: clamp(17px, 1.45vw, 21px);
+  font-weight: 300;
+  line-height: 1.65;
+}
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.button {
+  min-height: 54px;
+  padding: 0 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  border: 1px solid transparent;
+  border-radius: 99px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  transition: transform .28s ease, background .28s ease, color .28s ease, border-color .28s ease;
+}
+.button:hover { transform: translateY(-3px); }
+.button-gold { color: var(--plum); background: var(--gold-light); }
+.button-gold:hover { background: var(--white); }
+.button-ghost { border-color: rgba(255,255,255,.25); background: rgba(255,255,255,.04); }
+.button-ghost:hover { color: var(--plum); background: var(--white); border-color: var(--white); }
+.hero-visual { position: relative; }
+.hero-image-wrap {
+  position: relative;
+  overflow: hidden;
+  min-height: min(67vh, 700px);
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 38px 38px 160px 38px;
+  background: #220b26;
+  box-shadow: 0 46px 90px rgba(0,0,0,.35);
+}
+.hero-image-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(19,5,22,.52), transparent 45%);
+}
+.hero-image-wrap img { height: 100%; min-height: inherit; object-fit: cover; object-position: center; }
+.floating-note {
+  position: absolute;
+  right: -28px;
+  bottom: 46px;
+  min-width: 250px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 18px;
+  background: rgba(32,8,37,.76);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 20px 55px rgba(0,0,0,.24);
+}
+.floating-note strong { color: var(--gold-light); font-size: 13px; font-weight: 600; letter-spacing: .03em; }
+.floating-note span { margin-top: 4px; color: rgba(255,255,255,.62); font-size: 11px; }
+.scroll-mark {
+  position: absolute;
+  z-index: 3;
+  left: 34px;
+  bottom: 42px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255,255,255,.5);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  transform: rotate(-90deg);
+  transform-origin: left center;
+}
+.scroll-mark i { width: 54px; height: 1px; background: currentColor; }
+
+.overview { background: var(--ivory); }
+.overview-grid {
+  display: grid;
+  grid-template-columns: .34fr 1.66fr;
+  gap: 60px;
+  align-items: start;
+}
+.overview-copy h2,
+.section-head h2,
+.experience-copy h2,
+.showcase-head h2,
+.trust-card h2,
+.closing h2 {
+  margin-bottom: 30px;
+  font-size: clamp(45px, 5.8vw, 84px);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -.045em;
+}
+.overview-copy p {
+  max-width: 820px;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(17px, 1.6vw, 22px);
+  font-weight: 300;
+  line-height: 1.8;
+}
+.project-strip {
+  margin-top: 78px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.project-strip > div { padding: 28px 28px 28px 0; border-right: 1px solid var(--line); }
+.project-strip > div:not(:first-child) { padding-left: 28px; }
+.project-strip > div:last-child { border-right: 0; }
+.project-strip small { display: block; margin-bottom: 7px; color: var(--muted); font-size: 10px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+.project-strip strong { font-size: 14px; font-weight: 600; }
+
+.services { background: var(--paper); }
+.section-head {
+  max-width: 900px;
+  margin-bottom: 100px;
+}
+.section-head .section-label { margin-bottom: 20px; }
+.section-head h2 { margin-bottom: 0; }
+.service-block {
+  min-height: 620px;
+  margin-bottom: 120px;
+  display: grid;
+  grid-template-columns: 70px .8fr 1.2fr;
+  gap: 42px;
+  align-items: center;
+}
+.service-block:last-child { margin-bottom: 0; }
+.service-block.reverse { grid-template-columns: 70px 1.2fr .8fr; }
+.service-block.reverse .service-copy { order: 3; }
+.service-block.reverse .service-image { order: 2; }
+.service-number {
+  align-self: start;
+  padding-top: 12px;
+  color: var(--plum-3);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  writing-mode: vertical-rl;
+}
+.service-tag {
+  display: inline-flex;
+  margin-bottom: 22px;
+  color: var(--plum-3);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.service-copy h3 {
+  margin-bottom: 22px;
+  font-size: clamp(40px, 4vw, 62px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -.04em;
+}
+.service-copy p { margin-bottom: 28px; color: var(--muted); font-size: 16px; font-weight: 300; line-height: 1.8; }
+.service-copy ul { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.service-copy li { padding: 12px 0; border-bottom: 1px solid var(--line); color: #49404a; font-size: 12px; font-weight: 500; letter-spacing: .02em; }
+.service-image {
+  height: 540px;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 28px;
+  background: #eee7dc;
+}
+.service-image-tall { height: 620px; }
+.service-image-detail { background: #f4e8dd; }
+.service-image img { height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2,.65,.25,1); }
+.service-image:hover img { transform: scale(1.045); }
+
+.experience {
+  color: var(--white);
+  background:
+    radial-gradient(circle at 10% 20%, rgba(141,74,145,.23), transparent 34%),
+    var(--plum);
+}
+.experience-grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: clamp(60px, 9vw, 150px); align-items: start; }
+.experience-copy p { max-width: 560px; margin: 0; color: rgba(255,255,255,.6); font-size: 16px; font-weight: 300; line-height: 1.8; }
+.experience-points { border-top: 1px solid rgba(255,255,255,.16); }
+.point { padding: 24px 0; display: grid; grid-template-columns: 54px 1fr; gap: 20px; border-bottom: 1px solid rgba(255,255,255,.16); }
+.point span { color: var(--gold-light); font-size: 11px; letter-spacing: .12em; }
+.point strong { font-size: clamp(17px, 1.8vw, 23px); font-weight: 400; }
+
+.showcase { background: var(--ivory); }
+.showcase-head { margin-bottom: 68px; display: grid; grid-template-columns: 1.2fr .8fr; gap: 80px; align-items: end; }
+.showcase-head .section-label { margin-bottom: 20px; }
+.showcase-head h2 { margin-bottom: 0; }
+.showcase-head p { max-width: 480px; margin: 0 0 8px; color: var(--muted); font-weight: 300; }
+.bento { display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: 70px; gap: 18px; }
+.tile { position: relative; margin: 0; overflow: hidden; border-radius: 24px; background: #e8dfd3; }
+.tile::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(25,8,28,.8), transparent 55%); }
+.tile img { height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2,.65,.25,1); }
+.tile:hover img { transform: scale(1.05); }
+.tile figcaption { position: absolute; z-index: 2; left: 24px; right: 24px; bottom: 22px; display: flex; align-items: center; gap: 14px; color: var(--white); font-size: 13px; font-weight: 500; }
+.tile figcaption span { color: var(--gold-light); font-size: 10px; letter-spacing: .14em; }
+.tile-a { grid-column: span 8; grid-row: span 7; }
+.tile-b { grid-column: span 4; grid-row: span 7; }
+.tile-c { grid-column: span 5; grid-row: span 6; }
+.tile-d { grid-column: span 7; grid-row: span 6; }
+
+.trust { padding-top: 0; background: var(--ivory); }
+.trust-card {
+  padding: clamp(38px, 6vw, 82px);
+  border-radius: 38px;
+  color: var(--white);
+  background: linear-gradient(135deg, #36103f, #220827);
+  box-shadow: 0 36px 90px rgba(43,11,52,.2);
+}
+.trust-card .section-label { margin-bottom: 22px; }
+.trust-card h2 { max-width: 900px; }
+.trust-grid { margin-top: 54px; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255,255,255,.15); border-left: 1px solid rgba(255,255,255,.15); }
+.trust-grid span { min-height: 92px; padding: 22px; display: flex; align-items: center; border-right: 1px solid rgba(255,255,255,.15); border-bottom: 1px solid rgba(255,255,255,.15); color: rgba(255,255,255,.76); font-size: 13px; font-weight: 500; }
+
+.closing { background: var(--paper); }
+.closing-inner { display: flex; align-items: flex-end; justify-content: space-between; gap: 60px; }
+.closing .section-label { margin-bottom: 22px; }
+.closing h2 { margin-bottom: 0; }
+.closing-link {
+  flex: 0 0 auto;
+  width: 188px;
+  height: 188px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border-radius: 50%;
+  color: var(--white);
+  background: var(--plum);
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  transition: transform .3s ease, background .3s ease;
+}
+.closing-link span { color: var(--gold-light); font-size: 24px; }
+.closing-link:hover { transform: rotate(-4deg) scale(1.04); background: var(--plum-2); }
+
+footer { color: rgba(255,255,255,.55); background: #160419; }
+.footer-inner { min-height: 90px; display: flex; align-items: center; justify-content: space-between; gap: 24px; font-size: 11px; letter-spacing: .08em; }
+.footer-inner a { color: var(--gold-light); }
+
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity .75s ease, transform .75s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+.delay-1 { transition-delay: .12s; }
+
+@media (max-width: 1050px) {
+  .hero-grid { grid-template-columns: 1fr; padding-top: 100px; padding-bottom: 60px; }
+  .hero-copy { max-width: 760px; }
+  .hero-image-wrap { min-height: 620px; }
+  .floating-note { right: 24px; }
+  .scroll-mark { display: none; }
+  .overview-grid { grid-template-columns: 1fr; gap: 24px; }
+  .project-strip { grid-template-columns: repeat(2, 1fr); }
+  .project-strip > div:nth-child(2) { border-right: 0; }
+  .project-strip > div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .project-strip > div:nth-child(3) { padding-left: 0; }
+  .service-block, .service-block.reverse { min-height: auto; grid-template-columns: 42px 1fr; gap: 28px; }
+  .service-copy, .service-block.reverse .service-copy { order: 2; }
+  .service-image, .service-block.reverse .service-image { order: 3; grid-column: 2; width: 100%; }
+  .experience-grid { grid-template-columns: 1fr; }
+  .showcase-head { grid-template-columns: 1fr; gap: 24px; }
+}
+
+@media (max-width: 720px) {
+  :root { --container: min(100% - 28px, 1240px); }
+  .section { padding: 88px 0; }
+  .hero { padding-top: 24px; }
+  .hero-topline { font-size: 9px; }
+  .hero-grid { min-height: auto; padding-top: 96px; }
+  .hero h1 { font-size: clamp(62px, 20vw, 96px); }
+  .hero-copy > p { font-size: 16px; }
+  .hero-actions { flex-direction: column; align-items: stretch; width: min(100%, 360px); }
+  .hero-image-wrap { min-height: 410px; border-radius: 24px 24px 96px 24px; }
+  .floating-note { left: 18px; right: 18px; bottom: 18px; min-width: 0; }
+  .overview-copy h2, .section-head h2, .experience-copy h2, .showcase-head h2, .trust-card h2, .closing h2 { font-size: 42px; }
+  .project-strip { grid-template-columns: 1fr; }
+  .project-strip > div, .project-strip > div:not(:first-child) { padding: 20px 0; border-right: 0; border-bottom: 1px solid var(--line); }
+  .project-strip > div:last-child { border-bottom: 0; }
+  .section-head { margin-bottom: 70px; }
+  .service-block, .service-block.reverse { margin-bottom: 86px; grid-template-columns: 1fr; gap: 20px; }
+  .service-number { display: none; }
+  .service-copy, .service-block.reverse .service-copy { order: 1; }
+  .service-image, .service-block.reverse .service-image { order: 2; grid-column: auto; height: 390px; border-radius: 20px; }
+  .service-copy h3 { font-size: 40px; }
+  .point { grid-template-columns: 42px 1fr; }
+  .bento { display: flex; flex-direction: column; }
+  .tile { min-height: 380px; }
+  .trust-grid { grid-template-columns: 1fr; }
+  .trust-grid span { min-height: 74px; }
+  .closing-inner { align-items: flex-start; flex-direction: column; }
+  .closing-link { width: 154px; height: 154px; align-self: flex-end; }
+  .footer-inner { padding: 24px 0; align-items: flex-start; flex-direction: column; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition-duration: .01ms !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+
+
+/* Editorial image note */
+.visual-note {
+  max-width: 760px;
+  margin: 34px auto 0;
+  color: rgba(74, 63, 75, .68);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: .035em;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<main>
+<section class="hero" id="top">
+<div class="hero-glow hero-glow-one"></div>
+<div class="hero-glow hero-glow-two"></div>
+<div class="hero-topline">
+<span>Qrious Curators</span>
+<span>Work / Jewellery</span>
+</div>
+<div class="hero-grid container">
+<div class="hero-copy reveal">
+<div class="kicker"><span></span> Digital Commerce Case Study</div>
+<h1>Kapish<br/><em>Jewels</em></h1>
+<p>
+            Turning jewellery discovery into a premium, collection-first digital
+            experience across gold, diamond and silver.
+          </p>
+<div class="hero-actions">
+<a class="button button-gold" href="https://www.kapishjewels.com/" rel="noopener noreferrer" target="_blank">
+              View live website <span>↗</span>
+</a>
+<a class="button button-ghost" href="#overview">Explore project <span>↓</span></a>
+</div>
+</div>
+<div class="hero-visual reveal delay-1">
+<div class="hero-image-wrap">
+<img alt="Kapish Jewels gold necklace campaign" decoding="async" src="https://jewelsbucket.com//Uploads/1145obyeeg5ja4.png" style="object-position: center;"/>
+</div>
+<div class="floating-note">
+<strong>Gold · Diamond · Silver</strong>
+<span>One seamless shopping journey</span>
+</div>
+</div>
+</div>
+<a aria-label="Scroll to project overview" class="scroll-mark" href="#overview">
+<span>Scroll</span><i></i>
+</a>
+</section>
+<section class="overview section" id="overview">
+<div class="container">
+<div class="overview-grid">
+<div class="section-label reveal">01 / Overview</div>
+<div class="overview-copy reveal delay-1">
+<h2>From showroom trust<br/>to online clarity.</h2>
+<p>
+              The project was shaped around a simple idea: premium jewellery should
+              feel effortless to explore online. We created a clean digital structure
+              that helps customers move naturally between collections, price ranges,
+              product details and purchase actions.
+            </p>
+</div>
+</div>
+<div class="project-strip reveal">
+<div><small>Industry</small><strong>Fine Jewellery</strong></div>
+<div><small>Platform</small><strong>E-commerce</strong></div>
+<div><small>Experience</small><strong>Responsive Web</strong></div>
+<div><small>Primary Focus</small><strong>Discovery + Trust</strong></div>
+</div>
+</div>
+</section>
+<section class="services section">
+<div class="container">
+<div class="section-head reveal">
+<div class="section-label">02 / Our Work</div>
+<h2>One brand.<br/>Five digital disciplines.</h2>
+</div>
+<article class="service-block reveal">
+<div class="service-number">01</div>
+<div class="service-copy">
+<span class="service-tag">Build</span>
+<h3>Website Development</h3>
+<p>
+              A responsive commerce experience built around easy collection discovery,
+              product filtering, wishlist, cart and enquiry actions. The layout keeps
+              large jewellery visuals at the centre without compromising usability.
+            </p>
+<ul>
+<li>Collection-first information architecture</li>
+<li>Responsive e-commerce interface</li>
+<li>Product, wishlist and cart journeys</li>
+</ul>
+</div>
+<figure class="service-image service-image-tall">
+<img alt="Traditional gold necklace and matching earrings displayed on stands" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1758995115857-2de1eb6283d0?auto=format&amp;fit=crop&amp;w=1800&amp;q=85" style="object-position: center;"/>
+</figure>
+</article>
+<article class="service-block reverse reveal">
+<div class="service-number">02</div>
+<div class="service-copy">
+<span class="service-tag">Discover</span>
+<h3>SEO</h3>
+<p>
+              The content hierarchy was organised around the way people actually search
+              for jewellery — by metal, product type, wearer, purity, weight and price —
+              making the catalogue easier for both customers and search engines to understand.
+            </p>
+<ul>
+<li>Search-led category architecture</li>
+<li>SEO-friendly product taxonomy</li>
+<li>Metadata and on-page content direction</li>
+</ul>
+</div>
+<figure class="service-image">
+<img alt="Diamond solitaire ring photographed on deep blue satin" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1724937798320-d0c4fac1787d?auto=format&amp;fit=crop&amp;w=1800&amp;q=85" style="object-position: center;"/>
+</figure>
+</article>
+<article class="service-block reveal">
+<div class="service-number">03</div>
+<div class="service-copy">
+<span class="service-tag">Engage</span>
+<h3>Social Media Marketing</h3>
+<p>
+              A content direction designed to balance product aspiration with everyday
+              relevance — from collection launches and festive moments to styling,
+              gifting and trust-led communication.
+            </p>
+<ul>
+<li>Campaign and content planning</li>
+<li>Festive and product storytelling</li>
+<li>Reels, statics and carousel systems</li>
+</ul>
+</div>
+<figure class="service-image">
+<img alt="Editorial close-up of a woman wearing fine gold earrings" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1689776948703-24488b2f594e?auto=format&amp;fit=crop&amp;w=1800&amp;q=85" style="object-position: center 35%;"/>
+</figure>
+</article>
+<article class="service-block reverse reveal">
+<div class="service-number">04</div>
+<div class="service-copy">
+<span class="service-tag">Present</span>
+<h3>Photography &amp; Visual Direction</h3>
+<p>
+              Jewellery needs detail, scale and shine to translate on screen. The visual
+              direction focuses on refined backgrounds, consistent framing and close-up
+              product presentation that makes every piece feel premium.
+            </p>
+<ul>
+<li>Product and campaign visual direction</li>
+<li>Composition and styling guidance</li>
+<li>Image selection and digital optimisation</li>
+</ul>
+</div>
+<figure class="service-image service-image-detail">
+<img alt="Gold and diamond earrings styled on soft ivory satin" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1771173652661-8245a9d94095?auto=format&amp;fit=crop&amp;w=1800&amp;q=85" style="object-position: center;"/>
+</figure>
+</article>
+<article class="service-block reveal">
+<div class="service-number">05</div>
+<div class="service-copy">
+<span class="service-tag">Grow</span>
+<h3>Digital Marketing</h3>
+<p>
+              The marketing layer connects product campaigns with high-intent journeys —
+              helping seasonal offers, collection launches and trust propositions reach
+              the right audience through conversion-focused creative.
+            </p>
+<ul>
+<li>Campaign creative and landing direction</li>
+<li>Audience and retargeting strategy</li>
+<li>Offer-led conversion communication</li>
+</ul>
+</div>
+<figure class="service-image service-image-tall">
+<img alt="Ornate gold bangles arranged on a reflective black surface" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1758995116383-f51775896add?auto=format&amp;fit=crop&amp;w=1800&amp;q=85" style="object-position: center;"/>
+</figure>
+</article>
+</div>
+</section>
+<section class="experience section">
+<div class="container">
+<div class="experience-grid">
+<div class="experience-copy reveal">
+<div class="section-label light">03 / Experience Architecture</div>
+<h2>Built around the way customers shop.</h2>
+<p>
+              Instead of treating the catalogue as one long product list, the experience
+              guides customers through meaningful choices and reinforces confidence at
+              every step.
+            </p>
+</div>
+<div class="experience-points reveal delay-1">
+<div class="point"><span>01</span><strong>Gold, diamond and silver journeys</strong></div>
+<div class="point"><span>02</span><strong>Product-type and price-range navigation</strong></div>
+<div class="point"><span>03</span><strong>Wishlist, cart and customer account flow</strong></div>
+<div class="point"><span>04</span><strong>EMI and free-try-at-home visibility</strong></div>
+<div class="point"><span>05</span><strong>Hallmark, certification and service cues</strong></div>
+</div>
+</div>
+</div>
+</section>
+<section class="showcase section">
+<div class="container">
+<div class="showcase-head reveal">
+<div>
+<div class="section-label">04 / Showcase</div>
+<h2>Luxury, translated<br/>for the screen.</h2>
+</div>
+<p>
+            A visual system where jewellery remains the hero — supported by strong
+            contrast, elegant spacing and campaign-led storytelling.
+          </p>
+</div>
+<div class="bento">
+<figure class="tile tile-a reveal">
+<img alt="Indian bride wearing traditional gold jewellery in a premium editorial portrait" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1757598147902-709659de259f?auto=format&amp;fit=crop&amp;w=1800&amp;q=85" style="object-position: center 25%;"/>
+<figcaption><span>01</span> Campaign storytelling</figcaption>
+</figure>
+<figure class="tile tile-b reveal delay-1">
+<img alt="Statement gold necklace displayed against a dark background" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1704817234962-80ca84f8fbed?auto=format&amp;fit=crop&amp;w=1800&amp;q=85" style="object-position: center;"/>
+<figcaption><span>02</span> Product focus</figcaption>
+</figure>
+<figure class="tile tile-c reveal">
+<img alt="Hands holding a diamond ring in a refined jewellery close-up" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1680360079216-7208e0fece55?auto=format&amp;fit=crop&amp;w=1800&amp;q=85" style="object-position: center;"/>
+<figcaption><span>03</span> Premium composition</figcaption>
+</figure>
+<figure class="tile tile-d reveal delay-1">
+<img alt="Gold necklace presented in luxury jewellery packaging" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1564616836577-9bd4ece8c1f5?auto=format&amp;fit=crop&amp;w=1800&amp;q=85" style="object-position: center;"/>
+<figcaption><span>04</span> Collection detail</figcaption>
+</figure>
+</div>
+<p class="visual-note reveal">Selected editorial jewellery visuals are used to present the creative direction of this portfolio case study.</p></div>
+</section>
+<section class="trust section">
+<div class="container">
+<div class="trust-card reveal">
+<div class="section-label light">05 / Trust Layer</div>
+<h2>Premium design gets attention.<br/>Trust helps customers decide.</h2>
+<div class="trust-grid">
+<span>BIS 916 Hallmarked Gold</span>
+<span>Certified &amp; Tested Diamonds</span>
+<span>Easy Exchange</span>
+<span>Jewellery Insurance</span>
+<span>30-Day Return Policy</span>
+<span>Lifetime Buyback</span>
+</div>
+</div>
+</div>
+</section>
+<section class="closing section">
+<div class="container closing-inner reveal">
+<div>
+<div class="section-label">Qrious Curators</div>
+<h2>We build digital experiences<br/>people remember.</h2>
+</div>
+<a class="closing-link" href="https://www.kapishjewels.com/" rel="noopener noreferrer" target="_blank">
+          Visit Kapish Jewels <span>↗</span>
+</a>
+</div>
+</section>
+</main>
+<footer>
+<div class="container footer-inner">
+<span>Kapish Jewels — Digital Case Study</span>
+<a href="#top">Back to top ↑</a>
+</div>
+</footer>
+<script>const revealItems = document.querySelectorAll('.reveal');
+
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  revealItems.forEach((item) => observer.observe(item));
+} else {
+  revealItems.forEach((item) => item.classList.add('visible'));
+}
+
+const heroVisual = document.querySelector('.hero-visual');
+window.addEventListener('scroll', () => {
+  if (!heroVisual || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const offset = Math.min(window.scrollY * 0.05, 28);
+  heroVisual.style.transform = `translateY(${offset}px)`;
+}, { passive: true });
+</script>
+</body>
+</html>

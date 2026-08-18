@@ -1,0 +1,351 @@
+/* =========================================================
+   FONTS
+   Heading ("We Build Attention") = Raleway
+   Label + Paragraph = Lato
+   Add this link tag in your <head> (only if these fonts
+   aren't already loaded elsewhere on your site):
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700;800&family=Lato:wght@400;600&display=swap" rel="stylesheet">
+   ========================================================= */
+
+/* =========================================================
+   MOBILE-ONLY "WE BUILD ATTENTION" SECTION
+   =========================================================
+   WHERE TO PASTE THIS:
+   Add this whole block to the END of your main stylesheet
+   (or in its own about-mobile.css, loaded after your main
+   CSS file). Nothing here touches an existing selector name,
+   so it cannot override your desktop styles.
+
+   HOW IT STAYS DESKTOP-SAFE:
+   1. The new markup (.about-mobile) is hidden by default
+      with display:none, and only switched on inside the
+      @media (max-width:768px) block at the bottom.
+   2. The ONE line that touches your existing section is
+      also inside that same media query, and it only ever
+      hides it on small screens — your .premium-about HTML,
+      classes and desktop CSS are never edited.
+   ========================================================= */
+
+/* Hide the new mobile section everywhere by default (desktop safe) */
+.about-mobile {
+  display: none;
+}
+
+/* =========================================================
+   Everything below only runs on screens <= 768px
+   ========================================================= */
+@media (max-width: 768px) {
+
+  /* Turn off the existing desktop section on mobile.
+     This is the ONLY line that references your existing
+     section, and it is purely a visibility toggle —
+     no structural or content change. Remove this single
+     rule if your site already hides .premium-about on
+     mobile some other way. */
+  .premium-about {
+    display: none !important;
+  }
+
+  /* ---------------------------------------------------
+     SECTION SHELL
+     Uses your existing color tokens if defined (var(..., fallback)),
+     otherwise falls back to your premium black/orange palette.
+     --------------------------------------------------- */
+  .about-mobile {
+    display: block;
+    position: relative;
+    background: var(--color-bg, #0a0a0a);
+    color: var(--color-text, #f5f5f3);
+    padding: clamp(56px, 14vw, 80px) 20px clamp(64px, 16vw, 96px);
+    overflow: hidden; /* keeps the glow blob from causing horizontal scroll */
+  }
+
+  /* ---------------------------------------------------
+     EYEBROW LABEL
+     Small, tracked-out, muted — sets editorial tone
+     before the big heading lands.
+     --------------------------------------------------- */
+  .about-mobile__label {
+    margin: 0 0 14px;
+    font-family: "Lato", var(--font-body, sans-serif);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-accent, #ff7a1a);
+    opacity: 0.9;
+  }
+
+  /* ---------------------------------------------------
+     HEADING
+     Large, tight, editorial. Fluid clamp() sizing
+     handles 320px through 768px with no breakpoint
+     juggling.
+     --------------------------------------------------- */
+  .about-mobile__heading {
+    margin: 0 0 18px;
+    font-family: "Raleway", var(--font-heading, sans-serif);
+    font-size: clamp(38px, 11vw, 52px);
+    line-height: 1.02;
+    font-weight: 700; /* was 800, reduced by 100 per request */
+    letter-spacing: -0.02em;
+    max-width: 11ch;
+  }
+
+  .about-mobile__heading-accent {
+    font-family: "Raleway", var(--font-heading, sans-serif);
+    color: var(--color-accent, #ff7a1a);
+    font-style: italic;
+    font-weight: 700;
+  }
+
+  /* ---------------------------------------------------
+     PARAGRAPH
+     Short, readable measure, generous line-height.
+     --------------------------------------------------- */
+  .about-mobile__paragraph {
+    margin: 0 0 40px;
+    max-width: 34ch;
+    font-family: "Lato", var(--font-body, sans-serif);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-text-muted, rgba(245, 245, 243, 0.72));
+  }
+
+  /* ---------------------------------------------------
+     IMAGE COLLAGE
+     A fixed-height stage that holds three overlapping,
+     independently rotated cards — handcrafted feel via
+     staggered offsets, not a grid.
+     --------------------------------------------------- */
+  .about-mobile__collage {
+    position: relative;
+    width: 100%;
+    height: clamp(360px, 96vw, 440px);
+    margin: 0 0 48px;
+  }
+
+  /* Soft ambient orange glow behind the cards — reuses your
+     brand's glow language at low opacity, fully decorative. */
+  .about-mobile__glow {
+    position: absolute;
+    top: 6%;
+    left: 50%;
+    width: 78%;
+    aspect-ratio: 1 / 1;
+    transform: translateX(-50%);
+    background: radial-gradient(
+      circle,
+      var(--color-accent, #ff7a1a) 0%,
+      rgba(255, 122, 26, 0) 70%
+    );
+    opacity: 0.28;
+    filter: blur(30px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .about-mobile__card {
+    position: absolute;
+    margin: 0;
+    width: 58%;
+    aspect-ratio: 4 / 5;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow:
+      0 18px 40px -14px rgba(0, 0, 0, 0.65),
+      0 4px 14px -6px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: #111; /* placeholder tone while image loads */
+
+    /* Reveal-animation starting state — see about-mobile.js */
+    opacity: 0;
+    transform: translateY(28px) scale(0.94) rotate(var(--rot, 0deg));
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+
+  .about-mobile__card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Card 1 — back left, largest rotation */
+  .about-mobile__card--1 {
+    --rot: -7deg;
+    top: 6%;
+    left: 0;
+    z-index: 1;
+    transition-delay: 0ms;
+  }
+
+  /* Card 2 — front center, slight counter-rotation, biggest shadow */
+  .about-mobile__card--2 {
+    --rot: 4deg;
+    top: 22%;
+    left: 21%;
+    z-index: 3;
+    width: 62%;
+    transition-delay: 120ms;
+  }
+
+  /* Card 3 — back right, opposite tilt */
+  .about-mobile__card--3 {
+    --rot: 8deg;
+    top: 0%;
+    right: 0;
+    z-index: 2;
+    width: 52%;
+    transition-delay: 240ms;
+  }
+
+  /* Revealed state, class toggled by IntersectionObserver */
+  .about-mobile__card.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(var(--rot, 0deg));
+  }
+
+  /* ---------------------------------------------------
+     STATS
+     Two figures separated by a thin vertical divider,
+     generous breathing room either side.
+     --------------------------------------------------- */
+  .about-mobile__stats {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin: 0 0 40px;
+
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .about-mobile__stats.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .about-mobile__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .about-mobile__stat-number {
+    font-size: clamp(30px, 8vw, 38px);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: var(--color-text, #f5f5f3);
+  }
+
+  .about-mobile__stat-label {
+    font-size: 12.5px;
+    letter-spacing: 0.02em;
+    color: var(--color-text-muted, rgba(245, 245, 243, 0.6));
+    max-width: 12ch;
+  }
+
+  .about-mobile__stat-divider {
+    width: 1px;
+    align-self: stretch;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.18),
+      rgba(255, 255, 255, 0)
+    );
+  }
+
+  /* ---------------------------------------------------
+     CTA BUTTON
+     Matches the visual weight of a premium pill/arrow
+     button. Swap the two custom properties below for
+     your exact existing button tokens if you have named
+     ones already (e.g. var(--btn-bg), var(--btn-text)).
+     --------------------------------------------------- */
+  .about-mobile__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 26px;
+    border-radius: 999px;
+    background: var(--color-accent, #ff7a1a);
+    color: var(--color-btn-text, #0a0a0a);
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    box-shadow: 0 14px 30px -10px rgba(255, 122, 26, 0.55);
+
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s ease,
+      box-shadow 0.25s ease,
+      background 0.25s ease;
+  }
+
+  .about-mobile__btn.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .about-mobile__btn:active {
+    transform: scale(0.97);
+    box-shadow: 0 8px 20px -10px rgba(255, 122, 26, 0.5);
+  }
+
+  .about-mobile__btn-arrow {
+    display: inline-block;
+    transition: transform 0.25s ease;
+  }
+
+  .about-mobile__btn:active .about-mobile__btn-arrow {
+    transform: translateX(3px);
+  }
+
+  /* ---------------------------------------------------
+     REDUCED MOTION
+     Respect user preference — content appears instantly,
+     no animated transforms at all.
+     --------------------------------------------------- */
+  @media (prefers-reduced-motion: reduce) {
+    .about-mobile__card,
+    .about-mobile__stats,
+    .about-mobile__btn {
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+}
+
+/* =========================================================
+   Small-screen refinement (320px–360px devices)
+   Only adjusts spacing/sizing already defined above —
+   still entirely inside the mobile scope.
+   ========================================================= */
+@media (max-width: 360px) {
+  .about-mobile {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .about-mobile__collage {
+    height: 340px;
+  }
+
+  .about-mobile__stats {
+    gap: 20px;
+  }
+}

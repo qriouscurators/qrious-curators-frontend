@@ -1,0 +1,514 @@
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0d0d10;
+}
+
+html, body {
+  width: 100%;
+  background: var(--bg);
+  color: #fff;
+  font-family: 'Raleway', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 36px;
+  z-index: 1000;
+}
+
+.logo {
+  font-family: 'Sora', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.menu-btn {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+}
+
+/* ── HERO ── */
+#heroSection {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 40px;
+  transform-origin: center center;
+}
+
+.bg-video-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bg-video-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.15);
+}
+
+.bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.0));
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 5;
+}
+
+.services-heading {
+  font-size: clamp(90px, 14vw, 220px);
+  line-height: 0.9;
+  font-weight: 400;
+  letter-spacing: -0.06em;
+}
+
+/* ── FIXED BACKGROUND (behind everything except nav) ── */
+#fixedBg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#fixedBgColor {
+  position: absolute;
+  inset: 0;
+  background: #0d0d10;
+  transition: background 0.7s ease;
+}
+
+#fixedBgMedia {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+#fixedBgMedia video,
+#fixedBgMedia img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#fixedBgOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.18);
+}
+
+/* ── SERVICE SECTION ── */
+.service-section {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* Full-section background — just a transparent placeholder so section has height */
+.section-bg {
+  display: none;
+}
+
+.section-bg-media {
+  display: none;
+}
+
+/* ── HEADING — left side, scrolls with page, vertically centered ── */
+.service-heading-wrap {
+  position: absolute;
+  top: 50%;
+  left: 7%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.service-number {
+  font-size: 13px;
+  color: #555;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  display: block;
+  margin-bottom: 18px;
+}
+
+
+.service-section.active .service-number {
+  color: #888;
+}
+
+/* 40% of original clamp(70px, 11vw, 160px) → clamp(28px, 4.4vw, 64px) */
+.service-heading {
+  font-size: clamp(48px, 6.4vw, 104px);
+  line-height: 0.9;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  color: #fff;
+}
+
+/* ── SIDE-INFO — fixed to bottom-left, visible/hidden on active ── */
+.side-info {
+  position: fixed;
+  bottom: 60px;
+  left: 7%;
+  z-index: 500;
+  max-width: 320px;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  pointer-events: none;
+}
+
+.side-info.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.side-info .service-subtitle {
+  font-size: clamp(15px, 1.4vw, 20px);
+  line-height: 1.55;
+  color: #999;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.explore-btn {
+  background: white;
+  border: 1px solid white;
+  color: #000000;
+  padding: 13px 34px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: 0.04em;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.explore-btn:hover {
+  background: none;
+  border-color: rgba(255,255,255,0.6);
+  color:white;
+}
+
+/* Divider line top of each section */
+/* .service-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 7%;
+  right: 7%;
+  height: 1px;
+  background: rgba(255,255,255,0.06);
+  z-index: 10;
+} */
+
+.spacer {
+  height: 30vh;
+  background: #0d0d10;
+}
+
+@media (max-width: 768px) {
+  #heroSection { padding: 24px; }
+
+  .service-heading-wrap { left: 6%; }
+
+  .side-info {
+    left: 6%;
+    bottom: 36px;
+    max-width: calc(100vw - 12%);
+  }
+}
+.brands-section {
+  position: relative;
+  z-index: 10;
+  background: #0d0d10;
+}
+
+.brands-heading-wrap {
+  padding: 100px 5% 60px;
+}
+
+.brands-kicker {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #555;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brands-kicker::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: #555;
+}
+
+.brands-h2 {
+  font-size: clamp(48px, 8vw, 110px);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+  color: #fff;
+}
+
+/* ── STICKY LAYOUT ── */
+.brands-sticky-wrap {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+}
+
+/* LEFT — laptop video, sticky */
+.brands-laptop-sticky {
+  position: sticky;
+  top: 0;
+  width: 55%;
+  height: 100vh;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.brands-laptop-sticky video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 20% center;
+  display: block;
+}
+
+/* Right fade on laptop */
+.brands-laptop-sticky::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, #0d0d10);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* RIGHT — scrolling content */
+.brands-content-scroll {
+  flex: 1;
+  padding: 0 6% 0 2%;
+}
+
+/* Each brand card */
+.brand-card {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 80px 0;
+  opacity: 0.3;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.brand-card.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.brand-number {
+  font-size: 13px;
+  color: #555;
+  letter-spacing: 0.12em;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.brand-name {
+  font-size: clamp(36px, 4vw, 64px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  color: #fff;
+  margin-bottom: 24px;
+}
+
+.brand-subtitle {
+  font-size: clamp(15px, 1.4vw, 20px);
+  line-height: 1.6;
+  color: #777;
+  font-weight: 300;
+  margin-bottom: 36px;
+  max-width: 340px;
+}
+
+.brand-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.brand-tag {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #555;
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 6px 14px;
+  border-radius: 50px;
+}
+
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding-bottom: 4px;
+  transition: border-color 0.3s;
+}
+
+#service-4 video{
+  object-position: 100% center;
+}
+
+.brand-link:hover { border-color: #fff; }
+
+.brand-link svg {
+  width: 15px;
+  height: 15px;
+  stroke: #fff;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#footerSection {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 40px;
+  transform-origin: center center;
+}
+
+.bg-video-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bg-video-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.15);
+}
+
+.bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.footer-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.0));
+  z-index: 1;
+}
+
+.footer-content {
+  position: relative;
+  z-index: 5;
+}
+
+.services-footer {
+  margin-bottom: 60px;
+  font-size: clamp(50px, 14vw, 80px);
+  line-height: 0.9;
+  font-weight: 400;
+  letter-spacing: -0.06em;
+}
+ .Contact {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+  margin-bottom: 45px;
+  padding: 15px 44px;
+  border-radius: 10px;
+  cursor: pointer;  
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: 0.04em;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.Contact:hover {
+  background: rgba(255,255,255,0.18);
+  border-color: rgba(255,255,255,0.6);
+}
+
+@media(max-width: 768px) {
+  .brands-sticky-wrap { flex-direction: column; }
+  .brands-laptop-sticky {
+    position: relative;
+    width: 100%;
+    height: 56vw;
+  }
+  .brands-content-scroll { padding: 0 6%; }
+  .brand-card { min-height: auto; padding: 60px 0; }
+}

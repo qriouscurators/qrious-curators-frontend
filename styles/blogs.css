@@ -1,0 +1,128 @@
+.blog-section {
+  background: #0d0d0d;
+  padding: 100px 20px;
+  color: #e5e5e5;
+}
+
+.blog-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.blog-header h2 {
+  font-size: 36px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #888;
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+
+.blog-content p {
+  line-height: 1.8;
+  margin-bottom: 20px;
+  color: #cfcfcf;
+}
+
+.intro {
+  font-size: 18px;
+  color: #fff;
+}
+
+.highlight {
+  background: linear-gradient(135deg, #1a1a1a, #111);
+  border-left: 3px solid #fb923c;
+  padding: 20px;
+  margin: 30px 0;
+  font-style: italic;
+  color: #fff;
+}
+
+h3 {
+  margin-top: 40px;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.emphasis {
+  color: #fb923c;
+  font-weight: 500;
+}
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  margin: 30px 0;
+}
+
+.service-card {
+  background: #141414;
+  padding: 20px;
+  border-radius: 12px;
+  transition: 0.3s ease;
+  border: 1px solid #1f1f1f;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  border-color: #fb923c;
+}
+
+.service-card h4 {
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.service-card p {
+  font-size: 14px;
+  color: #aaa;
+}
+
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.checklist li {
+  margin-bottom: 10px;
+  padding-left: 25px;
+  position: relative;
+}
+
+.checklist li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: #fb923c;
+}
+
+.quote-box {
+  margin: 40px 0;
+  padding: 30px;
+  background: linear-gradient(135deg, #111, #1a1a1a);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.quote-box p {
+  font-size: 18px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.quote-box span {
+  color: #fb923c;
+  font-size: 16px;
+}
+
+@media (max-width: 600px) {
+  .blog-header h2 {
+    font-size: 26px;
+  }
+}

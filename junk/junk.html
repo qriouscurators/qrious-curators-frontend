@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qrious Curators — Visual Story</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --ink:   #05050a;
+  --ink2:  #0b0b12;
+  --ink3:  #13131c;
+  --b:     rgba(255,255,255,.065);
+  --bhi:   rgba(255,255,255,.12);
+  --white: #f8f8f4;
+  --muted: rgba(255,255,255,.34);
+  --txt2:  rgba(255,255,255,.46);
+  --amber: #fb923c;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
+html { -webkit-font-smoothing: antialiased }
+body {
+  background: var(--ink);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+img, video { display: block; width: 100%; }
+::-webkit-scrollbar { width: 2px }
+::-webkit-scrollbar-track { background: var(--ink) }
+::-webkit-scrollbar-thumb { background: var(--amber) }
+
+/* CURSOR */
+#cur, #cr {
+  position: fixed; border-radius: 50%; pointer-events: none;
+  transform: translate(-50%,-50%); z-index: 99999;
+}
+#cur { width: 8px; height: 8px; background: var(--amber); transition: .18s all }
+#cr  { width: 30px; height: 30px; border: 1px solid rgba(251,146,60,.4); z-index: 99998; transition: .22s all }
+body.hov #cur { width: 14px; height: 14px }
+body.hov #cr  { width: 50px; height: 50px; border-color: rgba(251,146,60,.7) }
+
+/* GRAIN */
+#grain {
+  position: fixed; inset: 0; pointer-events: none; z-index: 9000; opacity: .32;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='.032'/%3E%3C/svg%3E");
+  animation: gr 8s steps(1) infinite;
+}
+@keyframes gr { 0%{transform:translate(0,0)}25%{transform:translate(-2%,-1%)}50%{transform:translate(1%,2%)}75%{transform:translate(2%,-1%)} }
+
+/* ═══════════════════════════════════════════════════
+   OUTER WRAPPER
+   The entire interaction lives inside one tall section
+═══════════════════════════════════════════════════ */
+#merge-section {
+  position: relative;
+  height: 400vh;           /* scroll travel space */
+  background: var(--ink);
+}
+
+/* ─── STICKY STAGE — locked to viewport ─── */
+.ms-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;        /* clips everything cleanly */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: var(--ink);
+}
+
+/* ─── VIDEO CONTAINER ─── */
+/* Starts fullscreen, shrinks as scroll progresses */
+.vid-wrap {
+  position: absolute;
+  /* starts at full viewport */
+  top: 0; left: 0;
+  width: 100%; height: 100vh;
+  will-change: clip-path, border-radius, top, left, width, height;
+  overflow: hidden;
+  border-radius: 0px;
+  z-index: 2;
+  /* GPU layer */
+  transform: translateZ(0);
+}
+
+.vid-wrap video {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Dark gradient at bottom of video so grid appears from below */
+.vid-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 35%;
+  background: linear-gradient(to top, var(--ink) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity .1s;
+}
+.vid-wrap.fading-out::after { opacity: 1 }
+
+/* ─── VIDEO OVERLAY (vignette) ─── */
+.vid-ov {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(5,5,10,.4) 0%, rgba(5,5,10,.05) 40%, rgba(5,5,10,.45) 100%),
+    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(5,5,10,.5) 0%, transparent 70%);
+}
+
+/* ─── HERO TEXT (over video) ─── */
+.vid-text {
+  position: absolute; inset: 0; z-index: 4;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 0 32px;
+}
+.vt-kicker {
+  font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: .35em; text-transform: uppercase;
+  color: rgba(255,255,255,.6);
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 20px;
+  opacity: 0; animation: vtFade .7s ease .3s forwards;
+}
+.vt-kline { width: 24px; height: 1px; background: var(--amber) }
+.vt-h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(54px, 9vw, 128px);
+  font-weight: 300; line-height: .9; letter-spacing: -.04em; color: var(--white);
+  opacity: 0; animation: vtFade .9s ease .5s forwards;
+}
+.vt-h1 em { font-style: italic; color: var(--amber) }
+.vt-h1 span {
+  display: block;
+  -webkit-text-stroke: 1px rgba(255,255,255,.25);
+  color: transparent;
+}
+@keyframes vtFade { from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)} }
+
+/* ─── SCROLL ARROW ─── */
+.vid-scroll {
+  position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+  z-index: 5; opacity: 0; animation: vtFade .7s ease 1.1s forwards;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.vs-wheel {
+  width: 24px; height: 40px;
+  border: 1.5px solid rgba(255,255,255,.22); border-radius: 16px;
+  display: flex; justify-content: center; padding-top: 5px;
+}
+.vs-wheel::before {
+  content: ''; width: 3px; height: 8px;
+  background: var(--amber); border-radius: 2px;
+  animation: vsPin 2s ease-in-out infinite;
+}
+@keyframes vsPin { 0%{transform:translateY(0);opacity:1}80%{transform:translateY(11px);opacity:0}100%{transform:translateY(0);opacity:0} }
+.vs-lbl {
+  font-family: 'Syne', sans-serif; font-size: 9px; font-weight: 700;
+  letter-spacing: .28em; text-transform: uppercase; color: rgba(255,255,255,.35);
+}
+
+/* ─── GRID CONTAINER ─── */
+/* Sits BELOW the video in z-order, rises up as video shrinks */
+.grid-stage {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  z-index: 1;
+  /* translateY starts at +100% (below), drives to 0 via JS */
+  transform: translateY(100%);
+  will-change: transform;
+  background: var(--ink);
+  padding-bottom: 0;
+}
+
+.img-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 10px;
+}
+
+/* Image cells */
+.ig-cell {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--ink3);
+  cursor: none;
+  /* each cell has a slight stagger entrance */
+}
+.ig-cell:nth-child(1) { aspect-ratio: 4/5 }
+.ig-cell:nth-child(2) { aspect-ratio: 4/3; margin-top: 56px }
+.ig-cell:nth-child(3) { aspect-ratio: 3/4; margin-top: 24px }
+
+.ig-cell img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top center;
+  transition: transform .8s cubic-bezier(.16,1,.3,1), filter .5s;
+  filter: brightness(.82) saturate(.9);
+}
+.ig-cell:hover img {
+  transform: scale(1.04);
+  filter: brightness(1) saturate(1);
+}
+/* Bottom amber line */
+.ig-cell::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 2px; background: var(--amber);
+  transition: width .55s cubic-bezier(.16,1,.3,1);
+}
+.ig-cell:hover::after { width: 100% }
+
+/* Hover label */
+.ig-label {
+  position: absolute; bottom: 14px; left: 14px; z-index: 2;
+  background: rgba(5,5,10,.82); backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.12); border-radius: 999px;
+  padding: 5px 13px;
+  font-family: 'Syne', sans-serif; font-size: 9px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--amber);
+  opacity: 0; transform: translateY(5px);
+  transition: opacity .3s, transform .3s;
+}
+.ig-cell:hover .ig-label { opacity: 1; transform: translateY(0) }
+
+/* Text fade-in items below the grid */
+.grid-text-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  background: var(--b);
+  border-top: 1px solid var(--b);
+  margin-top: 10px;
+}
+.gt-cell {
+  background: var(--ink);
+  padding: 36px 32px 40px;
+  border-right: 1px solid var(--b);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.16,1,.3,1);
+}
+.gt-cell:last-child { border-right: none }
+.gt-cell.show { opacity: 1; transform: translateY(0) }
+.gt-cell:nth-child(2).show { transition-delay: .12s }
+.gt-cell:nth-child(3).show { transition-delay: .24s }
+
+.gt-label {
+  font-family: 'Syne', sans-serif; font-size: 9px; font-weight: 700;
+  letter-spacing: .25em; text-transform: uppercase; color: var(--amber);
+  margin-bottom: 10px; display: block;
+}
+.gt-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(18px, 2vw, 26px); font-weight: 300;
+  line-height: 1.3; letter-spacing: -.01em; color: var(--white);
+}
+.gt-text em { font-style: italic; color: rgba(255,255,255,.55) }
+
+/* ─── TRANSITION RING — purely decorative amber ring that appears during transition ─── */
+.merge-ring {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%) scale(0);
+  width: 200px; height: 200px; border-radius: 50%;
+  border: 1px solid rgba(251,146,60,.15);
+  z-index: 6; pointer-events: none;
+  opacity: 0; transition: opacity .5s;
+}
+.merge-ring.active {
+  opacity: 1;
+  animation: ringPulse 2s ease-out forwards;
+}
+@keyframes ringPulse {
+  0%   { transform: translate(-50%,-50%) scale(0); opacity: .5 }
+  100% { transform: translate(-50%,-50%) scale(6); opacity: 0 }
+}
+
+/* ── PROGRESS DOT RAIL (right edge) ── */
+.progress-rail {
+  position: fixed; right: 28px; top: 50%; transform: translateY(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  z-index: 100;
+  opacity: 0; transition: opacity .4s;
+}
+.progress-rail.vis { opacity: 1 }
+.pr-dot {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: rgba(255,255,255,.18); transition: all .3s;
+}
+.pr-dot.on {
+  background: var(--amber); transform: scale(1.5);
+  box-shadow: 0 0 8px rgba(251,146,60,.5);
+}
+.pr-line {
+  width: 1px; height: 60px; background: rgba(255,255,255,.08); position: relative;
+}
+.pr-line-fill {
+  position: absolute; top: 0; left: 0; width: 100%;
+  background: var(--amber); height: 0%;
+  transition: height .06s linear;
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .img-grid { grid-template-columns:repeat(2,1fr); gap:8px; padding:8px }
+  .ig-cell:nth-child(3) { grid-column:span 2; aspect-ratio:16/7; margin-top:0 }
+  .ig-cell:nth-child(1) { aspect-ratio:4/3 }
+  .ig-cell:nth-child(2) { aspect-ratio:4/3; margin-top:0 }
+  .grid-text-row { grid-template-columns:1fr }
+  .gt-cell { border-right:none; border-bottom:1px solid var(--b) }
+  .gt-cell:last-child { border-bottom:none }
+}
+@media(max-width:560px){
+  .img-grid { grid-template-columns:1fr }
+  .ig-cell:nth-child(n){ grid-column:auto; aspect-ratio:4/3; margin-top:0 }
+  .vt-h1 { font-size: clamp(44px,12vw,72px) }
+  .progress-rail { display:none }
+}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="cr"></div>
+<div id="grain" aria-hidden="true"></div>
+
+<!-- Progress dot rail -->
+<div class="progress-rail" id="progressRail">
+  <div class="pr-dot on" id="pd0"></div>
+  <div class="pr-line"><div class="pr-line-fill" id="prFill"></div></div>
+  <div class="pr-dot" id="pd1"></div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     THE MERGE SECTION
+═══════════════════════════════════════ -->
+<section id="merge-section">
+
+  <div class="ms-sticky" id="msSticky">
+
+    <!-- Decorative merge ring -->
+    <div class="merge-ring" id="mergeRing"></div>
+
+    <!-- ── VIDEO ── -->
+    <div class="vid-wrap" id="vidWrap">
+      <video autoplay muted loop playsinline preload="auto" id="mainVid">
+        <source
+          src="https://videos.pexels.com/video-files/3571264/3571264-uhd_2560_1440_30fps.mp4"
+          type="video/mp4"
+        />
+      </video>
+      <div class="vid-ov"></div>
+
+      <!-- Hero text -->
+      <div class="vid-text" id="vidText">
+        <div class="vt-kicker"><span class="vt-kline"></span>Qrious Curators<span class="vt-kline"></span></div>
+        <h1 class="vt-h1">
+          We build<br>
+          <em>digital worlds</em>
+          <span>that endure.</span>
+        </h1>
+      </div>
+
+      <!-- Scroll hint -->
+      <div class="vid-scroll" id="vidScroll">
+        <div class="vs-wheel"></div>
+        <span class="vs-lbl">Scroll</span>
+      </div>
+    </div>
+
+    <!-- ── IMAGE GRID (rises from below) ── -->
+    <div class="grid-stage" id="gridStage">
+      <div class="img-grid">
+
+        <div class="ig-cell">
+          <img
+            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
+            alt="Creative studio"
+            loading="eager"
+          >
+          <div class="ig-label">Creative Process</div>
+        </div>
+
+        <div class="ig-cell">
+          <img
+            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80"
+            alt="Studio workspace"
+            loading="lazy"
+          >
+          <div class="ig-label">The Studio</div>
+        </div>
+
+        <div class="ig-cell">
+          <img
+            src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80"
+            alt="Strategy"
+            loading="lazy"
+          >
+          <div class="ig-label">Strategy & Craft</div>
+        </div>
+
+      </div>
+
+      <!-- Text row below grid — fades in after grid arrives -->
+      <div class="grid-text-row">
+        <div class="gt-cell" id="gt0">
+          <span class="gt-label">Obsessively Curious</span>
+          <p class="gt-text">We ask every uncomfortable question before building <em>anything.</em></p>
+        </div>
+        <div class="gt-cell" id="gt1">
+          <span class="gt-label">Relentlessly Precise</span>
+          <p class="gt-text">Details are not decoration — they are <em>the work.</em></p>
+        </div>
+        <div class="gt-cell" id="gt2">
+          <span class="gt-label">Built to Endure</span>
+          <p class="gt-text">We build for the next decade, not <em>the next trend.</em></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+
+
+
+
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section id="testimonials">
+      <div class="testi-header rv">
+        <div>
+          <div
+            class="kicker"
+            style="
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              margin-bottom: 20px;
+            "
+          >
+            <div class="kicker-line"></div>
+            Client Stories
+          </div>
+          <h2>What our clients <em>say</em></h2>
+        </div>
+        <p>
+          We measure our success by the impact we create. Here's what our clients say about working with Qrious Curators.
+        </p>
+      </div>
+      <div class="testi-grid">
+        <!-- Tissli Testimonial -->
+        <div class="t-card rv d1">
+          <div class="t-stars">★★★★★</div>
+          <div class="t-qm">"</div>
+          <p class="t-text">
+            "Qrious Curators brought our vision to life with creativity and finesse. The social media campaigns they designed not only resonated with our audience but also elevated Tissli’s brand presence. We’ve seen a remarkable increase in engagement."
+          </p>
+          <div class="t-author">
+            <div>
+              <div class="t-name">Tissli Team</div>
+              <div class="t-role">Brand Manager, Tissli</div>
+            </div>
+          </div>
+        </div>
+        <!-- Out Nosh Testimonial -->
+        <div class="t-card rv d2">
+          <div class="t-stars">★★★★★</div>
+          <div class="t-qm">"</div>
+          <p class="t-text">
+            "Working with Qrious Curators has been a game-changer for Out Nosh. They helped craft our digital presence and messaging, which resulted in increased footfall and customer loyalty. The campaigns were spot on!"
+          </p>
+          <div class="t-author">
+            <div>
+              <div class="t-name">Out Nosh Team</div>
+              <div class="t-role">Marketing Director, Out Nosh</div>
+            </div>
+          </div>
+        </div>
+        <!-- Vashika Sethi Makeovers Testimonial -->
+        <div class="t-card rv d3">
+          <div class="t-stars">★★★★★</div>
+          <div class="t-qm">"</div>
+          <p class="t-text">
+            "Qrious Curators helped us elevate our academy’s presence. From the Instagram content to the overall branding strategy, they understood our goals perfectly. We’ve received a lot more inquiries for our academy services since the campaign launch."
+          </p>
+          <div class="t-author">
+            <div>
+              <div class="t-name">Vashika Sethi</div>
+              <div class="t-role">Founder, Vashika Sethi Makeovers</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- ===== AboutUS-JunkFiles ===== -->
+      <header class="qc-header">
+      <nav class="qc-nav">
+        <a href="#" class="nav-logo">
+          <img src="./assets/logo/logo-one.png" alt="" />
+        </a>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#showcase">Work</a></li>
+          <li><a href="#team">Blogs</a></li>
+        </ul>
+        <a href="#contact" class="nav-cta">
+          <span>Let's Talk</span>
+          <span>↗</span>
+        </a>
+        <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+      <span class="mm-close" id="mmClose">✕</span>
+      <a href="about-us.html">About</a>
+      <a href="#services">Services</a>
+      <a href="#showcase">Work</a>
+      <a href="#team">Team</a>
+      <a href="#contact">Get in touch</a>
+    </div> 
+
+    ===== HERO =====
+    <section id="hero">
+      <video
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+      >
+        <source
+          src="./assets/dummy-video.mp4"
+          type="video/mp4"
+        />
+      </video>
+      <div class="hero-overlay"></div> 
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <div class="hero-eyebrow-dot"></div>
+          <span>Qrious Curators</span>
+        </div>
+        <h1 class="hero-h1">
+          <span class="line"><span class="line-inner l1">We craft</span></span>
+          <span class="line"
+            ><span class="line-inner l2"><em>digital</em> worlds</span></span
+          >
+          <span class="line"
+            ><span class="line-inner l3 outline">that endure.</span></span
+          >
+        </h1>
+        <div class="hero-bottom">
+          <p class="hero-desc">
+            Qrious Curators is a full-spectrum creative agency building brand
+            systems, digital experiences, and stories that stand apart in a
+            crowded world.
+          </p>
+          <div class="hero-ctas">
+            <a href="#showcase" class="btn-accent"
+              ><span>View Work</span><span>↗</span></a
+            >
+            <a href="#about" class="btn-outline">Our Story</a>
+          </div>
+        </div>
+      </div> 
+      <div class="hero-scroll">
+        <div class="hero-scroll-line"></div>
+        <span class="hero-scroll-label">Scroll</span>
+      </div>
+    </section>
+
+    <!-- ===== MARQUEE ===== -->
+    <div class="qc-marquee" aria-hidden="true">
+      <div class="qc-marquee-track">
+        <span class="qc-marquee-item">Brand Identity</span>
+        <span class="qc-marquee-item">Web Design</span>
+        <span class="qc-marquee-item">Digital Strategy</span>
+        <span class="qc-marquee-item">3D Design</span>
+        <span class="qc-marquee-item">UI / UX</span>
+        <span class="qc-marquee-item">Performance Marketing</span>
+        <span class="qc-marquee-item">Content Creation</span>
+        <span class="qc-marquee-item">Social Media</span>
+        <span class="qc-marquee-item">Brand Identity</span>
+        <span class="qc-marquee-item">Web Design</span>
+        <span class="qc-marquee-item">Digital Strategy</span>
+        <span class="qc-marquee-item">3D Design</span>
+        <span class="qc-marquee-item">UI / UX</span>
+        <span class="qc-marquee-item">Performance Marketing</span>
+        <span class="qc-marquee-item">Content Creation</span>
+        <span class="qc-marquee-item">Social Media</span>
+      </div>
+    </div>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about">
+      <div class="about-left rvl">
+        <div class="kicker">
+          <div class="kicker-line"></div>
+          Who We Are
+        </div>
+        <h2 class="about-h2">
+          We turn bold ideas into <em>remarkable</em> realities
+        </h2>
+        <p class="about-body">
+         From scroll-stopping content and high-performing ads to sleek websites and cohesive brand identities, we craft digital experiences that are visually compelling, strategically strong, and undeniably result-oriented.
+
+        </p>
+        <p class="about-body">
+         We partner with brands that think ahead. Brands that want more than visibility-they want impact, engagement, and scalable growth.
+        </p>
+        <p class="about-body">
+         With the right blend of creativity, clarity, and conversionfocused strategy, Qrious Curators turns ideas into campaigns that move people and move the needle
+        </p>
+        <a href="#contact" class="about-link">Start a project →</a>
+      </div>
+      <div class="about-right rvr d1">
+        <div class="about-img-wrap">
+          <img
+            src="https://framerusercontent.com/images/sXpGa5SBIHzL1ZlluLzui0nhLvU.webp?width=900"
+            alt="Studio work"
+            loading="lazy"
+          />
+        </div>
+        <div class="about-img-wrap">
+          <img
+            src="https://framerusercontent.com/images/9eD88IPKTw4s3e2ACxglJMr1zWs.webp?width=900"
+            alt="Design process"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STATS ===== -->
+    <section id="stats">
+      <div class="stats-grid">
+        <div class="stat-cell rv d1">
+          <div class="stat-num">140<sup>+</sup></div>
+          <div class="stat-lbl">Projects Completed</div>
+        </div>
+        <div class="stat-cell rv d2">
+          <div class="stat-num">8<sup>yr</sup></div>
+          <div class="stat-lbl">Years of Craft</div>
+        </div>
+        <div class="stat-cell rv d3">
+          <div class="stat-num">92<sup>%</sup></div>
+          <div class="stat-lbl">Client Retention</div>
+        </div>
+        <div class="stat-cell rv d4">
+          <div class="stat-num">34<sup>+</sup></div>
+          <div class="stat-lbl">Global Clients</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MANIFESTO (animated word reveal) ===== -->
+    <section id="manifesto">
+      <div class="manifesto-text" id="manifestoText">
+        <span class="manifesto-word">Crafting</span>
+        <span class="manifesto-word">Powerful,</span>
+        <span class="manifesto-word"><em>Impactful</em></span>
+        <span class="manifesto-word">Brands</span>
+        <span class="manifesto-word">That</span>
+        <span class="manifesto-word">Engage</span>
+        <span class="manifesto-word">Audiences,</span>
+        <span class="manifesto-word">Drive</span>
+        <span class="manifesto-word"><em>Results,</em></span>
+        <span class="manifesto-word">and</span>
+        <span class="manifesto-word">Fuel</span>
+        <span class="manifesto-word">Scalable</span>
+        <span class="manifesto-word">Growth.</span>
+        <span class="manifesto-word">We</span>
+        <span class="manifesto-word">Don’t</span>
+        <span class="manifesto-word">Just</span>
+        <span class="manifesto-word">Build</span>
+        <span class="manifesto-word">Brands,</span>
+        <span class="manifesto-word">We</span>
+        <span class="manifesto-word">Create</span>
+        <span class="manifesto-word"><em>Experiences</em></span>
+        <span class="manifesto-word">That</span>
+        <span class="manifesto-word"><em>Matter.</em></span>
+      </div>
+    </section> 
+
+    <!-- ===== STACK ===== -->
+    <!-- <section id="stack">
+      <div class="stack-grid">
+        <div class="stack-sticky">
+          <span class="stack-kicker">Key Work</span>
+          <h2 class="stack-title">
+            At Qrious Curators, we don’t just <em>“do marketing.”</em>
+            We build brands that people
+            <em>Remember</em>, <em>Relate to</em>, and <em>Talk about</em>
+          </h2>
+        </div>
+        <div class="stack-cards">
+          <div class="stack-card">
+            <img
+              src="https://framerusercontent.com/images/sXpGa5SBIHzL1ZlluLzui0nhLvU.webp?width=1800&height=2400"
+              alt="Work 1"
+              loading="lazy"
+            />
+          </div>
+          <div class="stack-card">
+            <img
+              src="https://framerusercontent.com/images/9eD88IPKTw4s3e2ACxglJMr1zWs.webp?width=1800&height=2400"
+              alt="Work 2"
+              loading="lazy"
+            />
+          </div>
+          <div class="stack-card">
+            <img
+              src="https://framerusercontent.com/images/ruM84yQKYiTGK0mIWGzyalj01WQ.webp?width=1920&height=2400"
+              alt="Work 3"
+              loading="lazy"
+            />
+          </div>
+          <div class="stack-card">
+            <img
+              src="https://framerusercontent.com/images/sXpGa5SBIHzL1ZlluLzui0nhLvU.webp?width=1800&height=2400"
+              alt="Work 4"
+              loading="lazy"
+            />
+          </div>
+          <div class="stack-card">
+            <img
+              src="https://framerusercontent.com/images/9eD88IPKTw4s3e2ACxglJMr1zWs.webp?width=1800&height=2400"
+              alt="Work 5"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section> -->
+    
+    <!-- ═══════════════════════════════════════════
+     WORLDWIDE CLIENTS SECTION
+    ═══════════════════════════════════════════ -->
+    <!-- <section id="worldwide">
+      <div class="ww-bg-glow"></div> -->
+
+      <!-- HEADER -->
+      <!-- <div class="ww-header">
+        <div class="rvl">
+          <div class="ww-kicker"><span class="kl"></span>Our Global Reach</div>
+          <h2 class="ww-h2">
+            Clients across<br /><em>every continent,</em><br />one standard.
+          </h2>
+        </div>
+        <div class="rvr d2">
+          <p class="ww-desc">
+            From startups in <strong>Jaipur</strong> to enterprises in
+            <strong>New York</strong>, <strong>London</strong>, and
+            <strong>Tokyo</strong> — our work transcends borders. We partner
+            with brands that refuse to be ordinary, no matter where they are.
+          </p>
+          <div class="ww-stats">
+            <div class="ww-stat">
+              <div class="ws-n">18<sup>+</sup></div>
+              <div class="ws-l">Countries</div>
+            </div>
+            <div class="ws-div"></div>
+            <div class="ww-stat">
+              <div class="ws-n">34<sup>+</sup></div>
+              <div class="ws-l">Global Clients</div>
+            </div>
+            <div class="ws-div"></div>
+            <div class="ww-stat">
+              <div class="ws-n">6</div>
+              <div class="ws-l">Continents</div>
+            </div>
+          </div>
+        </div>
+      </div>  -->
+
+
+
+
+
+    
+
+<script>
+/* ── CURSOR ── */
+const cur=document.getElementById('cur'),cr=document.getElementById('cr')
+let mx=0,my=0,rx=0,ry=0
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'})
+;(function raf(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(raf)})()
+document.querySelectorAll('.ig-cell').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'))
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'))
+})
+
+/* ══════════════════════════════════════════
+   SCROLL ENGINE
+   
+   Phase 1 (p: 0 → 0.4):
+     Video shrinks from fullscreen → small top card
+     Grid simultaneously rises from below
+   
+   Phase 2 (p: 0.4 → 0.7):
+     Grid fully visible. Text row fades in.
+   
+   Phase 3 (p: 0.7 → 1.0):
+     Everything settled, user can scroll away.
+══════════════════════════════════════════ */
+
+const sec       = document.getElementById('merge-section')
+const vidWrap   = document.getElementById('vidWrap')
+const vidText   = document.getElementById('vidText')
+const vidScroll = document.getElementById('vidScroll')
+const gridStage = document.getElementById('gridStage')
+const mergeRing = document.getElementById('mergeRing')
+const prFill    = document.getElementById('prFill')
+const rail      = document.getElementById('progressRail')
+const pd0       = document.getElementById('pd0')
+const pd1       = document.getElementById('pd1')
+
+const W = () => window.innerWidth
+const H = () => window.innerHeight
+
+// Easing
+function ease(t) { return t<.5 ? 2*t*t : -1+(4-2*t)*t }
+function clamp(v,lo,hi) { return Math.max(lo,Math.min(hi,v)) }
+function lerp(a,b,t) { return a+(b-a)*t }
+
+// Target final dimensions for the video card
+// It becomes a smaller card at the top, same width as grid
+const PAD = 10 // grid padding
+
+let ringFired = false
+let textShown = false
+
+function onScroll() {
+  const sTop = sec.offsetTop
+  const sH   = sec.offsetHeight
+  const wH   = H()
+  const scrollY = window.scrollY
+
+  const raw = (scrollY - sTop) / (sH - wH)
+  const p   = clamp(raw, 0, 1)
+
+  /* ── Show/hide progress rail ── */
+  rail.classList.toggle('vis', p > 0.01 && p < 0.99)
+
+  /* ── Progress rail fill ── */
+  const railP = clamp(p / 0.85, 0, 1)
+  prFill.style.height = (railP * 100) + '%'
+  pd0.classList.toggle('on', p < 0.5)
+  pd1.classList.toggle('on', p >= 0.5)
+
+  /* ── PHASE 1: Shrink video + rise grid (0 → 0.5) ── */
+  const phase1 = clamp(p / 0.50, 0, 1)
+  const e1 = ease(phase1)
+
+  // Video: start fullscreen, end as top card
+  // Width shrinks to grid width (100% - 2*PAD), height shrinks proportionally
+  // We achieve this by scaling + repositioning
+  const vScale = lerp(1, 0.48, e1)
+  const vRadius = lerp(0, 14, e1)
+
+  /* We use transform: scale for the shrink, and translateY to keep it at top */
+  /* At scale 0.48, the video center stays at 50%/50% of viewport by default */
+  /* We want it to end up at the top. So we shift Y up. */
+  /* At vScale 0.48: element natural center is at 50vh. We want top edge at ~PAD px. */
+  /* Top edge = center - height*scale/2 = 50vh - 50vh*vScale */
+  /* We want top edge at PAD, so translateY = PAD - 50vh*(1-vScale) */
+  const STOP_OFFSET = 80; // 🔥 adjust this
+
+  const vTranslateY = lerp(
+    0,
+    -(wH * (1 - vScale) / 2) + PAD + STOP_OFFSET,
+    e1
+  )
+
+  vidWrap.style.transform     = `translateY(${vTranslateY}px) scale(${vScale})`
+  vidWrap.style.borderRadius  = `${vRadius}px`
+
+  /* Hero text fades out quickly as scroll begins */
+  const textOpacity = clamp(1 - e1 * 3, 0, 1)
+  vidText.style.opacity   = textOpacity
+  vidText.style.transform = `translateY(${e1 * -24}px)`
+  vidText.style.pointerEvents = textOpacity < 0.05 ? 'none' : 'auto'
+
+  /* Scroll hint fades out */
+  vidScroll.style.opacity = clamp(1 - p * 10, 0, 1)
+
+  /* Video dark vignette at bottom — appears during shrink */
+  vidWrap.classList.toggle('fading-out', e1 > 0.3)
+
+  /* ── GRID RISES ── */
+  /* Grid translateY: starts at 100% (fully below), ends at 0 */
+  /* But we sync it so grid top edge meets video bottom edge during transition */
+  /* Video bottom edge at full scale = 100vh */
+  /* At vScale 0.48: video occupies vScale*100vh = 48vh, top at ~PAD, so bottom at ~48vh+PAD */
+  /* Grid should end at translateY=0 when video finishes shrinking */
+  const gridTranslate = lerp(100, 0, e1) /* % of its own height */
+  gridStage.style.transform = `translateY(${gridTranslate}%)`
+
+  /* ── MERGE RING — fire once at midpoint ── */
+  if (p > 0.25 && p < 0.45 && !ringFired) {
+    ringFired = true
+    mergeRing.classList.add('active')
+    setTimeout(()=>{mergeRing.classList.remove('active');ringFired=false},2000)
+  }
+
+  /* ── PHASE 2: Text row fades in (p: 0.45 → 0.65) ── */
+  if (p > 0.45 && !textShown) {
+    textShown = true
+    document.querySelectorAll('.gt-cell').forEach(el => el.classList.add('show'))
+  }
+  if (p < 0.35 && textShown) {
+    textShown = false
+    document.querySelectorAll('.gt-cell').forEach(el => el.classList.remove('show'))
+  }
+}
+
+window.addEventListener('scroll', onScroll, { passive: true })
+onScroll()
+</script>
+</body>
+</html>

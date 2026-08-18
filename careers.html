@@ -1,0 +1,1825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Careers | Qrious Curators</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/style.css" />
+  <link
+    rel="shortcut icon"
+    href="./assets/logo/fav-icon-one.png"
+    type="image/x-icon"
+  />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&family=Lato:wght@300;400;700;900&display=swap');
+    
+    :root {
+      --bg: #000000;
+      --bg-2: #050505;
+      --green: #0a0a0a;
+      --green-soft: #151515;
+      --gold: #ffffff;
+      --gold-2: #ffffff;
+      --cream: #ffffff;
+      --muted: rgba(255, 255, 255, 0.72);
+      --muted-2: rgba(255, 255, 255, 0.46);
+      --line: rgba(255, 255, 255, 0.14);
+      --shadow: 0 30px 90px rgba(0,0,0,0.45);
+      --radius-xl: 38px;
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --max: 1395px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Raleway", Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* CUSTOM CURSOR */
+    #qc-cur,
+    #qc-cur-ring {
+      position: fixed;
+      left: 0;
+      top: 0;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      z-index: 999999;
+    }
+
+    #qc-cur {
+      width: 8px;
+      height: 8px;
+      background: #fff;
+      mix-blend-mode: difference;
+    }
+
+    #qc-cur-ring {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255,255,255,.7);
+      transition: width .25s ease, height .25s ease, border-color .25s ease;
+      mix-blend-mode: difference;
+    }
+
+    body.cur-hover #qc-cur-ring {
+      width: 58px;
+      height: 58px;
+      border-color: #fff;
+    }
+
+    .page-shell {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+    }
+    
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      padding: 54px 0 90px;
+      position: relative;
+      display: grid;
+      align-items: center;
+      background: #000;
+    }
+    
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: center;
+      gap: 70px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .kicker {
+      color: #fff;
+      font-size: 15px;
+      letter-spacing: .2px;
+      margin-bottom: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 400;
+      font-family: 'Lato', Arial, sans-serif;
+    }
+    
+    .kicker::before {
+      content: '';
+      width: 44px;
+      height: 1px;
+      background: #fff;
+      opacity: .8;
+    }
+    
+    .hero-title {
+      font-family: 'Raleway', Arial, sans-serif;
+      font-size: clamp(44px, 8.8vw, 148px);
+      line-height: .86;
+      letter-spacing: -5px;
+      max-width: 770px;
+      font-weight: 500;
+      word-break: break-word;
+      color: #fff;
+    }
+    
+    .hero-title span {
+      display: block;
+      color: #fff;
+    }
+    
+    .hero-copy {
+      margin-top: 28px;
+      max-width: 520px;
+      color: rgba(255,255,255,.72);
+      font-size: clamp(16px, 1.3vw, 20px);
+      line-height: 1.65;
+      font-weight: 300;
+      font-family: 'Lato', Arial, sans-serif;
+    }
+    
+    .hero-collage {
+      position: relative;
+      min-height: 660px;
+      isolation: isolate;
+    }
+    
+    .collage-main {
+      position: absolute;
+      right: 0;
+      top: 62px;
+      width: min(590px, 100%);
+      height: 595px;
+      border-radius: 46px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.12);
+      background: #000;
+    }
+    
+    .collage-main img,
+    .floating-shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .collage-main::after,
+    .floating-shot::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.32));
+      pointer-events: none;
+    }
+    
+    .floating-shot {
+      position: absolute;
+      overflow: hidden;
+      border-radius: 28px;
+      border: 8px solid #000;
+      box-shadow: 0 24px 64px rgba(0,0,0,.42);
+      background: #102017;
+      z-index: 3;
+    }
+    
+    .shot-a {
+      width: 250px;
+      height: 310px;
+      left: 0;
+      top: 0;
+    }
+    
+    .shot-b {
+      width: 290px;
+      height: 220px;
+      left: 36px;
+      bottom: 18px;
+    }
+    
+    .shot-c {
+      width: 240px;
+      height: 165px;
+      right: 32px;
+      bottom: -10px;
+    }
+    
+    .orbit-line {
+      position: absolute;
+      inset: 42px 52px 80px 80px;
+      border: 1px solid rgba(255,255,255,.19);
+      border-radius: 50%;
+      transform: rotate(-12deg);
+      z-index: -1;
+    }
+    
+    .scroll-note {
+      position: absolute;
+      bottom: 30px;
+      left: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,.46);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-family: 'Lato', Arial, sans-serif;
+    }
+    
+    .mouse-dot {
+      width: 9px;
+      height: 9px;
+      background: #fff;
+      border-radius: 50%;
+      animation: bounceDot 1.4s infinite ease-in-out;
+    }
+    
+    @keyframes bounceDot {
+      0%,100% {
+        transform: translateY(0);
+        opacity: .5;
+      }
+    
+      50% {
+        transform: translateY(7px);
+        opacity: 1;
+      }
+    }
+    
+    /* ============================================
+       RESPONSIVE — hero only
+       ============================================ */
+    @media (max-width: 1120px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+    
+      .hero-collage {
+        min-height: 560px;
+      }
+    
+      .collage-main {
+        height: 490px;
+      }
+    }
+    
+    @media (max-width: 900px) {
+      .hero {
+        min-height: auto;
+        padding-bottom: 64px;
+      }
+    }
+    
+    @media (max-width: 720px) {
+      .page-shell {
+        width: min(100% - 28px, var(--max));
+      }
+    
+      .hero {
+        padding: 124px 0 64px;
+      }
+    
+      .hero-title {
+        letter-spacing: -2px;
+      }
+    
+      .hero-grid {
+        gap: 42px;
+      }
+    
+      .hero-collage {
+        min-height: 460px;
+      }
+    
+      .collage-main {
+        width: 100%;
+        height: 360px;
+        top: 66px;
+        border-radius: 30px;
+      }
+    
+      .shot-a {
+        width: 140px;
+        height: 185px;
+        top: 0;
+        border-width: 4px;
+        border-radius: 20px;
+      }
+    
+      .shot-b {
+        width: 190px;
+        height: 135px;
+        left: 10px;
+        bottom: 14px;
+        border-width: 4px;
+      }
+    
+      .shot-c {
+        width: 155px;
+        height: 108px;
+        right: 0;
+        bottom: -8px;
+        border-width: 4px;
+      }
+    
+      .scroll-note {
+        position: relative;
+        bottom: auto;
+        margin-top: 24px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero {
+        padding: 108px 0 48px;
+      }
+    
+      .hero-title {
+        font-size: clamp(38px, 13vw, 60px);
+        letter-spacing: -1.2px;
+        line-height: .92;
+      }
+    
+      .hero-copy {
+        font-size: 15px;
+      }
+    
+      .hero-collage {
+        min-height: 340px;
+      }
+    
+      .collage-main {
+        height: 250px;
+        top: 50px;
+        border-radius: 22px;
+      }
+    
+      .shot-a {
+        width: 100px;
+        height: 130px;
+        border-width: 3px;
+        border-radius: 14px;
+      }
+    
+      .shot-b {
+        width: 135px;
+        height: 96px;
+        left: 4px;
+        bottom: 8px;
+        border-width: 3px;
+      }
+    
+      .shot-c {
+        width: 108px;
+        height: 78px;
+        right: -4px;
+        bottom: -6px;
+        border-width: 3px;
+      }
+    }
+
+    /* NAVBAR */
+    /* .qn-wrap {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 9999;
+      padding: 26px 36px;
+      pointer-events: none;
+    }
+
+    .qn-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      pointer-events: auto;
+    }
+
+    .nav-logo {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(12px);
+      overflow: hidden;
+    }
+
+    .nav-logo img {
+      width: 40px;
+      height: auto;
+    }
+
+    .qn-toggle {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.28);
+      background: #0d0d0d;
+      backdrop-filter: blur(14px);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10001;
+    }
+
+    .qn-icon {
+      width: 24px;
+      height: 18px;
+      position: relative;
+    }
+
+    .qn-icon span {
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      left: 0;
+      background: #fff;
+      border-radius: 10px;
+      transition: .35s ease;
+    }
+
+    .qn-icon span:nth-child(1) { top: 0; }
+    .qn-icon span:nth-child(2) { top: 8px; }
+    .qn-icon span:nth-child(3) { top: 16px; }
+
+    .qn-toggle.active .qn-icon span:nth-child(1) {
+      top: 8px;
+      transform: rotate(45deg);
+    }
+
+    .qn-toggle.active .qn-icon span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .qn-toggle.active .qn-icon span:nth-child(3) {
+      top: 8px;
+      transform: rotate(-45deg);
+    }
+
+    .qn-overlay {
+      position: fixed;
+      inset: 0;
+      background: #050505;
+      z-index: 9998;
+      opacity: 0;
+      visibility: hidden;
+      transition: .45s ease;
+    }
+
+    .qn-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .qn-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .qn-main,
+    .qn-sub {
+      display: grid;
+      gap: 20px;
+    }
+
+    .qn-main a {
+      font-size: clamp(48px, 8vw, 120px);
+      font-weight: 900;
+      line-height: .9;
+      letter-spacing: -5px;
+      color: #fff;
+      transition: .3s ease;
+    }
+
+    .qn-main a:hover {
+      color: #ff7a00;
+    }
+
+    .qn-sub {
+      margin-top: 42px;
+      grid-template-columns: repeat(4, auto);
+      justify-content: center;
+      gap: 28px;
+    }
+
+    .qn-sub a {
+      color: #aaa;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .qn-sub a:hover {
+      color: #fff;
+    } */
+
+    /* TOP CAREER IMAGE MARQUEE */
+    .qc-career-marquee-section {
+      width: 100%;
+      min-height: 610px;
+      background: #000000;
+      overflow: hidden;
+      padding: 38px 0 48px;
+    }
+
+    .qc-career-marquee {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .qc-career-track {
+      display: flex;
+      align-items: center;
+      width: max-content;
+      gap: 28px;
+      animation: qcCareerMove 42s linear infinite;
+      will-change: transform;
+    }
+
+    .qc-career-track:hover {
+      animation-play-state: paused;
+    }
+
+    .qc-career-group {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      padding-right: 28px;
+    }
+
+    .qc-career-img {
+      position: relative;
+      flex: 0 0 auto;
+      overflow: hidden;
+      border-radius: 20px;
+      background: #e9eef5;
+      box-shadow: 0 18px 60px rgba(0,0,0,.10);
+    }
+
+    .qc-career-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s ease;
+    }
+
+    .qc-career-img:hover img {
+      transform: scale(1.06);
+    }
+
+    .qc-tall {
+      width: 290px;
+      height: 520px;
+    }
+
+    .qc-vertical {
+      width: 220px;
+      height: 365px;
+    }
+
+    .qc-small {
+      width: 220px;
+      height: 210px;
+    }
+
+    .qc-wide {
+      width: 400px;
+      height: 265px;
+    }
+
+    .qc-feature {
+      width: 310px;
+      height: 360px;
+    }
+
+    .qc-down {
+      margin-top: 92px;
+    }
+
+    .qc-down-small {
+      margin-top: 58px;
+    }
+
+    .qc-career-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .qc-feature::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      /* background: linear-gradient(
+        to top,
+        rgba(0, 116, 255, .94) 0%,
+        rgba(0, 116, 255, .42) 48%,
+        rgba(0, 116, 255, .02) 100%
+      ); */
+    }
+
+    .qc-feature-text {
+      position: absolute;
+      left: 30px;
+      bottom: 32px;
+      z-index: 2;
+      color: #ffffff;
+    }
+
+    .qc-feature-text h3 {
+      font-size: 22px;
+      line-height: 1;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .qc-feature-text p {
+      font-size: 13px;
+      font-weight: 700;
+      opacity: .92;
+    }
+
+    @keyframes qcCareerMove {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* CAREER TITLE SECTION */
+    .qc-career-title-section {
+      width: 100%;
+      background: #000000;
+      padding: 90px 10px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative glow blobs so the glass box has something to blur/refract.
+       A glass effect needs visual variation behind it — flat black gives it
+       nothing to show, which is why it looked like plain grey before. */
+    .qc-career-title-section::before,
+    .qc-career-title-section::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(10px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* .qc-career-title-section::before {
+      width: 480px;
+      height: 480px;
+      top: -220px;
+      left: 8%;
+      background: radial-gradient(circle, rgba(255,122,0,.55), transparent 70%);
+    }
+
+    .qc-career-title-section::after {
+      width: 420px;
+      height: 420px;
+      bottom: -240px;
+      right: 6%;
+      background: radial-gradient(circle, rgba(0,116,255,.45), transparent 70%);
+    } */
+
+     .qc-career-title-box {
+      width: 100%;
+      min-height: 300px;
+      border-radius:30px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+
+      padding: 60px 20px;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+
+      background: rgba(255, 255, 255, 0.10);
+      backdrop-filter: blur(22px) saturate(180%);
+      -webkit-backdrop-filter: blur(22px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+
+      box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .qc-career-title-box::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.8),
+        transparent
+      );
+    }
+
+    .qc-career-title-box::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1px;
+      height: 100%;
+
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.174),
+        transparent,
+        rgba(255, 255, 255, 0.127)
+      );
+    }
+
+    /* Text ko glass overlay ke upar rakhne ke liye */
+    .qc-career-title-box > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .qc-career-title-box h1 {
+      font-size: clamp(54px, 7.2vw, 104px);
+      line-height: .92;
+      letter-spacing: -5px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 24px;
+    }
+
+    .qc-career-title-box p {
+      max-width: 460px;
+      font-size: 15px;
+      line-height: 1.5;
+      font-weight: 300;
+      color: #ffffff;
+    }
+
+    /* COMMON CONTAINER */
+    .sb-container {
+      max-width: 1520px;
+      margin: auto;
+      padding: 0 90px;
+    }
+
+    /* OPEN POSITIONS */
+    .sb-positions-section {
+      background: #000;
+      padding: 10px 0;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    .sb-positions-hero {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .sb-positions-hero h2 {
+      font-size: clamp(52px, 5vw, 90px);
+      font-weight: 800;
+      margin-bottom: 20px;
+      letter-spacing: -2px;
+    }
+
+    .sb-positions-hero p {
+      color: #999;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .sb-job-card {
+      background: #0d0d0d;
+      border: 1px solid #222;
+      border-radius: 28px;
+      overflow: hidden;
+      margin-bottom: 34px;
+      transition: .3s ease;
+    }
+
+    .sb-job-card:hover {
+      border-color: rgba(255,122,0,.45);
+    }
+
+    .sb-job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 34px 52px;
+      cursor: pointer;
+    }
+
+    .sb-job-left {
+      font-size: 30px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .sb-job-right {
+      display: flex;
+      gap: 70px;
+      align-items: center;
+      font-size: 18px;
+      color: #d6d6d6;
+    }
+
+    .sb-plus {
+      font-size: 42px;
+      line-height: 1;
+      color: #ffffff;
+    }
+
+    .sb-job-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .6s ease;
+    }
+
+    .sb-job-content.active {
+      max-height: 6000px; /* fallback cap — JS sets the real height dynamically */
+    }
+
+    .sb-job-content-inner {
+      padding: 52px;
+      border-top: 1px solid #222;
+    }
+
+    .sb-section-title {
+      font-size: 28px;
+      margin-bottom: 15px;
+      font-weight: 800;
+    }
+
+    .sb-description {
+      color: #cfcfcf;
+      line-height: 1.8;
+      margin-bottom: 30px;
+      font-size: 17px;
+    }
+
+    .sb-list {
+      margin-bottom: 35px;
+    }
+
+    .sb-list li {
+      color: #cfcfcf;
+      margin-bottom: 12px;
+      margin-left: 22px;
+      line-height: 1.7;
+    }
+
+    .sb-form-title {
+      font-size: 28px;
+      margin-bottom: 25px;
+      font-weight: 800;
+    }
+
+    .sb-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .sb-form-grid input,
+    .sb-form-grid textarea {
+      width: 100%;
+      padding: 17px;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .sb-form-grid input:focus,
+    .sb-form-grid textarea:focus {
+      border-color: #ffffff;
+    }
+
+    .sb-form-grid textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .sb-full {
+      grid-column: 1 / -1;
+    }
+
+    .sb-file-upload {
+      padding: 14px !important;
+      border: 1px dashed #444 !important;
+    }
+
+    .sb-submit-btn {
+      background: #ffffff;
+      color: #000;
+      border: none;
+      padding: 18px 42px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: .3s ease;
+    }
+
+    .sb-submit-btn:hover {
+      background: #0d0d0d;
+      border: 1px solid #fff;
+      color: #fff;
+    }
+
+    .sb-apply-wrap {
+      margin-top: 4px;
+    }
+
+    .sb-apply-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: max-content;
+    }
+
+    /* SECOND PAGE - BENEFITS */
+    .sb-second-page-benefits {
+      background: #000;
+      color: #fff;
+      padding: 120px 0;
+      border-top: 1px solid rgba(255,255,255,.08);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .sb-second-container {
+      max-width: 1520px;
+      margin: auto;
+      padding: 0 90px;
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 90px;
+      align-items: start;
+    }
+
+    .sb-second-left {
+      position: sticky;
+      top: 100px;
+    }
+
+    .sb-second-left span {
+      display: inline-block;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .sb-second-left h2 {
+      font-size: clamp(52px, 5vw, 86px);
+      line-height: 1;
+      letter-spacing: -3px;
+      font-weight: 800;
+      margin-bottom: 28px;
+    }
+
+    .sb-second-left p {
+      color: #cfcfcf;
+      font-size: 20px;
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    .sb-second-right {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 34px;
+    }
+
+    .sb-benefit-simple-card {
+      background: #0d0d0d;
+      border: 1px solid #222;
+      border-radius: 28px;
+      padding: 42px;
+      min-height: 285px;
+      transition: .3s ease;
+    }
+
+    .sb-benefit-simple-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,122,0,.45);
+      box-shadow: 0 24px 70px rgba(255,122,0,.08);
+    }
+
+    .sb-benefit-simple-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      background: #fff;
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 900;
+      margin-bottom: 34px;
+    }
+
+    .sb-benefit-simple-card:hover .sb-benefit-simple-icon {
+      background: #ff7a00;
+    }
+
+    .sb-benefit-simple-card h3 {
+      font-size: 26px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .sb-benefit-simple-card p {
+      color: #cfcfcf;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width: 1000px) {
+      #qc-cur,
+      #qc-cur-ring {
+        display: none;
+      }
+
+      .qc-career-marquee-section {
+        padding-top: 92px;
+        min-height: 500px;
+      }
+
+      .qc-tall {
+        width: 230px;
+        height: 420px;
+      }
+
+      .qc-vertical {
+        width: 180px;
+        height: 300px;
+      }
+
+      .qc-small {
+        width: 180px;
+        height: 170px;
+      }
+
+      .qc-wide {
+        width: 310px;
+        height: 220px;
+      }
+
+      .qc-feature {
+        width: 250px;
+        height: 300px;
+      }
+
+      .sb-container,
+      .sb-second-container {
+        padding: 0 24px;
+      }
+
+      .sb-second-container {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .sb-second-left {
+        position: relative;
+        top: auto;
+      }
+
+      .sb-second-right {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .sb-job-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+        padding: 26px;
+      }
+
+      .sb-job-left {
+        font-size: 22px;
+      }
+
+      .sb-job-right {
+        gap: 24px;
+        font-size: 15px;
+      }
+
+      .sb-job-content-inner {
+        padding: 26px;
+      }
+
+      .sb-form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      #qcFooter {
+        padding: 60px 24px 26px;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media(max-width: 640px) {
+      .qn-wrap {
+        padding: 18px;
+      }
+
+      .nav-logo {
+        width: 52px;
+        height: 52px;
+      }
+
+      .qn-toggle {
+        width: 54px;
+        height: 54px;
+      }
+
+      .qn-sub {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .qc-career-marquee-section {
+        padding: 86px 0 28px;
+        min-height: 430px;
+      }
+
+      .qc-career-track,
+      .qc-career-group {
+        gap: 18px;
+      }
+
+      .qc-career-group {
+        padding-right: 18px;
+      }
+
+      .qc-tall {
+        width: 190px;
+        height: 350px;
+      }
+
+      .qc-vertical {
+        width: 150px;
+        height: 250px;
+      }
+
+      .qc-small {
+        width: 150px;
+        height: 145px;
+      }
+
+      .qc-wide {
+        width: 260px;
+        height: 180px;
+      }
+
+      .qc-feature {
+        width: 210px;
+        height: 260px;
+      }
+
+      .qc-down {
+        margin-top: 62px;
+      }
+
+      .qc-down-small {
+        margin-top: 42px;
+      }
+
+      .qc-career-stack {
+        gap: 18px;
+      }
+
+      .qc-career-title-section {
+        padding-bottom: 60px;
+      }
+
+      .qc-career-title-box {
+        min-height: 230px;
+        padding: 44px 18px;
+      }
+
+      .qc-career-title-box h1 {
+        letter-spacing: -3px;
+      }
+
+      .sb-positions-section,
+      .sb-second-page-benefits {
+        padding: 80px 0;
+      }
+
+      .sb-positions-hero {
+        margin-bottom: 42px;
+      }
+
+      .sb-second-left h2,
+      .sb-positions-hero h2 {
+        letter-spacing: -1px;
+      }
+
+      .sb-second-left p,
+      .sb-positions-hero p {
+        font-size: 16px;
+      }
+
+      .sb-benefit-simple-card {
+        padding: 30px;
+        min-height: auto;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="qn-wrap">
+    <div class="qn-bar">
+      <a href="./index.html" class="nav-logo">
+        <img src="./assets/logo/logo-one.png" alt="Logo">
+      </a>
+
+      <button class="qn-toggle" id="qnToggle" aria-label="Menu">
+        <div class="qn-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- ===== OVERLAY ===== -->
+  <div class="qn-overlay" id="qnOverlay">
+    <div class="qn-inner">
+      <div class="qn-center">
+        <div class="qn-main">
+          <a href="./about.html">About</a>
+          <a href="./work.html">Work</a>
+          <a href="./services.html">Services</a>
+        </div>
+  
+        <div class="qn-sub">
+          <a href="./contact.html">Contact</a>
+          <a href="./blog.html">Blogs</a>
+          <a href="./team.html">Our Team</a>
+          <a href="./careers.html">Career</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu" style="display: none;">
+    <span class="mm-close" id="mmClose">✕</span>
+    <a href="./about.html">About</a>
+    <a href="./services.html">Services</a>
+    <a href="./work.html">Work</a>
+    <a href="./team.html">Team</a>
+    <a href="./contact.html">Contact</a>
+  </div>
+
+  <div class="grain"></div>
+  <!-- <section class="qc-career-title-section">
+    <div class="qc-career-title-box">
+      <h1></h1>
+      <p></p>
+    </div>
+  </section> -->
+
+  <section class="hero page-shell" aria-labelledby="heroTitle">
+    <div class="hero-grid">
+      <div>
+        <!-- <div class="kicker">Our latest</div> -->
+        <h1 class="hero-title" id="heroTitle">Career at<span> Qrious</span></h1>
+        <p class="hero-copy">
+          Join a team where ideas move fast, creativity has space, and every project helps you grow.
+        </p>
+      </div>
+
+      <div class="hero-collage" aria-hidden="true">
+        <div class="orbit-line"></div>
+
+        <div class="collage-main">
+          <img src="./assets/workimages/Banner.png" alt="Case studies collage" loading="eager">
+        </div>
+
+        <div class="floating-shot shot-a">
+          <img src="./assets/careers/career7.png" alt="Fashion project preview" loading="eager">
+        </div>
+
+        <div class="floating-shot shot-b">
+          <img src="./assets/careers/career5.png" alt="Travel project preview" loading="eager">
+        </div>
+
+        <div class="floating-shot shot-c">
+          <img src="./assets/careers/career4.png" alt="Pet project preview" loading="eager">
+        </div>
+      </div>
+    </div>
+
+    <a class="scroll-note" href="#open-positions">
+      <span class="mouse-dot"></span>
+      Explore Openings
+    </a>
+  </section>
+
+  <section class="qc-career-marquee-section">
+    <div class="qc-career-marquee">
+      <div class="qc-career-track">
+        <div class="qc-career-group">
+          <div class="qc-career-img qc-tall">
+            <img src="./assets/careers/career1.png" alt="Career at Qrious" />
+          </div>
+
+          <div class="qc-career-img qc-vertical qc-down">
+            <img src="./assets/careers/career2.png" alt="Team culture" />
+          </div>
+
+          <div class="qc-career-stack">
+            <div class="qc-career-img qc-small">
+              <img src="./assets/careers/career3.png" alt="Creative work" />
+            </div>
+
+            <div class="qc-career-img qc-wide">
+              <img src="./assets/careers/career4.png" alt="Office discussion" />
+            </div>
+          </div>
+
+          <div class="qc-career-img qc-feature">
+            <img src="./assets/careers/career5.png" alt="Join Qrious" />
+            <!-- <div class="qc-feature-text">
+              <h3>Join Qrious</h3>
+              <p>Create. Learn. Grow.</p>
+            </div> -->
+          </div>
+
+          <div class="qc-career-img qc-vertical">
+            <img src="./assets/careers/career6.png" alt="Work with us" />
+          </div>
+
+          <div class="qc-career-img qc-tall qc-down-small">
+            <img src="./assets/careers/career7.png" alt="Career growth" />
+          </div>
+
+          <div class="qc-career-stack">
+            <div class="qc-career-img qc-small">
+              <img src="./assets/careers/career8.png" alt="Creative team" />
+            </div>
+
+            <div class="qc-career-img qc-wide">
+              <img src="./assets/careers/career9.png" alt="Qrious workspace" />
+            </div>
+          </div>
+        </div>
+
+        <div class="qc-career-group" aria-hidden="true">
+          <div class="qc-career-img qc-tall"><img src="./assets/careers/career1.png" alt="" /></div>
+          <div class="qc-career-img qc-vertical qc-down"><img src="./assets/careers/career2.png" alt="" /></div>
+          <div class="qc-career-stack">
+            <div class="qc-career-img qc-small"><img src="./assets/careers/career3.png" alt="" /></div>
+            <div class="qc-career-img qc-wide"><img src="./assets/careers/career4.png" alt="" /></div>
+          </div>
+          <div class="qc-career-img qc-feature">
+            <img src="./assets/careers/career5.png" alt="" />
+            <div class="qc-feature-text"><h3>Join Qrious</h3><p>Create. Learn. Grow.</p></div>
+          </div>
+          <div class="qc-career-img qc-vertical"><img src="./assets/careers/career6.png" alt="" /></div>
+          <div class="qc-career-img qc-tall qc-down-small"><img src="./assets/careers/career7.png" alt="" /></div>
+          <div class="qc-career-stack">
+            <div class="qc-career-img qc-small"><img src="./assets/careers/career8.png" alt="" /></div>
+            <div class="qc-career-img qc-wide"><img src="./assets/careers/career9.png" alt="" /></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="sb-positions-section" id="open-positions">
+    <div class="sb-container">
+      <div class="sb-positions-hero">
+
+      </div>
+
+      <div class="sb-job-card">
+        <div class="sb-job-header">
+          <div class="sb-job-left">Video Editor</div>
+          <div class="sb-job-right">
+            <span>Full Time</span>
+            <span>Jaipur</span>
+            <span class="sb-plus">+</span>
+          </div>
+        </div>
+
+        <div class="sb-job-content">
+          <div class="sb-job-content-inner">
+            <h2 class="sb-section-title">Job Description</h2>
+            <p class="sb-description">We are looking for a creative Video Editor with at least 1 year of experience in editing reels, social media videos, ad creatives, and brand content. The candidate should understand pacing, music sync, transitions, hooks, captions, and platform-friendly video formats.</p>
+
+            <h2 class="sb-section-title">Responsibilities</h2>
+            <ul class="sb-list">
+              <li>Edit reels, short videos, ad videos, and social media content.</li>
+              <li>Add captions, transitions, music, effects, and basic motion graphics.</li>
+              <li>Understand brand guidelines and create videos accordingly.</li>
+              <li>Work closely with the content and social media team.</li>
+              <li>Deliver videos on time with proper formatting for Instagram and other platforms.</li>
+            </ul>
+
+            <h2 class="sb-section-title">Requirements</h2>
+            <ul class="sb-list">
+              <li>Minimum 1 year of video editing experience.</li>
+              <li>Good knowledge of Premiere Pro, After Effects, CapCut, or similar tools.</li>
+              <li>Strong understanding of reels, hooks, transitions, and trending formats.</li>
+              <li>Basic knowledge of color correction and audio balancing.</li>
+              <li>Should be creative, detail-oriented, and deadline-focused.</li>
+            </ul>
+
+            <h2 class="sb-form-title">Apply For This Position</h2>
+            <div class="sb-apply-wrap">
+              <a class="sb-submit-btn sb-apply-link" href="https://forms.gle/pNiCmqz5DKPctTrK8">Click to Apply</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sb-job-card">
+        <div class="sb-job-header">
+          <div class="sb-job-left">Photographer</div>
+          <div class="sb-job-right">
+            <span>Freelancer</span>
+            <span>Jaipur</span>
+            <span class="sb-plus">+</span>
+          </div>
+        </div>
+
+        <div class="sb-job-content">
+          <div class="sb-job-content-inner">
+            <h2 class="sb-section-title">Job Description</h2>
+            <p class="sb-description">We are looking for a freelance Photographer who can shoot high-quality product, fashion, lifestyle, and brand content. The candidate should understand lighting, composition, angles, styling, and social media-friendly photography.</p>
+
+            <h2 class="sb-section-title">Responsibilities</h2>
+            <ul class="sb-list">
+              <li>Plan and shoot product, model, lifestyle, and brand photos.</li>
+              <li>Understand creative briefs and execute shoots accordingly.</li>
+              <li>Work with stylists, models, and content teams during shoots.</li>
+              <li>Maintain proper lighting, framing, background, and composition.</li>
+              <li>Deliver edited photos in required sizes and formats.</li>
+            </ul>
+
+            <h2 class="sb-section-title">Requirements</h2>
+            <ul class="sb-list">
+              <li>Experience in product, fashion, lifestyle, or social media photography.</li>
+              <li>Good knowledge of camera, lighting, composition, and angles.</li>
+              <li>Basic editing knowledge using Lightroom, Photoshop, or similar tools.</li>
+              <li>Must have a strong portfolio or previous work samples.</li>
+              <li>Should be available for freelance/project-based shoots in Jaipur.</li>
+            </ul>
+
+            <h2 class="sb-form-title">Apply For This Position</h2>
+            <div class="sb-apply-wrap">
+              <a class="sb-submit-btn sb-apply-link" href="https://forms.gle/pNiCmqz5DKPctTrK8">Click to Apply</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sb-job-card">
+        <div class="sb-job-header">
+          <div class="sb-job-left">Web Developer</div>
+          <div class="sb-job-right">
+            <span>Full Time</span>
+            <span>Jaipur</span>
+            <span class="sb-plus">+</span>
+          </div>
+        </div>
+
+        <div class="sb-job-content">
+          <div class="sb-job-content-inner">
+            <h2 class="sb-section-title">Job Description</h2>
+            <p class="sb-description">We are looking for a skilled Web Developer who can build responsive, fast, and visually clean websites. The candidate should have strong knowledge of HTML, CSS, JavaScript, and modern website development practices.</p>
+
+            <h2 class="sb-section-title">Responsibilities</h2>
+            <ul class="sb-list">
+              <li>Develop responsive websites and landing pages.</li>
+              <li>Work on Shopify, WordPress, or custom-coded websites.</li>
+              <li>Convert designs into clean and functional web pages.</li>
+              <li>Optimize websites for speed, mobile responsiveness, and user experience.</li>
+              <li>Fix bugs, update existing websites, and maintain web projects.</li>
+            </ul>
+
+            <h2 class="sb-section-title">Requirements</h2>
+            <ul class="sb-list">
+              <li>Good knowledge of HTML, CSS, JavaScript, and responsive design.</li>
+              <li>Experience with Shopify, WordPress, or custom frontend development.</li>
+              <li>Basic understanding of UI/UX and website performance.</li>
+              <li>Knowledge of forms, animations, sections, and layout customization.</li>
+              <li>Should be able to write clean, structured, and reusable code.</li>
+            </ul>
+
+            <h2 class="sb-form-title">Apply For This Position</h2>
+            <div class="sb-apply-wrap">
+              <a class="sb-submit-btn sb-apply-link" href="https://forms.gle/pNiCmqz5DKPctTrK8">Click to Apply</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sb-job-card">
+        <div class="sb-job-header">
+          <div class="sb-job-left">Graphic Designer</div>
+          <div class="sb-job-right">
+            <span>Full Time</span>
+            <span>Jaipur</span>
+            <span class="sb-plus">+</span>
+          </div>
+        </div>
+
+        <div class="sb-job-content">
+          <div class="sb-job-content-inner">
+            <h2 class="sb-section-title">Job Description</h2>
+            <p class="sb-description">We are looking for a creative Graphic Designer who can design social media creatives, ad banners, brand posts, stories, and marketing visuals. The candidate should have a good sense of layout, typography, colors, and brand aesthetics.</p>
+
+            <h2 class="sb-section-title">Responsibilities</h2>
+            <ul class="sb-list">
+              <li>Create social media posts, stories, reels covers, and ad creatives.</li>
+              <li>Design banners, campaign creatives, and brand marketing visuals.</li>
+              <li>Work according to brand guidelines and content requirements.</li>
+              <li>Collaborate with content writers, marketers, and video editors.</li>
+              <li>Maintain consistency in typography, colors, spacing, and visual style.</li>
+            </ul>
+
+            <h2 class="sb-section-title">Requirements</h2>
+            <ul class="sb-list">
+              <li>Good knowledge of Photoshop, Illustrator, Canva, Figma, or similar tools.</li>
+              <li>Strong understanding of social media design and brand aesthetics.</li>
+              <li>Basic knowledge of typography, color theory, and layout balance.</li>
+              <li>Portfolio with social media or branding work is preferred.</li>
+              <li>Should be creative, fast, and open to feedback.</li>
+            </ul>
+
+            <h2 class="sb-form-title">Apply For This Position</h2>
+            <div class="sb-apply-wrap">
+              <a class="sb-submit-btn sb-apply-link" href="https://forms.gle/pNiCmqz5DKPctTrK8">Click to Apply</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- <section class="sb-second-page-benefits" id="benefits">
+    <div class="sb-second-container">
+      <div class="sb-second-left">
+        <span>Benefits</span>
+        <h2>Why work with us?</h2>
+        <p>We believe a good workplace should help you grow, create better, and feel supported while doing meaningful work.</p>
+      </div>
+
+      <div class="sb-second-right">
+        <div class="sb-benefit-simple-card">
+          <div class="sb-benefit-simple-icon">01</div>
+          <h3>Growth First Culture</h3>
+          <p>Learn faster, take ownership, and work on projects that help you improve your skills.</p>
+        </div>
+
+        <div class="sb-benefit-simple-card">
+          <div class="sb-benefit-simple-icon">02</div>
+          <h3>Creative Freedom</h3>
+          <p>Bring your ideas, experiment with concepts, and contribute to real brand work.</p>
+        </div>
+
+        <div class="sb-benefit-simple-card">
+          <div class="sb-benefit-simple-icon">03</div>
+          <h3>Team Support</h3>
+          <p>Work with people who value clarity, collaboration, feedback, and consistency.</p>
+        </div>
+
+        <div class="sb-benefit-simple-card">
+          <div class="sb-benefit-simple-icon">04</div>
+          <h3>Learning Environment</h3>
+          <p>Improve your creative, technical, and professional skills with practical work.</p>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="qcFooter">
+
+    <!-- Large Background Logo -->
+    <div class="footer-bg-logo"></div>
+
+    <div class="footer-inner">
+
+      <div class="footer-top">
+
+        <!-- Left -->
+        <div>
+          <div class="footer-brand-name">
+            <div class="nav-logo-dot"></div>
+            Qrious Curators
+          </div>
+
+          <p class="footer-text">
+            We build brands, websites, and digital experiences that feel refined,
+            relevant, and made to grow.
+          </p>
+
+          <div class="footer-socials">
+            <!-- <a href="#" class="f-soc">𝕏</a> -->
+            <a href="https://www.linkedin.com/company/qrious-curators" class="f-soc">in</a>
+            <a href="https://www.instagram.com/qrious.curators" class="f-soc">ig</a>
+          </div>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <!-- <div class="footer-col-ttl">Services</div> -->
+
+          <ul class="footer-links">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./work.html">Work</a></li>
+            <li><a href="./services.html">Services</a></li>
+          </ul>
+        </div>
+
+        <!-- Company -->
+        <div>
+          <!-- <div class="footer-col-ttl">Company</div> -->
+
+          <ul class="footer-links">
+            <li><a href="./blog.html">Blog</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+            <li><a href="./careers.html">Careers</a></li>
+            <li><a href="./team.html">Team</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+
+        <p class="footer-copy">
+          © 2026 Qrious Curators. All rights reserved.
+        </p>
+
+        <img
+          src="./assets/logo/logo-one.png"
+          alt="Qrious Curators"
+          class="footer-center-logo"
+        >
+
+        <p class="footer-made">
+          Designed & Built with <span>♥</span>
+        </p>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+  <script>
+    const cur = document.getElementById("qc-cur");
+    const ring = document.getElementById("qc-cur-ring");
+    let mx = 0, my = 0, rx = 0, ry = 0;
+
+    if (cur && ring) {
+      document.addEventListener("mousemove", (e) => {
+        mx = e.clientX;
+        my = e.clientY;
+        cur.style.left = mx + "px";
+        cur.style.top = my + "px";
+      });
+
+      function cursorLoop() {
+        rx += (mx - rx) * 0.14;
+        ry += (my - ry) * 0.14;
+        ring.style.left = rx + "px";
+        ring.style.top = ry + "px";
+        requestAnimationFrame(cursorLoop);
+      }
+      cursorLoop();
+
+      document.querySelectorAll("a, button, .sb-job-header, .sb-benefit-simple-card, .qc-career-img").forEach((el) => {
+        el.addEventListener("mouseenter", () => document.body.classList.add("cur-hover"));
+        el.addEventListener("mouseleave", () => document.body.classList.remove("cur-hover"));
+      });
+    }
+
+    const qnToggle = document.getElementById("qnToggle");
+    const qnOverlay = document.getElementById("qnOverlay");
+
+    if (qnToggle && qnOverlay) {
+      qnToggle.addEventListener("click", () => {
+        qnToggle.classList.toggle("active");
+        qnOverlay.classList.toggle("active");
+        document.body.style.overflow = qnOverlay.classList.contains("active") ? "hidden" : "";
+      });
+
+      document.querySelectorAll(".qn-overlay a").forEach((link) => {
+        link.addEventListener("click", () => {
+          qnToggle.classList.remove("active");
+          qnOverlay.classList.remove("active");
+          document.body.style.overflow = "";
+        });
+      });
+    }
+
+    // Accordion for job cards — event delegation so it keeps working
+    // no matter what else runs on the page, and uses the real content
+    // height (scrollHeight) instead of a guessed fixed max-height.
+    document.addEventListener("click", function (e) {
+      const header = e.target.closest(".sb-job-header");
+      if (!header) return;
+
+      const content = header.nextElementSibling;
+      const plus = header.querySelector(".sb-plus");
+      if (!content || !plus) return;
+
+      // close any other open card first
+      document.querySelectorAll(".sb-job-content.active").forEach((box) => {
+        if (box !== content) {
+          box.classList.remove("active");
+          box.style.maxHeight = "";
+          const otherPlus = box.previousElementSibling.querySelector(".sb-plus");
+          if (otherPlus) otherPlus.textContent = "+";
+        }
+      });
+
+      const isOpening = !content.classList.contains("active");
+      content.classList.toggle("active", isOpening);
+
+      if (isOpening) {
+        content.style.maxHeight = content.scrollHeight + "px";
+        plus.textContent = "−";
+      } else {
+        content.style.maxHeight = "";
+        plus.textContent = "+";
+      }
+    });
+  </script>
+ <script src="./scripts/script.js"></script>
+</body>
+</html>

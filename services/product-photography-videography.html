@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Photography &amp; Videography | Qrious Curators</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles/smm.css">
+
+    <!-- Lenis CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.2/dist/lenis.css">
+
+    <link rel="stylesheet" href="../styles/style.css">
+
+    <style>
+      /* FIXED TOP NAVBAR + BACK BUTTON */
+      .qn-wrap {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 99999;
+        padding: 22px 5vw 0;
+        pointer-events: none;
+      }
+
+      .qn-bar {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        pointer-events: auto;
+      }
+
+      .nav-logo {
+        width: 58px;
+        height: 58px;
+      }
+
+      .nav-logo img {
+        width: 50px;
+        height: auto;
+        display: block;
+      }
+
+      .qc-back-btn {
+        min-width: 82px;
+        height: 32px;
+        padding: 0 4px;
+        border-radius: 999px;
+        color: #ffffff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        font-family: "Raleway", Arial, sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 1;
+        text-decoration: none;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+        transition: 0.3s ease;
+      }
+
+      .qc-back-btn:hover {
+        color: #ffffff;
+        transform: translateY(-2px);
+      }
+
+      .hero {
+        padding-top: 120px;
+      }
+
+      .service-cta-btn {
+        min-width: 190px;
+        height: 54px;
+        padding: 0 28px;
+        margin-top: 34px;
+        border-radius: 999px;
+        color: #ffffff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Raleway", Arial, sans-serif;
+        font-size: 15px;
+        font-weight: 600;
+        text-decoration: none;
+        border: 1px solid rgba(255,255,255,0.34);
+        transition: 0.3s ease;
+      }
+
+      .service-cta-btn:hover {
+        transform: translateY(-2px);
+        border-color: rgba(255,255,255,0.72);
+      }
+
+      .final-cta-note {
+        margin-top: 20px;
+        opacity: 0.68;
+        font-size: 16px;
+      }
+
+      @media (max-width: 768px) {
+        .qn-wrap {
+          padding: 16px 18px 0;
+        }
+
+        .nav-logo {
+          width: 50px;
+          height: 50px;
+        }
+
+        .nav-logo img {
+          width: 35px;
+        }
+
+        .qc-back-btn {
+          height: 48px;
+          min-width: 96px;
+          padding: 0 18px;
+          font-size: 14px;
+        }
+
+        .hero {
+          padding-top: 100px;
+        }
+      }
+    </style>
+
+</head>
+<body class="dark-theme">
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Navigation / Header -->
+    <div class="qn-wrap">
+      <div class="qn-bar">
+        <a href="./index.html" class="nav-logo">
+          <img src="../assets/logo/logo-one.png" alt="Logo" />
+        </a>
+
+        <a href="services.html" class="qc-back-btn">Back</a>
+      </div>
+    </div>
+
+    <div class="main-wrapper" id="smooth-wrapper">
+        <div id="smooth-content">
+
+            <!-- Hero Section -->
+            <section class="hero section" data-color="dark">
+                <div class="hero-container">
+                    <div class="hero-top">
+                        <p class="fade-up">PRODUCT PHOTOGRAPHY &amp; VIDEOGRAPHY</p>
+                    </div>
+
+                    <div class="hero-title-container">
+                        <h1 class="hero-title split-text">Because good products</h1>
+                        <div class="hero-title-row">
+                            <div class="hero-media parallax-media" data-cursor="-play">
+                                <video autoplay loop muted playsinline preload="metadata">
+                                    <source src="https://videos.pexels.com/video-files/33191775/14145219_1920_1080_24fps.mp4" type="video/mp4">
+                                    <!-- Local fallback option: ../assets/servicevideos/product-photography-videography.mp4 -->
+                                </video>
+                            </div>
+                            <h1 class="hero-title split-text">deserve better than</h1>
+                        </div>
+                        <h1 class="hero-title split-text">average frames.</h1>
+                    </div>
+
+                    <div class="hero-bottom">
+                        <div class="hero-bottom-img fade-up">
+                            <img src="../assets/servicepages/product-photography-hero.webp" alt="Product Photography &amp; Videography">
+                        </div>
+                        <div class="hero-desc">
+                            <p class="fade-up">A product can be beautiful, useful, premium, delicious, handcrafted, or perfectly made — but online, people only believe what they can see.</p>
+                            <br>
+                            <p class="fade-up">The right visuals make your product feel desirable before the first conversation begins. They show the texture, detail, scale, mood, quality, and story in a way that random phone shots never can.</p>
+                            <br>
+                            <p class="fade-up">Product photography and videography turn your product into content that sells the feeling, not just the item.</p>
+                            <br>
+                            <p class="fade-up"><strong>Frame The Product</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: What This Does For Your Brand -->
+            <section class="what-it-does section" data-color="light">
+                <div class="container">
+                    <div class="split-layout">
+                        <div class="left-col">
+                            <h2 class="section-heading split-text">Makes people pause, zoom in, save, and ask.</h2>
+                        </div>
+                        <div class="right-col">
+                            <p class="large-desc fade-up">Good product visuals do more than show what is being sold. They create desire.</p>
+                            <p class="small-desc fade-up">A strong photo or video can make a saree feel festive, jewellery feel personal, food feel crave-worthy, footwear feel stylish, decor feel premium, and a product launch feel like a moment.</p>\n                            <p class="small-desc fade-up">When visuals are planned with mood, styling, lighting, composition, and platform usage in mind, your product starts looking ready for campaigns, marketplaces, websites, social media, ads, catalogues, and brand storytelling.</p>\n
+                            <div class="highlight-box fade-up">
+                                <h3>Good product visuals do more than show what is being sold.</h3>
+                                <h2>They create desire.</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section (Horizontal Scroll) -->
+            <section class="featured-projects section" data-color="dark">
+                <div class="container">
+                    <h2 class="section-title fade-up">Selected Shoot Frames</h2>
+                </div>
+                <div class="horizontal-scroll-wrapper">
+                    <div class="horizontal-scroll-container">
+
+                        <div class="project-panel" data-cursor="-play">
+                            <div class="project-panel-inner">
+                                <img src="../assets/servicepages/product-photography-01.webp" alt="Product Photography &amp; Videography Project 01">
+                            </div>
+                        </div>
+
+                        <div class="project-panel" data-cursor="-play">
+                            <div class="project-panel-inner">
+                                <img src="../assets/servicepages/product-photography-02.webp" alt="Product Photography &amp; Videography Project 02">
+                            </div>
+                        </div>
+
+                        <div class="project-panel" data-cursor="-play">
+                            <div class="project-panel-inner">
+                                <img src="../assets/servicepages/product-photography-03.webp" alt="Product Photography &amp; Videography Project 03">
+                            </div>
+                        </div>
+
+                        <div class="project-panel" data-cursor="-play">
+                            <div class="project-panel-inner">
+                                <img src="../assets/servicepages/product-photography-04.webp" alt="Product Photography &amp; Videography Project 04">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: What Gets Covered -->
+            <section class="services section" data-color="dark">
+                <div class="container">
+                    <h2 class="section-title split-text">Visuals built around the product, platform, and purpose.</h2>
+
+                    <div class="services-list">
+
+                        <div class="service-item fade-up" data-cursor="-view">
+                            <div class="service-name">Product photography</div>
+                            <div class="service-desc">For social media, websites, ads, and catalogues</div>
+                        </div>
+
+                        <div class="service-item fade-up" data-cursor="-view">
+                            <div class="service-name">Product videos</div>
+                            <div class="service-desc">For reels, stories, launch content, and campaigns</div>
+                        </div>
+
+                        <div class="service-item fade-up" data-cursor="-view">
+                            <div class="service-name">Styling direction</div>
+                            <div class="service-desc">Mood-based styling, props, composition, and visual direction</div>
+                        </div>
+
+                        <div class="service-item fade-up" data-cursor="-view">
+                            <div class="service-name">Detail shots</div>
+                            <div class="service-desc">Material, texture, finish, and craftsmanship close-ups</div>
+                        </div>
+
+                        <div class="service-item fade-up" data-cursor="-view">
+                            <div class="service-name">Lifestyle frames</div>
+                            <div class="service-desc">Product in use, in context, and in a more relatable mood</div>
+                        </div>
+
+                        <div class="service-item fade-up" data-cursor="-view">
+                            <div class="service-name">Short-form videos</div>
+                            <div class="service-desc">Dynamic scroll-worthy clips for digital platforms</div>
+                        </div>
+
+                        <div class="service-item fade-up" data-cursor="-view">
+                            <div class="service-name">Platform-ready content</div>
+                            <div class="service-desc">Planned for Instagram, website banners, marketplace listings, and ad creatives</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Best For -->
+            <section class="best-for section" data-color="light">
+                <div class="container">
+                    <div class="center-content text-center">
+                        <h2 class="massive-text split-text">For brands whose products look better in real life than online.</h2>
+                        <div class="best-for-desc">
+                            <p class="fade-up">This is for fashion, footwear, jewellery, food, home decor, marble, sandstone, lifestyle products, gifting, beauty, and retail brands that want their products to look more premium and more purchase-worthy.</p>
+                            <br>
+                            <p class="fade-up"><strong>If people love the product when they see it offline, the online visuals need to create the same feeling.</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5: Closing CTA -->
+            <section class="faq section service-final-cta" data-color="dark">
+                <div class="container">
+                    <div class="center-content text-center">
+                        <h2 class="massive-text split-text">Make the product look as good online as it feels in person.</h2>
+                        <a href="contactqc.html" class="service-cta-btn fade-up">Plan The Shoot</a>
+                        <p class="final-cta-note fade-up">Let’s Build The Right Move.</p>
+                    </div>
+                </div>
+            </section>
+
+                        <!-- ===== FOOTER ===== -->
+            <footer id="qcFooter">
+          
+              <!-- Large Background Logo -->
+              <div class="footer-bg-logo"></div>
+          
+              <div class="footer-inner">
+          
+                <div class="footer-top">
+          
+                  <!-- Left -->
+                  <div>
+                    <div class="footer-brand-name">
+                      <div class="nav-logo-dot"></div>
+                      Qrious Curators
+                    </div>
+          
+                    <p class="footer-text">
+                      We build brands, websites, and digital experiences that feel refined,
+                      relevant, and made to grow.
+                    </p>
+          
+                    <div class="footer-socials">
+                      <!-- <a href="#" class="f-soc">𝕏</a> -->
+                      <a href="https://www.linkedin.com/company/qrious-curators" class="f-soc">in</a>
+                      <a href="https://www.instagram.com/qrious.curators" class="f-soc">ig</a>
+                    </div>
+                  </div>
+          
+                  <!-- Services -->
+                  <div>
+                    <!-- <div class="footer-col-ttl">Services</div> -->
+          
+                    <ul class="footer-links">
+                      <li><a href="../index.html">Home</a></li>
+                      <li><a href="../about.html">About</a></li>
+                      <li><a href="../work.html">Work</a></li>
+                      <li><a href="../services.html">Services</a></li>
+                    </ul>
+                  </div>
+          
+                  <!-- Company -->
+                  <div>
+                    <!-- <div class="footer-col-ttl">Company</div> -->
+          
+                    <ul class="footer-links">
+                      <li><a href="../blog.html">Blog</a></li>
+                      <li><a href="../contact.html">Contact</a></li>
+                      <li><a href="../careers.html">Careers</a></li>
+                      <li><a href="../team.html">Team</a></li>
+                    </ul>
+                  </div>
+          
+                </div>
+          
+                <div class="footer-bottom">
+          
+                  <p class="footer-copy">
+                    © 2026 Qrious Curators. All rights reserved.
+                  </p>
+          
+                  <img
+                    src="../assets/logo/logo-one.png"
+                    alt="Qrious Curators"
+                    class="footer-center-logo"
+                  >
+          
+                  <p class="footer-made">
+                    Designed & Built with <span>♥</span>
+                  </p>
+          
+                </div>
+          
+              </div>
+          
+            </footer>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
+    <script src="https://unpkg.com/lenis@1.1.2/dist/lenis.min.js"></script>
+    <script src="../scripts/smm.js"></script>
+</body>
+</html>

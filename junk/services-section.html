@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — Qrious Curators</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400&display=swap" rel="stylesheet">
+<style>
+
+/* ─────────────────────────────────────
+   ROOT TOKENS
+───────────────────────────────────── */
+:root {
+  --ink:       #050509;
+  --ink2:      #0b0b11;
+  --ink3:      #12121a;
+  --ink4:      #1c1c28;
+  --border:    rgba(255,255,255,.06);
+  --border-hi: rgba(255,255,255,.12);
+  --white:     #f8f8f4;
+  --muted:     rgba(255,255,255,.32);
+  --muted2:    rgba(255,255,255,.16);
+  --txt:       rgba(255,255,255,.78);
+  --txt2:      rgba(255,255,255,.46);
+  --amber:     #fb923c;
+  --amber-lo:  rgba(251,146,60,.08);
+  --amber-mid: rgba(251,146,60,.18);
+}
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0 }
+html { -webkit-font-smoothing:antialiased; font-size:16px }
+body { background:var(--ink); color:var(--white); font-family:'DM Sans',sans-serif; overflow-x:hidden; cursor:none }
+a { text-decoration:none; color:inherit }
+::-webkit-scrollbar { width:2px }
+::-webkit-scrollbar-track { background:var(--ink) }
+::-webkit-scrollbar-thumb { background:var(--amber); border-radius:1px }
+
+/* ─────────────────────────────────────
+   CURSOR
+───────────────────────────────────── */
+#c,#cr {
+  position:fixed; pointer-events:none; z-index:99999;
+  border-radius:50%; transform:translate(-50%,-50%);
+}
+#c  { width:8px; height:8px; background:var(--amber); transition:.18s width,.18s height,.25s background }
+#cr { width:34px; height:34px; border:1px solid rgba(251,146,60,.4); z-index:99998; transition:.22s width,.22s height,.3s border-color }
+body.hov #c  { width:14px; height:14px }
+body.hov #cr { width:52px; height:52px; border-color:rgba(251,146,60,.7) }
+
+/* ─────────────────────────────────────
+   GRAIN OVERLAY
+───────────────────────────────────── */
+#grain {
+  position:fixed; inset:0; pointer-events:none; z-index:8000; opacity:.4;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='.032'/%3E%3C/svg%3E");
+  animation:gsh 9s steps(1) infinite;
+}
+@keyframes gsh {
+  0%{transform:translate(0,0)} 20%{transform:translate(-2%,-1%)}
+  40%{transform:translate(1%,2%)} 60%{transform:translate(2%,-2%)}
+  80%{transform:translate(-1%,1%)} 100%{transform:translate(0,0)}
+}
+
+/* ═══════════════════════════════════════════════
+   SERVICES SECTION
+═══════════════════════════════════════════════ */
+#services {
+  position:relative;
+  background:var(--ink2);
+  overflow:hidden;
+  border-top:1px solid var(--border);
+}
+
+/* Large ambient glows */
+.s-glow {
+  position:absolute; pointer-events:none; border-radius:50%; z-index:0;
+}
+.s-glow-a {
+  top:-20%; left:-15%; width:800px; height:800px;
+  background:radial-gradient(circle, rgba(251,146,60,.055) 0%, transparent 58%);
+}
+.s-glow-b {
+  bottom:-30%; right:-10%; width:700px; height:700px;
+  background:radial-gradient(circle, rgba(251,146,60,.04) 0%, transparent 60%);
+}
+
+/* ─── INTRO HEADER ─── */
+.s-head {
+  position:relative; z-index:2;
+  padding:130px 72px 0;
+  max-width:1440px; margin:0 auto;
+  display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:end;
+}
+.s-eyebrow {
+  display:inline-flex; align-items:center; gap:12px;
+  font-family:'Syne',sans-serif; font-size:10px; font-weight:700;
+  letter-spacing:.32em; text-transform:uppercase; color:var(--amber);
+  margin-bottom:26px;
+}
+.ey-bar { display:inline-block; width:28px; height:1px; background:var(--amber) }
+
+.s-h1 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(52px,7.5vw,108px);
+  font-weight:300; line-height:.92; letter-spacing:-.035em;
+  color:var(--white);
+}
+.s-h1 em { font-style:italic; color:var(--amber) }
+.s-h1 .outline {
+  -webkit-text-stroke:1px rgba(255,255,255,.2);
+  color:transparent; display:block;
+}
+
+.s-head-right { padding-bottom:12px }
+.s-intro-body {
+  font-size:17px; line-height:1.88; color:var(--txt2);
+  font-weight:300; margin-bottom:44px; max-width:460px;
+}
+.s-intro-body strong { color:var(--txt); font-weight:400 }
+
+/* Inline stat pills */
+.s-stat-row { display:flex; gap:0; flex-wrap:wrap }
+.s-stat-pill {
+  display:flex; flex-direction:column;
+  padding:20px 32px 20px 0; margin-right:32px;
+  border-right:1px solid var(--border);
+}
+.s-stat-pill:last-child { border-right:none; margin-right:0 }
+.sp-n {
+  font-family:'Cormorant Garamond',serif;
+  font-size:48px; font-weight:300; line-height:1;
+  letter-spacing:-2px; color:var(--white);
+}
+.sp-n b { color:var(--amber); font-weight:300 }
+.sp-l {
+  font-family:'Syne',sans-serif; font-size:10px; font-weight:700;
+  letter-spacing:.2em; text-transform:uppercase; color:var(--muted);
+  margin-top:7px;
+}
+
+/* ─── MARQUEE DIVIDER ─── */
+.s-marquee {
+  position:relative; z-index:2;
+  overflow:hidden;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  margin-top:80px; padding:0;
+  background:var(--ink3);
+}
+.s-mq-track {
+  display:flex; animation:mq 22s linear infinite; width:max-content;
+}
+.s-mq-track:hover { animation-play-state:paused }
+@keyframes mq { to { transform:translateX(-50%) } }
+.s-mq-item {
+  font-family:'Syne',sans-serif; font-size:11px; font-weight:700;
+  letter-spacing:.25em; text-transform:uppercase;
+  color:var(--muted); padding:18px 44px; white-space:nowrap;
+  display:inline-flex; align-items:center; gap:44px;
+}
+.s-mq-item .dot { width:5px; height:5px; border-radius:50%; background:var(--amber); opacity:.55 }
+
+/* ─── SERVICE ACCORDION LIST ─── */
+.s-accordion {
+  position:relative; z-index:2;
+  max-width:1440px; margin:0 auto;
+  padding:0 72px;
+}
+
+.s-item {
+  border-bottom:1px solid var(--border);
+  overflow:hidden;
+  cursor:none;
+}
+.s-item:first-child { border-top:1px solid var(--border) }
+
+.s-item-head {
+  display:grid;
+  grid-template-columns: 64px 1fr auto;
+  gap:40px;
+  align-items:center;
+  padding:36px 0;
+  transition:padding .4s cubic-bezier(.16,1,.3,1);
+}
+.s-item:hover .s-item-head { padding:36px 0 36px 16px }
+
+.s-item-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:36px; font-weight:300; line-height:1;
+  color:var(--muted2); letter-spacing:-.01em;
+  transition:color .3s;
+}
+.s-item:hover .s-item-num { color:var(--amber) }
+
+.s-item-title-wrap { display:flex; flex-direction:column; gap:6px }
+.s-item-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(28px,3.5vw,48px); font-weight:300;
+  line-height:1; letter-spacing:-.025em; color:var(--white);
+  transition:color .35s;
+}
+.s-item:hover .s-item-title { color:var(--white) }
+.s-item-sub {
+  font-family:'Syne',sans-serif; font-size:11px; font-weight:600;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--muted);
+  opacity:0; transform:translateY(-4px);
+  transition:opacity .3s, transform .3s;
+}
+.s-item:hover .s-item-sub, .s-item.open .s-item-sub { opacity:1; transform:translateY(0) }
+
+.s-item-right {
+  display:flex; align-items:center; gap:20px; flex-shrink:0;
+}
+.s-item-tags {
+  display:flex; gap:7px; flex-wrap:wrap; justify-content:flex-end;
+}
+.s-tag {
+  padding:5px 13px; border-radius:999px;
+  border:1px solid var(--border-hi);
+  font-family:'Syne',sans-serif; font-size:9px; font-weight:700;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--muted2);
+  transition:border-color .3s, color .3s, background .3s;
+  white-space:nowrap;
+}
+.s-item:hover .s-tag {
+  border-color:rgba(251,146,60,.3);
+  color:var(--amber);
+  background:var(--amber-lo);
+}
+.s-item-btn {
+  width:44px; height:44px; border-radius:50%;
+  border:1px solid var(--border-hi);
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+  transition:all .35s cubic-bezier(.16,1,.3,1);
+  background:transparent; position:relative; overflow:hidden;
+}
+.s-item-btn::before {
+  content:''; position:absolute; inset:0; border-radius:50%;
+  background:var(--amber); transform:scale(0);
+  transition:transform .35s cubic-bezier(.16,1,.3,1);
+}
+.s-item:hover .s-item-btn,
+.s-item.open .s-item-btn { border-color:var(--amber) }
+.s-item:hover .s-item-btn::before,
+.s-item.open .s-item-btn::before { transform:scale(1) }
+
+/* SVG icon inside button */
+.s-btn-icon {
+  position:relative; z-index:1;
+  transition:transform .35s cubic-bezier(.16,1,.3,1), stroke .3s;
+}
+.s-item:hover .s-btn-icon,
+.s-item.open .s-btn-icon { transform:rotate(45deg) }
+
+/* Expand body */
+.s-item-body {
+  display:grid; grid-template-columns:64px 1fr 1fr;
+  gap:40px; padding-bottom:0; max-height:0;
+  overflow:hidden;
+  transition:max-height .6s cubic-bezier(.16,1,.3,1), padding-bottom .4s ease;
+}
+.s-item.open .s-item-body {
+  max-height:400px;
+  padding-bottom:44px;
+}
+.s-item-spacer { } /* aligns with number column */
+
+.s-item-desc {
+  font-size:15px; line-height:1.88; color:var(--txt2);
+  font-weight:300; max-width:480px;
+}
+.s-item-desc strong { color:var(--txt); font-weight:400 }
+
+/* Deliverables list */
+.s-deliverables { list-style:none; display:flex; flex-direction:column; gap:0 }
+.s-deliverables li {
+  display:flex; align-items:center; gap:12px;
+  padding:12px 0;
+  border-bottom:1px solid var(--border);
+  font-family:'Syne',sans-serif; font-size:11px; font-weight:600;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--muted);
+  transition:color .3s, padding-left .3s;
+}
+.s-deliverables li:last-child { border-bottom:none }
+.s-deliverables li::before {
+  content:'';
+  width:5px; height:5px; border-radius:50%;
+  background:var(--amber); flex-shrink:0;
+  opacity:.6; transition:opacity .3s;
+}
+.s-item.open .s-deliverables li:hover {
+  color:var(--white); padding-left:6px;
+}
+.s-item.open .s-deliverables li:hover::before { opacity:1 }
+
+/* ─── VISUAL INTERLUDE (large type break) ─── */
+.s-break {
+  position:relative; z-index:2;
+  padding:120px 72px;
+  max-width:1440px; margin:0 auto;
+  display:grid; grid-template-columns:1fr 1.2fr; gap:100px; align-items:center;
+  border-top:1px solid var(--border);
+}
+
+/* SVG abstract geometric on the right */
+.s-geo-wrap {
+  position:relative; height:400px; display:flex; align-items:center; justify-content:center;
+}
+.s-geo-svg { position:absolute; inset:0; width:100%; height:100% }
+
+/* process strip on left */
+.s-break-left {}
+.s-break-eyebrow {
+  display:inline-flex; align-items:center; gap:12px;
+  font-family:'Syne',sans-serif; font-size:10px; font-weight:700;
+  letter-spacing:.3em; text-transform:uppercase; color:var(--amber);
+  margin-bottom:32px;
+}
+.s-break-h {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(36px,4vw,60px); font-weight:300;
+  line-height:1.08; letter-spacing:-.025em; color:var(--white);
+  margin-bottom:40px;
+}
+.s-break-h em { font-style:italic; color:var(--amber) }
+
+/* numbered steps */
+.s-steps { display:flex; flex-direction:column; gap:0 }
+.s-step {
+  display:flex; gap:24px; align-items:flex-start;
+  padding:22px 0; border-bottom:1px solid var(--border);
+  cursor:none; transition:padding-left .3s;
+}
+.s-step:last-child { border-bottom:none }
+.s-step:hover { padding-left:8px }
+.s-step-n {
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px; font-weight:400; color:var(--amber);
+  line-height:1; flex-shrink:0; min-width:28px;
+}
+.s-step-body {}
+.s-step-name {
+  font-family:'Syne',sans-serif; font-size:13px; font-weight:700;
+  color:var(--white); margin-bottom:5px; letter-spacing:-.01em;
+}
+.s-step-desc {
+  font-size:13px; line-height:1.75; color:var(--txt2); font-weight:300;
+}
+
+/* ─── BOTTOM CTA ROW ─── */
+.s-cta-wrap {
+  position:relative; z-index:2;
+  background:var(--ink3);
+  border-top:1px solid var(--border);
+}
+.s-cta-inner {
+  max-width:1440px; margin:0 auto;
+  padding:80px 72px;
+  display:grid; grid-template-columns:1fr auto;
+  gap:60px; align-items:center;
+}
+.s-cta-left h3 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(34px,4vw,58px); font-weight:300;
+  line-height:1.06; letter-spacing:-.025em; color:var(--white);
+  margin-bottom:12px;
+}
+.s-cta-left h3 em { font-style:italic; color:var(--amber) }
+.s-cta-left p {
+  font-size:15px; line-height:1.75; color:var(--txt2); font-weight:300;
+  max-width:480px;
+}
+.s-cta-btns { display:flex; gap:12px; align-items:center; flex-shrink:0 }
+
+/* Primary amber button */
+.btn-A {
+  display:inline-flex; align-items:center; gap:9px;
+  background:var(--amber); color:var(--ink);
+  padding:16px 36px; border-radius:999px;
+  font-family:'Syne',sans-serif; font-size:11px; font-weight:800;
+  letter-spacing:.12em; text-transform:uppercase;
+  cursor:none; position:relative; overflow:hidden;
+  transition:transform .25s, box-shadow .3s;
+}
+.btn-A::after {
+  content:''; position:absolute; inset:0; border-radius:999px;
+  background:rgba(0,0,0,.14); transform:translateX(-101%);
+  transition:transform .4s cubic-bezier(.77,0,.175,1);
+}
+.btn-A:hover { transform:translateY(-2px); box-shadow:0 14px 40px rgba(251,146,60,.33) }
+.btn-A:hover::after { transform:translateX(0) }
+.btn-A span { position:relative; z-index:1 }
+
+/* Ghost button */
+.btn-B {
+  display:inline-flex; align-items:center; gap:8px;
+  color:var(--muted); padding:15px 30px; border-radius:999px;
+  border:1px solid var(--border-hi); background:transparent;
+  font-family:'Syne',sans-serif; font-size:11px; font-weight:700;
+  letter-spacing:.12em; text-transform:uppercase;
+  cursor:none; backdrop-filter:blur(10px);
+  transition:border-color .3s, color .3s, transform .25s;
+}
+.btn-B:hover { border-color:rgba(251,146,60,.5); color:var(--amber); transform:translateY(-2px) }
+
+/* ─── REVEAL ─── */
+.rv  { opacity:0; transform:translateY(38px); transition:opacity 1s ease, transform 1s cubic-bezier(.16,1,.3,1) }
+.rvl { opacity:0; transform:translateX(-38px); transition:opacity 1s ease, transform 1s cubic-bezier(.16,1,.3,1) }
+.rvr { opacity:0; transform:translateX(38px);  transition:opacity 1s ease, transform 1s cubic-bezier(.16,1,.3,1) }
+.rv.in,.rvl.in,.rvr.in { opacity:1; transform:translate(0) }
+.d1{transition-delay:.06s} .d2{transition-delay:.12s} .d3{transition-delay:.19s}
+.d4{transition-delay:.26s} .d5{transition-delay:.33s} .d6{transition-delay:.40s}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1100px){
+  .s-head { grid-template-columns:1fr; gap:44px; padding-top:100px }
+  .s-break { grid-template-columns:1fr; gap:60px }
+  .s-geo-wrap { height:300px }
+}
+@media(max-width:800px){
+  .s-head,.s-accordion,.s-break,.s-cta-inner { padding-left:28px; padding-right:28px }
+  .s-item-head { grid-template-columns:44px 1fr auto; gap:20px }
+  .s-item-body { grid-template-columns:44px 1fr; gap:20px }
+  .s-item-body .s-deliverables { display:none }
+  .s-item-tags { display:none }
+  .s-stat-row { flex-wrap:wrap; gap:0 }
+  .s-cta-inner { grid-template-columns:1fr; gap:36px }
+  .s-cta-btns { flex-direction:column; align-items:flex-start }
+}
+@media(max-width:560px){
+  .s-h1 { font-size:clamp(44px,12vw,64px) }
+  .s-item-num { font-size:28px }
+  .s-item-title { font-size:clamp(24px,7vw,36px) }
+}
+
+</style>
+</head>
+<body>
+
+<div id="c"></div>
+<div id="cr"></div>
+<div id="grain" aria-hidden="true"></div>
+
+<!-- ═══════════════════════════════════════════════
+     SERVICES SECTION
+═══════════════════════════════════════════════ -->
+<section id="services">
+
+  <div class="s-glow s-glow-a"></div>
+  <div class="s-glow s-glow-b"></div>
+
+  <!-- ─── HEADER ─── -->
+  <div class="s-head">
+    <div class="rvl">
+      <div class="s-eyebrow"><span class="ey-bar"></span>What We Do</div>
+      <h2 class="s-h1">
+        Every<br>
+        <em>discipline.</em>
+        <span class="outline">One studio.</span>
+      </h2>
+    </div>
+
+    <div class="rvr d2">
+      <p class="s-intro-body">
+        From the seed of a brand idea to a fully scaled digital ecosystem — we handle every layer with <strong>intention, craftsmanship</strong>, and an obsessive eye for results that compound over time.
+      </p>
+      <div class="s-stat-row">
+        <div class="s-stat-pill">
+          <div class="sp-n">07<b>+</b></div>
+          <div class="sp-l">Services</div>
+        </div>
+        <div class="s-stat-pill">
+          <div class="sp-n">140<b>+</b></div>
+          <div class="sp-l">Projects</div>
+        </div>
+        <div class="s-stat-pill">
+          <div class="sp-n">98<b>%</b></div>
+          <div class="sp-l">Retention</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── DIVIDER MARQUEE ─── -->
+  <div class="s-marquee rv">
+    <div class="s-mq-track">
+      <span class="s-mq-item">Brand Identity <span class="dot"></span></span>
+      <span class="s-mq-item">Web Development <span class="dot"></span></span>
+      <span class="s-mq-item">UI &amp; UX Design <span class="dot"></span></span>
+      <span class="s-mq-item">Performance Marketing <span class="dot"></span></span>
+      <span class="s-mq-item">Content Creation <span class="dot"></span></span>
+      <span class="s-mq-item">Social Media Strategy <span class="dot"></span></span>
+      <span class="s-mq-item">Growth &amp; SEO <span class="dot"></span></span>
+      <span class="s-mq-item">Brand Identity <span class="dot"></span></span>
+      <span class="s-mq-item">Web Development <span class="dot"></span></span>
+      <span class="s-mq-item">UI &amp; UX Design <span class="dot"></span></span>
+      <span class="s-mq-item">Performance Marketing <span class="dot"></span></span>
+      <span class="s-mq-item">Content Creation <span class="dot"></span></span>
+      <span class="s-mq-item">Social Media Strategy <span class="dot"></span></span>
+      <span class="s-mq-item">Growth &amp; SEO <span class="dot"></span></span>
+    </div>
+  </div>
+
+  <!-- ─── ACCORDION SERVICES ─── -->
+  <div class="s-accordion">
+
+    <!-- 01 -->
+    <div class="s-item rv d1">
+      <div class="s-item-head" onclick="toggleItem(this.parentElement)">
+        <span class="s-item-num">01</span>
+        <div class="s-item-title-wrap">
+          <span class="s-item-title">Brand Identity Design</span>
+          <span class="s-item-sub">Visual Systems &amp; Brand Architecture</span>
+        </div>
+        <div class="s-item-right">
+          <div class="s-item-tags">
+            <span class="s-tag">Logomark</span>
+            <span class="s-tag">Typography</span>
+            <span class="s-tag">Colour</span>
+            <span class="s-tag">Motion</span>
+          </div>
+          <div class="s-item-btn">
+            <svg class="s-btn-icon" width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <line x1="7" y1="1" x2="7" y2="13" stroke="rgba(255,255,255,.5)" stroke-width="1.4" stroke-linecap="round"/>
+              <line x1="1" y1="7" x2="13" y2="7" stroke="rgba(255,255,255,.5)" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="s-item-body">
+        <div class="s-item-spacer"></div>
+        <p class="s-item-desc">
+          We don't decorate — we engineer meaning. A brand identity from Qrious is a <strong>complete visual language</strong>: a system of marks, type, colour, motion, and voice that works across every surface, at every scale, in every context.
+        </p>
+        <ul class="s-deliverables">
+          <li>Logomark &amp; Logotype System</li>
+          <li>Brand Colour Architecture</li>
+          <li>Typography &amp; Type Scale</li>
+          <li>Brand Guidelines Document</li>
+          <li>Motion &amp; Animation Language</li>
+          <li>Brand Voice &amp; Tone Framework</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="s-item rv d2">
+      <div class="s-item-head" onclick="toggleItem(this.parentElement)">
+        <span class="s-item-num">02</span>
+        <div class="s-item-title-wrap">
+          <span class="s-item-title">Web Design &amp; Development</span>
+          <span class="s-item-sub">Digital Experiences Built to Convert</span>
+        </div>
+        <div class="s-item-right">
+          <div class="s-item-tags">
+            <span class="s-tag">Next.js</span>
+            <span class="s-tag">Webflow</span>
+            <span class="s-tag">CMS</span>
+          </div>
+          <div class="s-item-btn">
+            <svg class="s-btn-icon" width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <line x1="7" y1="1" x2="7" y2="13" stroke="rgba(255,255,255,.5)" stroke-width="1.4" stroke-linecap="round"/>
+              <line x1="1" y1="7" x2="13" y2="7" stroke="rgba(255,255,255,.5)" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="s-item-body">
+        <div class="s-item-spacer"></div>
+        <p class="s-item-desc">
+          Pixel-perfect, blazing-fast websites built on modern stacks. We design for <strong>feeling first</strong> and engineer for performance second — resulting in sites that convert because they resonate, not because they push.
+        </p>
+        <ul class="s-deliverables">
+          <li>UI &amp; Interaction Design</li>
+          <li>Responsive Development</li>
+          <li>Core Web Vitals Optimisation</li>
+          <li>CMS Integration &amp; Training</li>
+          <li>Accessibility &amp; WCAG Compliance</li>
+          <li>Post-launch Support</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="s-item rv d3">
+      <div class="s-item-head" onclick="toggleItem(this.parentElement)">
+        <span class="s-item-num">03</span>
+        <div class="s-item-title-wrap">
+          <span class="s-item-title">UI &amp; UX Product Design</span>
+          <span class="s-item-sub">Research-Driven Interface Systems</span>
+        </div>
+        <div class="s-item-right">
+          <div class="s-item-tags">
+            <span class="s-tag">Research</span>
+            <span class="s-tag">Prototyping</span>
+            <span class="s-tag">Design System</span>
+          </div>
+          <div class="s-item-btn">
+            <svg class="s-btn-icon" width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <line x1="7" y1="1" x2="7" y2="13" stroke="rgba(255,255,255,.5)" stroke-width="1.4" stroke-linecap="round"/>
+              <line x1="1" y1="7" x2="13" y2="7" stroke="rgba(255,255,255,.5)" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="s-item-body">
+        <div class="s-item-spacer"></div>
+        <p class="s-item-desc">
+          End-to-end product design from discovery to a launch-ready design system. We combine <strong>user research, information architecture</strong>, and high-fidelity UI to create digital products people love using and return to.
+        </p>
+        <ul class="s-deliverables">
+          <li>User Research &amp; Journey Mapping</li>
+          <li>Wireframes &amp; Information Architecture</li>
+          <li>High-Fidelity Prototype</li>
+          <li>Scalable Design System</li>
+          <li>Usability Testing &amp; Iteration</li>
+          <li>Developer Handoff Documentation</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="s-item rv d4">
+      <div class="s-item-head" onclick="toggleItem(this.parentElement)">
+        <span class="s-item-num">04</span>
+        <div class="s-item-title-wrap">
+          <span class="s-item-title">Performance Marketing</span>
+          <span class="s-item-sub">Paid Acquisition &amp; Growth Campaigns</span>
+        </div>
+        <div class="s-item-right">
+          <div class="s-item-tags">
+            <span class="s-tag">Meta Ads</span>
+            <span class="s-tag">Google</span>
+            <span class="s-tag">Analytics</span>
+          </div>
+          <div class="s-item-btn">
+            <svg class="s-btn-icon" width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <line x1="7" y1="1" x2="7" y2="13" stroke="rgba(255,255,255,.5)" stroke-width="1.4" stroke-linecap="round"/>
+              <line x1="1" y1="7" x2="13" y2="7" stroke="rgba(255,255,255,.5)" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="s-item-body">
+        <div class="s-item-spacer"></div>
+        <p class="s-item-desc">
+          Data-driven paid campaigns across Google, Meta, LinkedIn, and emerging channels. Every rupee is tracked, attributed, and optimised — we <strong>scale what works</strong> and kill what doesn't without sentiment.
+        </p>
+        <ul class="s-deliverables">
+          <li>Paid Media Strategy</li>
+          <li>Campaign Architecture &amp; Setup</li>
+          <li>Ad Creative Direction</li>
+          <li>A/B Testing Frameworks</li>
+          <li>Attribution &amp; Analytics Setup</li>
+          <li>Monthly Reporting &amp; Optimisation</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="s-item rv d5">
+      <div class="s-item-head" onclick="toggleItem(this.parentElement)">
+        <span class="s-item-num">05</span>
+        <div class="s-item-title-wrap">
+          <span class="s-item-title">Content &amp; Social Media</span>
+          <span class="s-item-sub">Platform-Native Creative Strategy</span>
+        </div>
+        <div class="s-item-right">
+          <div class="s-item-tags">
+            <span class="s-tag">Reels</span>
+            <span class="s-tag">Copywriting</span>
+            <span class="s-tag">Video</span>
+          </div>
+          <div class="s-item-btn">
+            <svg class="s-btn-icon" width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <line x1="7" y1="1" x2="7" y2="13" stroke="rgba(255,255,255,.5)" stroke-width="1.4" stroke-linecap="round"/>
+              <line x1="1" y1="7" x2="13" y2="7" stroke="rgba(255,255,255,.5)" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="s-item-body">
+        <div class="s-item-spacer"></div>
+        <p class="s-item-desc">
+          Scroll-stopping content ecosystems designed to build audience, authority, and affinity. From <strong>short-form video to long-form editorial</strong> — we create content that feels native to the platform and true to your brand.
+        </p>
+        <ul class="s-deliverables">
+          <li>Content Strategy &amp; Calendar</li>
+          <li>Short-Form Video Production</li>
+          <li>Copywriting &amp; Caption Direction</li>
+          <li>Community Management</li>
+          <li>Influencer Identification</li>
+          <li>Monthly Analytics Review</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="s-item rv d6">
+      <div class="s-item-head" onclick="toggleItem(this.parentElement)">
+        <span class="s-item-num">06</span>
+        <div class="s-item-title-wrap">
+          <span class="s-item-title">E-Commerce &amp; CRO</span>
+          <span class="s-item-sub">Revenue-Optimised Digital Storefronts</span>
+        </div>
+        <div class="s-item-right">
+          <div class="s-item-tags">
+            <span class="s-tag">Shopify Plus</span>
+            <span class="s-tag">CRO</span>
+            <span class="s-tag">Headless</span>
+          </div>
+          <div class="s-item-btn">
+            <svg class="s-btn-icon" width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <line x1="7" y1="1" x2="7" y2="13" stroke="rgba(255,255,255,.5)" stroke-width="1.4" stroke-linecap="round"/>
+              <line x1="1" y1="7" x2="13" y2="7" stroke="rgba(255,255,255,.5)" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="s-item-body">
+        <div class="s-item-spacer"></div>
+        <p class="s-item-desc">
+          High-converting storefronts built on Shopify Plus and custom headless architectures. We redesign <strong>product discovery, checkout flows</strong>, and post-purchase journeys to systematically increase revenue per visitor.
+        </p>
+        <ul class="s-deliverables">
+          <li>Storefront Design &amp; Development</li>
+          <li>Checkout Flow Optimisation</li>
+          <li>Product Page Architecture</li>
+          <li>Speed &amp; Performance Audit</li>
+          <li>Cart Abandonment Recovery</li>
+          <li>Analytics &amp; Heatmap Integration</li>
+        </ul>
+      </div>
+    </div>
+
+  </div><!-- /.s-accordion -->
+
+  <!-- ─── VISUAL BREAK ─── -->
+  <div class="s-break">
+
+    <div class="s-break-left rvl">
+      <div class="s-break-eyebrow"><span class="ey-bar"></span>How Every Project Flows</div>
+      <h3 class="s-break-h">A process built<br>for <em>precision</em>,<br>not guesswork.</h3>
+      <div class="s-steps">
+        <div class="s-step">
+          <span class="s-step-n">I</span>
+          <div class="s-step-body">
+            <div class="s-step-name">Discover</div>
+            <p class="s-step-desc">We ask every uncomfortable question before building anything. Deep understanding of your brand, audience, and goals is non-negotiable.</p>
+          </div>
+        </div>
+        <div class="s-step">
+          <span class="s-step-n">II</span>
+          <div class="s-step-body">
+            <div class="s-step-name">Strategise</div>
+            <p class="s-step-desc">No templates, no guesswork. We map a bespoke strategy across brand, digital, and performance that is built to achieve your specific outcomes.</p>
+          </div>
+        </div>
+        <div class="s-step">
+          <span class="s-step-n">III</span>
+          <div class="s-step-body">
+            <div class="s-step-name">Create</div>
+            <p class="s-step-desc">From first concept to launch-ready delivery — every asset crafted with meticulous attention and built to perform at scale from day one.</p>
+          </div>
+        </div>
+        <div class="s-step">
+          <span class="s-step-n">IV</span>
+          <div class="s-step-body">
+            <div class="s-step-name">Scale</div>
+            <p class="s-step-desc">Post-launch is where most agencies leave. We stay — optimising, measuring, and scaling to ensure your results compound over time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Abstract SVG graphic — pure geometry, no emojis -->
+    <div class="s-geo-wrap rvr d2">
+      <svg class="s-geo-svg" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="ga" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#fb923c" stop-opacity=".12"/>
+            <stop offset="100%" stop-color="#fb923c" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="gb" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#fb923c" stop-opacity=".06"/>
+            <stop offset="100%" stop-color="#fb923c" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <!-- Outer glow circle -->
+        <circle cx="250" cy="200" r="190" fill="url(#gb)"/>
+        <circle cx="250" cy="200" r="130" fill="url(#ga)"/>
+
+        <!-- Rotating outer ring -->
+        <circle cx="250" cy="200" r="175" stroke="rgba(251,146,60,.1)" stroke-width=".8" stroke-dasharray="8 12"/>
+
+        <!-- Main geometric shape — hexagon -->
+        <polygon points="250,40 400,125 400,275 250,360 100,275 100,125"
+          stroke="rgba(251,146,60,.22)" stroke-width="1"
+          fill="rgba(251,146,60,.03)">
+          <animateTransform attributeName="transform" type="rotate"
+            from="0 250 200" to="360 250 200" dur="40s" repeatCount="indefinite"/>
+        </polygon>
+
+        <!-- Inner hexagon counter-rotate -->
+        <polygon points="250,95 370,160 370,240 250,305 130,240 130,160"
+          stroke="rgba(251,146,60,.15)" stroke-width=".8"
+          fill="rgba(251,146,60,.025)">
+          <animateTransform attributeName="transform" type="rotate"
+            from="0 250 200" to="-360 250 200" dur="28s" repeatCount="indefinite"/>
+        </polygon>
+
+        <!-- Centre square rotates independently -->
+        <rect x="200" y="150" width="100" height="100" rx="8"
+          stroke="rgba(251,146,60,.3)" stroke-width="1"
+          fill="rgba(251,146,60,.06)">
+          <animateTransform attributeName="transform" type="rotate"
+            from="0 250 200" to="360 250 200" dur="18s" repeatCount="indefinite"/>
+        </rect>
+
+        <!-- Inner dot -->
+        <circle cx="250" cy="200" r="8" fill="#fb923c" opacity=".9">
+          <animate attributeName="r" values="6;10;6" dur="3s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values=".9;.5;.9" dur="3s" repeatCount="indefinite"/>
+        </circle>
+
+        <!-- Orbital dots -->
+        <circle r="4" fill="#fb923c" opacity=".7">
+          <animateMotion dur="10s" repeatCount="indefinite">
+            <mpath href="#orb1"/>
+          </animateMotion>
+        </circle>
+        <path id="orb1" d="M250,25 A175,175 0 1 1 249.99,25" fill="none"/>
+
+        <circle r="3" fill="rgba(251,146,60,.5)">
+          <animateMotion dur="15s" repeatCount="indefinite" begin="-5s">
+            <mpath href="#orb2"/>
+          </animateMotion>
+        </circle>
+        <path id="orb2" d="M250,70 A130,130 0 1 0 249.99,70" fill="none"/>
+
+        <!-- Corner connecting lines -->
+        <line x1="100" y1="125" x2="250" y2="200" stroke="rgba(251,146,60,.1)" stroke-width=".6" stroke-dasharray="4 8"/>
+        <line x1="400" y1="125" x2="250" y2="200" stroke="rgba(251,146,60,.1)" stroke-width=".6" stroke-dasharray="4 8"/>
+        <line x1="250" y1="40"  x2="250" y2="200" stroke="rgba(251,146,60,.1)" stroke-width=".6" stroke-dasharray="4 8"/>
+        <line x1="250" y1="360" x2="250" y2="200" stroke="rgba(251,146,60,.1)" stroke-width=".6" stroke-dasharray="4 8"/>
+        <line x1="100" y1="275" x2="250" y2="200" stroke="rgba(251,146,60,.1)" stroke-width=".6" stroke-dasharray="4 8"/>
+        <line x1="400" y1="275" x2="250" y2="200" stroke="rgba(251,146,60,.1)" stroke-width=".6" stroke-dasharray="4 8"/>
+
+        <!-- Data labels at hexagon vertices -->
+        <text x="250" y="26" text-anchor="middle" font-family="Syne,sans-serif" font-size="9" font-weight="700" fill="rgba(251,146,60,.6)" letter-spacing="2">BRAND</text>
+        <text x="412" y="115" font-family="Syne,sans-serif" font-size="9" font-weight="700" fill="rgba(251,146,60,.6)" letter-spacing="2">WEB</text>
+        <text x="412" y="278" font-family="Syne,sans-serif" font-size="9" font-weight="700" fill="rgba(251,146,60,.6)" letter-spacing="2">SEO</text>
+        <text x="250" y="374" text-anchor="middle" font-family="Syne,sans-serif" font-size="9" font-weight="700" fill="rgba(251,146,60,.6)" letter-spacing="2">SOCIAL</text>
+        <text x="60" y="278" font-family="Syne,sans-serif" font-size="9" font-weight="700" fill="rgba(251,146,60,.6)" letter-spacing="2">UX</text>
+        <text x="65" y="115" font-family="Syne,sans-serif" font-size="9" font-weight="700" fill="rgba(251,146,60,.6)" letter-spacing="2">CRO</text>
+      </svg>
+    </div>
+
+  </div>
+
+  <!-- ─── CTA ROW ─── -->
+  <div class="s-cta-wrap">
+    <div class="s-cta-inner rv">
+      <div class="s-cta-left">
+        <h3>Ready to build<br>something <em>remarkable?</em></h3>
+        <p>Tell us what you're working on. We'll tell you exactly how we'd approach it — and why it'll work.</p>
+      </div>
+      <div class="s-cta-btns">
+        <a href="#contact" class="btn-A"><span>Start a Project</span><span>↗</span></a>
+        <a href="#showcase" class="btn-B">See Our Work</a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<script>
+/* CURSOR */
+const C=document.getElementById('c'),CR=document.getElementById('cr')
+let mx=0,my=0,rx=0,ry=0
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;C.style.left=mx+'px';C.style.top=my+'px'})
+;(function raf(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;CR.style.left=rx+'px';CR.style.top=ry+'px';requestAnimationFrame(raf)})()
+document.querySelectorAll('.s-item,.s-step,.btn-A,.btn-B').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'))
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'))
+})
+
+/* ACCORDION */
+function toggleItem(item){
+  const isOpen = item.classList.contains('open')
+  // Close all
+  document.querySelectorAll('.s-item.open').forEach(i=>i.classList.remove('open'))
+  // Open this one if it wasn't already open
+  if(!isOpen) item.classList.add('open')
+}
+
+/* REVEAL */
+const obs=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})
+},{threshold:.08})
+document.querySelectorAll('.rv,.rvl,.rvr').forEach(el=>obs.observe(el))
+
+/* SMOOTH ANCHORS */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'))
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}
+  })
+})
+</script>
+</body>
+</html>

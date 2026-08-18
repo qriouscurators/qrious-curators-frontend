@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Qrious Curators — Creative Studio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/blogs.css" />
+    <link
+      rel="shortcut icon"
+      href="../assets/logo/fav-icon-one.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/locomotive-scroll/bundled/locomotive-scroll.css"
+    />
+
+    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/MotionPathPlugin.min.js"></script>
+
+  <style>
+    .ball-animation {
+      height: 100vh;
+      position: absolute;
+    }
+    .ball {
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10;
+    }
+    svg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+    path {
+      stroke: transparent; /* hide path */
+    }
+  </style>
+  <style>
+    form {
+      width: 300px;
+      margin: 100px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    input, textarea {
+      padding: 10px;
+      font-size: 14px;
+    }
+    button {
+      padding: 10px;
+      background: #333;
+      color: white;
+      border: none;
+    }
+    button:hover {
+      background: #333;
+    }
+  </style>
+  </head>
+  <body>
+    <!-- CURSOR -->
+    <div id="qc-cur"></div>
+    <div id="qc-cur-ring"></div>
+
+    <!-- GRAIN -->
+    <div id="grain" aria-hidden="true"></div>
+
+     <header class="qc-header" style="display: none;">
+      <nav class="qc-nav">
+        <a href="#" class="nav-logo">
+          <img src="../assets/logo/logo-one.png" alt="" />
+        </a>
+        <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+        </button>
+      </nav>
+    </header>
+
+    <!-- NAV -->
+    <div class="qn-wrap">
+      <div class="qn-bar">
+        <a href="../index.html" class="nav-logo">
+          <img src="../assets/logo/logo-one.png" alt="" />
+        </a>
+        <ul class="nav-links"
+    
+        <button class="qn-toggle" id="qnToggle">
+          <div class="qn-icon">
+            <span></span><span></span><span></span>
+          </div>
+        </button>
+      </div>
+    </div>
+    
+    <!-- ===== OVERLAY ===== -->
+    <div class="qn-overlay" id="qnOverlay">
+      <div class="qn-inner">
+        <div class="qn-center">
+          <div class="qn-main">
+            <a href="#">About</a>
+            <a href="#">Work</a>
+            <a href="#">Services</a>
+          </div>
+    
+          <div class="qn-sub">
+            <a href="#">Contact</a>
+            <a href="#">Blogs</a>
+            <a href="#">Careers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <form action="http://localhost:5000/posts" method="POST">
+      <input type="text" name="title" placeholder="Title" />
+      <textarea name="content" placeholder="content"></textarea>
+      <button type="submit">Submit</button>
+    </form> -->
+
+    <section class="blog-section">
+      <div class="blog-container">
+
+        <div class="blog-image">
+          <img src="../assets/mockups/one.png" alt="">
+        </div>
+    
+        <div class="blog-header">
+          <h2>Should You Hire a Marketing Agency for Your Startup or Small Business?</h2>
+          <p class="subtitle">Key Questions to Ask Before You Decide</p>
+        </div>
+    
+        <div class="blog-content">
+    
+          <p class="intro">
+            You had just launched a small clothing brand in Jaipur. Amazing designs, good pricing, and strong confidence — everything seemed perfect. But after 3 months, sales were still low.
+          </p>
+    
+          <p>
+            You tried posting on Instagram, ran a few ads, even asked friends to share your page… but nothing worked consistently.
+          </p>
+    
+          <div class="highlight">
+            <p>“Am I missing something… or do I need expert help?”</p>
+          </div>
+    
+          <h3>Why This Question Matters for Every Business</h3>
+          <p>
+            Hiring a marketing agency is not just an expense — it’s an investment. The real question is:
+            <span class="emphasis">Do you have the right team and strategy to grow consistently?</span>
+          </p>
+    
+          <h3>What We Do as a Marketing Agency</h3>
+          <p>
+            We don’t just provide services, we build complete growth systems focused on visibility, traffic, and conversions.
+          </p>
+    
+          <div class="services">
+    
+            <div class="service-card">
+              <h4>SEO</h4>
+              <p>Rank on Google with keyword research, technical SEO, and backlinks.</p>
+            </div>
+    
+            <div class="service-card">
+              <h4>Social Media</h4>
+              <p>Content strategy, reels, engagement, and brand positioning.</p>
+            </div>
+    
+            <div class="service-card">
+              <h4>Paid Ads</h4>
+              <p>ROI-driven Google & Meta ads with targeting and tracking.</p>
+            </div>
+    
+            <div class="service-card">
+              <h4>Website</h4>
+              <p>Fast, mobile-optimized websites that convert visitors into customers.</p>
+            </div>
+    
+            <div class="service-card">
+              <h4>Content</h4>
+              <p>Blogs, ad copy, creatives, and branding visuals that sell.</p>
+            </div>
+    
+          </div>
+    
+          <h3>When Do You Actually Need Us?</h3>
+          <ul class="checklist">
+            <li>Your business is not getting enough leads</li>
+            <li>Your website is not ranking on Google</li>
+            <li>You are posting but not growing</li>
+            <li>You want to scale faster with strategy</li>
+          </ul>
+    
+          <div class="quote-box">
+            <p>
+              Marketing is no longer optional — it's the backbone of business growth.
+            </p>
+            <span>
+              “How long can you afford to grow without it?”
+            </span>
+          </div>
+    
+          <h3>Conclusion</h3>
+          <p>
+            If you want consistent traffic, better visibility, and more leads — working with a professional agency can completely change your growth journey.
+          </p>
+    
+        </div>
+      </div>
+    </section>
+        
+
+    <!-- ===== FOOTER ===== -->
+    <footer id="qcFooter">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div>
+            <div class="footer-brand-name">
+              <div class="nav-logo-dot"></div>
+              Qrious Curators
+            </div>
+            <p class="footer-text">
+              We build brands, websites, and digital experiences that feel
+              refined, relevant, and made to grow.
+            </p>
+            <div class="footer-socials">
+              <!-- <a href="#" class="f-soc">𝕏</a> -->
+              <a href="#" class="f-soc">in</a>
+              <a href="#" class="f-soc">ig</a>
+              <a href="#" class="f-soc">fb</a>
+            </div>
+          </div>
+          <div>
+            <div class="footer-col-ttl">Services</div>
+            <ul class="footer-links">
+              <li><a href="#">Web Design</a></li>
+              <li><a href="#">Development</a></li>
+              <li><a href="#">Brand Identity</a></li>
+              <li><a href="#">Social Media</a></li>
+              <li><a href="#">Content Creation</a></li>
+            </ul>
+          </div>
+          <div>
+            <div class="footer-col-ttl">Company</div>
+            <ul class="footer-links">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Our Work</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p class="footer-copy">
+            © 2026 Qrious Curators. All rights reserved.
+          </p>
+          <p class="footer-made">Designed &amp; built with <span>♥</span></p>
+        </div>
+      </div>
+    </footer>
+    
+    <script src="../scripts/script.js"></script>
+    
+    <script>
+      // subtle reveal animation
+      const cards = document.querySelectorAll('.service-card');
+      
+      window.addEventListener('scroll', () => {
+        const trigger = window.innerHeight * 0.85;
+      
+        cards.forEach(card => {
+          const top = card.getBoundingClientRect().top;
+          if (top < trigger) {
+            card.style.opacity = 1;
+            card.style.transform = "translateY(0)";
+          }
+        });
+      });
+      
+      // initial state
+      cards.forEach(card => {
+        card.style.opacity = 0;
+        card.style.transform = "translateY(20px)";
+      });
+    </script>
+  </body>
+</html>

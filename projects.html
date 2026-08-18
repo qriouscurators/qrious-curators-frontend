@@ -1,0 +1,1181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Qrious Curators — Creative Studio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link
+      rel="shortcut icon"
+      href="./assets/logo/fav-icon-one.png"
+      type="image/x-icon"
+    />
+    <link
+      rel="shortcut icon"
+      href="./assets/logo/fav-icon-one.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- CURSOR -->
+    <div id="qc-cur"></div>
+    <div id="qc-cur-ring"></div>
+
+    <!-- GRAIN -->
+    <div id="grain" aria-hidden="true"></div>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+      <div class="preloader-content">
+        <img src="./assets/preloader-2.gif" alt="Loading..." />
+      </div>
+    </div>
+    <!-- <div id="preloader">
+      <div class="preloader-content">
+        <div class="pl-logo">
+          <span>Q</span>rious <span>C</span>urators
+        </div>
+        <div class="pl-tagline">Creative Design Studio</div>
+        <div class="pl-bar"><div class="pl-bar-fill"></div></div>
+      </div>
+    </div> -->
+
+    <!-- NAV -->
+    <header class="qc-header">
+      <nav class="qc-nav">
+        <a href="#" class="nav-logo">
+          <img src="./assets/logo/logo-one.png" alt="" />
+        </a>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#showcase">Work</a></li>
+          <li><a href="#team">Blogs</a></li>
+        </ul>
+        <a href="#contact" class="nav-cta">
+          <span>Let's Talk</span>
+          <span>↗</span>
+        </a>
+        <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+      <span class="mm-close" id="mmClose">✕</span>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#showcase">Work</a>
+      <a href="#team">Team</a>
+      <a href="#contact">Get in touch</a>
+    </div>
+
+    <!-- ===== HERO ===== -->
+    <section id="hero">
+      <video
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+      >
+        <source
+          src="./assets/dummy-video.mp4"
+          type="video/mp4"
+        />
+      </video>
+      <div class="hero-overlay"></div>
+      <!-- <div class="hero-content">
+        <div class="hero-eyebrow">
+          <div class="hero-eyebrow-dot"></div>
+          <span>Qrious Curators</span>
+        </div>
+        <h1 class="hero-h1">
+          <span class="line"><span class="line-inner l1">We craft</span></span>
+          <span class="line"
+            ><span class="line-inner l2"><em>digital</em> worlds</span></span
+          >
+          <span class="line"
+            ><span class="line-inner l3 outline">that endure.</span></span
+          >
+        </h1>
+        <div class="hero-bottom">
+          <p class="hero-desc">
+            Qrious Curators is a full-spectrum creative agency building brand
+            systems, digital experiences, and stories that stand apart in a
+            crowded world.
+          </p>
+          <div class="hero-ctas">
+            <a href="#showcase" class="btn-accent"
+              ><span>View Work</span><span>↗</span></a
+            >
+            <a href="#about" class="btn-outline">Our Story</a>
+          </div>
+        </div>
+      </div> -->
+      <div class="hero-scroll">
+        <div class="hero-scroll-line"></div>
+        <span class="hero-scroll-label">Scroll</span>
+      </div>
+    </section>
+
+    <!-- ===== MARQUEE ===== -->
+    <div class="qc-marquee" aria-hidden="true">
+      <div class="qc-marquee-track">
+        <span class="qc-marquee-item">Brand Identity</span>
+        <span class="qc-marquee-item">Web Design</span>
+        <span class="qc-marquee-item">Digital Strategy</span>
+        <span class="qc-marquee-item">3D Design</span>
+        <span class="qc-marquee-item">UI / UX</span>
+        <span class="qc-marquee-item">Performance Marketing</span>
+        <span class="qc-marquee-item">Content Creation</span>
+        <span class="qc-marquee-item">Social Media</span>
+        <span class="qc-marquee-item">Brand Identity</span>
+        <span class="qc-marquee-item">Web Design</span>
+        <span class="qc-marquee-item">Digital Strategy</span>
+        <span class="qc-marquee-item">3D Design</span>
+        <span class="qc-marquee-item">UI / UX</span>
+        <span class="qc-marquee-item">Performance Marketing</span>
+        <span class="qc-marquee-item">Content Creation</span>
+        <span class="qc-marquee-item">Social Media</span>
+      </div>
+    </div>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about">
+      <div class="about-left rvl">
+        <div class="kicker">
+          <div class="kicker-line"></div>
+          Who We Are
+        </div>
+        <h2 class="about-h2">
+          We turn bold ideas into <em>remarkable</em> realities
+        </h2>
+        <p class="about-body">
+         From scroll-stopping content and high-performing ads to sleek websites and cohesive brand identities, we craft digital experiences that are visually compelling, strategically strong, and undeniably result-oriented.
+
+        </p>
+        <p class="about-body">
+         We partner with brands that think ahead. Brands that want more than visibility-they want impact, engagement, and scalable growth.
+        </p>
+        <p class="about-body">
+         With the right blend of creativity, clarity, and conversionfocused strategy, Qrious Curators turns ideas into campaigns that move people and move the needle
+        </p>
+        <a href="#contact" class="about-link">Start a project →</a>
+      </div>
+      <div class="about-right rvr d1">
+        <div class="about-img-wrap">
+          <img
+            src="https://framerusercontent.com/images/sXpGa5SBIHzL1ZlluLzui0nhLvU.webp?width=900"
+            alt="Studio work"
+            loading="lazy"
+          />
+        </div>
+        <div class="about-img-wrap">
+          <img
+            src="https://framerusercontent.com/images/9eD88IPKTw4s3e2ACxglJMr1zWs.webp?width=900"
+            alt="Design process"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STATS ===== -->
+    <section id="stats">
+      <div class="stats-grid">
+        <div class="stat-cell rv d1">
+          <div class="stat-num">140<sup>+</sup></div>
+          <div class="stat-lbl">Projects Completed</div>
+        </div>
+        <div class="stat-cell rv d2">
+          <div class="stat-num">8<sup>yr</sup></div>
+          <div class="stat-lbl">Years of Craft</div>
+        </div>
+        <div class="stat-cell rv d3">
+          <div class="stat-num">92<sup>%</sup></div>
+          <div class="stat-lbl">Client Retention</div>
+        </div>
+        <div class="stat-cell rv d4">
+          <div class="stat-num">34<sup>+</sup></div>
+          <div class="stat-lbl">Global Clients</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MANIFESTO (animated word reveal) ===== -->
+    <section id="manifesto">
+      <div class="manifesto-text" id="manifestoText">
+        <span class="manifesto-word">Crafting</span>
+        <span class="manifesto-word">Powerful,</span>
+        <span class="manifesto-word"><em>Impactful</em></span>
+        <span class="manifesto-word">Brands</span>
+        <span class="manifesto-word">That</span>
+        <span class="manifesto-word">Engage</span>
+        <span class="manifesto-word">Audiences,</span>
+        <span class="manifesto-word">Drive</span>
+        <span class="manifesto-word"><em>Results,</em></span>
+        <span class="manifesto-word">and</span>
+        <span class="manifesto-word">Fuel</span>
+        <span class="manifesto-word">Scalable</span>
+        <span class="manifesto-word">Growth.</span>
+        <span class="manifesto-word">We</span>
+        <span class="manifesto-word">Don’t</span>
+        <span class="manifesto-word">Just</span>
+        <span class="manifesto-word">Build</span>
+        <span class="manifesto-word">Brands,</span>
+        <span class="manifesto-word">We</span>
+        <span class="manifesto-word">Create</span>
+        <span class="manifesto-word"><em>Experiences</em></span>
+        <span class="manifesto-word">That</span>
+        <span class="manifesto-word"><em>Matter.</em></span>
+      </div>
+    </section>
+
+    <!-- ===== STACK ===== -->
+    <section id="stack">
+      <div class="stack-grid">
+        <div class="stack-sticky">
+          <span class="stack-kicker">Key Work</span>
+          <h2 class="stack-title">
+            At Qrious Curators, we don’t just <em>“do marketing.”</em>
+            We build brands that people
+            <em>Remember</em>, <em>Relate to</em>, and <em>Talk about</em>
+          </h2>
+        </div>
+        <div class="stack-cards">
+          <div class="stack-card">
+            <img
+              src="https://framerusercontent.com/images/sXpGa5SBIHzL1ZlluLzui0nhLvU.webp?width=1800&height=2400"
+              alt="Work 1"
+              loading="lazy"
+            />
+          </div>
+          <div class="stack-card">
+            <img
+              src="https://framerusercontent.com/images/9eD88IPKTw4s3e2ACxglJMr1zWs.webp?width=1800&height=2400"
+              alt="Work 2"
+              loading="lazy"
+            />
+          </div>
+          <div class="stack-card">
+            <img
+              src="https://framerusercontent.com/images/ruM84yQKYiTGK0mIWGzyalj01WQ.webp?width=1920&height=2400"
+              alt="Work 3"
+              loading="lazy"
+            />
+          </div>
+          <div class="stack-card">
+            <img
+              src="https://framerusercontent.com/images/sXpGa5SBIHzL1ZlluLzui0nhLvU.webp?width=1800&height=2400"
+              alt="Work 4"
+              loading="lazy"
+            />
+          </div>
+          <div class="stack-card">
+            <img
+              src="https://framerusercontent.com/images/9eD88IPKTw4s3e2ACxglJMr1zWs.webp?width=1800&height=2400"
+              alt="Work 5"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SERVICES (horizontal scroll) ===== -->
+    <section id="services">
+      <div class="services-sticky">
+        <div class="services-track" id="svcTrack">
+          <div class="svc-panel">
+            <div class="svc-content">
+              <div class="svc-tag">
+                <div class="svc-tag-line"></div>
+                Service 01
+              </div>
+              <h2 class="svc-h2">Creative<br /><em>Direction</em></h2>
+              <p class="svc-p">
+                Our creative team brings fresh perspectives to make your brand
+                stand out. From visual concepts to innovative strategies we
+                bring your vision to life with precision.
+              </p>
+            </div>
+            <div class="svc-visual">
+              <div class="svc-box">
+                <img
+                  src="./assets/illustrations/3d-interface-website-presentation-mockup-isolated_359791-202.jpg"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="svc-num">01</div>
+          </div>
+
+          <div class="svc-panel">
+            <div class="svc-content">
+              <div class="svc-tag">
+                <div class="svc-tag-line"></div>
+                Service 02
+              </div>
+              <h2 class="svc-h2">Brand<br /><em>Strategy</em></h2>
+              <p class="svc-p">
+                We build brands that are timeless. Through extensive market
+                research, we craft strategies that ensure your brand resonates
+                deeply with your audience.
+              </p>
+            </div>
+            <div class="svc-visual">
+              <div class="svc-box">
+                <img
+                  src="./assets/illustrations/3d-interface-website-presentation-mockup-isolated_359791-202.jpg"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="svc-num">02</div>
+          </div>
+
+          <div class="svc-panel">
+            <div class="svc-content">
+              <div class="svc-tag">
+                <div class="svc-tag-line"></div>
+                Service 03
+              </div>
+              <h2 class="svc-h2">Digital<br /><em>Execution</em></h2>
+              <p class="svc-p">
+                We take your ideas to the digital world. From website
+                development to campaigns, we ensure your digital presence is
+                optimized, engaging, and impactful.
+              </p>
+            </div>
+            <div class="svc-visual">
+              <div class="svc-box">
+                <img
+                  src="./assets/illustrations/3d-interface-website-presentation-mockup-isolated_359791-202.jpg"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="svc-num">03</div>
+          </div>
+
+          <div class="svc-panel">
+            <div class="svc-content">
+              <div class="svc-tag">
+                <div class="svc-tag-line"></div>
+                Service 04
+              </div>
+              <h2 class="svc-h2">Website<br /><em>Development</em></h2>
+              <p class="svc-p">
+                We build dynamic, responsive websites that are visually stunning
+                and user-friendly. From landing pages to complex e-commerce —
+                built for performance every time.
+              </p>
+            </div>
+            <div class="svc-visual">
+              <div class="svc-box">
+                <img
+                  src="./assets/illustrations/3d-interface-website-presentation-mockup-isolated_359791-202.jpg"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="svc-num">04</div>
+          </div>
+
+          <div class="svc-panel">
+            <div class="svc-content">
+              <div class="svc-tag">
+                <div class="svc-tag-line"></div>
+                Service 05
+              </div>
+              <h2 class="svc-h2">Social<br /><em>Marketing</em></h2>
+              <p class="svc-p">
+                Maximize your brand's reach with data-driven social media
+                strategies. From content creation to paid ads — we connect you
+                with your audience where they live.
+              </p>
+            </div>
+            <div class="svc-visual">
+              <div class="svc-box">
+                <img
+                  src="./assets/illustrations/3d-interface-website-presentation-mockup-isolated_359791-202.jpg"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="svc-num">05</div>
+          </div>
+
+          <div class="svc-panel">
+            <div class="svc-content">
+              <div class="svc-tag">
+                <div class="svc-tag-line"></div>
+                Service 06
+              </div>
+              <h2 class="svc-h2">Content<br /><em>Creation</em></h2>
+              <p class="svc-p">
+                Content is king. Our team produces visually compelling content —
+                videos, blogs, graphics and more — all tailored perfectly to
+                your brand's voice and audience.
+              </p>
+            </div>
+            <div class="svc-visual">
+              <div class="svc-box">
+                <img
+                  src="./assets/illustrations/3d-interface-website-presentation-mockup-isolated_359791-202.jpg"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="svc-num">06</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROCESS ===== -->
+    <section id="process">
+      <div class="process-sticky">
+        <div class="process-inner">
+          <div class="process-head">
+            <span class="kicker">Our Process</span>
+            <h2>How we build<br /><em>digital growth</em></h2>
+          </div>
+          <div class="process-row" id="processRow">
+            <div class="p-card">
+              <img src="./assets/icons/discover.png" alt="">
+              <h3>Discover</h3>
+              <p>
+                We understand your brand, audience, positioning, and business
+                goals before building anything.
+              </p>
+            </div>
+            <div class="p-card">
+              <img src="./assets/icons/creative.svg" alt="">
+              <h3>Strategize</h3>
+              <p>
+                We define the right direction across branding, content,
+                performance, and digital experience.
+              </p>
+            </div>
+            <div class="p-card">
+              <img src="./assets/icons/design.png" alt="">
+              <h3>Create</h3>
+              <p>
+                From visuals to websites and campaigns, every asset is designed
+                with clarity and intent.
+              </p>
+            </div>
+            <div class="p-card">
+              <img src="./assets/icons/digital.png" alt="">
+              <h3>Scale</h3>
+              <p>
+                We optimize continuously so your brand doesn't just launch well
+                — it grows sustainably.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SHOWCASE (portfolio grid) ===== -->
+    <section id="showcase">
+      <div class="showcase-header rv">
+        <div>
+          <div
+            class="kicker"
+            style="
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              margin-bottom: 20px;
+            "
+          >
+            <div class="kicker-line"></div>
+            Selected Work
+          </div>
+          <h2>Projects we're<br /><em>proud of</em></h2>
+        </div>
+        <p>
+          We build products that earn attention, build trust, and drive growth.
+          Every pixel has a purpose. Every interaction, intention.
+        </p>
+      </div>
+      <div class="showcase-grid">
+        <div class="showcase-card rv d1">
+          <div class="sc-bg sc-bg-1"></div>
+          <div class="sc-mockup">
+            <div class="sc-ui">
+              <!-- <div class="sc-ui-bar"></div>
+              <div class="sc-ui-bar short"></div>
+              <div class="sc-ui-grid">
+                <div class="sc-ui-bl ac"></div>
+                <div class="sc-ui-bl"></div>
+                <div class="sc-ui-bl"></div>
+                <div class="sc-ui-bl ac" style="opacity: 0.6"></div>
+              </div> -->
+              <img src="./assets/illustrations/3d-interface-website-presentation-mockup-isolated_359791-202.avif" alt="">
+            </div>
+          </div>
+          <div class="sc-label">
+            <span class="sc-label-dot"></span>Dashboard App
+          </div>
+          <div class="sc-overlay">
+            <div class="sc-cat">Fintech · Web App</div>
+            <div class="sc-name">Meridian Analytics Platform</div>
+            <div class="sc-tags">
+              <span class="sc-tag">Next.js</span
+              ><span class="sc-tag">D3.js</span
+              ><span class="sc-tag">GraphQL</span>
+            </div>
+          </div>
+        </div>
+        <div class="showcase-card rv d2">
+          <div class="sc-bg sc-bg-2"></div>
+          <div class="sc-mockup">
+            <!-- <div class="sc-ui light">
+              <div class="sc-ui-bar"></div>
+              <div class="sc-ui-bar short"></div>
+              <div class="sc-ui-grid">
+                <div class="sc-ui-bl ac"></div>
+                <div class="sc-ui-bl"></div>
+              </div>
+            </div> -->
+            <img src="./assets/illustrations/3d-interface-website-presentation-mockup-isolated_359791-202.avif" alt="">
+          </div>
+          <div class="sc-label">
+            <span class="sc-label-dot"></span>E-Commerce
+          </div>
+          <div class="sc-overlay">
+            <div class="sc-cat">Fashion · Shopify</div>
+            <div class="sc-name">Ether Luxury Store</div>
+            <div class="sc-tags">
+              <span class="sc-tag">Shopify</span
+              ><span class="sc-tag">Headless</span>
+            </div>
+          </div>
+        </div>
+        <div class="showcase-card rv d2">
+          <div class="sc-bg sc-bg-3"></div>
+          <div class="sc-mockup">
+            <div class="sc-ui">
+              <div class="sc-ui-bar"></div>
+              <div class="sc-ui-bar short"></div>
+              <div class="sc-ui-grid">
+                <div class="sc-ui-bl"></div>
+                <div class="sc-ui-bl ac"></div>
+              </div>
+            </div>
+          </div>
+          <div class="sc-label">
+            <span class="sc-label-dot"></span>SaaS Product
+          </div>
+          <div class="sc-overlay">
+            <div class="sc-cat">Health Tech · SaaS</div>
+            <div class="sc-name">Vanta Health Portal</div>
+            <div class="sc-tags">
+              <span class="sc-tag">React</span
+              ><span class="sc-tag">Node.js</span>
+            </div>
+          </div>
+        </div>
+        <div class="showcase-card rv d3">
+          <div class="sc-bg sc-bg-4"></div>
+          <div class="sc-mockup">
+            <div class="sc-ui">
+              <div class="sc-ui-bar"></div>
+              <div class="sc-ui-bar short"></div>
+              <div class="sc-ui-grid">
+                <div class="sc-ui-bl ac"></div>
+                <div class="sc-ui-bl ac"></div>
+              </div>
+            </div>
+          </div>
+          <div class="sc-label">
+            <span class="sc-label-dot"></span>Brand Identity
+          </div>
+          <div class="sc-overlay">
+            <div class="sc-cat">SaaS · Branding</div>
+            <div class="sc-name">Prisma AI Identity</div>
+            <div class="sc-tags">
+              <span class="sc-tag">Brand</span
+              ><span class="sc-tag">Next.js</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DARK MARQUEE ===== -->
+    <div class="qc-marquee-dark" aria-hidden="true">
+      <div class="qc-marquee-dark-track">
+        <span class="qc-marquee-dark-item">Awwwards Nominee</span>
+        <span class="qc-marquee-dark-item">Clutch Top Agency 2024</span>
+        <span class="qc-marquee-dark-item">Google Partner</span>
+        <span class="qc-marquee-dark-item">Meta Business Partner</span>
+        <span class="qc-marquee-dark-item">Webflow Expert</span>
+        <span class="qc-marquee-dark-item">Shopify Plus Partner</span>
+        <span class="qc-marquee-dark-item">Awwwards Nominee</span>
+        <span class="qc-marquee-dark-item">Clutch Top Agency 2024</span>
+        <span class="qc-marquee-dark-item">Google Partner</span>
+        <span class="qc-marquee-dark-item">Meta Business Partner</span>
+        <span class="qc-marquee-dark-item">Webflow Expert</span>
+        <span class="qc-marquee-dark-item">Shopify Plus Partner</span>
+      </div>
+    </div>
+
+    <!-- ===== PHILOSOPHY (accordion list) ===== -->
+    <!-- <section id="philosophy">
+      <div class="philosophy-left rvl">
+        <div class="kicker">
+          <div class="kicker-line"></div>
+          Our Philosophy
+        </div>
+        <h2>Design principles that <em>guide</em> every decision</h2>
+        <p>
+          We believe in design that has a reason for being — every choice
+          intentional, every detail considered, every outcome measured.
+        </p>
+        <p>
+          This is not decoration. This is communication at its highest form.
+        </p>
+      </div>
+      <div class="philosophy-right rvr d2">
+        <div class="pill-list">
+          <div class="pill-item">
+            <span class="pill-name">Clarity over complexity</span
+            ><span class="pill-num">01</span>
+          </div>
+          <div class="pill-item">
+            <span class="pill-name">Strategy before aesthetics</span
+            ><span class="pill-num">02</span>
+          </div>
+          <div class="pill-item">
+            <span class="pill-name">Craft in every detail</span
+            ><span class="pill-num">03</span>
+          </div>
+          <div class="pill-item">
+            <span class="pill-name">Performance by default</span
+            ><span class="pill-num">04</span>
+          </div>
+          <div class="pill-item">
+            <span class="pill-name">Evolve or become irrelevant</span
+            ><span class="pill-num">05</span>
+          </div>
+          <div class="pill-item">
+            <span class="pill-name">Curiosity drives innovation</span
+            ><span class="pill-num">06</span>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- ═══════════════════════════════════════════
+     WORLDWIDE CLIENTS SECTION
+═══════════════════════════════════════════ -->
+    <section id="worldwide">
+      <div class="ww-bg-glow"></div>
+
+      <!-- HEADER -->
+      <div class="ww-header">
+        <div class="rvl">
+          <div class="ww-kicker"><span class="kl"></span>Our Global Reach</div>
+          <h2 class="ww-h2">
+            Clients across<br /><em>every continent,</em><br />one standard.
+          </h2>
+        </div>
+        <div class="rvr d2">
+          <p class="ww-desc">
+            From startups in <strong>Jaipur</strong> to enterprises in
+            <strong>New York</strong>, <strong>London</strong>, and
+            <strong>Tokyo</strong> — our work transcends borders. We partner
+            with brands that refuse to be ordinary, no matter where they are.
+          </p>
+          <div class="ww-stats">
+            <div class="ww-stat">
+              <div class="ws-n">18<sup>+</sup></div>
+              <div class="ws-l">Countries</div>
+            </div>
+            <div class="ws-div"></div>
+            <div class="ww-stat">
+              <div class="ws-n">34<sup>+</sup></div>
+              <div class="ws-l">Global Clients</div>
+            </div>
+            <div class="ws-div"></div>
+            <div class="ww-stat">
+              <div class="ws-n">6</div>
+              <div class="ws-l">Continents</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAP -->
+      <div class="ww-map-wrap-main">
+        <div class="ww-map-wrap">
+          <div id="map-canvas" style="position: relative">
+            <div class="map-loading" id="mapLoading">Loading world map</div>
+            
+            <!-- Badges (positioned by JS) -->
+            <!-- <div class="badge" data-city="london">
+              <div class="b-av" style="background: #c8f53a">MC</div>
+              <div>
+                <div class="b-co">Meridian Capital</div>
+                <div class="b-ci">London, UK</div>
+              </div>
+            </div>
+            <div class="badge" data-city="newyork">
+              <div class="b-av" style="background: #38bdf8">SL</div>
+              <div>
+                <div class="b-co">Skyline Labs</div>
+                <div class="b-ci">New York, USA</div>
+              </div>
+            </div>
+            <div class="badge" data-city="dubai">
+              <div class="b-av" style="background: #fb923c">AF</div>
+              <div>
+                <div class="b-co">Aether Finance</div>
+                <div class="b-ci">Dubai, UAE</div>
+              </div>
+            </div>
+            <div class="badge" data-city="tokyo">
+              <div class="b-av" style="background: #a78bfa">PA</div>
+              <div>
+                <div class="b-co">Prisma AI</div>
+                <div class="b-ci">Tokyo, Japan</div>
+              </div>
+            </div>
+            <div class="badge" data-city="sydney">
+              <div class="b-av" style="background: #34d399">CV</div>
+              <div>
+                <div class="b-co">Coastal Ventures</div>
+                <div class="b-ci">Sydney, AUS</div>
+              </div>
+            </div>
+            <div class="badge" data-city="mumbai">
+              <div class="b-av" style="background: #c8f53a">QC</div>
+              <div>
+                <div class="b-co">Qrious HQ</div>
+                <div class="b-ci">Mumbai, India</div>
+              </div>
+            </div>
+            <div class="badge" data-city="sao">
+              <div class="b-av" style="background: #f472b6">HC</div>
+              <div>
+                <div class="b-co">Helix Commerce</div>
+                <div class="b-ci">São Paulo, BR</div>
+              </div>
+            </div>
+            <div class="badge" data-city="toronto">
+              <div class="b-av" style="background: #38bdf8">SD</div>
+              <div>
+                <div class="b-co">Summit Digital</div>
+                <div class="b-ci">Toronto, CA</div>
+              </div>
+            </div>
+            <div class="badge" data-city="berlin">
+              <div class="b-av" style="background: #fb923c">VH</div>
+              <div>
+                <div class="b-co">Vanta Health</div>
+                <div class="b-ci">Berlin, DE</div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- TICKER -->
+      <div class="ww-ticker rv d2">
+        <div class="ticker-inner">
+          <div class="ticker-lbl">
+            <div class="tdot"></div>
+            Active Clients
+          </div>
+          <div class="ticker-scroll">
+            <div class="ticker-track">
+              <span class="ti">Meridian Capital — UK</span>
+              <span class="ti">Skyline Labs — USA</span>
+              <span class="ti">Aether Finance — UAE</span>
+              <span class="ti">Prisma AI — Japan</span>
+              <span class="ti">Coastal Ventures — Australia</span>
+              <span class="ti">Helix Commerce — Brazil</span>
+              <span class="ti">Summit Digital — Canada</span>
+              <span class="ti">Vanta Health — Germany</span>
+              <span class="ti">NovaBrand — Singapore</span>
+              <span class="ti">Meridian Capital — UK</span>
+              <span class="ti">Skyline Labs — USA</span>
+              <span class="ti">Aether Finance — UAE</span>
+              <span class="ti">Prisma AI — Japan</span>
+              <span class="ti">Coastal Ventures — Australia</span>
+              <span class="ti">Helix Commerce — Brazil</span>
+              <span class="ti">Summit Digital — Canada</span>
+              <span class="ti">Vanta Health — Germany</span>
+              <span class="ti">NovaBrand — Singapore</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LOGOS -->
+      <!-- <div class="ww-logos rv d3">
+    <p class="logos-lbl">Brands that trust us</p>
+    <div class="logos-grid">
+      <div class="lc rv d1"><div class="lt">Meridian</div></div>
+      <div class="lc rv d2"><div class="lt">Skyline Labs</div></div>
+      <div class="lc rv d3"><div class="lt">Aether</div></div>
+      <div class="lc rv d4"><div class="lt">Vanta Health</div></div>
+      <div class="lc rv d5"><div class="lt">Prisma AI</div></div>
+      <div class="lc rv d6"><div class="lt">Helix</div></div>
+      <div class="lc rv d1"><div class="lt">Summit Co.</div></div>
+    </div>
+  </div> -->
+    </section>
+
+    <!-- ===== IMPACT ===== -->
+    <section id="impact">
+      <div class="impact-head rv">
+        <span class="kicker">Our Impact</span>
+        <h2>Results that<br /><em>speak louder</em> than words</h2>
+      </div>
+      <div class="impact-cards">
+        <div class="impact-card rv d1">
+          <!-- <div class="impact-card-icon">📈</div> -->
+          <div class="impact-card-num">3.2<span class="suf">×</span></div>
+          <div class="impact-card-lbl">Average Revenue Lift</div>
+          <p class="impact-card-desc">
+            Clients who rebrand and relaunch with us see an average 3.2×
+            increase in qualified leads within 6 months.
+          </p>
+        </div>
+        <div class="impact-card rv d2">
+          <!-- <div class="impact-card-icon">⚡</div> -->
+          <div class="impact-card-num">67<span class="suf">%</span></div>
+          <div class="impact-card-lbl">Conversion Rate Uplift</div>
+          <p class="impact-card-desc">
+            Our website redesigns consistently outperform previous versions,
+            with a 67% average conversion improvement.
+          </p>
+        </div>
+        <div class="impact-card rv d3">
+          <!-- <div class="impact-card-icon">🌍</div> -->
+          <div class="impact-card-num">18<span class="suf">+</span></div>
+          <div class="impact-card-lbl">Countries Served</div>
+          <p class="impact-card-desc">
+            From Jaipur to New York, our clients operate in 18+ countries across
+            6 continents. Design has no borders.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section id="testimonials">
+      <div class="testi-header rv">
+        <div>
+          <div
+            class="kicker"
+            style="
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              margin-bottom: 20px;
+            "
+          >
+            <div class="kicker-line"></div>
+            Client Stories
+          </div>
+          <h2>What our clients <em>say</em></h2>
+        </div>
+        <p>
+          We measure our success by the impact we create. Here's what our clients say about working with Qrious Curators.
+        </p>
+      </div>
+      <div class="testi-grid">
+        <!-- Tissli Testimonial -->
+        <div class="t-card rv d1">
+          <div class="t-stars">★★★★★</div>
+          <div class="t-qm">"</div>
+          <p class="t-text">
+            "Qrious Curators brought our vision to life with creativity and finesse. The social media campaigns they designed not only resonated with our audience but also elevated Tissli’s brand presence. We’ve seen a remarkable increase in engagement."
+          </p>
+          <div class="t-author">
+            <div>
+              <div class="t-name">Tissli Team</div>
+              <div class="t-role">Brand Manager, Tissli</div>
+            </div>
+          </div>
+        </div>
+        <!-- Out Nosh Testimonial -->
+        <div class="t-card rv d2">
+          <div class="t-stars">★★★★★</div>
+          <div class="t-qm">"</div>
+          <p class="t-text">
+            "Working with Qrious Curators has been a game-changer for Out Nosh. They helped craft our digital presence and messaging, which resulted in increased footfall and customer loyalty. The campaigns were spot on!"
+          </p>
+          <div class="t-author">
+            <div>
+              <div class="t-name">Out Nosh Team</div>
+              <div class="t-role">Marketing Director, Out Nosh</div>
+            </div>
+          </div>
+        </div>
+        <!-- Vashika Sethi Makeovers Testimonial -->
+        <div class="t-card rv d3">
+          <div class="t-stars">★★★★★</div>
+          <div class="t-qm">"</div>
+          <p class="t-text">
+            "Qrious Curators helped us elevate our academy’s presence. From the Instagram content to the overall branding strategy, they understood our goals perfectly. We’ve received a lot more inquiries for our academy services since the campaign launch."
+          </p>
+          <div class="t-author">
+            <div>
+              <div class="t-name">Vashika Sethi</div>
+              <div class="t-role">Founder, Vashika Sethi Makeovers</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ===== TEAM ===== -->
+    <section id="team-container">
+      <div class="testi-header rv">
+        <div>
+          <div
+            class="kicker"
+            style="
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              margin-bottom: 0px;
+            "
+          >
+            <div class="kicker-line"></div>
+            Client Stories
+          </div>
+          <h2>Our team of <em>creative minds</h2>
+        </div>
+        <p>
+            With diverse skills and a passion for excellence, we work together to bring your vision to life.
+        </p>
+      </div>
+    </section>
+    <section id="team">
+      <div class="team-sticky">
+        <div class="team-heading">
+          <span class="team-kicker">Meet the Team Of</span>
+          <h2>Creative<br />Minds</h2>
+        </div>
+        <div class="team-cards" id="teamCards">
+          <div class="tm-card">
+            <img src="./assets/team/abhay.JPG" alt="Sarah Khan" />
+            <div class="tm-card-body">
+              <h4>Sarah Khan</h4>
+              <span>Creative Director</span>
+            </div>
+          </div>
+          <div class="tm-card">
+            <img src="./assets/team/bhavana.JPG" alt="Arjun Mehta" />
+            <div class="tm-card-body">
+              <h4>Arjun Mehta</h4>
+              <span>Brand Strategist</span>
+            </div>
+          </div>
+          <div class="tm-card">
+            <img src="./assets/team/preeti.JPG" alt="Emily Roy" />
+            <div class="tm-card-body">
+              <h4>Emily Roy</h4>
+              <span>UI / UX Designer</span>
+            </div>
+          </div>
+          <div class="tm-card">
+            <img src="./assets/team/prakriti.JPG" alt="Daniel Joseph" />
+            <div class="tm-card-body">
+              <h4>Daniel Joseph</h4>
+              <span>Performance Marketer</span>
+            </div>
+          </div>
+          <div class="tm-card">
+            <img src="./assets/team/jayant.JPG" alt="Riya Sharma" />
+            <div class="tm-card-body">
+              <h4>Riya Sharma</h4>
+              <span>Content Lead</span>
+            </div>
+          </div>
+          <div class="tm-card">
+            <img src="./assets/team/kumkum.JPG" alt="James Lee" />
+            <div class="tm-card-body">
+              <h4>James Lee</h4>
+              <span>Video Producer</span>
+            </div>
+          </div>
+          <div class="tm-card">
+            <img src="./assets/team/sandeep.JPG" alt="Aanya Kapoor" />
+            <div class="tm-card-body">
+              <h4>Aanya Kapoor</h4>
+              <span>Visual Designer</span>
+            </div>
+          </div>
+          <div class="tm-card">
+            <img src="./assets/team/vikram.JPG" alt="Kabir Sethi" />
+            <div class="tm-card-body">
+              <h4>Kabir Sethi</h4>
+              <span>Web Developer</span>
+            </div>
+          </div>
+          <div class="tm-card">
+            <img src="./assets/team/yashika.JPG" alt="Naina Verma" />
+            <div class="tm-card-body">
+              <h4>Naina Verma</h4>
+              <span>Social Media Lead</span>
+            </div>
+          </div>
+          <div class="tm-card">
+            <img src="./assets/team/abhay.JPG" alt="Rehan Ali" />
+            <div class="tm-card-body">
+              <h4>Rehan Ali</h4>
+              <span>Copywriter</span>
+            </div>
+          </div>
+          <div class="tm-card">
+            <img src="./assets/team/abhay.JPG" alt="Tanya Dsouza" />
+            <div class="tm-card-body">
+              <h4>Tanya Dsouza</h4>
+              <span>Account Manager</span>
+            </div>
+          </div>
+          <div class="tm-card">
+            <img src="./assets/team/abhay.JPG" alt="Vivaan Khurana" />
+            <div class="tm-card-body">
+              <h4>Vivaan Khurana</h4>
+              <span>Growth Specialist</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section id="contact">
+      <div class="cta-inner">
+        <div class="cta-eyebrow rv">
+          <div class="cta-eyebrow-line"></div>
+          Let's Build Together
+          <div class="cta-eyebrow-line"></div>
+        </div>
+        <h2 class="cta-h2 rv">Have a project<br /><em>in mind?</em></h2>
+        <p class="cta-sub rv d1">
+          Tell us about your vision. We respond within 24 hours with a tailored
+          proposal and a clear path forward.
+        </p>
+        <div class="cta-acts rv d2">
+          <a href="mailto:hello@qriouscurators.com" class="btn-accent"
+            ><span>Send a Brief</span><span>↗</span></a
+          >
+          <a href="#" class="btn-outline">Schedule a Call</a>
+        </div>
+        <p class="cta-email-line rv d3">
+          Or reach us at
+          <a href="mailto:hello@qriouscurators.com">hello@qriouscurators.com</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer id="qcFooter">
+    
+      <!-- Large Background Logo -->
+      <div class="footer-bg-logo"></div>
+    
+      <div class="footer-inner">
+    
+        <div class="footer-top">
+    
+          <!-- Left -->
+          <div>
+            <div class="footer-brand-name">
+              <div class="nav-logo-dot"></div>
+              Qrious Curators
+            </div>
+    
+            <p class="footer-text">
+              We build brands, websites, and digital experiences that feel refined,
+              relevant, and made to grow.
+            </p>
+    
+            <div class="footer-socials">
+              <!-- <a href="#" class="f-soc">𝕏</a> -->
+              <a href="https://www.linkedin.com/company/qrious-curators" class="f-soc">in</a>
+              <a href="https://www.instagram.com/qrious.curators" class="f-soc">ig</a>
+            </div>
+          </div>
+    
+          <!-- Services -->
+          <div>
+            <!-- <div class="footer-col-ttl">Services</div> -->
+    
+            <ul class="footer-links">
+              <li><a href="./index.html">Home</a></li>
+              <li><a href="./about.html">About</a></li>
+              <li><a href="./work.html">Work</a></li>
+              <li><a href="./services.html">Services</a></li>
+            </ul>
+          </div>
+    
+          <!-- Company -->
+          <div>
+            <!-- <div class="footer-col-ttl">Company</div> -->
+    
+            <ul class="footer-links">
+              <li><a href="./blog.html">Blog</a></li>
+              <li><a href="./contact.html">Contact</a></li>
+              <li><a href="./careers.html">Careers</a></li>
+              <li><a href="./team.html">Team</a></li>
+            </ul>
+          </div>
+    
+        </div>
+    
+        <div class="footer-bottom">
+    
+          <p class="footer-copy">
+            © 2026 Qrious Curators. All rights reserved.
+          </p>
+    
+          <img
+            src="./assets/logo/logo-one.png"
+            alt="Qrious Curators"
+            class="footer-center-logo"
+          >
+    
+          <p class="footer-made">
+            Designed & Built with <span>♥</span>
+          </p>
+    
+        </div>
+    
+      </div>
+    
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+    <script src="./scripts/script.js"></script>
+  </body>
+</html>

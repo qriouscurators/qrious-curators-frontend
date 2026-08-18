@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Studies</title>
+  <meta name="description" content="A responsive case-studies portfolio page with animated project rows." />
+  <link rel="stylesheet" href="./styles/style.css">
+  <link
+    rel="shortcut icon"
+    href="./assets/logo/fav-icon-one.png"
+    type="image/x-icon"
+  />
+  <style>
+      @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&family=Lato:wght@300;400;700;900&display=swap');
+
+    :root {
+      --bg: #000000;
+      --bg-2: #050505;
+      --green: #0a0a0a;
+      --green-soft: #151515;
+      --gold: #ffffff;
+      --gold-2: #ffffff;
+      --cream: #ffffff;
+      --muted: rgba(255, 255, 255, 0.72);
+      --muted-2: rgba(255, 255, 255, 0.46);
+      --line: rgba(255, 255, 255, 0.14);
+      --shadow: 0 30px 90px rgba(0,0,0,0.45);
+      --radius-xl: 38px;
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --max: 1395px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Raleway', Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    .grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 99;
+      opacity: .13;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 260 260' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='.34'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+    }
+
+    .page-shell {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    /* Header hidden */
+    .site-header {
+      display: none !important;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      padding: 54px 0 90px;
+      position: relative;
+      display: grid;
+      align-items: center;
+      background: #000;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: center;
+      gap: 70px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .kicker {
+      color: #fff;
+      font-size: 15px;
+      letter-spacing: .2px;
+      margin-bottom: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 400;
+      font-family: 'Lato', Arial, sans-serif;
+    }
+
+    .kicker::before {
+      content: '';
+      width: 44px;
+      height: 1px;
+      background: #fff;
+      opacity: .8;
+    }
+
+    .hero-title {
+      font-family: 'Raleway', Arial, sans-serif;
+      font-size: clamp(44px, 8.8vw, 148px);
+      line-height: .86;
+      letter-spacing: -5px;
+      max-width: 770px;
+      font-weight: 500;
+      word-break: break-word;
+      color: #fff;
+    }
+
+    .hero-title span {
+      display: block;
+      color: #fff;
+    }
+
+    .hero-copy {
+      margin-top: 28px;
+      max-width: 520px;
+      color: rgba(255,255,255,.72);
+      font-size: clamp(16px, 1.3vw, 20px);
+      line-height: 1.65;
+      font-weight: 300;
+      font-family: 'Lato', Arial, sans-serif;
+    }
+
+    .hero-collage {
+      position: relative;
+      min-height: 660px;
+      isolation: isolate;
+    }
+
+    .collage-main {
+      position: absolute;
+      right: 0;
+      top: 62px;
+      width: min(590px, 100%);
+      height: 595px;
+      border-radius: 46px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.12);
+      background: #000;
+    }
+
+    .collage-main img,
+    .floating-shot img,
+    .case-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .collage-main::after,
+    .floating-shot::after,
+    .case-card-media::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.32));
+      pointer-events: none;
+    }
+
+    .floating-shot {
+      position: absolute;
+      overflow: hidden;
+      border-radius: 28px;
+      border: 8px solid #000;
+      box-shadow: 0 24px 64px rgba(0,0,0,.42);
+      background: #102017;
+      z-index: 3;
+    }
+
+    .shot-a {
+      width: 250px;
+      height: 310px;
+      left: 0;
+      top: 0;
+    }
+
+    .shot-b {
+      width: 290px;
+      height: 220px;
+      left: 36px;
+      bottom: 18px;
+    }
+
+    .shot-c {
+      width: 240px;
+      height: 165px;
+      right: 32px;
+      bottom: -10px;
+    }
+
+    .orbit-line {
+      position: absolute;
+      inset: 42px 52px 80px 80px;
+      border: 1px solid rgba(255,255,255,.19);
+      border-radius: 50%;
+      transform: rotate(-12deg);
+      z-index: -1;
+    }
+
+    .scroll-note {
+      position: absolute;
+      bottom: 30px;
+      left: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,.46);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-family: 'Lato', Arial, sans-serif;
+    }
+
+    .mouse-dot {
+      width: 9px;
+      height: 9px;
+      background: #fff;
+      border-radius: 50%;
+      animation: bounceDot 1.4s infinite ease-in-out;
+    }
+
+    @keyframes bounceDot {
+      0%,100% {
+        transform: translateY(0);
+        opacity: .5;
+      }
+
+      50% {
+        transform: translateY(7px);
+        opacity: 1;
+      }
+    }
+
+    /* Case studies */
+    .case-section {
+      padding: 80px 0 80px;
+      background: #000;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 34px;
+    }
+
+    .section-title {
+      font-family: 'Raleway', Arial, sans-serif;
+      font-size: clamp(30px, 5vw, 50px);
+      line-height: .98;
+      letter-spacing: -1px;
+      max-width: 760px;
+      font-weight: 400;
+      color: #fff;
+    }
+
+    .section-text {
+      max-width: 350px;
+      color: rgba(255,255,255,.72);
+      font-size: 15px;
+      line-height: 1.65;
+      text-align: right;
+      font-family: 'Lato', Arial, sans-serif;
+    }
+
+    /* Motion rows */
+    .motion-row-section {
+      position: relative;
+      height: 180vh;
+      margin-bottom: 28px;
+    }
+
+    .motion-row-stage {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+    }
+
+    .motion-row {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      width: 100%;
+      align-items: start;
+    }
+
+    .motion-card {
+      position: relative;
+      min-height: 520px;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.045);
+      box-shadow: 0 18px 70px rgba(0,0,0,.22);
+      will-change: transform, opacity;
+      isolation: isolate;
+    }
+
+    .motion-card[data-slot="center"] {
+      margin-top: 70px;
+    }
+
+    .motion-card[data-slot="right"] {
+      margin-top: 28px;
+    }
+
+    .motion-card:hover {
+      border-color: rgba(255,255,255,.45);
+      box-shadow: 0 28px 88px rgba(0,0,0,.42);
+    }
+
+    .case-card-media {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.18), transparent 35%), linear-gradient(135deg, #111, #000);
+    }
+
+    .case-card-body {
+      position: absolute;
+      inset: auto 0 0;
+      z-index: 3;
+      padding: 30px;
+      min-height: 48%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,.18) 8%, rgba(0,0,0,.74) 48%, rgba(0,0,0,.93));
+    }
+
+    .case-card-body h3 {
+      font-family: 'Raleway', Arial, sans-serif;
+      font-size: clamp(24px, 2.2vw, 30px);
+      line-height: .92;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+      max-width: 420px;
+      color: #fff;
+    }
+
+    .case-link {
+      margin-top: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      width: max-content;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+      transition: gap .25s ease;
+      font-family: 'Lato', Arial, sans-serif;
+    }
+
+    .motion-card:hover .case-link {
+      gap: 16px;
+    }
+
+    /* Ready text animation */
+    .ready-scroll {
+      position: relative;
+      height: 230vh;
+      background: #000;
+      color: #fff;
+      overflow: clip;
+    }
+
+    .ready-stage {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .ready-phrase {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      display: flex;
+      align-items: baseline;
+      white-space: nowrap;
+      margin: 0;
+      /* padding-left: max(18px, 4vw); */
+      color: #fff;
+      font-family: 'Raleway', Arial, sans-serif;
+      font-size: clamp(74px, 16.6vw, 230px);
+      font-weight: 400;
+      line-height: .82;
+      letter-spacing: -.092em;
+      opacity: 0;
+      will-change: transform;
+      transform: translateY(-50%);
+    }
+
+    .ready-phrase.ready-built {
+      opacity: 1;
+    }
+
+    .ready-word {
+      display: inline-flex;
+      align-items: baseline;
+      margin-right: .17em;
+    }
+
+    .ready-letter {
+      display: inline-block;
+      color: #fff;
+      transform-origin: 50% 70%;
+      will-change: transform, opacity, filter;
+      text-shadow: none;
+      -webkit-text-stroke: 0;
+    }
+
+    .ready-space {
+      display: inline-block;
+      width: .18em;
+    }
+
+    /* ============================================
+       CONTACT SECTION
+       ============================================ */
+    .contact-section {
+      background: #000;
+      padding: 40px 0 120px;
+      position: relative;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    /* Left column */
+    .contact-lead {
+      padding-top: 24px;
+      text-align: start;
+    }
+
+    .contact-headline {
+      font-family: 'Raleway', Arial, sans-serif;
+      font-size: clamp(34px, 4vw, 60px);
+      line-height: 1.02;
+      letter-spacing: -1.5px;
+      font-weight: 500;
+      color: #fff;
+      max-width: 640px;
+    }
+
+    .contact-copy {
+      margin-top: 30px;
+      max-width: 520px;
+      color: rgba(255,255,255,.7);
+      font-size: 16px;
+      line-height: 1.7;
+      font-weight: 300;
+      font-family: 'Lato', Arial, sans-serif;
+    }
+
+    .contact-copy p + p {
+      margin-top: 14px;
+    }
+
+    .contact-details {
+      margin-top: 52px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 44px 40px;
+    }
+
+    .detail-block h4 {
+      font-family: 'Raleway', Arial, sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -.3px;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+
+    .detail-block p,
+    .detail-block a {
+      display: block;
+      color: rgba(255,255,255,.7);
+      font-size: 15px;
+      line-height: 1.7;
+      font-family: 'Lato', Arial, sans-serif;
+      font-weight: 300;
+    }
+
+    .detail-block a:hover {
+      color: #fff;
+    }
+
+    .social-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 4px;
+    }
+
+    .social-row a {
+      width: 40px;
+      height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 50%;
+      color: #fff;
+      transition: background .25s ease, border-color .25s ease, transform .25s ease;
+    }
+
+    .social-row a:hover {
+      background: #fff;
+      color: #000;
+      border-color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .social-row svg {
+      width: 17px;
+      height: 17px;
+      fill: currentColor;
+    }
+
+    /* Right column – form card */
+    .contact-card {
+      background: #131313;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 34px;
+      padding: 48px 46px 46px;
+      box-shadow: 0 40px 120px rgba(0,0,0,.6);
+      text-align: start;
+    }
+
+    .contact-card-title {
+      font-family: 'Raleway', Arial, sans-serif;
+      font-size: clamp(28px, 2.6vw, 38px);
+      font-weight: 600;
+      letter-spacing: -.6px;
+      color: #fff;
+    }
+
+    .contact-card-sub {
+      margin-top: 14px;
+      color: rgba(255,255,255,.62);
+      font-size: 15px;
+      line-height: 1.6;
+      font-family: 'Lato', Arial, sans-serif;
+      font-weight: 300;
+      max-width: 440px;
+    }
+
+    .contact-form {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .field {
+      position: relative;
+      margin-bottom: 34px;
+    }
+
+    .field textarea,
+    .field input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(255,255,255,.22);
+      color: #fff;
+      font-family: 'Lato', Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      padding: 10px 2px 12px;
+      outline: none;
+      transition: border-color .3s ease;
+    }
+
+    .field textarea {
+      resize: none;
+      min-height: 78px;
+      line-height: 1.6;
+    }
+
+    /* Floating label */
+    .field label {
+      position: absolute;
+      left: 2px;
+      top: 10px;
+      color: rgba(255,255,255,.48);
+      font-family: 'Lato', Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      pointer-events: none;
+      transition: transform .25s ease, color .25s ease, font-size .25s ease;
+      transform-origin: left top;
+    }
+
+    .field input:focus ~ label,
+    .field textarea:focus ~ label,
+    .field input:not(:placeholder-shown) ~ label,
+    .field textarea:not(:placeholder-shown) ~ label {
+      transform: translateY(-22px) scale(.8);
+      color: rgba(255,255,255,.85);
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-bottom-color: #fff;
+    }
+
+    .submit-btn {
+      margin-top: 8px;
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #1b1b1b;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 40px;
+      padding: 16px 30px;
+      font-family: 'Raleway', Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .2px;
+      cursor: pointer;
+      transition: background .28s ease, color .28s ease, transform .28s ease, border-color .28s ease;
+    }
+
+    .submit-btn .arrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.14);
+      font-size: 13px;
+      transition: background .28s ease, transform .28s ease;
+    }
+
+    .submit-btn:hover {
+      background: #fb923c;
+      color: #fff;
+    }
+
+    .submit-btn:hover .arrow {
+      background: rgba(0,0,0,.12);
+      transform: translateX(3px);
+    }
+
+    .submit-btn:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 3px;
+    }
+
+    .form-note {
+      margin-top: 20px;
+      font-size: 13px;
+      color: rgba(255,255,255,.5);
+      font-family: 'Lato', Arial, sans-serif;
+      min-height: 18px;
+    }
+
+    .form-note.ok {
+      color: #7CFFB2;
+    }
+
+    .form-note.err {
+      color: #ff8f8f;
+    }
+
+    .toast {
+      position: fixed;
+      right: 22px;
+      bottom:32px;
+      z-index: 110;
+      background: #000;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.32);
+      border-radius: 18px;
+      padding: 14px 18px;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: opacity .25s ease, transform .25s ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1120px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-collage {
+        min-height: 560px;
+      }
+
+      .collage-main {
+        height: 490px;
+      }
+
+      .section-head {
+        grid-template-columns: 1fr;
+      }
+
+      .section-text {
+        text-align: left;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .contact-card {
+        max-width: 620px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        min-height: auto;
+        padding-bottom: 64px;
+      }
+
+      .motion-row-section {
+        height: auto;
+        margin-bottom: 28px;
+      }
+
+      .motion-row-stage {
+        position: relative;
+        top: auto;
+        height: auto;
+      }
+
+      .motion-row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .motion-card,
+      .motion-card[data-slot="center"],
+      .motion-card[data-slot="right"] {
+        min-height: 420px;
+        margin-top: 0;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page-shell {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .hero {
+        padding: 124px 0 64px;
+      }
+
+      .hero-title {
+        letter-spacing: -2px;
+      }
+
+      .hero-grid {
+        gap: 42px;
+      }
+
+      .hero-collage {
+        min-height: 460px;
+      }
+
+      .collage-main {
+        width: 100%;
+        height: 360px;
+        top: 66px;
+        border-radius: 30px;
+      }
+
+      .shot-a {
+        width: 140px;
+        height: 185px;
+        top: 0;
+        border-width: 4px;
+        border-radius: 20px;
+      }
+
+      .shot-b {
+        width: 190px;
+        height: 135px;
+        left: 10px;
+        bottom: 14px;
+        border-width: 4px;
+      }
+
+      .shot-c {
+        width: 155px;
+        height: 108px;
+        right: 0;
+        bottom: -8px;
+        border-width: 4px;
+      }
+
+      .scroll-note {
+        position: relative;
+        bottom: auto;
+        margin-top: 24px;
+      }
+
+      .ready-scroll {
+        height: 210vh;
+      }
+
+      .ready-phrase {
+        font-size: clamp(72px, 25vw, 150px);
+        letter-spacing: -.09em;
+      }
+
+      .contact-section {
+        padding: 20px 0 90px;
+      }
+
+      .contact-details {
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+
+      .contact-card {
+        padding: 38px 26px 34px;
+        border-radius: 26px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        padding: 108px 0 48px;
+      }
+
+      .hero-title {
+        font-size: clamp(38px, 13vw, 60px);
+        letter-spacing: -1.2px;
+        line-height: .92;
+      }
+
+      .hero-copy {
+        font-size: 15px;
+      }
+
+      .hero-collage {
+        min-height: 340px;
+      }
+
+      .collage-main {
+        height: 250px;
+        top: 50px;
+        border-radius: 22px;
+      }
+
+      .shot-a {
+        width: 100px;
+        height: 130px;
+        border-width: 3px;
+        border-radius: 14px;
+      }
+
+      .shot-b {
+        width: 135px;
+        height: 96px;
+        left: 4px;
+        bottom: 8px;
+        border-width: 3px;
+      }
+
+      .shot-c {
+        width: 108px;
+        height: 78px;
+        right: -4px;
+        bottom: -6px;
+        border-width: 3px;
+      }
+
+      .section-title {
+        font-size: clamp(26px, 8vw, 40px);
+        letter-spacing: -.5px;
+      }
+
+      .section-text {
+        font-size: 14px;
+      }
+
+      .motion-card,
+      .motion-card[data-slot="center"],
+      .motion-card[data-slot="right"] {
+        min-height: 340px;
+      }
+
+      .case-card-body {
+        padding: 18px;
+      }
+
+      .case-card-body h3 {
+        font-size: 20px;
+      }
+
+      .ready-scroll {
+        height: 190vh;
+      }
+
+      .ready-phrase {
+        font-size: clamp(58px, 25vw, 108px);
+        letter-spacing: -.08em;
+      }
+
+      .contact-headline {
+        letter-spacing: -.8px;
+      }
+
+      .contact-card {
+        padding: 32px 20px 30px;
+      }
+
+      .toast {
+        left: 16px;
+        right: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+   <div class="qn-wrap">
+    <div class="qn-bar">
+      <a href="./index.html" class="nav-logo">
+        <img src="./assets/logo/logo-one.png" alt="Logo">
+      </a>
+
+      <button class="qn-toggle" id="qnToggle" aria-label="Menu">
+        <div class="qn-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- ===== OVERLAY ===== -->
+  <div class="qn-overlay" id="qnOverlay">
+    <div class="qn-inner">
+      <div class="qn-center">
+        <div class="qn-main">
+          <a href="./about.html">About</a>
+          <a href="./work.html">Work</a>
+          <a href="./services.html">Services</a>
+        </div>
+  
+        <div class="qn-sub">
+          <a href="./contact.html">Contact</a>
+          <a href="./blog.html">Blogs</a>
+          <a href="./team.html">Our Team</a>
+          <a href="./careers.html">Career</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu" style="display: none;">
+    <span class="mm-close" id="mmClose">✕</span>
+    <a href="./about.html">About</a>
+    <a href="./services.html">Services</a>
+    <a href="./work.html">Work</a>
+    <a href="./team.html">Team</a>
+    <a href="./contact.html">Contact</a>
+  </div>
+
+  <div class="grain"></div>
+
+  <main id="top">
+    <section class="hero page-shell" aria-labelledby="heroTitle">
+      <div class="hero-grid">
+        <div>
+          <div class="kicker">Our latest</div>
+          <h1 class="hero-title" id="heroTitle">Case <span>Studies</span></h1>
+          <p class="hero-copy">
+            A premium portfolio page for selected digital projects, crafted with strong visuals and bold project cards.
+          </p>
+        </div>
+
+        <div class="hero-collage" aria-hidden="true">
+          <div class="orbit-line"></div>
+
+          <div class="collage-main">
+            <img src="./assets/workimages/Banner.png" alt="Case studies collage" loading="eager">
+          </div>
+
+          <div class="floating-shot shot-a">
+            <img src="./assets/workimages/top.webp" alt="Fashion project preview" loading="eager">
+          </div>
+
+          <div class="floating-shot shot-b">
+            <img src="./assets/workimages/leftbottom.webp" alt="Travel project preview" loading="eager">
+          </div>
+
+          <div class="floating-shot shot-c">
+            <img src="./assets/workimages/rightbo.webp" alt="Pet project preview" loading="eager">
+          </div>
+        </div>
+      </div>
+
+      <a class="scroll-note" href="#case-studies">
+        <span class="mouse-dot"></span>
+        Explore projects
+      </a>
+    </section>
+
+    <section class="case-section" id="case-studies">
+      <div class="page-shell">
+        <div class="section-head">
+          <h2 class="section-title">
+            A curated selection of work built for clarity, impact and growth.
+          </h2>
+
+          <p class="section-text">
+            Explore selected work through bold visual cards and a smooth responsive layout.
+          </p>
+        </div>
+
+        <div id="motionRows"></div>
+      </div>
+    </section>
+
+    <section class="ready-scroll" aria-label="So ready to start text animation">
+      <div class="ready-stage">
+        <h2 class="ready-phrase" data-ready-phrase data-phrase="So, ready to start?" aria-label="So, ready to start?"></h2>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-section" id="contact" aria-labelledby="contactHeadline">
+      <div class="page-shell">
+        <div class="contact-grid">
+
+          <!-- Left: lead + details -->
+          <div class="contact-lead">
+            <h2 class="contact-headline" id="contactHeadline">
+              Ready to take your brand from just existing to actually unforgettable?
+            </h2>
+
+            <div class="contact-copy">
+              <p>Got a brand to launch, a website to rebuild, a campaign to crack, or content that needs more than just &ldquo;posting&rdquo;?</p>
+              <p>You&rsquo;re in the right room.</p>
+            </div>
+
+            <div class="contact-details">
+              <div class="detail-block">
+                <h4>Contact Us</h4>
+                <a href="tel:+919653412566">+91 9653412566</a>
+                <a href="tel:+918000491663">+91 80004 91663</a>
+              </div>
+
+              <div class="detail-block">
+                <h4>Our Location</h4>
+                <p>138 Vidhyut Nagar, Chitrakoot Marg, Vaishali Nagar, Jaipur, Rajasthan 302021</p>
+              </div>
+
+              <div class="detail-block">
+                <h4>Email</h4>
+                <a href="mailto:contact@qriouscurators.com">contact@qriouscurators.com</a>
+              </div>
+
+              <div class="detail-block">
+                <h4>Social network</h4>
+                <div class="social-row">
+                  <a href="https://www.instagram.com/qrious.curators" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58 0 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s0-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.8c-3.14 0-3.51.02-4.75.07-1.15.05-1.77.25-2.18.41-.55.21-.94.47-1.35.88-.41.41-.67.8-.88 1.35-.16.41-.36 1.03-.41 2.18-.05 1.24-.07 1.61-.07 4.75s.02 3.51.07 4.75c.05 1.15.25 1.77.41 2.18.21.55.47.94.88 1.35.41.41.8.67 1.35.88.41.16 1.03.36 2.18.41 1.24.05 1.61.07 4.75.07s3.51-.02 4.75-.07c1.15-.05 1.77-.25 2.18-.41.55-.21.94-.47 1.35-.88.41-.41.67-.8.88-1.35.16-.41.36-1.03.41-2.18.05-1.24.07-1.61.07-4.75s-.02-3.51-.07-4.75c-.05-1.15-.25-1.77-.41-2.18a3.6 3.6 0 0 0-.88-1.35 3.6 3.6 0 0 0-1.35-.88c-.41-.16-1.03-.36-2.18-.41-1.24-.05-1.61-.07-4.75-.07zm0 3.06A4.98 4.98 0 1 0 12 17.06 4.98 4.98 0 0 0 12 7.08zm0 8.21A3.23 3.23 0 1 1 12 8.83a3.23 3.23 0 0 1 0 6.46zm6.34-8.41a1.16 1.16 0 1 1-2.32 0 1.16 1.16 0 0 1 2.32 0z"/></svg>
+                  </a>
+                  <a href="https://www.linkedin.com/company/qrious-curators" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.94 5A1.94 1.94 0 1 1 3.06 5a1.94 1.94 0 0 1 3.88 0zM3.3 8.5h3.3V21H3.3V8.5zM9.2 8.5h3.16v1.71h.05c.44-.83 1.5-1.71 3.1-1.71 3.32 0 3.93 2.18 3.93 5.02V21h-3.29v-5.55c0-1.32-.02-3.02-1.84-3.02-1.84 0-2.12 1.44-2.12 2.92V21H9.2V8.5z"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: form card -->
+          <div class="contact-card">
+            <h3 class="contact-card-title">Get in Touch</h3>
+            <p class="contact-card-sub">
+              Define your goals and identify areas where strategy, marketing, design, or web can add value to your business.
+            </p>
+          
+            <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+              <!-- Web3Forms required key -->
+              <input type="hidden" name="access_key" value="10fbc6cf-3858-48d2-a063-58186d4224d5">
+              <!-- Optional: subject line of the email you receive -->
+              <input type="hidden" name="subject" value="New enquiry from Qrious Curators website">
+              <input type="hidden" name="from_name" value="Qrious Curators Website">
+              <!-- Honeypot spam filter (leave empty; bots fill it) -->
+              <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+          
+              <div class="field">
+                <input type="text" id="fullName" name="name" placeholder=" " autocomplete="name" required>
+                <label for="fullName">Full Name</label>
+              </div>
+          
+              <div class="field">
+                <input type="email" id="email" name="email" placeholder=" " autocomplete="email" required>
+                <label for="email">Email</label>
+              </div>
+          
+              <div class="field">
+                <input type="text" id="userSubject" name="user_subject" placeholder=" " required>
+                <label for="userSubject">Subject</label>
+              </div>
+          
+              <div class="field">
+                <textarea id="message" name="message" placeholder=" " rows="3" required></textarea>
+                <label for="message">Message</label>
+              </div>
+          
+              <button type="submit" class="submit-btn">
+                <span class="arrow">&rsaquo;</span>
+                Send a Message
+              </button>
+          
+              <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer id="qcFooter">
+    
+      <!-- Large Background Logo -->
+      <div class="footer-bg-logo"></div>
+    
+      <div class="footer-inner">
+    
+        <div class="footer-top">
+    
+          <!-- Left -->
+          <div>
+            <div class="footer-brand-name">
+              <div class="nav-logo-dot"></div>
+              Qrious Curators
+            </div>
+    
+            <p class="footer-text">
+              We build brands, websites, and digital experiences that feel refined,
+              relevant, and made to grow.
+            </p>
+    
+            <div class="footer-socials">
+              <!-- <a href="#" class="f-soc">𝕏</a> -->
+              <a href="https://www.linkedin.com/company/qrious-curators" class="f-soc">in</a>
+              <a href="https://www.instagram.com/qrious.curators" class="f-soc">ig</a>
+            </div>
+          </div>
+    
+          <!-- Services -->
+          <div>
+            <!-- <div class="footer-col-ttl">Services</div> -->
+    
+            <ul class="footer-links">
+              <li><a href="./index.html">Home</a></li>
+              <li><a href="./about.html">About</a></li>
+              <li><a href="./work.html">Work</a></li>
+              <li><a href="./services.html">Services</a></li>
+            </ul>
+          </div>
+    
+          <!-- Company -->
+          <div>
+            <!-- <div class="footer-col-ttl">Company</div> -->
+    
+            <ul class="footer-links">
+              <li><a href="./blog.html">Blog</a></li>
+              <li><a href="./contact.html">Contact</a></li>
+              <li><a href="./careers.html">Careers</a></li>
+              <li><a href="./team.html">Team</a></li>
+            </ul>
+          </div>
+    
+        </div>
+    
+        <div class="footer-bottom">
+    
+          <p class="footer-copy">
+            © 2026 Qrious Curators. All rights reserved.
+          </p>
+    
+          <img
+            src="./assets/logo/logo-one.png"
+            alt="Qrious Curators"
+            class="footer-center-logo"
+          >
+    
+          <p class="footer-made">
+            Designed & Built with <span>♥</span>
+          </p>
+    
+        </div>
+    
+      </div>
+    
+    </footer>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    const cases = [
+    
+      {
+        title: 'AB Jewels',
+        category: ['Websites', 'UI/UX Design'],
+        img: './assets/workimages/work11.webp',
+         link: "./ourworkinnerpages/ab.html"
+      },
+      {
+        title: 'Kapish',
+        category: ['Branding', 'E-commerce'],
+        img: './assets/workimages/work4.webp',
+        link: "./ourworkinnerpages/kapish.html"
+      },
+      {
+        title: 'Mahttab',
+        category: ['Websites', 'UI/UX Design'],
+        img: './assets/workimages/work2.webp',
+        link: "./ourworkinnerpages/mahttab.html"
+      },
+      {
+        title: 'Ideal Coffee Machine',
+        category: ['Social Media', 'UI/UX Design'],
+        img: './assets/workimages/work9.webp',
+        link: "./ourworkinnerpages/ideal.html"
+      },
+      {
+        title: 'Out Bari',
+        category: ['Advertising', 'Social Media'],
+        img: './assets/workimages/work6.webp',
+        link: "./ourworkinnerpages/out.html"
+
+      },
+      {
+        title: 'Hummingbird',
+        category: ['Social Media', 'Advertising'],
+        img: './assets/workimages/work1.webp',
+        link: "./ourworkinnerpages/hummingbird.html"
+      },
+      {
+        title: 'JB Marble Decor',
+        category: ['Websites', 'Branding'],
+        img: './assets/workimages/work3.webp',
+         link: "./ourworkinnerpages/jbmarble.html"
+      },
+      {
+        title: 'Nirankar Stones',
+        category: ['Branding', 'Websites'],
+        img: './assets/workimages/work7.webp',
+         link: "./ourworkinnerpages/nirankar.html"
+      },
+      {
+        title: "J'adore",
+        category: ['Branding', 'UI/UX Design'],
+        img: './assets/workimages/work5.webp'
+
+      },
+
+     
+      {
+        title: 'Vedana',
+        category: ['E-commerce', 'Advertising'],
+        img: './assets/workimages/work8.webp',
+         link: "./ourworkinnerpages/vedana.html"
+      },
+   
+      {
+        title: 'Trendy Aura',
+        category: ['Advertising', 'Branding'],
+        img: './assets/workimages/work10.webp',
+         link: "./ourworkinnerpages/trendyaura.html"
+      },
+    
+      {
+        title: 'Ardhangini',
+        category: ['Performance', 'Marketing'],
+        img: './assets/workimages/work12.webp',
+         link: "./ourworkinnerpages/ardhangini.html"
+      }
+    ];
+
+    function fallbackCard(index) {
+      const gradients = [
+        'radial-gradient(circle at 20% 20%, rgba(255,255,255,.28), transparent 34%), linear-gradient(135deg, #171717, #000000)',
+        'radial-gradient(circle at 80% 10%, rgba(255,255,255,.22), transparent 38%), linear-gradient(135deg, #101010, #1d1d1d)',
+        'radial-gradient(circle at 30% 70%, rgba(255,255,255,.18), transparent 38%), linear-gradient(135deg, #111111, #050505)'
+      ];
+
+      return gradients[index % gradients.length];
+    }
+
+    function slugify(text) {
+      return String(text)
+        .toLowerCase()
+        .trim()
+        .replace(/&/g, 'and')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+    }
+
+    function projectUrl(item) {
+      return item.link;
+    }
+    
+    function chunkArray(array, size) {
+      const chunks = [];
+
+      for (let i = 0; i < array.length; i += size) {
+        chunks.push(array.slice(i, i + size));
+      }
+
+      return chunks;
+    }
+
+    function buildMotionRows() {
+      const wrapper = document.getElementById('motionRows');
+
+      if (!wrapper) return;
+
+      const rows = chunkArray(cases, 3);
+
+      wrapper.innerHTML = rows.map((rowItems, rowIndex) => {
+        return `
+          <section class="motion-row-section" data-motion-section>
+            <div class="motion-row-stage">
+              <div class="motion-row" data-motion-row>
+                ${rowItems.map((item, localIndex) => {
+                  const realIndex = rowIndex * 3 + localIndex;
+                  const slot = localIndex === 0 ? 'left' : localIndex === 1 ? 'center' : 'right';
+                  const isMain = localIndex === 1;
+
+                  const media = item.img
+                    ? `<img src="${item.img}" alt="${item.title}" loading="lazy" onerror="this.style.display='none'; this.parentElement.style.background='${fallbackCard(realIndex)}';">`
+                    : '';
+
+                  return `
+                    <article class="motion-card${isMain ? ' main' : ''}" data-slot="${slot}">
+                      <div class="case-card-media" style="background:${fallbackCard(realIndex)};">
+                        ${media}
+                      </div>
+
+                      <div class="case-card-body">
+                        <h3>${item.title}</h3>
+
+                        <a href="${projectUrl(item)}" class="case-link">
+                          View project <span>→</span>
+                        </a>
+                      </div>
+                    </article>
+                  `;
+                }).join('')}
+              </div>
+            </div>
+          </section>
+        `;
+      }).join('');
+    }
+
+    function initMotionRowsScroll() {
+      const sections = Array.from(document.querySelectorAll('[data-motion-section]'));
+
+      if (!sections.length) return;
+
+      function lerp(a, b, t) {
+        return a + (b - a) * t;
+      }
+
+      function easeOutCubic(t) {
+        return 1 - Math.pow(1 - t, 3);
+      }
+
+      function clamp(v, min, max) {
+        return Math.max(min, Math.min(max, v));
+      }
+
+      function updateSection(section) {
+        const row = section.querySelector('[data-motion-row]');
+        const cardsEls = Array.from(section.querySelectorAll('.motion-card'));
+
+        if (!row || !cardsEls.length) return;
+
+        const isStacked = window.innerWidth <= 900;
+        const rect = section.getBoundingClientRect();
+        const total = rect.height - window.innerHeight;
+        const scrolled = clamp(-rect.top, 0, total);
+        const rawProgress = clamp(total > 0 ? scrolled / total : 0, 0, 1);
+        const eased = easeOutCubic(rawProgress);
+
+        const centerCard = row.querySelector('.motion-card.main');
+        const rowGap = parseFloat(getComputedStyle(row).gap) || 28;
+        const distance = centerCard ? centerCard.offsetWidth + rowGap : 0;
+
+        cardsEls.forEach(card => {
+          const slot = card.dataset.slot;
+
+          if (isStacked) {
+            const opacity = clamp(eased * 1.6, 0, 1);
+            const y = lerp(24, 0, eased);
+
+            card.style.transform = `translateY(${y}px)`;
+            card.style.opacity = slot === 'center' ? 1 : opacity;
+            card.style.zIndex = 1;
+
+            return;
+          }
+
+          if (slot === 'center') {
+            card.style.transform = 'translateX(0) scale(1) rotate(0deg)';
+            card.style.opacity = 1;
+            card.style.zIndex = 10;
+          }
+
+          if (slot === 'left') {
+            const startX = distance;
+            const x = lerp(startX, 0, eased);
+            const scale = lerp(0.86, 1, eased);
+            const rotate = lerp(-6, 0, eased);
+            const opacity = clamp(eased * 1.6, 0, 1);
+
+            card.style.transform = `translateX(${x}px) scale(${scale}) rotate(${rotate}deg)`;
+            card.style.opacity = opacity;
+            card.style.zIndex = 3;
+          }
+
+          if (slot === 'right') {
+            const startX = -distance;
+            const x = lerp(startX, 0, eased);
+            const scale = lerp(0.86, 1, eased);
+            const rotate = lerp(6, 0, eased);
+            const opacity = clamp(eased * 1.6, 0, 1);
+
+            card.style.transform = `translateX(${x}px) scale(${scale}) rotate(${rotate}deg)`;
+            card.style.opacity = opacity;
+            card.style.zIndex = 2;
+          }
+        });
+      }
+
+      function update() {
+        sections.forEach(updateSection);
+      }
+
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+
+      update();
+    }
+
+    function initReadyAnimation() {
+      const phraseEl = document.querySelector('[data-ready-phrase]');
+
+      if (!phraseEl) return;
+
+      const phrase = phraseEl.dataset.phrase || 'So, ready to start?';
+      phraseEl.innerHTML = '';
+
+      const words = phrase.split(' ');
+
+      words.forEach((word, wordIndex) => {
+        const wordWrap = document.createElement('span');
+        wordWrap.className = 'ready-word';
+
+        [...word].forEach((char, charIndex) => {
+          const letter = document.createElement('span');
+          letter.className = 'ready-letter';
+          letter.textContent = char;
+          letter.dataset.dir = charIndex % 2 === 0 ? '-1' : '1';
+
+          wordWrap.appendChild(letter);
+        });
+
+        phraseEl.appendChild(wordWrap);
+
+        if (wordIndex !== words.length - 1) {
+          const space = document.createElement('span');
+          space.className = 'ready-space';
+          phraseEl.appendChild(space);
+        }
+      });
+
+      phraseEl.classList.add('ready-built');
+
+      if (!window.gsap || !window.ScrollTrigger) return;
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      const letters = gsap.utils.toArray('.ready-letter');
+
+      letters.forEach((letter) => {
+        const direction = Number(letter.dataset.dir);
+
+        gsap.set(letter, {
+          yPercent: direction === -1 ? -170 : 170,
+          xPercent: direction === -1 ? -8 : 8,
+          rotateZ: direction === -1 ? -5 : 5,
+          skewY: direction === -1 ? -3 : 3,
+          opacity: 0,
+          filter: 'blur(4px)',
+          transformOrigin: '50% 70%'
+        });
+      });
+
+      gsap.set(phraseEl, {
+        x: () => window.innerWidth * 0.86,
+        yPercent: -50
+      });
+
+      const readyTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.ready-scroll',
+          start: 'top top',
+          end: '+=1750',
+          scrub: 0.72,
+          pin: '.ready-stage',
+          anticipatePin: 1,
+          invalidateOnRefresh: true
+        }
+      });
+
+      readyTimeline
+        .to(letters, {
+          yPercent: 0,
+          xPercent: 0,
+          rotateZ: 0,
+          skewY: 0,
+          opacity: 1,
+          filter: 'blur(0px)',
+          duration: 0.36,
+          stagger: 0.018,
+          ease: 'power4.out'
+        }, 0)
+        .to(phraseEl, {
+          x: () => window.innerWidth * 0.055,
+          duration: 0.55,
+          ease: 'power2.out'
+        }, 0.02)
+        .to(phraseEl, {
+          x: () => -phraseEl.scrollWidth + window.innerWidth * 0.1,
+          duration: 1.04,
+          ease: 'none'
+        }, 0.62)
+        .to(letters, {
+          yPercent: (index) => index % 2 === 0 ? 7 : -7,
+          duration: 0.28,
+          stagger: 0.006,
+          ease: 'none'
+        }, 1.06);
+    }
+
+    function initContactForm() {
+      const form = document.getElementById('contactForm');
+      const note = document.getElementById('formNote');
+
+      if (!form) return;
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name = form.fullName.value.trim();
+        const email = form.email.value.trim();
+        const subject = form.subject.value.trim();
+        const message = form.message.value.trim();
+        const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+        note.classList.remove('ok', 'err');
+
+        if (!name || !email || !subject || !message) {
+          note.textContent = 'Please fill in all fields before sending.';
+          note.classList.add('err');
+          return;
+        }
+
+        if (!emailOk) {
+          note.textContent = 'Please enter a valid email address.';
+          note.classList.add('err');
+          return;
+        }
+
+        note.textContent = 'Thanks, ' + name.split(' ')[0] + '. Your message is on its way.';
+        note.classList.add('ok');
+        form.reset();
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      buildMotionRows();
+      initMotionRowsScroll();
+      initReadyAnimation();
+      initContactForm();
+    });
+  </script>
+  <script src="./scripts/script.js"></script>
+  <script>
+    function initContactForm() {
+      const form = document.getElementById('contactForm');
+      const note = document.getElementById('formNote');
+      const btn = form ? form.querySelector('.submit-btn') : null;
+    
+      if (!form) return;
+    
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+    
+        const name = form.name.value.trim();
+        const email = form.email.value.trim();
+        const subject = form.user_subject.value.trim();
+        const message = form.message.value.trim();
+        const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    
+        note.classList.remove('ok', 'err');
+    
+        if (!name || !email || !subject || !message) {
+          note.textContent = 'Please fill in all fields before sending.';
+          note.classList.add('err');
+          return;
+        }
+    
+        if (!emailOk) {
+          note.textContent = 'Please enter a valid email address.';
+          note.classList.add('err');
+          return;
+        }
+    
+        const originalBtnHTML = btn ? btn.innerHTML : '';
+        if (btn) {
+          btn.disabled = true;
+          btn.innerHTML = 'Sending…';
+        }
+        note.textContent = '';
+    
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: new FormData(form)
+          });
+          const data = await res.json();
+    
+          if (res.ok && data.success) {
+            note.textContent = 'Thanks, ' + name.split(' ')[0] + '. Your message has been sent.';
+            note.classList.add('ok');
+            form.reset();
+          } else {
+            note.textContent = data.message || 'Something went wrong. Please try again.';
+            note.classList.add('err');
+          }
+        } catch (err) {
+          note.textContent = 'Network error. Please check your connection and try again.';
+          note.classList.add('err');
+        } finally {
+          if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = originalBtnHTML;
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>

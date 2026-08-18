@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qrious Curators</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="shortcut icon" href="./assets/logo/fav-icon-one.png" type="image/x-icon">
+</head>
+<body>
+    <div class="main">
+        <!-- Preloader Start -->
+        <div id="preloader">
+            <div class="preloader-content">
+                <img src="./assets/preloader-2.gif" alt="Loading..." />
+            </div>
+        </div>
+        <!-- Preloader End -->
+
+        <header class="qc-header">
+          <nav class="qc-nav" aria-label="Primary Navigation">
+            <!-- Left -->
+            <ul class="qc-nav__group qc-nav__left">
+              <li><a class="qc-link" href="#home">Home</a></li>
+              <li><a class="qc-link" href="#about">About</a></li>
+            </ul>
+        
+            <!-- Center Logo -->
+            <a class="qc-logo" href="#home" aria-label="Qrious Curators">
+              <img src="./assets/logo/logo-one.png" alt="Qrious Curators Logo" />
+              <!-- If you don't have logo image, use text:
+              <span class="qc-logo__text">Qrious Curators</span>
+              -->
+            </a>
+        
+            <!-- Right -->
+            <ul class="qc-nav__group qc-nav__right">
+              <li><a class="qc-link" href="#portfolio">Portfolio</a></li>
+              <li><a class="qc-link qc-link--cta" href="#contact">Get in touch</a></li>
+            </ul>
+        
+            <!-- Mobile Toggle -->
+            <button class="qc-nav__toggle" type="button" aria-label="Open menu" aria-expanded="false">
+              <span></span><span></span><span></span>
+            </button>
+          </nav>
+        
+          <!-- Mobile Menu -->
+          <div class="qc-mobile" aria-hidden="true">
+            <a class="qc-mobile__link" href="#home">Home</a>
+            <a class="qc-mobile__link" href="#about">About</a>
+            <a class="qc-mobile__link" href="#portfolio">Portfolio</a>
+            <a class="qc-mobile__link qc-mobile__cta" href="#contact">Get in touch</a>
+          </div>
+        </header>
+
+        <!-- ------------------------------------------ -->
+        
+        <section class="qc-video-hero" aria-label="Qrious Curators video hero">
+            <video
+            class="qc-video-hero__video"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+          >
+            <source src="./assets/dummy-video.mp4" type="video/mp4" />
+          </video>
+        
+          <!-- Premium overlay (no text) -->
+          <div class="qc-video-hero__overlay" aria-hidden="true"></div>
+        </section>
+        
+        <!-- ------------------------------------------ -->
+
+        <section class="qc-stack-section" id="qc-stack">
+          <div class="qc-stack-grid">
+        
+            <!-- LEFT: Fixed (sticky) column -->
+            <aside class="qc-stack-left" aria-label="Pinned text">
+              <div class="qc-stack-left__inner">
+                <span class="qc-kicker">Key Work</span>
+                <h2 class="qc-title">
+                  We are a design studio focused on clarity, craft, and real-world execution. Our work spans brand systems, digital experiences, and physical products — all shaped through thoughtful design decisions and precise 3D.
+                </h2>
+              </div>
+            </aside>
+        
+            <!-- RIGHT: Stacked sticky cards -->
+            <div class="qc-stack-right" aria-label="Stacked visuals">
+              <article class="qc-stack-card">
+                <img src="https://framerusercontent.com/images/sXpGa5SBIHzL1ZlluLzui0nhLvU.webp?width=1800&height=2400" alt="Team collaboration" loading="lazy">
+              </article>
+        
+              <article class="qc-stack-card">
+                <img src="https://framerusercontent.com/images/9eD88IPKTw4s3e2ACxglJMr1zWs.webp?width=1800&height=2400" alt="Creative planning" loading="lazy">
+              </article>
+        
+              <article class="qc-stack-card">
+                <img src="https://framerusercontent.com/images/ruM84yQKYiTGK0mIWGzyalj01WQ.webp?width=1920&height=2400" alt="Design and analytics" loading="lazy">
+              </article>
+        
+              <article class="qc-stack-card">
+                <img src="https://framerusercontent.com/images/sXpGa5SBIHzL1ZlluLzui0nhLvU.webp?width=1800&height=2400" alt="Team collaboration" loading="lazy">
+              </article>
+        
+              <article class="qc-stack-card">
+                <img src="https://framerusercontent.com/images/9eD88IPKTw4s3e2ACxglJMr1zWs.webp?width=1800&height=2400" alt="Creative planning" loading="lazy">
+              </article>
+        
+            </div>
+        
+          </div>
+        </section>
+
+        <!-- ------------------------------------------ -->
+
+        <section class="qc-horizontal-scroll" id="qc-horizontal-scroll">
+            <div class="qc-horizontal-scroll__sticky">
+                <div class="qc-horizontal-scroll__track">
+                
+                    <!-- Panel 1: Creative Direction -->
+                    <div class="qc-panel qc-panel--one">
+                        <div class="qc-panel__content">
+                            <span class="qc-panel__tag">01</span>
+                            <h2>Creative <br> Direction</h2>
+                            <p>Our creative team brings fresh perspectives and unique ideas to make your brand stand out in a crowded market. From visual concepts to innovative strategies, we bring your vision to life.</p>
+                        </div>
+                        <div class="qc-panel__illustration">
+                            <img src="./assets/illustrations/web-dev-illus.avif" alt="Creative Direction Illustration">
+                        </div>
+                    </div>
+        
+                    <!-- Panel 2: Brand Strategy -->
+                    <div class="qc-panel qc-panel--two">
+                        <div class="qc-panel__content">
+                            <span class="qc-panel__tag">02</span>
+                            <h2>Brand <br> Strategy</h2>
+                            <p>We build brands that are timeless. Through extensive market research, we craft strategies that ensure your brand resonates deeply with your audience, driving growth and engagement.</p>
+                        </div>
+                        <div class="qc-panel__illustration">
+                            <img src="https://via.placeholder.com/400" alt="Brand Strategy Illustration">
+                        </div>
+                    </div>
+        
+                    <!-- Panel 3: Digital Execution -->
+                    <div class="qc-panel qc-panel--three">
+                        <div class="qc-panel__content">
+                            <span class="qc-panel__tag">03</span>
+                            <h2>Digital <br> Execution</h2>
+                            <p>We take your ideas to the digital world. From website development to social media campaigns, we ensure that your brand's digital presence is optimized, engaging, and impactful.</p>
+                        </div>
+                        <div class="qc-panel__illustration">
+                            <img src="https://via.placeholder.com/400" alt="Digital Execution Illustration">
+                        </div>
+                    </div>
+        
+                    <!-- Panel 4: Website Development -->
+                    <div class="qc-panel qc-panel--four">
+                        <div class="qc-panel__content">
+                            <span class="qc-panel__tag">04</span>
+                            <h2>Website <br> Development</h2>
+                            <p>We specialize in building dynamic, responsive websites that are visually stunning and user-friendly. Whether it's a simple landing page or a complex e-commerce site, we ensure top-notch performance and aesthetics.</p>
+                        </div>
+                        <div class="qc-panel__illustration">
+                            <img src="https://via.placeholder.com/400" alt="Website Development Illustration">
+                        </div>
+                    </div>
+        
+                    <!-- Panel 5: Social Media Marketing -->
+                    <div class="qc-panel qc-panel--five">
+                        <div class="qc-panel__content">
+                            <span class="qc-panel__tag">05</span>
+                            <h2>Social Media <br> Marketing</h2>
+                            <p>Maximize your brand’s reach with data-driven social media strategies. From content creation to paid ad campaigns, we help you connect with your audience where they spend most of their time.</p>
+                        </div>
+                        <div class="qc-panel__illustration">
+                            <img src="https://via.placeholder.com/400" alt="Social Media Marketing Illustration">
+                        </div>
+                    </div>
+        
+                    <!-- Panel 6: Content Creation -->
+                    <div class="qc-panel qc-panel--six">
+                        <div class="qc-panel__content">
+                            <span class="qc-panel__tag">06</span>
+                            <h2>Content <br> Creation</h2>
+                            <p>Content is king. Our creative team produces visually compelling content that speaks to your audience, including videos, blogs, graphics, and more, tailored to your brand’s voice.</p>
+                        </div>
+                        <div class="qc-panel__illustration">
+                            <img src="https://via.placeholder.com/400" alt="Content Creation Illustration">
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+        </section>
+
+        <!-- ------------------------------------------ -->
+        
+        <section class="qc-sticky-cards-section" id="qcStickyCards">
+            <div class="qc-sticky-cards-pin">
+                <div class="qc-sticky-cards-inner">
+        
+                    <div class="qc-sticky-cards-heading">
+                        <span class="sub-title">Our Process</span>
+                        <h2>How We Build <br> Digital Growth</h2>
+                    </div>
+        
+                    <div class="qc-sticky-cards-row" id="qcCardsRow">
+                        <div class="qc-process-card">
+                            <span class="card-count">01</span>
+                            <h3>Discover</h3>
+                            <p>We understand your brand, audience, positioning, and business goals before building anything.</p>
+                        </div>
+        
+                        <div class="qc-process-card">
+                            <span class="card-count">02</span>
+                            <h3>Strategize</h3>
+                            <p>We define the right direction across branding, content, performance, and digital experience.</p>
+                        </div>
+        
+                        <div class="qc-process-card">
+                            <span class="card-count">03</span>
+                            <h3>Create</h3>
+                            <p>From visuals to websites and campaigns, every asset is designed with clarity and intent.</p>
+                        </div>
+        
+                        <div class="qc-process-card">
+                            <span class="card-count">04</span>
+                            <h3>Scale</h3>
+                            <p>We optimize continuously so your brand doesn’t just launch well — it grows sustainably.</p>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+        </section>
+
+        <!-- ------------------------------------------ -->
+
+        <section class="qc-team-sticky-section" id="qcTeamSection">
+            <div class="qc-team-sticky-wrap">
+        
+                <!-- Sticky Heading -->
+                <div class="qc-team-sticky-heading">
+                    <span class="qc-team-kicker">Meet the Team</span>
+                    <h2>Our Team of <br> Creative Minds</h2>
+                </div>
+        
+                <!-- Scrolling Cards Layer -->
+                <div class="qc-team-cards-layer" id="qcTeamCardsLayer">
+        
+                    <div class="qc-team-card fade-in-up">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80" alt="Sarah Khan">
+                        <div class="qc-team-card-content">
+                            <h4>Sarah Khan</h4>
+                            <span>Creative Director</span>
+                        </div>
+                    </div>
+        
+                    <div class="qc-team-card fade-in-up">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80" alt="Arjun Mehta">
+                        <div class="qc-team-card-content">
+                            <h4>Arjun Mehta</h4>
+                            <span>Brand Strategist</span>
+                        </div>
+                    </div>
+        
+                    <div class="qc-team-card fade-in-up">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80" alt="Emily Roy">
+                        <div class="qc-team-card-content">
+                            <h4>Emily Roy</h4>
+                            <span>UI / UX Designer</span>
+                        </div>
+                    </div>
+        
+                    <div class="qc-team-card fade-in-up">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=80" alt="Daniel Joseph">
+                        <div class="qc-team-card-content">
+                            <h4>Daniel Joseph</h4>
+                            <span>Performance Marketer</span>
+                        </div>
+                    </div>
+        
+                    <div class="qc-team-card">
+                        <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=900&q=80" alt="Riya Sharma">
+                        <div class="qc-team-card-content">
+                            <h4>Riya Sharma</h4>
+                            <span>Content Lead</span>
+                        </div>
+                    </div>
+        
+                    <div class="qc-team-card">
+                        <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=900&q=80" alt="James Lee">
+                        <div class="qc-team-card-content">
+                            <h4>James Lee</h4>
+                            <span>Video Producer</span>
+                        </div>
+                    </div>
+        
+                    <div class="qc-team-card">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=900&q=80" alt="Aanya Kapoor">
+                        <div class="qc-team-card-content">
+                            <h4>Aanya Kapoor</h4>
+                            <span>Visual Designer</span>
+                        </div>
+                    </div>
+        
+                    <div class="qc-team-card">
+                        <img src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?auto=format&fit=crop&w=900&q=80" alt="Kabir Sethi">
+                        <div class="qc-team-card-content">
+                            <h4>Kabir Sethi</h4>
+                            <span>Web Developer</span>
+                        </div>
+                    </div>
+        
+                    <div class="qc-team-card">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80" alt="Naina Verma">
+                        <div class="qc-team-card-content">
+                            <h4>Naina Verma</h4>
+                            <span>Social Media Lead</span>
+                        </div>
+                    </div>
+        
+                    <div class="qc-team-card">
+                        <img src="https://images.unsplash.com/photo-1504257432389-52343af06ae3?auto=format&fit=crop&w=900&q=80" alt="Rehan Ali">
+                        <div class="qc-team-card-content">
+                            <h4>Rehan Ali</h4>
+                            <span>Copywriter</span>
+                        </div>
+                    </div>
+        
+                    <div class="qc-team-card">
+                        <img src="https://images.unsplash.com/photo-1546961329-78bef0414d7c?auto=format&fit=crop&w=900&q=80" alt="Tanya Dsouza">
+                        <div class="qc-team-card-content">
+                            <h4>Tanya Dsouza</h4>
+                            <span>Account Manager</span>
+                        </div>
+                    </div>
+        
+                    <div class="qc-team-card">
+                        <img src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?auto=format&fit=crop&w=900&q=80" alt="Vivaan Khurana">
+                        <div class="qc-team-card-content">
+                            <h4>Vivaan Khurana</h4>
+                            <span>Growth Specialist</span>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- ------------------------------------------ -->
+
+        <footer class="qc-footer-premium fade-footer" id="qcFooter">
+            <div class="qc-footer-premium__glow"></div>
+        
+            <div class="qc-footer-premium__inner">
+        
+                <div class="qc-footer-premium__top">
+                    <div class="qc-footer-premium__brand">
+                        <a href="#" class="qc-footer-premium__logo">Qrious Curators</a>
+                        <p class="qc-footer-premium__text">
+                            We build brands, websites, and digital experiences
+                            that feel refined, relevant, and made to grow.
+                        </p>
+                    </div>
+        
+                    <div class="qc-footer-premium__menu">
+                        <span class="qc-footer-premium__label">Pages</span>
+                        <a href="#">Home</a>
+                        <a href="#">About</a>
+                        <a href="#">Portfolio</a>
+                        <a href="#">Contact</a>
+                    </div>
+        
+                    <div class="qc-footer-premium__menu">
+                        <span class="qc-footer-premium__label">Social</span>
+                        <a href="#">Instagram</a>
+                        <a href="#">LinkedIn</a>
+                        <a href="#">Behance</a>
+                    </div>
+                </div>
+        
+                <div class="qc-footer-premium__bottom">
+                    <p>© 2026 Qrious Curators. All rights reserved.</p>
+                    <a href="#">Privacy Policy</a>
+                </div>
+        
+            </div>
+        </footer>
+
+
+    </div>
+    <script src="./scripts/script.js"></script>
+</body>
+</html>

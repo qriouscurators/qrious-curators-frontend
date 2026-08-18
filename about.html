@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Qrious Curators About Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;450;500;600;700;800;850;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="./assets/logo/fav-icon-one.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="./styles/aboutsection-qc.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body>
+    <!-- CUSTOM CURSOR -->
+    <div id="qc-cur"></div>
+    <div id="qc-cur-ring"></div>
+
+    <!-- NAVBAR -->
+    <div class="qn-wrap">
+      <div class="qn-bar">
+        <a href="./index.html" class="nav-logo">
+          <img src="./assets/logo/logo-one.png" alt="Logo" />
+        </a>
+
+        <button class="qn-toggle" id="qnToggle">
+          <div class="qn-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- ===== OVERLAY ===== -->
+    <div class="qn-overlay" id="qnOverlay">
+      <div class="qn-inner">
+        <div class="qn-center">
+          <div class="qn-main">
+            <a href="./about.html">About</a>
+            <a href="./work.html">Work</a>
+            <a href="./services.html">Services</a>
+          </div>
+    
+          <div class="qn-sub">
+            <a href="./contact.html">Contact</a>
+            <a href="./blog.html">Blogs</a>
+            <a href="./team.html">Our Team</a>
+            <a href="./careers.html">Career</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu" style="display: none;">
+      <span class="mm-close" id="mmClose">✕</span>
+      <a href="./about.html">About</a>
+      <a href="./services.html">Services</a>
+      <a href="./work.html">Work</a>
+      <a href="./team.html">Team</a>
+      <a href="./contact.html">Contact</a>
+    </div>
+
+    <!-- <section class="journey-spacer">
+    About Us
+    
+  </section> -->
+
+    <section class="about-horizontal">
+      <div class="about-pin">
+        <div class="works-dots">
+          <div class="dot active"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+        <div class="works-hud">
+          <div class="ui-progress-container">
+            <span class="progress-num">INTRO / 06</span>
+            <div class="progress-bar">
+              <div class="progress-fill"></div>
+            </div>
+          </div>
+        </div>
+        <!-- Horizontal scrolling track -->
+        <div class="horizontal-track">
+          <!-- PANEL 1: Founders Intro -->
+          <article class="panel panel-year">
+            <div class="bg-orb"></div>
+            <div class="panel-inner">
+              <div class="year-copy">
+                <div class="eyebrow">It all started in 2022</div>
+                <h2>ABHAY & BHAVANA</h2>
+                <p>
+                  
+                 We started Qrious with one simple thought brands deserve people who understand them before trying 
+                 to market them.
+ 
+                </p>
+              </div>
+            </div>
+            <div class="seed-circle">
+              <img src="./assets/logo/logo-one.png" alt="Logo" />
+            </div>
+            <div class="circle-reveal">
+              <img alt="Founder portrait" src="./assets/homeimages/ab.webp" />
+            </div>
+          </article>
+          <!-- PANEL 2: Company Journey (Works Track) -->
+          <article class="panel panel-works-track">
+            <!-- Title overlay visible at start of Panel 2 -->
+            <div class="intro-container">
+              <span class="intro-subtitle">Qrious Curators</span>
+              <h1 class="intro-title">Our<br />Journey</h1>
+              <span class="scroll-text">Keep scrolling to enter</span>
+            </div>
+            <div class="track-wrapper">
+              <div class="track-frame">
+                <div class="track-line"></div>
+                <!-- Dynamically populated cards will be placed here -->
+              </div>
+            </div>
+          </article>
+          <!-- PANEL 3 (Old Panel 2): iPad Experience Product Section -->
+         
+          <!-- PANEL 4 : (Expanding rectangle - Qrious Curators reveal) -->
+          <article class="panel panel-but-not">
+            <section class="but-not-section">
+              <!-- Expanding rounded rectangle -->
+              <div class="but-expand-bg"></div>
+
+              <!-- Deco LEFT -->
+              <svg
+                class="deco-left"
+                viewBox="0 0 280 900"
+                fill="none"
+                preserveAspectRatio="xMidYMid meet"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M -20 80 C 60 80 80 160 80 240 L 80 310 C 80 390 160 430 220 430 C 260 430 280 460 280 500"
+                  stroke="rgba(255,255,255,0.22)"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  fill="none"
+                />
+                <circle cx="80" cy="275" r="6" fill="rgba(255,255,255,0.5)" />
+                <circle cx="80" cy="275" r="3" fill="#fff" />
+                <circle cx="220" cy="430" r="6" fill="rgba(255,255,255,0.5)" />
+                <circle cx="220" cy="430" r="3" fill="#fff" />
+                <path
+                  d="M -20 200 C 40 200 60 260 60 330 L 60 420 C 60 480 30 510 -20 510"
+                  stroke="rgba(255,255,255,0.08)"
+                  stroke-width="1"
+                  stroke-linecap="round"
+                  fill="none"
+                />
+                <path
+                  d="M 0 30 L 0 0 L 48 0"
+                  stroke="rgba(255,255,255,0.15)"
+                  stroke-width="1.2"
+                  stroke-linecap="round"
+                  fill="none"
+                />
+                <path
+                  d="M 0 870 L 0 900 L 48 900"
+                  stroke="rgba(255,255,255,0.15)"
+                  stroke-width="1.2"
+                  stroke-linecap="round"
+                  fill="none"
+                />
+                <circle cx="32" cy="620" r="2.5" fill="rgba(255,255,255,0.2)" />
+                <circle cx="70" cy="680" r="2" fill="rgba(255,255,255,0.15)" />
+                <circle cx="20" cy="740" r="3" fill="rgba(255,255,255,0.12)" />
+                <line
+                  x1="16"
+                  y1="140"
+                  x2="28"
+                  y2="140"
+                  stroke="rgba(255,255,255,0.2)"
+                  stroke-width="1"
+                />
+                <line
+                  x1="16"
+                  y1="160"
+                  x2="22"
+                  y2="160"
+                  stroke="rgba(255,255,255,0.12)"
+                  stroke-width="1"
+                />
+                <line
+                  x1="16"
+                  y1="180"
+                  x2="26"
+                  y2="180"
+                  stroke="rgba(255,255,255,0.16)"
+                  stroke-width="1"
+                />
+              </svg>
+
+              <!-- Deco RIGHT -->
+              <svg
+                class="deco-right"
+                viewBox="0 0 280 900"
+                fill="none"
+                preserveAspectRatio="xMidYMid meet"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M 300 80 C 220 80 200 160 200 240 L 200 310 C 200 390 120 430 60 430 C 20 430 0 460 0 500"
+                  stroke="rgba(255,255,255,0.22)"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  fill="none"
+                />
+                <circle cx="200" cy="275" r="6" fill="rgba(255,255,255,0.5)" />
+                <circle cx="200" cy="275" r="3" fill="#fff" />
+                <circle cx="60" cy="430" r="6" fill="rgba(255,255,255,0.5)" />
+                <circle cx="60" cy="430" r="3" fill="#fff" />
+                <path
+                  d="M 300 200 C 240 200 220 260 220 330 L 220 420 C 220 480 250 510 300 510"
+                  stroke="rgba(255,255,255,0.08)"
+                  stroke-width="1"
+                  stroke-linecap="round"
+                  fill="none"
+                />
+                <path
+                  d="M 280 30 L 280 0 L 232 0"
+                  stroke="rgba(255,255,255,0.15)"
+                  stroke-width="1.2"
+                  stroke-linecap="round"
+                  fill="none"
+                />
+                <path
+                  d="M 280 870 L 280 900 L 232 900"
+                  stroke="rgba(255,255,255,0.15)"
+                  stroke-width="1.2"
+                  stroke-linecap="round"
+                  fill="none"
+                />
+                <circle
+                  cx="248"
+                  cy="620"
+                  r="2.5"
+                  fill="rgba(255,255,255,0.2)"
+                />
+                <circle cx="210" cy="680" r="2" fill="rgba(255,255,255,0.15)" />
+                <circle cx="260" cy="740" r="3" fill="rgba(255,255,255,0.12)" />
+                <line
+                  x1="264"
+                  y1="140"
+                  x2="252"
+                  y2="140"
+                  stroke="rgba(255,255,255,0.2)"
+                  stroke-width="1"
+                />
+                <line
+                  x1="264"
+                  y1="160"
+                  x2="258"
+                  y2="160"
+                  stroke="rgba(255,255,255,0.12)"
+                  stroke-width="1"
+                />
+                <line
+                  x1="264"
+                  y1="180"
+                  x2="254"
+                  y2="180"
+                  stroke="rgba(255,255,255,0.16)"
+                  stroke-width="1"
+                />
+              </svg>
+
+              <!-- Logo -->
+              <div class="but-icon">
+                <img alt="Logo" src="./images/logo.png" />
+              </div>
+
+              <!-- Inline row: logo spacer + heading -->
+              <div class="but-dark-content">
+                <div class="brand-logo-space"></div>
+                <div class="brand-info">
+                  <h1>Qrious Curators</h1>
+                </div>
+              </div>
+
+              <!-- Big sub text -->
+              <div class="brand-sub">
+                <p>
+                  Designing digital experiences that push the boundaries of
+                  what's possible
+                </p>
+              </div>
+            </section>
+          </article>
+          <!-- PANEL 5 (Old Panel 4): Spacer Keep -->
+          <article aria-hidden="true" class="panel panel-spacer-keep"></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- <section class="ark-animate-section ark-reveal-item">
+      <div class="ark-animate-content">
+        <h2>Animate your designs<br />in minutes</h2>
+        <p>
+          A keynote on steroids - Move is a simple yet powerful animation tool
+          allowing anyone to animate regardless of motion experience
+        </p>
+      </div>
+      <div class="ark-animate-visual">
+        <div class="ark-screen-frame">
+          <div class="ark-screen-canvas">
+            <div class="ark-left-toolbar">
+              <span>➤</span>
+              <span>✦</span>
+              <span>□</span>
+              <span>T</span>
+              <span>▧</span>
+            </div>
+            <div class="ark-blue-card"></div>
+            <div class="ark-purple-card">
+              <div class="ark-top-line"></div>
+              <div class="ark-star-shape"></div>
+            </div>
+            <div class="ark-small-burst ark-burst-one"></div>
+            <div class="ark-small-burst ark-burst-two"></div>
+            <div class="ark-video-text">
+              <span class="ark-word-video">Video</span>
+              <span class="ark-word-is">is</span>
+              <span class="ark-word-king">King</span>
+            </div>
+            <div class="ark-play ark-play-one"></div>
+            <div class="ark-play ark-play-two"></div>
+            <div class="ark-designer-tag">Graphic Designer</div>
+            <div class="ark-timeline-box">
+              <div class="ark-timeline-top"></div>
+              <div class="ark-timeline-row"></div>
+              <div class="ark-timeline-row ark-second"></div>
+              <div class="ark-timeline-label ark-label-one">Typewriter</div>
+              <div class="ark-timeline-label ark-label-two">Position</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <section class="ark-stats-section ark-reveal-item">
+      <h2 class="ark-stats-title">
+        Qrious Curators helps driven brands to have their unique space<br />
+        in the landscape of brand reputation, recognition
+        <span>and<br />authenticity through smart solutions</span>
+      </h2>
+      <div class="ark-stats-wrapper">
+        <div class="ark-stat-card">
+          <p>Projects Launched</p>
+          <div class="ark-stat-line"></div>
+          <h3><span class="ark-counter" data-target="140">0</span>+</h3>
+        </div>
+        <div class="ark-stat-card">
+          <p>Years Of Experience</p>
+          <div class="ark-stat-line"></div>
+          <h3><span class="ark-counter" data-target="4">0</span>+</h3>
+        </div>
+        <div class="ark-stat-card">
+          <p>Satisfied customers</p>
+          <div class="ark-stat-line"></div>
+          <h3><span class="ark-counter" data-target="78">0</span>+</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- <section class="ark-global-section ark-reveal-item">
+      <div class="ark-cards-line-wrapper">
+        <svg
+          class="ark-cards-line"
+          preserveAspectRatio="none"
+          viewBox="0 0 1900 310"
+        >
+          <path
+            d="M107 35 
+            H560 
+            C620 35 667 70 667 122 
+            V205 
+            C667 260 712 300 780 300 
+            H1120 
+            C1188 300 1232 260 1232 205 
+            V122 
+            C1232 70 1280 35 1340 35 
+            H1793"
+          ></path>
+          <circle cx="107" cy="35" r="15"></circle>
+          <circle cx="1793" cy="35" r="15"></circle>
+        </svg>
+        <div class="ark-info-cards">
+          <article>
+            <h3>Careers</h3>
+            <p>Become part of our exceptional team of talented creatives.</p>
+            <a href="./careers.html">
+              <button>Learn more</button>
+            </a>
+          </article>
+          <article>
+            <h3>Blogs</h3>
+            <p>Explore what others are saying about us.</p>
+            <button>Learn more</button>
+          </article>
+          <article>
+            <h3>Contact</h3>
+            <p>
+              Stay up to date with the latest updates, design trends, and more.
+            </p>
+            <a href="./contact.html">
+              <button>Learn more</button>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section> -->
+    <!-- ===== FOOTER ===== -->
+    <footer id="qcFooter">
+    
+      <!-- Large Background Logo -->
+      <div class="footer-bg-logo"></div>
+    
+      <div class="footer-inner">
+    
+        <div class="footer-top">
+    
+          <!-- Left -->
+          <div>
+            <div class="footer-brand-name">
+              <div class="nav-logo-dot"></div>
+              Qrious Curators
+            </div>
+    
+            <p class="footer-text">
+              We build brands, websites, and digital experiences that feel refined,
+              relevant, and made to grow.
+            </p>
+    
+            <div class="footer-socials">
+              <!-- <a href="#" class="f-soc">𝕏</a> -->
+              <a href="https://www.linkedin.com/company/qrious-curators" class="f-soc">in</a>
+              <a href="https://www.instagram.com/qrious.curators" class="f-soc">ig</a>
+            </div>
+          </div>
+    
+          <!-- Services -->
+          <div>
+            <!-- <div class="footer-col-ttl">Services</div> -->
+    
+            <ul class="footer-links">
+              <li><a href="./index.html">Home</a></li>
+              <li><a href="./about.html">About</a></li>
+              <li><a href="./work.html">Work</a></li>
+              <li><a href="./services.html">Services</a></li>
+            </ul>
+          </div>
+    
+          <!-- Company -->
+          <div>
+            <!-- <div class="footer-col-ttl">Company</div> -->
+    
+            <ul class="footer-links">
+              <li><a href="./blog.html">Blog</a></li>
+              <li><a href="./contact.html">Contact</a></li>
+              <li><a href="./careers.html">Careers</a></li>
+              <li><a href="./team.html">Team</a></li>
+            </ul>
+          </div>
+    
+        </div>
+    
+        <div class="footer-bottom">
+    
+          <p class="footer-copy">
+            © 2026 Qrious Curators. All rights reserved.
+          </p>
+    
+          <img
+            src="./assets/logo/logo-one.png"
+            alt="Qrious Curators"
+            class="footer-center-logo"
+          >
+    
+          <p class="footer-made">
+            Designed & Built with <span>♥</span>
+          </p>
+    
+        </div>
+    
+      </div>
+    
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="./scripts/aboutsection-qc.js"></script>
+    <script src="./scripts/script.js"></script>
+  </body>
+</html>

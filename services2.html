@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — Qrious Curators</title>
+
+  <!-- Your existing website CSS -->
+  <link rel="stylesheet" href="./styles/style.css" />
+
+  <!-- Isolated services motion CSS -->
+  <link rel="stylesheet" href="./styles/service2.css" />
+</head>
+
+<body>
+  <div id="qc-cur"></div>
+  <div id="qc-cur-ring"></div>
+
+  <!-- =========================
+       EXISTING Qrious NAVBAR
+  ========================== -->
+  <div class="qn-wrap">
+    <div class="qn-bar">
+      <a href="./index.html" class="nav-logo">
+        <img src="./assets/logo/logo-one.png" alt="Qrious Curators Logo" />
+      </a>
+
+      <button class="qn-toggle" id="qnToggle" type="button" aria-label="Open menu">
+        <div class="qn-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <div class="qn-overlay" id="qnOverlay">
+    <div class="qn-inner">
+      <div class="qn-center">
+        <div class="qn-main">
+          <a href="./about.html">About</a>
+          <a href="./work.html">Work</a>
+          <a href="./services.html">Services</a>
+        </div>
+
+        <div class="qn-sub">
+          <a href="./contact.html">Contact</a>
+          <a href="./blog.html">Blogs</a>
+          <a href="./team.html">Our Team</a>
+          <a href="./careers.html">Career</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu" style="display:none;">
+    <span class="mm-close" id="mmClose">✕</span>
+    <a href="./about.html">About</a>
+    <a href="./services.html">Services</a>
+    <a href="./work.html">Work</a>
+    <a href="./team.html">Team</a>
+    <a href="./contact.html">Contact</a>
+  </div>
+
+
+  <!-- =========================
+       SERVICES MOTION SECTION
+       IMPORTANT:
+       Do not wrap this in any parent
+       with overflow:hidden/auto or transform.
+  ========================== -->
+  <main class="qc-services-page">
+    <section id="services" class="qc-services-scroll" aria-label="Our services">
+      <div class="qc-services-sticky">
+        <div class="qc-services-stage">
+
+          <article class="qc-service-panel" data-title="Brand Strategy">
+            <div class="qc-panel-copy">
+              <div class="qc-panel-icon">◆</div>
+              <div class="qc-panel-text">
+                <p class="qc-eyebrow">Service 01</p>
+                <h2>Brand Strategy</h2>
+                <p>Positioning, brand voice and a clear visual direction that gives every touchpoint one strong point of view.</p>
+              </div>
+              <a class="qc-service-link" href="#">
+                Discover the service <span>↗</span>
+              </a>
+            </div>
+
+            <div class="qc-panel-art qc-art-1" aria-hidden="true">
+              <div class="qc-art-card qc-poster-a"><span>Build a brand<br>people remember.</span></div>
+              <div class="qc-art-card qc-tile-a"></div>
+              <div class="qc-art-card qc-mini-a"><span>VOICE</span><b>01</b></div>
+              <div class="qc-floating-chip">Strategy / Identity</div>
+            </div>
+          </article>
+
+
+          <article class="qc-service-panel" data-title="Social Media">
+            <div class="qc-panel-copy">
+              <div class="qc-panel-icon">◫</div>
+              <div class="qc-panel-text">
+                <p class="qc-eyebrow">Service 02</p>
+                <h2>Social Media</h2>
+                <p>Platform-native content systems, monthly storytelling and daily creative that keeps the brand consistently active.</p>
+              </div>
+              <a class="qc-service-link" href="#">
+                Discover the service <span>↗</span>
+              </a>
+            </div>
+
+            <div class="qc-panel-art qc-art-2" aria-hidden="true">
+              <div class="qc-phone-shell">
+                <div class="qc-phone-feed">
+                  <div></div><div></div><div></div>
+                </div>
+              </div>
+              <div class="qc-art-card qc-post-a"><span>NEW<br>DROP</span></div>
+              <div class="qc-art-card qc-post-b"><span>STORY<br>FIRST</span></div>
+              <div class="qc-floating-chip">Reels / Stories / Grid</div>
+            </div>
+          </article>
+
+
+          <article class="qc-service-panel" data-title="Content Production">
+            <div class="qc-panel-copy">
+              <div class="qc-panel-icon">●</div>
+              <div class="qc-panel-text">
+                <p class="qc-eyebrow">Service 03</p>
+                <h2>Content Production</h2>
+                <p>Campaign shoots, product films, UGC and short-form videos planned to look good and perform even better.</p>
+              </div>
+              <a class="qc-service-link" href="#">
+                Discover the service <span>↗</span>
+              </a>
+            </div>
+
+            <div class="qc-panel-art qc-art-3" aria-hidden="true">
+              <div class="qc-video-frame">
+                <span class="qc-play">▶</span>
+                <span class="qc-timeline"></span>
+              </div>
+              <div class="qc-art-card qc-camera-card"><span>00:14</span></div>
+              <div class="qc-art-card qc-portrait-card"></div>
+              <div class="qc-floating-chip">Shoot / Edit / Motion</div>
+            </div>
+          </article>
+
+
+          <article class="qc-service-panel" data-title="Performance Marketing">
+            <div class="qc-panel-copy">
+              <div class="qc-panel-icon">↗</div>
+              <div class="qc-panel-text">
+                <p class="qc-eyebrow">Service 04</p>
+                <h2>Performance Marketing</h2>
+                <p>Paid media, testing and conversion-led creative built around one goal: turning attention into measurable growth.</p>
+              </div>
+              <a class="qc-service-link" href="#">
+                Discover the service <span>↗</span>
+              </a>
+            </div>
+
+            <div class="qc-panel-art qc-art-4" aria-hidden="true">
+              <div class="qc-metric-card"><span>ROAS</span><strong>4.8×</strong><i></i></div>
+              <div class="qc-chart-card"><span class="qc-chart-line"></span></div>
+              <div class="qc-art-card qc-ad-card"><span>AD<br>SET 07</span></div>
+              <div class="qc-floating-chip">Meta / Google / Funnels</div>
+            </div>
+          </article>
+
+
+          <article class="qc-service-panel" data-title="Web Design & Development">
+            <div class="qc-panel-copy">
+              <div class="qc-panel-icon">▣</div>
+              <div class="qc-panel-text">
+                <p class="qc-eyebrow">Service 05</p>
+                <h2>Web Design &amp; Development</h2>
+                <p>Fast, responsive websites with strong visual hierarchy, thoughtful interactions and conversion-ready structure.</p>
+              </div>
+              <a class="qc-service-link" href="#">
+                Discover the service <span>↗</span>
+              </a>
+            </div>
+
+            <div class="qc-panel-art qc-art-5" aria-hidden="true">
+              <div class="qc-browser-card">
+                <div class="qc-browser-top"><i></i><i></i><i></i></div>
+                <div class="qc-browser-body"><span></span><b></b><b></b></div>
+              </div>
+              <div class="qc-code-card">
+                <span>&lt;build&gt;</span>
+                <small>responsive<br>interactive<br>fast</small>
+              </div>
+              <div class="qc-floating-chip">UI / UX / Development</div>
+            </div>
+          </article>
+
+
+          <article class="qc-service-panel" data-title="E-commerce">
+            <div class="qc-panel-copy">
+              <div class="qc-panel-icon">□</div>
+              <div class="qc-panel-text">
+                <p class="qc-eyebrow">Service 06</p>
+                <h2>E-commerce</h2>
+                <p>Shopify storefronts, product journeys and campaign landing pages made to reduce friction from browse to checkout.</p>
+              </div>
+              <a class="qc-service-link" href="#">
+                Discover the service <span>↗</span>
+              </a>
+            </div>
+
+            <div class="qc-panel-art qc-art-6" aria-hidden="true">
+              <div class="qc-product-card">
+                <div class="qc-product-img"></div>
+                <span>New arrival</span>
+                <strong>ADD TO BAG</strong>
+              </div>
+              <div class="qc-cart-card">
+                <span>Cart</span><b>03</b><small>Ready to checkout</small>
+              </div>
+              <div class="qc-floating-chip">Shopify / CRO / Launches</div>
+            </div>
+          </article>
+
+
+          <article class="qc-service-panel" data-title="Creative Campaigns">
+            <div class="qc-panel-copy">
+              <div class="qc-panel-icon">✦</div>
+              <div class="qc-panel-text">
+                <p class="qc-eyebrow">Service 07</p>
+                <h2>Creative Campaigns</h2>
+                <p>Big ideas translated into launch concepts, seasonal campaigns and multi-format executions people actually notice.</p>
+              </div>
+              <a class="qc-service-link" href="#">
+                Discover the service <span>↗</span>
+              </a>
+            </div>
+
+            <div class="qc-panel-art qc-art-7" aria-hidden="true">
+              <div class="qc-campaign-word">MAKE<br>NOISE.</div>
+              <div class="qc-art-card qc-campaign-a"></div>
+              <div class="qc-art-card qc-campaign-b"><span>07</span></div>
+              <div class="qc-floating-chip">Concept / Art Direction</div>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="qc-service-index" aria-hidden="true">
+          <span class="qc-index-number" id="qcIndexNumber">01</span>
+          <span class="qc-index-line"><i id="qcIndexProgress"></i></span>
+          <span class="qc-index-number">07</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- =========================
+       EXISTING Qrious FOOTER
+  ========================== -->
+  <footer id="qcFooter">
+    <div class="footer-bg-logo"></div>
+
+    <div class="footer-inner">
+      <div class="footer-top">
+
+        <div>
+          <div class="footer-brand-name">
+            <div class="nav-logo-dot"></div>
+            Qrious Curators
+          </div>
+
+          <p class="footer-text">
+            We build brands, websites, and digital experiences that feel refined,
+            relevant, and made to grow.
+          </p>
+
+          <div class="footer-socials">
+            <a href="https://www.linkedin.com/company/qrious-curators" class="f-soc" aria-label="LinkedIn">
+              <img src="assets/homeimages/linkdinn.png" alt="LinkedIn" class="f-soc-icon">
+            </a>
+
+            <a href="https://www.instagram.com/qrious.curators" class="f-soc" aria-label="Instagram">
+              <img src="assets/homeimages/instagramm.png" alt="Instagram" class="f-soc-icon">
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <ul class="footer-links">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./work.html">Work</a></li>
+            <li><a href="./services.html">Services</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <ul class="footer-links">
+            <li><a href="./blog.html">Blog</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+            <li><a href="./careers.html">Careers</a></li>
+            <li><a href="./team.html">Team</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 Qrious Curators. All rights reserved.</p>
+
+        <img
+          src="./assets/logo/logo-one.png"
+          alt="Qrious Curators"
+          class="footer-center-logo"
+        >
+
+        <p class="footer-made">
+          Designed &amp; Built with <span>♥</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Your existing website JS: navbar, cursor, footer interactions, etc. -->
+  <script src="./scripts/script.js"></script>
+
+  <!-- Services stacked-scroll motion -->
+  <script src="./scripts/service2.js"></script>
+</body>
+</html>

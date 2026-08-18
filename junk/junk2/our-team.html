@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Our Team — Qrious Curators</title>
+
+  <link
+    rel="shortcut icon"
+    href="./assets/logo/fav-icon-one.png"
+    type="image/x-icon"
+  />
+
+  <!-- Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap"
+    rel="stylesheet" />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./styles/style.css" />
+  <link rel="stylesheet" href="./styles/about.css" />
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./assets/logo/fav-icon-one.png" type="image/x-icon" />
+</head>
+<style>
+    .service-section{
+      position:relative;
+      width:100%;
+      height:100vh;
+    }
+    
+    .section-bg-media{
+      position:fixed;
+      inset:0;
+      z-index:0;
+    }
+    
+    .section-bg-media{
+    background-color:rgb(0, 0, 0);
+    }
+    
+    .service-heading-wrap{
+      position:absolute;
+      left:1%;
+      top:45%;
+      transform:translateY(-50%);
+      z-index:5;
+    }
+    
+    .service-number{
+      display:block;
+      font-size:14px;
+      color:#bdbdbd;
+      margin-bottom:20px;
+      letter-spacing:2px;
+      padding-left:40px;
+    }
+    
+    .service-heading{
+      font-size:clamp(40px,11vw,100px);
+      line-height:0.9;
+      font-weight:400;
+      color:#fff;
+      letter-spacing:-4px;
+      padding-left: 50px;
+    }
+    
+    .fade-in{
+      opacity:0;
+      transform:translateY(40px);
+      transition:1.2s ease;
+    }
+    
+    .fade-in.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+</style>
+
+<body>
+
+  <div id="qc-cur"></div>
+  <div id="qc-cur-ring"></div>
+
+  <header class="qc-header" style="display: none;">
+    <nav class="qc-nav">
+      <a href="#" class="nav-logo">
+        <img decoding="async" loading="eager" src="./assets/logo/logo-one.png" alt="" />
+      </a>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      </button>
+    </nav>
+  </header>
+
+  <!-- NAV -->
+  <div class="qn-wrap">
+    <div class="qn-bar">
+      <a href="./index.html" class="nav-logo">
+        <img decoding="async" loading="eager" src="./assets/logo/logo-one.png" alt="" />
+      </a>
+      <ul class="nav-links" <button class="qn-toggle" id="qnToggle">
+        <div class="qn-icon">
+          <span></span><span></span><span></span>
+        </div>
+        </button>
+    </div>
+  </div>
+
+  <!-- ===== OVERLAY ===== -->
+  <div class="qn-overlay" id="qnOverlay">
+    <div class="qn-inner">
+      <div class="qn-center">
+        <div class="qn-main">
+          <a href="index.html">Home</a>
+          <a href="#">Work</a>
+          <a href="#">Services</a>
+        </div>
+
+        <div class="qn-sub">
+          <a href="./contact.html">Contact</a>
+          <a href="#">Blogs</a>
+          <a href="our-team.html">Our Team</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <section class="service-section" id="service-1">
+
+  <div class="section-bg-media">
+   
+  </div>
+
+  <div class="overlay"></div>
+
+  <div class="service-heading-wrap fade-in">
+    <span class="service-number">01 /</span>
+    <h2 class="service-heading">
+      Our Team
+    </h2>
+  </div>
+
+</section> -->
+
+  <!-- ===== TEAM HEADER ===== -->
+  <section id="team-container">
+    <div class="testi-header rv">
+    </div>
+  </section>
+
+  <!-- ===== TEAM SECTION ===== -->
+  <section id="team">
+    <div class="teamHeading">
+      <p>
+         <span class="ourTeam-Orange"> Our Team</span>
+      </p>
+    </div>
+    <div class="team-sticky">
+      <div class="team-heading">
+        <span class="team-kicker"></span>
+
+      </div>
+
+      <div class="team-cards" id="teamCards">
+        <div class="tm-card">
+          <img decoding="async" loading="lazy" src="./assets/team1/abhay1.webp" alt="Abhay " />
+          <div class="tm-card-body">
+            <h4>Abhay Tanwar</h4>
+            <span>Chief Action Officer</span>
+          </div>
+        </div>
+
+        <div class="tm-card">
+          <img decoding="async" loading="lazy" src="./assets/team1/bhavana1.webp" alt="Bhavana" />
+          <div class="tm-card-body">
+            <h4>Bhavana Punjabi</h4>
+            <span>Chief Curator Officer</span>
+          </div>
+        </div>
+
+        
+        <div class="tm-card">
+          <img decoding="async" loading="lazy" src="./assets/team1/prakriti1.webp" alt="Prakriti" />
+          <div class="tm-card-body">
+            <h4>Prakriti Verma</h4>
+            <span>Sr. Graphic Designer</span>
+          </div>
+        </div>
+
+          <div class="tm-card">
+          <img decoding="async" loading="lazy" src="./assets/team1/kumkum1.webp" alt="Kumkum" />
+          <div class="tm-card-body">
+            <h4>Kumkum Chauhan</h4>
+            <span>Senior Creative Designer</span>
+          </div>
+        </div>
+
+          <div class="tm-card">
+          <img decoding="async" loading="lazy" src="./assets/team1/jayant1.webp" alt="Jayant" />
+          <div class="tm-card-body">
+            <h4>Jayant Rajvanshi</h4>
+            <span>Graphic Designer</span>
+          </div>
+        </div>
+
+        <div class="tm-card">
+          <img decoding="async" loading="lazy" src="./assets/team1/khushisahoo.webp" alt="Khushi Sahu" />
+          <div class="tm-card-body">
+            <h4>Khushi Sahu</h4>
+            <span>Graphic Designer</span>
+          </div>
+        </div>
+
+           <div class="tm-card">
+          <img decoding="async" loading="lazy" src="./assets/team1/rohit.webp" alt="Rohit Verma" />
+          <div class="tm-card-body">
+            <h4>Rohit Verma</h4>
+            <span>Sr. Digital Video Artist</span>
+          </div>
+        </div>
+
+          <div class="tm-card">
+          <img decoding="async" loading="lazy" src="./assets/team1/tarun.webp" alt="Tarun Sharma" />
+          <div class="tm-card-body">
+            <h4>Tarun Sharma</h4>
+            <span>Digital Video Artist</span>
+          </div>
+        </div>
+
+           <div class="tm-card">
+          <img decoding="async" loading="lazy" src="./assets/team1/prince.webp" alt="Prince Sharma" />
+          <div class="tm-card-body">
+            <h4>Prince Sharma</h4>
+            <span>Video Editor</span>
+          </div>
+        </div>
+
+
+        <div class="tm-card">
+          <img decoding="async" loading="lazy" src="./assets/team1/preeti1.webp" alt="Preeti" />
+          <div class="tm-card-body">
+            <h4>Preeti Shekhawat</h4>
+            <span>Brand Manager</span>
+          </div>
+        </div>
+
+        <div class="tm-card">
+          <img decoding="async" loading="lazy" src="./assets/team1/khushisharma.webp" alt="Khushi Sharma" />
+          <div class="tm-card-body">
+            <h4>Khushi Sharma</h4>
+            <span>Brand Manager</span>
+          </div>
+        </div>
+
+
+         <div class="tm-card">
+          <img decoding="async" loading="lazy" src="./assets/team1/srushti.webp" alt="Srushti Soni" />
+          <div class="tm-card-body">
+            <h4>Srushti Soni</h4>
+            <span>Social Media Strategist</span>
+          </div>
+        </div>
+        
+
+
+         <div class="tm-card">
+          <img decoding="async" loading="lazy" src="./assets/team1/khushi.webp" alt="Khushi Singh" />
+          <div class="tm-card-body">
+            <h4>Khushi Singh</h4>
+            <span>Social Media Intern</span>
+          </div>
+        </div>
+
+         <div class="tm-card">
+          <img decoding="async" loading="lazy" src="./assets/team1/riddhi.webp" alt="Riddhi Sharma" />
+          <div class="tm-card-body">
+            <h4>Riddhi Sharma</h4>
+            <span>Social Media Intern</span>
+          </div>
+        </div>
+
+        <div class="tm-card">
+          <img decoding="async" loading="lazy" src="./assets/team1/nehal.webp" alt="Nehal Jain" />
+          <div class="tm-card-body">
+            <h4>Nehal Jain</h4>
+            <span>Social Media Intern</span>
+          </div>
+        </div>
+         <div class="tm-card">
+          <img decoding="async" loading="lazy" src="./assets/team1/shubham.webp" alt="Shubham Sharma " />
+          <div class="tm-card-body">
+            <h4>Shubham Sharma</h4>
+            <span>Web Developer</span>
+          </div>
+        </div>
+
+         <div class="tm-card">
+          <img decoding="async" loading="lazy" src="./assets/team1/chitransh.webp" alt="Chitransh Maharshi" />
+          <div class="tm-card-body">
+            <h4>Chitransh Maharshi</h4>
+            <span>Web Developer Intern</span>
+          </div>
+        </div>
+
+        <div class="tm-card">
+          <img decoding="async" loading="lazy" src="./assets/team1/yashika1.webp" alt="Yashika" />
+          <div class="tm-card-body">
+            <h4>Yashika Singh</h4>
+            <span>SEO Strategist</span>
+          </div>
+        </div>
+
+         <div class="tm-card">
+          <img decoding="async" loading="lazy" src="./assets/team1/vikas.webp" alt="Vikas Tanwar" />
+          <div class="tm-card-body">
+            <h4>Vikas Tanwar</h4>
+            <span>SEO Strategist</span>
+          </div>
+        </div>
+
+        <div class="tm-card">
+          <img decoding="async" loading="lazy" src="./assets/team1/khushisingh.webp" alt="Khushi Singh" />
+          <div class="tm-card-body">
+            <h4>Khushi Singh</h4>
+            <span>SEO Executive</span>
+          </div>
+        </div>
+
+
+        <div class="tm-card">
+          <img decoding="async" loading="lazy" src="./assets/team1/vikram1.webp" alt="Vikram" />
+          <div class="tm-card-body">
+            <h4>Vikram Singh</h4>
+            <span>Ads Specialist</span>
+          </div>
+        </div>
+
+         <div class="tm-card">
+          <img decoding="async" loading="lazy" src="./assets/team1/uday.webp" alt="Uday Punjabi" />
+          <div class="tm-card-body">
+            <h4>Uday Punjabi</h4>
+            <span>Business Analyst</span>
+          </div>
+        </div>
+
+        <div class="tm-card">
+          <img decoding="async" loading="lazy" src="./assets/team1/ashu.webp" alt="Ashu Singh" />
+          <div class="tm-card-body">
+            <h4>Ashu Singh</h4>
+            <span>Visual Storyteller</span>
+          </div>
+        </div>
+
+
+             <!-- <div class="tm-card">
+          <img decoding="async" loading="lazy" src="./assets/team1/yash.webp" alt="Yash" />
+          <div class="tm-card-body">
+            <h4>Yash</h4>
+            <span>SEO Strategist</span>
+          </div>
+        </div>
+         
+         <div class="tm-card">
+          <img decoding="async" loading="lazy" src="./assets/team1/anirudh.webp" alt="Anirudh Rajpurohit" />
+          <div class="tm-card-body">
+            <h4>Anirudh Rajpurohit</h4>
+            <span>Google & Meta Ads Expert</span>
+          </div>
+        </div>
+
+          <div class="tm-card">
+          <img decoding="async" loading="lazy" src="./assets/team1/javed.webp" alt="Javed Ahmed" />
+          <div class="tm-card-body">
+            <h4>Javed Ahmed </h4>
+            <span>SEO Strategist</span>
+          </div>
+        </div>
+
+        <div class="tm-card">
+          <img decoding="async" loading="lazy" src="./assets/team1/sunil.webp" alt="Sunil Tirthani" />
+          <div class="tm-card-body">
+            <h4>Sunil Tirthani</h4>
+            <span>Visual Storyteller</span>
+          </div>
+        </div>
+
+           <div class="tm-card">
+          <img decoding="async" loading="lazy" src="./assets/team1/avnee.webp" alt="Avnee Kaur" />
+          <div class="tm-card-body">
+            <h4>Avnee Kaur</h4>
+            <span>Brand Manager</span>
+          </div>
+        </div>
+
+         <div class="tm-card">
+          <img decoding="async" loading="lazy" src="./assets/team1/Padma1.webp" alt="Padma Chauhan" />
+          <div class="tm-card-body">
+            <h4>Padma Chauhan</h4>
+            <span>Helping Hand</span>
+          </div>
+        </div> -->
+
+
+      </div>
+    </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="qcFooter">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand-name">
+            <div class="nav-logo-dot"></div>
+            Qrious Curators
+          </div>
+
+          <p class="footer-text">
+            We build brands, websites, and digital experiences that feel
+            refined, relevant, and made to grow.
+          </p>
+
+          <div class="footer-socials">
+            <a href="#" class="f-soc">in</a>
+            <a href="#" class="f-soc">ig</a>
+            <a href="#" class="f-soc">fb</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-ttl">Services</div>
+
+          <ul class="footer-links">
+            <li><a href="#">Web Design</a></li>
+            <li><a href="#">Development</a></li>
+            <li><a href="#">Brand Identity</a></li>
+            <li><a href="#">Social Media</a></li>
+            <li><a href="#">Content Creation</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-ttl">Company</div>
+
+          <ul class="footer-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Our Work</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          © 2026 Qrious Curators. All rights reserved.
+        </p>
+
+        <p class="footer-made">
+          Designed &amp; built with <span>♥</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="./scripts/about.js"></script>
+
+</body>
+
+</html>

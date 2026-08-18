@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphic Design | Qrious Curators</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles/smm.css">
+
+    <!-- Lenis CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.2/dist/lenis.css">
+
+    <link rel="stylesheet" href="../styles/style.css">
+
+    <style>
+      /* FIXED TOP NAVBAR + BACK BUTTON */
+      .qn-wrap {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 99999;
+        padding: 22px 5vw 0;
+        pointer-events: none;
+      }
+
+      .qn-bar {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        pointer-events: auto;
+      }
+
+      .nav-logo {
+        width: 58px;
+        height: 58px;
+      }
+
+      .nav-logo img {
+        width: 50px;
+        height: auto;
+        display: block;
+      }
+
+      .qc-back-btn {
+        min-width: 82px;
+        height: 32px;
+        padding: 0 4px;
+        border-radius: 999px;
+        color: #ffffff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        font-family: "Raleway", Arial, sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 1;
+        text-decoration: none;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+        transition: 0.3s ease;
+      }
+
+      .qc-back-btn:hover {
+        color: #ffffff;
+        transform: translateY(-2px);
+      }
+
+      .hero {
+        padding-top: 120px;
+      }
+
+      .service-cta-btn {
+        min-width: 190px;
+        height: 54px;
+        padding: 0 28px;
+        margin-top: 34px;
+        border-radius: 999px;
+        color: #ffffff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Raleway", Arial, sans-serif;
+        font-size: 15px;
+        font-weight: 600;
+        text-decoration: none;
+        border: 1px solid rgba(255,255,255,0.34);
+        transition: 0.3s ease;
+      }
+
+      .service-cta-btn:hover {
+        transform: translateY(-2px);
+        border-color: rgba(255,255,255,0.72);
+      }
+
+      .final-cta-note {
+        margin-top: 20px;
+        opacity: 0.68;
+        font-size: 16px;
+      }
+
+      @media (max-width: 768px) {
+        .qn-wrap {
+          padding: 16px 18px 0;
+        }
+
+        .nav-logo {
+          width: 50px;
+          height: 50px;
+        }
+
+        .nav-logo img {
+          width: 35px;
+        }
+
+        .qc-back-btn {
+          height: 48px;
+          min-width: 96px;
+          padding: 0 18px;
+          font-size: 14px;
+        }
+
+        .hero {
+          padding-top: 100px;
+        }
+      }
+    </style>
+
+</head>
+<body class="dark-theme">
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Navigation / Header -->
+    <div class="qn-wrap">
+      <div class="qn-bar">
+        <a href="./index.html" class="nav-logo">
+          <img src="../assets/logo/logo-one.png" alt="Logo" />
+        </a>
+
+        <a href="services.html" class="qc-back-btn">Back</a>
+      </div>
+    </div>
+
+    <div class="main-wrapper" id="smooth-wrapper">
+        <div id="smooth-content">
+
+            <!-- Hero Section -->
+            <section class="hero section" data-color="dark">
+                <div class="hero-container">
+                    <div class="hero-top">
+                        <p class="fade-up">GRAPHIC DESIGN</p>
+                    </div>
+
+                    <div class="hero-title-container">
+                        <h1 class="hero-title split-text">Visuals that make</h1>
+                        <div class="hero-title-row">
+                            <div class="hero-media parallax-media" data-cursor="-play">
+                                <video autoplay loop muted playsinline>
+                                    <source src="https://cdn.cuberto.com/cb/hello/intro/1.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <h1 class="hero-title split-text">the first impression</h1>
+                        </div>
+                        <h1 class="hero-title split-text">do its job.</h1>
+                    </div>
+
+                    <div class="hero-bottom">
+                        <div class="hero-bottom-img fade-up">
+                            <img src="../assets/servicepages/graphic-design-hero.webp" alt="Graphic Design">
+                        </div>
+                        <div class="hero-desc">
+                            <p class="fade-up">Before people read your caption, visit your website, check your price, or understand your story — they see your design.</p>
+                            <br>
+                            <p class="fade-up">And that first look decides a lot.</p>
+                            <br>
+                            <p class="fade-up">Good design makes your brand look clear, confident, premium, and prepared. It tells people that your business is serious without having to say it loudly.</p>
+                            <br>
+                            <p class="fade-up">From social media creatives and ad designs to packaging, brochures, menus, brand decks, hoardings, launch creatives, and campaign visuals — every design touchpoint should feel like it belongs to the same brand world.</p>
+                            <br>
+                            <p class="fade-up"><strong>Design It Right</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: What This Does For Your Brand -->
+            <section class="what-it-does section" data-color="light">
+                <div class="container">
+                    <div class="split-layout">
+                        <div class="left-col">
+                            <h2 class="section-heading split-text">Makes your brand look more put-together instantly.</h2>
+                        </div>
+                        <div class="right-col">
+                            <p class="large-desc fade-up">Design is not decoration. It is how your brand communicates before the words begin.</p>
+                            <p class="small-desc fade-up">A strong design system makes your brand easier to recognise, easier to trust, and easier to remember. It brings consistency across platforms and creates a visual language your audience starts associating with you.</p>\n
+                            <div class="highlight-box fade-up">
+                                <h3>The right design does not just look pretty.</h3>
+                                <h2>It gives your brand presence.</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section (Horizontal Scroll) -->
+            <section class="featured-projects section" data-color="dark">
+                <div class="container">
+                    <h2 class="section-title fade-up">Selected Design Work</h2>
+                </div>
+                <div class="horizontal-scroll-wrapper">
+                    <div class="horizontal-scroll-container">
+
+                        <div class="project-panel" data-cursor="-play">
+                            <div class="project-panel-inner">
+                                <img src="../assets/servicepages/graphic-design-01.webp" alt="Graphic Design Project 01">
+                            </div>
+                        </div>
+
+                        <div class="project-panel" data-cursor="-play">
+                            <div class="project-panel-inner">
+                                <img src="../assets/servicepages/graphic-design-02.webp" alt="Graphic Design Project 02">
+                            </div>
+                        </div>
+
+                        <div class="project-panel" data-cursor="-play">
+                            <div class="project-panel-inner">
+                                <img src="../assets/servicepages/graphic-design-03.webp" alt="Graphic Design Project 03">
+                            </div>
+                        </div>
+
+                        <div class="project-panel" data-cursor="-play">
+                            <div class="project-panel-inner">
+                                <img src="../assets/servicepages/graphic-design-04.webp" alt="Graphic Design Project 04">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: What Gets Covered -->
+            <section class="services section" data-color="dark">
+                <div class="container">
+                    <h2 class="section-title split-text">Designed for every place your brand shows up.</h2>
+
+                    <div class="services-list">
+
+                        <div class="service-item fade-up" data-cursor="-view">
+                            <div class="service-name">Social media design</div>
+                            <div class="service-desc">Posts, stories, reels covers, and carousel designs</div>
+                        </div>
+
+                        <div class="service-item fade-up" data-cursor="-view">
+                            <div class="service-name">Ad creatives</div>
+                            <div class="service-desc">For Meta, Google, and other digital platforms</div>
+                        </div>
+
+                        <div class="service-item fade-up" data-cursor="-view">
+                            <div class="service-name">Print collaterals</div>
+                            <div class="service-desc">Brochures, catalogues, menus, posters, flyers, and offline brand material</div>
+                        </div>
+
+                        <div class="service-item fade-up" data-cursor="-view">
+                            <div class="service-name">Packaging design</div>
+                            <div class="service-desc">Labels, tags, stickers, and product communication</div>
+                        </div>
+
+                        <div class="service-item fade-up" data-cursor="-view">
+                            <div class="service-name">Brand decks</div>
+                            <div class="service-desc">Pitch presentations and proposal designs</div>
+                        </div>
+
+                        <div class="service-item fade-up" data-cursor="-view">
+                            <div class="service-name">Campaign creatives</div>
+                            <div class="service-desc">For launches, offers, events, and festive moments</div>
+                        </div>
+
+                        <div class="service-item fade-up" data-cursor="-view">
+                            <div class="service-name">Visual templates</div>
+                            <div class="service-desc">Reusable systems that make the brand look consistent across platforms</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Best For -->
+            <section class="best-for section" data-color="light">
+                <div class="container">
+                    <div class="center-content text-center">
+                        <h2 class="massive-text split-text">For brands that want to stop looking random.</h2>
+                        <div class="best-for-desc">
+                            <p class="fade-up">This is for businesses that have strong products or services but inconsistent visuals. If every post looks different, every flyer feels disconnected, or every design depends on last-minute decisions, the brand starts losing recall.</p>
+                            <br>
+                            <p class="fade-up"><strong>A clear design direction makes everything feel sharper, cleaner, and more ownable.</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5: Closing CTA -->
+            <section class="faq section service-final-cta" data-color="dark">
+                <div class="container">
+                    <div class="center-content text-center">
+                        <h2 class="massive-text split-text">Your brand deserves visuals that look as strong as the business behind it.</h2>
+                        <a href="contactqc.html" class="service-cta-btn fade-up">Create Better Visuals</a>
+                        <p class="final-cta-note fade-up">Let’s Build The Right Move.</p>
+                    </div>
+                </div>
+            </section>
+
+                        <!-- ===== FOOTER ===== -->
+            <footer id="qcFooter">
+          
+              <!-- Large Background Logo -->
+              <div class="footer-bg-logo"></div>
+          
+              <div class="footer-inner">
+          
+                <div class="footer-top">
+          
+                  <!-- Left -->
+                  <div>
+                    <div class="footer-brand-name">
+                      <div class="nav-logo-dot"></div>
+                      Qrious Curators
+                    </div>
+          
+                    <p class="footer-text">
+                      We build brands, websites, and digital experiences that feel refined,
+                      relevant, and made to grow.
+                    </p>
+          
+                    <div class="footer-socials">
+                      <!-- <a href="#" class="f-soc">𝕏</a> -->
+                      <a href="https://www.linkedin.com/company/qrious-curators" class="f-soc">in</a>
+                      <a href="https://www.instagram.com/qrious.curators" class="f-soc">ig</a>
+                    </div>
+                  </div>
+          
+                  <!-- Services -->
+                  <div>
+                    <!-- <div class="footer-col-ttl">Services</div> -->
+          
+                    <ul class="footer-links">
+                      <li><a href="../index.html">Home</a></li>
+                      <li><a href="../about.html">About</a></li>
+                      <li><a href="../work.html">Work</a></li>
+                      <li><a href="../services.html">Services</a></li>
+                    </ul>
+                  </div>
+          
+                  <!-- Company -->
+                  <div>
+                    <!-- <div class="footer-col-ttl">Company</div> -->
+          
+                    <ul class="footer-links">
+                      <li><a href="../blog.html">Blog</a></li>
+                      <li><a href="../contact.html">Contact</a></li>
+                      <li><a href="../careers.html">Careers</a></li>
+                      <li><a href="../team.html">Team</a></li>
+                    </ul>
+                  </div>
+          
+                </div>
+          
+                <div class="footer-bottom">
+          
+                  <p class="footer-copy">
+                    © 2026 Qrious Curators. All rights reserved.
+                  </p>
+          
+                  <img
+                    src="../assets/logo/logo-one.png"
+                    alt="Qrious Curators"
+                    class="footer-center-logo"
+                  >
+          
+                  <p class="footer-made">
+                    Designed & Built with <span>♥</span>
+                  </p>
+          
+                </div>
+          
+              </div>
+          
+            </footer>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
+    <script src="https://unpkg.com/lenis@1.1.2/dist/lenis.min.js"></script>
+    <script src="../scripts/smm.js"></script>
+</body>
+</html>

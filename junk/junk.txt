@@ -1,0 +1,864 @@
+LPBGVrEyLMkDxO5l
+
+
+
+mongodb+srv://shubham:<db_password>@qc-blogs-cluster.83mhuzd.mongodb.net/?appName=qc-blogs-cluster
+
+
+
+
+
+
+
+
+  --heading-font: "Raleway", sans-serif;
+  /* --heading-font: 'Syne',sans-serif */
+
+  --sub-heading-font: "Lato", sans-serif;
+  /* --sub-heading-font: "'Cormorant Garamond',serif */
+
+
+
+
+
+
+
+
+
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scroll Video Section — Qrious Curators</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400&display=swap" rel="stylesheet">
+<style>
+
+/* ─── TOKENS ─── */
+:root {
+  --ink:    #05050a;
+  --ink2:   #0b0b12;
+  --ink3:   #14141e;
+  --b:      rgba(255,255,255,.065);
+  --bhi:    rgba(255,255,255,.13);
+  --white:  #f8f8f4;
+  --muted:  rgba(255,255,255,.34);
+  --muted2: rgba(255,255,255,.16);
+  --txt:    rgba(255,255,255,.78);
+  --txt2:   rgba(255,255,255,.46);
+  --amber:  #fb923c;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased }
+body {
+  background: var(--ink);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+img, video { display: block; max-width: 100% }
+a { text-decoration: none; color: inherit }
+::-webkit-scrollbar { width: 2px }
+::-webkit-scrollbar-track { background: var(--ink) }
+::-webkit-scrollbar-thumb { background: var(--amber); border-radius: 1px }
+
+/* ─── CURSOR ─── */
+#cur, #cr {
+  position: fixed; border-radius: 50%; pointer-events: none;
+  transform: translate(-50%, -50%); z-index: 99999;
+}
+#cur { width: 8px; height: 8px; background: var(--amber); transition: .2s width, .2s height }
+#cr  { width: 32px; height: 32px; border: 1px solid rgba(251,146,60,.4); z-index: 99998; transition: .22s all }
+body.hov #cur { width: 14px; height: 14px }
+body.hov #cr  { width: 52px; height: 52px; border-color: rgba(251,146,60,.7) }
+
+/* ─── GRAIN ─── */
+#grain {
+  position: fixed; inset: 0; pointer-events: none; z-index: 9000; opacity: .35;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='.032'/%3E%3C/svg%3E");
+  animation: grain 8s steps(1) infinite;
+}
+@keyframes grain {
+  0%   { transform: translate(0,0) }
+  25%  { transform: translate(-2%,-1%) }
+  50%  { transform: translate(1%,2%) }
+  75%  { transform: translate(2%,-1%) }
+  100% { transform: translate(0,0) }
+}
+
+/* ══════════════════════════════════════════════
+   SCROLL VIDEO SECTION
+══════════════════════════════════════════════ */
+
+/* ── Section that holds the scroll "travel" distance ── */
+#scroll-section {
+  position: relative;
+  /* Height = sticky viewport + scroll travel */
+  height: 350vh;
+  background: var(--ink);
+}
+
+/* ── Sticky container — locks to viewport while scrolling ── */
+.scroll-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ink);
+}
+
+/* ── Video wrapper — the element that scales down ── */
+.video-shrink-wrap {
+  position: absolute;
+  inset: 0;
+  will-change: transform, border-radius;
+  /* JS drives: scale, border-radius, margin */
+  transform: scale(1);
+  border-radius: 0px;
+  overflow: hidden;
+}
+
+/* ── The actual video ── */
+.scroll-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ── Dark overlay on video ── */
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(5,5,10,.35) 0%,
+    rgba(5,5,10,.1) 45%,
+    rgba(5,5,10,.55) 100%
+  );
+  transition: opacity .3s;
+}
+
+/* ── Hero text on top of video ── */
+.video-hero-text {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 40px;
+  transition: opacity .3s, transform .3s;
+}
+.vht-eye {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: .32em; text-transform: uppercase;
+  color: rgba(255,255,255,.7);
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: vhtFade .8s ease .4s forwards;
+}
+.vht-bar { width: 24px; height: 1px; background: var(--amber) }
+.vht-h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 8vw, 120px);
+  font-weight: 300;
+  line-height: .9;
+  letter-spacing: -.04em;
+  color: var(--white);
+  opacity: 0;
+  animation: vhtFade .9s ease .6s forwards;
+}
+.vht-h1 em { font-style: italic; color: var(--amber) }
+.vht-h1 .ghost {
+  -webkit-text-stroke: 1px rgba(255,255,255,.25);
+  color: transparent; display: block;
+}
+.vht-sub {
+  font-size: 16px; line-height: 1.7; color: rgba(255,255,255,.6);
+  font-weight: 300; max-width: 480px;
+  margin-top: 24px;
+  opacity: 0;
+  animation: vhtFade .8s ease .9s forwards;
+}
+@keyframes vhtFade { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+
+/* ── Scroll hint at bottom of hero ── */
+.scroll-hint {
+  position: absolute;
+  bottom: 40px; left: 50%; transform: translateX(-50%);
+  z-index: 3;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  opacity: 0; animation: vhtFade .7s ease 1.3s forwards;
+  transition: opacity .4s;
+}
+.scroll-hint.hidden { opacity: 0 }
+.sh-wheel {
+  width: 26px; height: 42px; border: 1.5px solid rgba(255,255,255,.25);
+  border-radius: 20px; display: flex; justify-content: center; padding-top: 6px;
+}
+.sh-wheel::before {
+  content: ''; width: 4px; height: 9px;
+  background: var(--amber); border-radius: 2px;
+  animation: shDot 2s ease-in-out infinite;
+}
+@keyframes shDot { 0%{transform:translateY(0);opacity:1} 80%{transform:translateY(12px);opacity:0} 100%{transform:translateY(0);opacity:0} }
+.sh-label {
+  font-family: 'Syne', sans-serif; font-size: 9px; font-weight: 700;
+  letter-spacing: .28em; text-transform: uppercase; color: rgba(255,255,255,.4);
+  writing-mode: vertical-rl;
+}
+
+/* ── "Shrinking" progress indicator ── */
+.shrink-progress {
+  position: absolute;
+  bottom: 40px; right: 40px; z-index: 10;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.sp-track {
+  width: 2px; height: 80px; background: rgba(255,255,255,.1);
+  border-radius: 1px; position: relative; overflow: hidden;
+}
+.sp-fill {
+  position: absolute; top: 0; left: 0; width: 100%;
+  background: var(--amber); height: 0%;
+  transition: height .05s linear;
+}
+.sp-label {
+  font-family: 'Syne', sans-serif; font-size: 9px; font-weight: 700;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: rgba(255,255,255,.3); writing-mode: vertical-rl;
+}
+
+/* ══════════════════════════════════════════════
+   CONTENT SECTION (below video)
+══════════════════════════════════════════════ */
+#content-section {
+  position: relative;
+  background: var(--ink);
+  padding-bottom: 120px;
+  /* This section starts immediately after scroll-section */
+}
+
+/* ── Section intro text ── */
+.cs-intro {
+  max-width: 1440px; margin: 0 auto;
+  padding: 100px 72px 72px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end;
+}
+
+/* Fade-in elements — each gets .fi class, triggered by IntersectionObserver */
+.fi {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity .9s ease, transform .9s cubic-bezier(.16,1,.3,1);
+}
+.fi.in { opacity: 1; transform: translateY(0) }
+.fi-delay-1 { transition-delay: .08s }
+.fi-delay-2 { transition-delay: .16s }
+.fi-delay-3 { transition-delay: .24s }
+.fi-delay-4 { transition-delay: .32s }
+.fi-delay-5 { transition-delay: .40s }
+.fi-delay-6 { transition-delay: .48s }
+.fi-left  { opacity:0; transform:translateX(-32px); transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1) }
+.fi-right { opacity:0; transform:translateX(32px);  transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1) }
+.fi-left.in, .fi-right.in { opacity:1; transform:translateX(0) }
+.fi-scale { opacity:0; transform:scale(.94); transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1) }
+.fi-scale.in { opacity:1; transform:scale(1) }
+
+.cs-eye {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: .32em; text-transform: uppercase; color: var(--amber);
+  margin-bottom: 22px;
+}
+.cs-bar { width: 28px; height: 1px; background: var(--amber) }
+.cs-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(40px, 5vw, 72px); font-weight: 300;
+  line-height: .96; letter-spacing: -.03em; color: var(--white);
+}
+.cs-h2 em { font-style: italic; color: var(--amber) }
+.cs-right-desc {
+  font-size: 17px; line-height: 1.85; color: var(--txt2);
+  font-weight: 300; max-width: 460px;
+}
+.cs-right-desc strong { color: var(--txt); font-weight: 400 }
+
+/* ── IMAGE GRID 3-column ── */
+.img-grid {
+  max-width: 1440px; margin: 0 auto;
+  padding: 0 72px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.img-cell {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--ink3);
+  cursor: none;
+}
+/* Heights for visual rhythm */
+.img-cell:nth-child(1) { aspect-ratio: 4/5 }
+.img-cell:nth-child(2) { aspect-ratio: 4/3; align-self: end }
+.img-cell:nth-child(3) { aspect-ratio: 3/4 }
+
+.img-cell img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  transition: transform .8s cubic-bezier(.16,1,.3,1), filter .5s;
+  filter: grayscale(15%) brightness(.88);
+  transform: scale(1.04);
+}
+.img-cell:hover img {
+  transform: scale(1);
+  filter: grayscale(0%) brightness(1);
+}
+/* Gradient overlay */
+.img-cell::before {
+  content: ''; position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to top, rgba(5,5,10,.55) 0%, transparent 55%);
+  pointer-events: none;
+}
+/* Amber bottom sweep on hover */
+.img-cell::after {
+  content: ''; position: absolute; bottom: 0; left: 0; z-index: 2;
+  width: 0; height: 2px; background: var(--amber);
+  transition: width .55s cubic-bezier(.16,1,.3,1);
+}
+.img-cell:hover::after { width: 100% }
+
+/* Image label */
+.img-label {
+  position: absolute; bottom: 18px; left: 18px; z-index: 3;
+  background: rgba(5,5,10,.82); backdrop-filter: blur(14px);
+  border: 1px solid var(--bhi); border-radius: 999px;
+  padding: 5px 14px;
+  font-family: 'Syne', sans-serif; font-size: 9px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--amber);
+  opacity: 0; transform: translateY(6px);
+  transition: opacity .35s, transform .35s;
+}
+.img-cell:hover .img-label { opacity: 1; transform: translateY(0) }
+
+/* ── TEXT BLOCK (below grid) ── */
+.text-block {
+  max-width: 1440px; margin: 0 auto;
+  padding: 80px 72px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px;
+  background: var(--b);
+  border-top: 1px solid var(--b);
+  margin-top: 80px;
+}
+.tb-cell {
+  background: var(--ink2);
+  padding: 52px 44px;
+  position: relative; overflow: hidden; cursor: none;
+  transition: background .3s;
+}
+.tb-cell:hover { background: rgba(251,146,60,.04) }
+.tb-cell::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1.5px;
+  background: linear-gradient(90deg, transparent, rgba(251,146,60,.35), transparent);
+  transform: scaleX(0);
+  transition: transform .5s cubic-bezier(.16,1,.3,1);
+}
+.tb-cell:hover::after { transform: scaleX(1) }
+.tb-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 64px; font-weight: 300; line-height: 1;
+  letter-spacing: -2px; color: rgba(251,146,60,.15);
+  margin-bottom: 20px;
+  transition: color .3s;
+}
+.tb-cell:hover .tb-num { color: rgba(251,146,60,.28) }
+.tb-head {
+  font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700;
+  color: var(--white); margin-bottom: 12px; letter-spacing: -.01em;
+  transition: color .3s;
+}
+.tb-cell:hover .tb-head { color: var(--amber) }
+.tb-body {
+  font-size: 14px; line-height: 1.82; color: var(--txt2); font-weight: 300;
+}
+
+/* ── MARQUEE between sections ── */
+.mid-mq {
+  overflow: hidden;
+  border-top: 1px solid var(--b); border-bottom: 1px solid var(--b);
+  background: var(--ink3); padding: 0;
+  margin: 80px 0 0;
+}
+.mid-mq-track {
+  display: flex; animation: mqScroll 24s linear infinite; width: max-content;
+}
+.mid-mq-track:hover { animation-play-state: paused }
+@keyframes mqScroll { to { transform: translateX(-50%) } }
+.mid-mq-item {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(16px, 2.2vw, 24px); font-weight: 300; font-style: italic;
+  color: var(--muted2); padding: 18px 44px; white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 44px;
+  transition: color .4s;
+}
+.mid-mq-item:hover { color: var(--muted) }
+.mq-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--amber); opacity: .5; flex-shrink: 0 }
+
+/* ── FINAL STATEMENT ── */
+.statement {
+  max-width: 1440px; margin: 0 auto;
+  padding: 100px 72px 0;
+  text-align: center;
+}
+.stmt-eye {
+  display: inline-flex; align-items: center; gap: 14px; margin-bottom: 32px;
+  font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: .28em; text-transform: uppercase; color: var(--muted);
+}
+.stmt-el { width: 24px; height: 1px; background: var(--muted) }
+.stmt-h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5.5vw, 80px); font-weight: 300;
+  line-height: 1.04; letter-spacing: -.03em; color: var(--white);
+  max-width: 900px; margin: 0 auto 32px;
+}
+.stmt-h2 em { font-style: italic; color: var(--amber) }
+.stmt-p {
+  font-size: 17px; line-height: 1.82; color: var(--txt2);
+  font-weight: 300; max-width: 560px; margin: 0 auto 48px;
+}
+.stmt-p strong { color: var(--txt); font-weight: 400 }
+.btn-amber {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: var(--amber); color: var(--ink);
+  padding: 15px 36px; border-radius: 999px;
+  font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 800;
+  letter-spacing: .12em; text-transform: uppercase;
+  cursor: none; position: relative; overflow: hidden;
+  transition: transform .25s, box-shadow .3s;
+}
+.btn-amber::before {
+  content: ''; position: absolute; inset: 0; border-radius: 999px;
+  background: rgba(0,0,0,.14); transform: translateX(-101%);
+  transition: transform .4s cubic-bezier(.77,0,.175,1);
+}
+.btn-amber:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(251,146,60,.35) }
+.btn-amber:hover::before { transform: translateX(0) }
+.btn-amber span { position: relative; z-index: 1 }
+
+/* ── SPACER at top so scroll begins away from top of page ── */
+.page-intro {
+  height: 80px;
+  background: var(--ink);
+  border-bottom: 1px solid var(--b);
+  display: flex; align-items: center; justify-content: center;
+}
+.pi-logo {
+  font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 800;
+  letter-spacing: .2em; text-transform: uppercase; color: var(--white);
+  display: flex; align-items: center; gap: 8px;
+}
+.pi-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--amber);
+  animation: pdot 2.5s ease-in-out infinite;
+}
+@keyframes pdot { 0%,100%{transform:scale(1)} 50%{transform:scale(1.6);opacity:.5} }
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  .cs-intro { padding: 80px 36px 56px; grid-template-columns:1fr; gap:36px }
+  .img-grid { padding: 0 36px; grid-template-columns:1fr 1fr }
+  .img-cell:nth-child(1) { aspect-ratio:4/3 }
+  .img-cell:nth-child(2) { aspect-ratio:4/3; align-self:auto }
+  .img-cell:nth-child(3) { aspect-ratio:4/3; grid-column:span 2 }
+  .text-block { padding: 0 36px; grid-template-columns:1fr; margin-top:56px }
+  .statement { padding: 80px 36px 0 }
+  .mid-mq { margin-top: 56px }
+}
+@media(max-width:700px){
+  .cs-intro { padding: 64px 24px 44px }
+  .img-grid { padding: 0 24px; grid-template-columns:1fr; gap:12px }
+  .img-cell:nth-child(n) { aspect-ratio:4/3; grid-column:auto }
+  .text-block { padding: 0 24px; margin-top:44px }
+  .statement { padding: 64px 24px 0 }
+  .shrink-progress { display: none }
+}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="cr"></div>
+<div id="grain" aria-hidden="true"></div>
+
+<!-- PAGE NAV (just for context) -->
+<div class="page-intro">
+  <div class="pi-logo"><div class="pi-dot"></div>QC Studio</div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SCROLL VIDEO SECTION
+══════════════════════════════════════════════ -->
+<section id="scroll-section">
+
+  <div class="scroll-sticky" id="scrollSticky">
+
+    <!-- VIDEO SHRINK WRAP -->
+    <div class="video-shrink-wrap" id="videoWrap">
+
+      <!-- Fullscreen video (Pexels free stock) -->
+      <video
+        class="scroll-video"
+        id="scrollVideo"
+        autoplay muted loop playsinline preload="auto"
+      >
+        <source
+          src="https://videos.pexels.com/video-files/3571264/3571264-uhd_2560_1440_30fps.mp4"
+          type="video/mp4"
+        />
+        <!-- fallback poster if video doesn't load -->
+        <img
+          src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80"
+          alt="Studio team working"
+          style="width:100%;height:100%;object-fit:cover"
+        />
+      </video>
+
+      <!-- Overlay -->
+      <div class="video-overlay" id="videoOverlay"></div>
+
+      <!-- Scroll indicator -->
+      <div class="scroll-hint" id="scrollHint">
+        <div class="sh-wheel"></div>
+        <span class="sh-label">Scroll</span>
+      </div>
+
+      <!-- Progress rail -->
+      <div class="shrink-progress">
+        <div class="sp-track"><div class="sp-fill" id="spFill"></div></div>
+        <span class="sp-label">scroll</span>
+      </div>
+
+    </div><!-- /video-shrink-wrap -->
+
+  </div><!-- /scroll-sticky -->
+
+</section>
+
+<!-- ══════════════════════════════════════════════
+     CONTENT SECTION
+══════════════════════════════════════════════ -->
+<section id="content-section">
+
+  <!-- INTRO TEXT -->
+  <div class="cs-intro">
+
+  </div>
+
+  <!-- IMAGE GRID -->
+  <div class="img-grid">
+
+    <div class="img-cell fi fi-scale fi-delay-1">
+      <img
+        src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
+        alt="Team collaboration"
+        loading="lazy"
+      >
+      <div class="img-label">Creative Process</div>
+    </div>
+
+    <div class="img-cell fi fi-scale fi-delay-2">
+      <img
+        src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+        alt="Studio workspace"
+        loading="lazy"
+      >
+      <div class="img-label">The Studio</div>
+    </div>
+
+    <div class="img-cell fi fi-scale fi-delay-3">
+      <img
+        src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80"
+        alt="Strategy session"
+        loading="lazy"
+      >
+      <div class="img-label">Strategy & Craft</div>
+    </div>
+
+  </div><!-- /img-grid -->
+
+  <!-- MARQUEE -->
+  <div class="mid-mq fi">
+    <div class="mid-mq-track">
+      <span class="mid-mq-item">Brand Identity <span class="mq-dot"></span></span>
+      <span class="mid-mq-item">Digital Strategy <span class="mq-dot"></span></span>
+      <span class="mid-mq-item">UI &amp; UX Design <span class="mq-dot"></span></span>
+      <span class="mid-mq-item">Web Development <span class="mq-dot"></span></span>
+      <span class="mid-mq-item">Content Creation <span class="mq-dot"></span></span>
+      <span class="mid-mq-item">Performance Marketing <span class="mq-dot"></span></span>
+      <span class="mid-mq-item">Brand Identity <span class="mq-dot"></span></span>
+      <span class="mid-mq-item">Digital Strategy <span class="mq-dot"></span></span>
+      <span class="mid-mq-item">UI &amp; UX Design <span class="mq-dot"></span></span>
+      <span class="mid-mq-item">Web Development <span class="mq-dot"></span></span>
+      <span class="mid-mq-item">Content Creation <span class="mq-dot"></span></span>
+      <span class="mid-mq-item">Performance Marketing <span class="mq-dot"></span></span>
+    </div>
+  </div>
+
+  <!-- TEXT BLOCKS -->
+  <div class="text-block">
+    <div class="tb-cell fi fi-delay-1">
+      <div class="tb-num">01</div>
+      <div class="tb-head">Obsessively Curious</div>
+      <p class="tb-body">We ask every uncomfortable question before building anything. Deep understanding of your brand, audience, and goals is non-negotiable for us.</p>
+    </div>
+    <div class="tb-cell fi fi-delay-2">
+      <div class="tb-num">02</div>
+      <div class="tb-head">Relentlessly Precise</div>
+      <p class="tb-body">Details are not decoration — they are the work itself. From kerning to loading speed, every decision is intentional, deliberate, and considered.</p>
+    </div>
+    <div class="tb-cell fi fi-delay-3">
+      <div class="tb-num">03</div>
+      <div class="tb-head">Built to Endure</div>
+      <p class="tb-body">We don't chase trends. We build brand systems and digital experiences designed to be as relevant in ten years as they are on launch day.</p>
+    </div>
+  </div>
+
+  <!-- STATEMENT -->
+  <div class="statement">
+    <div class="stmt-eye fi fi-delay-1"><span class="stmt-el"></span>The Studio<span class="stmt-el"></span></div>
+    <h2 class="stmt-h2 fi fi-delay-2">
+      We're not just an agency.<br>
+      We're <em>your creative partner.</em>
+    </h2>
+    <p class="stmt-p fi fi-delay-3">
+      When you work with Qrious Curators, you get a <strong>dedicated team</strong> that thinks, argues, and builds alongside you — from the first brief to the final pixel.
+    </p>
+    <a href="#contact" class="btn-amber fi fi-delay-4">
+      <span>Start a Project</span><span>↗</span>
+    </a>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════════ -->
+<script>
+/* ── CURSOR ── */
+const cur=document.getElementById('cur'),cr=document.getElementById('cr')
+let mx=0,my=0,rx=0,ry=0
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'})
+;(function raf(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(raf)})()
+document.querySelectorAll('.img-cell,.tb-cell,.btn-amber').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'))
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'))
+})
+
+/* ════════════════════════════════════════════════
+   SCROLL-DRIVEN VIDEO SHRINK
+   
+   As the user scrolls through #scroll-section:
+   - progress 0→0.5: video shrinks from full screen
+     to ~50% size with rounded corners + fades hero text
+   - progress 0.5→1: video holds size, content below visible
+════════════════════════════════════════════════ */
+const section   = document.getElementById('scroll-section')
+const videoWrap = document.getElementById('videoWrap')
+const heroText  = document.getElementById('videoHeroText')
+const scrollHint= document.getElementById('scrollHint')
+const spFill    = document.getElementById('spFill')
+const overlay   = document.getElementById('videoOverlay')
+
+/* Easing helper */
+function easeInOut(t) {
+  return t < .5 ? 2*t*t : -1+(4-2*t)*t
+}
+function lerp(a, b, t) { return a + (b-a)*t }
+function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)) }
+
+function onScroll() {
+  const sTop    = section.offsetTop
+  const sHeight = section.offsetHeight
+  const winH    = window.innerHeight
+  const scrollY = window.scrollY
+
+  /* 0 = top of section visible, 1 = bottom of section */
+  const raw = (scrollY - sTop) / (sHeight - winH)
+  const p   = clamp(raw, 0, 1)
+
+  /* Progress: 0 → 1 during first 65% of scroll */
+  const shrinkP = clamp(p / 0.65, 0, 1)
+  const easedP  = easeInOut(shrinkP)
+
+  /* ── Scale: 1 → 0.50 ── */
+  const scale = lerp(1, 0.50, easedP)
+
+  /* ── Border radius: 0 → 24px ── */
+  const radius = lerp(0, 24, easedP)
+
+  /* ── Vertical shift (simulate it rising as shrinks) ── */
+  /* We push the wrap upward slightly so it looks centered-ish */
+  const translateY = lerp(0, -60, easedP)
+
+  /* Apply */
+  videoWrap.style.transform   = `scale(${scale}) translateY(${translateY}px)`
+  videoWrap.style.borderRadius = `${radius}px`
+
+  /* ── Hero text fades out ── */
+  const textOpacity = clamp(1 - easedP * 2.5, 0, 1)
+  heroText.style.opacity   = textOpacity
+  heroText.style.transform = `translateY(${easedP * -30}px)`
+
+  /* ── Scroll hint ── */
+  scrollHint.style.opacity = clamp(1 - p * 8, 0, 1)
+
+  /* ── Overlay darkens slightly as shrinks ── */
+  overlay.style.opacity = lerp(1, 0.6, easedP)
+
+  /* ── Progress rail ── */
+  spFill.style.height = (shrinkP * 100) + '%'
+}
+
+window.addEventListener('scroll', onScroll, { passive: true })
+onScroll() // run once on load
+
+/* ════════════════════════════════════════════════
+   FADE-IN OBSERVER (content section)
+   Each .fi element animates in when it enters viewport
+════════════════════════════════════════════════ */
+const fiObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in')
+      fiObs.unobserve(e.target)
+    }
+  })
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' })
+
+document.querySelectorAll('.fi, .fi-left, .fi-right, .fi-scale').forEach(el => fiObs.observe(el))
+
+/* ── SMOOTH ANCHORS ── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'))
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }) }
+  })
+})
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+About Section old
+
+
+<!-- ===== ABOUT ===== -->
+    <section id="about">
+      <div class="about-left"
+          data-aos="fade-up"
+        >
+        <div class="kicker">
+          <div class="kicker-line"></div>
+          Who We Are
+        </div>
+        <h2 class="about-h2">
+          We turn bold ideas into <em>remarkable</em> realities
+        </h2>
+        <p class="about-body">
+         From scroll-stopping content and high-performing ads to sleek websites and cohesive brand identities, we craft digital experiences that are visually compelling, strategically strong, and undeniably result-oriented.
+        </p>
+        <!-- <p class="about-body">
+         We partner with brands that think ahead. Brands that want more than visibility-they want impact, engagement, and scalable growth.
+        </p> -->
+        <p class="about-body">
+         With the right blend of creativity, clarity, and conversionfocused strategy, Qrious Curators turns ideas into campaigns that move people and move the needle
+        </p>
+        <a href="#contact" class="about-link">Start a project →</a>
+      </div>
+      <div class="about-right d1"
+          data-aos="fade-up" 
+        >
+        <div class="about-img-wrap">
+          <img
+            src="https://framerusercontent.com/images/sXpGa5SBIHzL1ZlluLzui0nhLvU.webp?width=900"
+            alt="Studio work"
+            loading="lazy"
+          />
+        </div>
+        <div class="about-img-wrap">
+          <img
+            src="https://framerusercontent.com/images/9eD88IPKTw4s3e2ACxglJMr1zWs.webp?width=900"
+            alt="Design process"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+    

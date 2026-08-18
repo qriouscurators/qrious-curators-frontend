@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hummingbird Busselton digital case study by Qrious Curators — website development, SEO, social media and digital marketing." />
+  <title>Hummingbird Busselton — Qrious Curators Work</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --forest: #163d35;
+  --forest-deep: #0d2924;
+  --leaf: #557b62;
+  --lime: #d7eb8e;
+  --sun: #f0b763;
+  --clay: #bd6d4d;
+  --cream: #f4efe5;
+  --paper: #fbf9f3;
+  --ink: #17312b;
+  --muted: #68736e;
+  --white: #ffffff;
+  --line: rgba(23, 49, 43, 0.14);
+  --shadow: 0 30px 90px rgba(13, 41, 36, 0.15);
+  --container: min(1180px, calc(100% - 42px));
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: "Raleway", sans-serif;
+  line-height: 1.65;
+}
+body.is-loading { overflow: hidden; }
+img { width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button, a { -webkit-tap-highlight-color: transparent; }
+h1, h2, h3, h4, p { margin-top: 0; }
+h1, h2, h3, h4 { font-weight: 500; letter-spacing: -0.035em; }
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  color: var(--cream);
+  background: var(--forest-deep);
+  transition: opacity .6s ease, visibility .6s ease;
+}
+.loader.hidden { opacity: 0; visibility: hidden; }
+.loader-mark {
+  width: 84px;
+  height: 84px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.24);
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  animation: loaderPulse 1.3s ease-in-out infinite;
+}
+@keyframes loaderPulse { 50% { transform: scale(1.08); border-color: var(--lime); } }
+
+.container { width: var(--container); margin-inline: auto; }
+.section { padding: 122px 0; }
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  color: var(--clay);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+.eyebrow::before { content: ""; width: 34px; height: 1px; background: currentColor; }
+.section-title {
+  max-width: 860px;
+  margin-bottom: 26px;
+  font-size: clamp(42px, 6vw, 78px);
+  line-height: .99;
+}
+.section-copy { max-width: 620px; margin-bottom: 0; color: var(--muted); font-size: 17px; }
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(420px, .92fr);
+  color: var(--cream);
+  background: var(--forest-deep);
+  overflow: hidden;
+}
+.hero-copy {
+  position: relative;
+  z-index: 3;
+  min-height: 100svh;
+  padding: 76px max(46px, calc((100vw - 1180px) / 2)) 72px max(46px, calc((100vw - 1180px) / 2));
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 11px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.hero-studio { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; }
+.hero-studio::before {
+  content: "";
+  width: 32px;
+  aspect-ratio: 1;
+  border: 1px solid rgba(255,255,255,.26);
+  border-radius: 50%;
+  background: radial-gradient(circle at 62% 38%, var(--lime) 0 5px, transparent 6px);
+}
+.hero-index { color: rgba(255,255,255,.54); }
+.hero-main { max-width: 760px; padding: 100px 0 60px; }
+.hero-kicker {
+  margin-bottom: 24px;
+  color: var(--lime);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+.hero h1 {
+  margin-bottom: 28px;
+  font-size: clamp(62px, 9vw, 134px);
+  line-height: .83;
+  letter-spacing: -.065em;
+}
+.hero h1 span { display: block; color: var(--sun); }
+.hero-lead {
+  max-width: 660px;
+  margin-bottom: 38px;
+  color: rgba(255,255,255,.72);
+  font-size: clamp(17px, 1.45vw, 21px);
+  font-weight: 300;
+}
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  min-height: 54px;
+  padding: 0 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 1px solid transparent;
+  border-radius: 99px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  transition: transform .25s ease, background .25s ease, border-color .25s ease, color .25s ease;
+}
+.btn:hover { transform: translateY(-3px); }
+.btn-primary { color: var(--forest-deep); background: var(--lime); }
+.btn-primary:hover { background: #e7f6aa; }
+.btn-ghost { color: var(--cream); border-color: rgba(255,255,255,.28); }
+.btn-ghost:hover { color: var(--forest-deep); background: var(--cream); border-color: var(--cream); }
+.hero-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  color: rgba(255,255,255,.5);
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.scroll-line { display: inline-flex; align-items: center; gap: 12px; }
+.scroll-line::after { content: ""; width: 74px; height: 1px; background: rgba(255,255,255,.3); }
+
+.hero-visual { position: relative; min-height: 100svh; overflow: hidden; }
+.hero-visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(90deg, var(--forest-deep) 0%, rgba(13,41,36,.08) 36%), linear-gradient(0deg, rgba(13,41,36,.56), transparent 48%);
+}
+.hero-visual > img { height: 100%; object-fit: cover; object-position: center; filter: saturate(.88) contrast(1.04); transform: scale(1.04); animation: heroDrift 14s ease-out forwards; }
+@keyframes heroDrift { to { transform: scale(1.11); } }
+.hero-badge {
+  position: absolute;
+  z-index: 3;
+  right: 42px;
+  bottom: 42px;
+  width: 176px;
+  aspect-ratio: 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 50%;
+  color: var(--forest-deep);
+  background: var(--sun);
+  box-shadow: var(--shadow);
+  transform: rotate(6deg);
+}
+.hero-badge strong { font-size: 42px; font-weight: 500; line-height: 1; letter-spacing: -.06em; }
+.hero-badge span { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+
+.scope-strip {
+  border-bottom: 1px solid var(--line);
+  background: var(--cream);
+}
+.scope-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+.scope-item { min-height: 150px; padding: 34px 28px; border-right: 1px solid var(--line); }
+.scope-item:last-child { border-right: 0; }
+.scope-item span { display: block; margin-bottom: 24px; color: var(--clay); font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.scope-item strong { display: block; font-size: 18px; font-weight: 500; line-height: 1.25; }
+
+.intro { position: relative; background: var(--paper); overflow: hidden; }
+.intro::after {
+  content: "HB";
+  position: absolute;
+  right: -35px;
+  top: -40px;
+  color: rgba(85,123,98,.06);
+  font-size: clamp(180px, 30vw, 470px);
+  font-weight: 600;
+  letter-spacing: -.12em;
+  line-height: 1;
+  pointer-events: none;
+}
+.intro-grid { position: relative; z-index: 1; display: grid; grid-template-columns: .9fr 1.1fr; gap: 90px; align-items: end; }
+.intro-note {
+  padding: 34px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: rgba(255,255,255,.62);
+  backdrop-filter: blur(12px);
+}
+.intro-note p { margin: 0; color: var(--muted); }
+.intro-note strong { display: block; margin-bottom: 12px; color: var(--ink); font-size: 15px; font-weight: 600; }
+
+.disciplines { color: var(--cream); background: var(--forest); }
+.disciplines-head { margin-bottom: 68px; display: grid; grid-template-columns: 1fr .75fr; gap: 70px; align-items: end; }
+.disciplines .section-title { margin-bottom: 0; }
+.disciplines .section-copy { color: rgba(255,255,255,.62); }
+.service-list { border-top: 1px solid rgba(255,255,255,.16); }
+.service-row {
+  position: relative;
+  min-height: 210px;
+  padding: 34px 0;
+  display: grid;
+  grid-template-columns: 90px .9fr 1.1fr 190px;
+  gap: 30px;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,.16);
+  overflow: hidden;
+}
+.service-row::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--cream);
+  transform: translateY(101%);
+  transition: transform .45s cubic-bezier(.2,.7,.2,1);
+}
+.service-row:hover::before { transform: translateY(0); }
+.service-row > * { position: relative; z-index: 1; transition: color .35s ease; }
+.service-row:hover { color: var(--forest-deep); }
+.service-no { color: var(--sun); font-size: 11px; font-weight: 700; letter-spacing: .16em; }
+.service-row:hover .service-no { color: var(--clay); }
+.service-row h3 { margin: 0; font-size: clamp(28px, 3.1vw, 48px); line-height: 1; }
+.service-row p { max-width: 590px; margin: 0; color: rgba(255,255,255,.58); font-size: 15px; }
+.service-row:hover p { color: var(--muted); }
+.service-tags { display: flex; flex-wrap: wrap; gap: 7px; justify-content: flex-end; }
+.service-tags span { padding: 7px 10px; border: 1px solid rgba(255,255,255,.22); border-radius: 99px; font-size: 9px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.service-row:hover .service-tags span { border-color: var(--line); }
+
+.editorial { background: var(--cream); }
+.editorial-head { margin-bottom: 62px; display: flex; justify-content: space-between; gap: 40px; align-items: flex-end; }
+.editorial-head .section-copy { max-width: 460px; }
+.editorial-grid { display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: 62px; gap: 18px; }
+.story-card { position: relative; overflow: hidden; border-radius: 26px; background: var(--forest-deep); }
+.story-card img { height: 100%; object-fit: cover; transition: transform .75s cubic-bezier(.2,.7,.2,1); }
+.story-card:hover img { transform: scale(1.06); }
+.story-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(8,28,24,.84), rgba(8,28,24,0) 62%); }
+.story-a { grid-column: span 7; grid-row: span 8; }
+.story-b { grid-column: span 5; grid-row: span 8; }
+.story-c { grid-column: span 4; grid-row: span 7; }
+.story-d { grid-column: span 8; grid-row: span 7; }
+.story-caption { position: absolute; z-index: 2; left: 28px; right: 28px; bottom: 26px; display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; color: var(--white); }
+.story-caption small { font-size: 9px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.story-caption h3 { max-width: 310px; margin: 0; font-size: clamp(20px, 2.2vw, 32px); line-height: 1.05; text-align: right; }
+
+.journey { background: var(--paper); }
+.journey-grid { display: grid; grid-template-columns: .78fr 1.22fr; gap: 86px; align-items: start; }
+.journey-copy { position: sticky; top: 44px; }
+.journey-copy .section-title { font-size: clamp(42px, 5vw, 68px); }
+.path-list { position: relative; }
+.path-list::before { content: ""; position: absolute; left: 27px; top: 28px; bottom: 28px; width: 1px; background: var(--line); }
+.path-item { position: relative; padding: 0 0 62px 86px; }
+.path-item:last-child { padding-bottom: 0; }
+.path-dot { position: absolute; left: 0; top: 0; width: 56px; height: 56px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--forest); background: var(--paper); font-size: 11px; font-weight: 700; }
+.path-item h3 { margin-bottom: 12px; font-size: 30px; }
+.path-item p { margin: 0; color: var(--muted); }
+.path-item ul { margin: 18px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; list-style: none; }
+.path-item li { padding: 8px 11px; border-radius: 99px; color: var(--forest); background: #e8efe9; font-size: 10px; font-weight: 600; letter-spacing: .05em; }
+
+.scope-dark { color: var(--cream); background: var(--forest-deep); }
+.scope-dark .center { max-width: 800px; margin: 0 auto 64px; text-align: center; }
+.scope-dark .eyebrow { justify-content: center; color: var(--sun); }
+.scope-dark .eyebrow::after { content: ""; width: 34px; height: 1px; background: currentColor; }
+.scope-dark .section-title { margin-inline: auto; }
+.metrics { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(255,255,255,.15); border-bottom: 1px solid rgba(255,255,255,.15); }
+.metric { min-height: 280px; padding: 38px 26px; border-right: 1px solid rgba(255,255,255,.15); }
+.metric:last-child { border-right: 0; }
+.metric strong { display: block; margin-bottom: 56px; color: var(--lime); font-size: clamp(54px, 6vw, 84px); font-weight: 400; line-height: 1; letter-spacing: -.07em; }
+.metric h3 { margin-bottom: 12px; font-size: 18px; }
+.metric p { margin: 0; color: rgba(255,255,255,.52); font-size: 13px; }
+
+.closing {
+  position: relative;
+  min-height: 760px;
+  display: flex;
+  align-items: flex-end;
+  color: var(--white);
+  background: var(--forest-deep);
+  overflow: hidden;
+}
+.closing-bg { position: absolute; inset: 0; height: 100%; object-fit: cover; filter: saturate(.8); }
+.closing::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,28,24,.96), rgba(8,28,24,.38)), linear-gradient(0deg, rgba(8,28,24,.82), transparent 62%); }
+.closing-inner { position: relative; z-index: 2; width: var(--container); margin-inline: auto; padding: 110px 0 92px; }
+.closing h2 { max-width: 900px; margin-bottom: 26px; font-size: clamp(58px, 8vw, 112px); line-height: .88; }
+.closing h2 span { color: var(--sun); }
+.closing p { max-width: 630px; margin-bottom: 34px; color: rgba(255,255,255,.7); font-size: 18px; }
+.closing-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.footer { color: rgba(255,255,255,.54); background: #071e1a; }
+.footer-inner { min-height: 102px; display: flex; align-items: center; justify-content: space-between; gap: 24px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+.footer p { margin: 0; }
+.footer a { color: var(--cream); }
+
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+@media (max-width: 1040px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-copy { min-height: 78svh; padding-inline: 32px; }
+  .hero-visual { min-height: 62svh; }
+  .hero-visual::before { background: linear-gradient(0deg, var(--forest-deep), transparent 46%); }
+  .scope-grid { grid-template-columns: repeat(2, 1fr); }
+  .scope-item:nth-child(2) { border-right: 0; }
+  .scope-item:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .intro-grid, .journey-grid { grid-template-columns: 1fr; gap: 44px; }
+  .journey-copy { position: static; }
+  .disciplines-head { grid-template-columns: 1fr; gap: 24px; }
+  .service-row { grid-template-columns: 60px 1fr; }
+  .service-row p, .service-tags { grid-column: 2; }
+  .service-tags { justify-content: flex-start; }
+  .metrics { grid-template-columns: repeat(2, 1fr); }
+  .metric:nth-child(2) { border-right: 0; }
+  .metric:nth-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,.15); }
+}
+
+@media (max-width: 700px) {
+  :root { --container: min(100% - 28px, 1180px); }
+  .section { padding: 84px 0; }
+  .section-title { font-size: 42px; }
+  .hero-copy { min-height: 82svh; padding: 34px 20px 48px; }
+  .hero-top { align-items: flex-start; }
+  .hero-index { text-align: right; }
+  .hero-main { padding: 84px 0 44px; }
+  .hero h1 { font-size: clamp(62px, 19vw, 92px); }
+  .hero-lead { font-size: 16px; }
+  .hero-actions { flex-direction: column; align-items: stretch; max-width: 340px; }
+  .hero-bottom { align-items: flex-end; }
+  .scroll-line::after { width: 30px; }
+  .hero-visual { min-height: 60svh; }
+  .hero-badge { width: 130px; right: 18px; bottom: 18px; padding: 18px; }
+  .hero-badge strong { font-size: 32px; }
+  .scope-grid { grid-template-columns: 1fr; }
+  .scope-item { min-height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+  .scope-item:last-child { border-bottom: 0; }
+  .intro-note { padding: 26px; }
+  .service-row { min-height: auto; padding: 34px 0; grid-template-columns: 42px 1fr; gap: 18px; }
+  .service-row h3 { font-size: 31px; }
+  .editorial-head { align-items: flex-start; flex-direction: column; }
+  .editorial-grid { display: flex; flex-direction: column; }
+  .story-card { min-height: 430px; }
+  .story-caption { left: 20px; right: 20px; bottom: 20px; }
+  .story-caption h3 { max-width: 210px; font-size: 22px; }
+  .path-item { padding-left: 72px; }
+  .metrics { grid-template-columns: 1fr; }
+  .metric { min-height: auto; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.15); }
+  .metric:last-child { border-bottom: 0; }
+  .metric strong { margin-bottom: 34px; }
+  .closing { min-height: 650px; }
+  .closing-inner { padding: 86px 0 70px; }
+  .closing h2 { font-size: 58px; }
+  .closing-actions { flex-direction: column; align-items: stretch; max-width: 340px; }
+  .footer-inner { padding: 28px 0; flex-direction: column; align-items: flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition-duration: .01ms !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+
+</style>
+</head>
+<body class="is-loading">
+  <div class="loader" aria-hidden="true"><div class="loader-mark">QC</div></div>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <div class="hero-top">
+          <span class="hero-studio">Qrious Curators</span>
+          <span class="hero-index">Work / Hospitality / 2026</span>
+        </div>
+
+        <div class="hero-main reveal">
+          <p class="hero-kicker">Integrated Digital Case Study</p>
+          <h1>Hummingbird <span>Busselton.</span></h1>
+          <p class="hero-lead">A fresh digital ecosystem built to turn local searches into menu discovery, table bookings and takeaway orders — while keeping the warmth of the dining experience at the centre.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://hummingbirdbusselton.com.au/" target="_blank" rel="noopener noreferrer">View Live Website <span>↗</span></a>
+            <a class="btn btn-ghost" href="#work">Explore The Work <span>↓</span></a>
+          </div>
+        </div>
+
+        <div class="hero-bottom">
+          <span>Western Australia</span>
+          <a href="#overview" class="scroll-line">Scroll to explore</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <img src="https://assets.cdn.filesafe.space/h2cb9KLIBwQnVuldURGp/media/a4c72086-d63a-4a93-8db9-2ecc76286a70.jpeg" alt="Hummingbird Busselton dining experience" />
+        <div class="hero-badge">
+          <strong>04</strong>
+          <span>Connected digital disciplines</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="scope-strip" aria-label="Project overview">
+      <div class="container scope-grid">
+        <div class="scope-item"><span>Brand</span><strong>Hummingbird<br>Busselton</strong></div>
+        <div class="scope-item"><span>Industry</span><strong>Restaurant &<br>Hospitality</strong></div>
+        <div class="scope-item"><span>Primary Goal</span><strong>Local discovery to<br>table booking</strong></div>
+        <div class="scope-item"><span>Disciplines</span><strong>Web · SEO · SMM<br>Digital Marketing</strong></div>
+      </div>
+    </section>
+
+    <section class="intro section" id="overview">
+      <div class="container intro-grid">
+        <div class="reveal">
+          <span class="eyebrow">The Project</span>
+          <h2 class="section-title">A local dining brand, made easier to discover and choose.</h2>
+        </div>
+        <div class="intro-note reveal">
+          <strong>One connected customer journey</strong>
+          <p>The digital experience was shaped around how real diners search: finding breakfast or lunch in Busselton, exploring menus, checking dietary options, booking a table and ordering takeaway without friction.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="disciplines section" id="work">
+      <div class="container">
+        <div class="disciplines-head reveal">
+          <div>
+            <span class="eyebrow">What We Worked On</span>
+            <h2 class="section-title">Four disciplines. One clear growth system.</h2>
+          </div>
+          <p class="section-copy">Every channel was planned to support the next — from Google discovery and social content to menu exploration, bookings and takeaway actions.</p>
+        </div>
+
+        <div class="service-list">
+          <article class="service-row reveal">
+            <span class="service-no">01</span>
+            <h3>Website Development</h3>
+            <p>A responsive, conversion-led website experience with clear breakfast, lunch, menu, booking and takeaway journeys — structured to feel warm, modern and simple on every screen.</p>
+            <div class="service-tags"><span>Responsive UX</span><span>Menu Architecture</span><span>Booking CTAs</span></div>
+          </article>
+
+          <article class="service-row reveal">
+            <span class="service-no">02</span>
+            <h3>Search Engine Optimisation</h3>
+            <p>Local-intent content and page hierarchy built around the searches that matter most, including breakfast in Busselton, lunch in Busselton, takeaways, menus and restaurant discovery.</p>
+            <div class="service-tags"><span>Local SEO</span><span>On-page SEO</span><span>Content Structure</span></div>
+          </article>
+
+          <article class="service-row reveal">
+            <span class="service-no">03</span>
+            <h3>Social Media Marketing</h3>
+            <p>A human-first content direction covering signature plates, daily dining moments, local produce, guest experiences, seasonal occasions and convenient takeaway options.</p>
+            <div class="service-tags"><span>Content Pillars</span><span>Reels & Stories</span><span>Community</span></div>
+          </article>
+
+          <article class="service-row reveal">
+            <span class="service-no">04</span>
+            <h3>Digital Marketing</h3>
+            <p>Campaign journeys designed to move audiences from awareness to action — with focused messaging for bookings, menu launches, takeaway demand, local audiences and seasonal dining.</p>
+            <div class="service-tags"><span>Campaign Strategy</span><span>Conversion Paths</span><span>Local Reach</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="editorial section">
+      <div class="container">
+        <div class="editorial-head reveal">
+          <div>
+            <span class="eyebrow">Creative Direction</span>
+            <h2 class="section-title">Designed around appetite, atmosphere and local intent.</h2>
+          </div>
+          <p class="section-copy">The visual system balances generous food imagery with calm editorial layouts, making the brand feel inviting without making the browsing journey feel crowded.</p>
+        </div>
+
+        <div class="editorial-grid">
+          <article class="story-card story-a reveal">
+            <img src="https://storage.googleapis.com/msgsndr/h2cb9KLIBwQnVuldURGp/media/3d6240c3-dc16-421d-ae45-381ca47507aa.jpeg" alt="Restaurant dining at Hummingbird Busselton" />
+            <div class="story-caption"><small>Brand Experience</small><h3>Warm, social and made for connection</h3></div>
+          </article>
+          <article class="story-card story-b reveal">
+            <img src="https://storage.googleapis.com/msgsndr/h2cb9KLIBwQnVuldURGp/media/68a569a2280b9ebcf092a9d8.jpeg" alt="Fresh dish from Hummingbird Busselton" />
+            <div class="story-caption"><small>Menu Storytelling</small><h3>Food-first visual communication</h3></div>
+          </article>
+          <article class="story-card story-c reveal">
+            <img src="https://storage.googleapis.com/msgsndr/h2cb9KLIBwQnVuldURGp/media/876c133c-0a9b-49bb-bcbe-cc80702d5699.jpeg" alt="Dining moment at Hummingbird Busselton" />
+            <div class="story-caption"><small>Social Content</small><h3>Real moments over hard selling</h3></div>
+          </article>
+          <article class="story-card story-d reveal">
+            <img src="https://storage.googleapis.com/msgsndr/h2cb9KLIBwQnVuldURGp/media/2562da2f-f25d-4d31-a74e-eff7117afa89.jpeg" alt="Hummingbird Busselton food and hospitality" />
+            <div class="story-caption"><small>Campaign Creative</small><h3>Seasonal stories built to drive action</h3></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="journey section">
+      <div class="container journey-grid">
+        <div class="journey-copy reveal">
+          <span class="eyebrow">Customer Journey</span>
+          <h2 class="section-title">From “where should we eat?” to a confirmed table.</h2>
+          <p class="section-copy">Each touchpoint was planned to answer a real customer question and make the next action obvious.</p>
+        </div>
+
+        <div class="path-list">
+          <article class="path-item reveal">
+            <span class="path-dot">01</span>
+            <h3>Discover</h3>
+            <p>Search-led pages and local content help people find the restaurant when they are actively looking for breakfast, lunch or takeaway in Busselton.</p>
+            <ul><li>Local Search</li><li>Google Intent</li><li>Social Discovery</li></ul>
+          </article>
+          <article class="path-item reveal">
+            <span class="path-dot">02</span>
+            <h3>Explore</h3>
+            <p>Clear menu pathways, food imagery, dining information and dietary cues help visitors quickly decide whether the experience is right for them.</p>
+            <ul><li>Breakfast Menu</li><li>Lunch Menu</li><li>Dietary Options</li></ul>
+          </article>
+          <article class="path-item reveal">
+            <span class="path-dot">03</span>
+            <h3>Act</h3>
+            <p>Prominent calls to action reduce friction across table bookings, takeaway orders, phone enquiries and directions to the venue.</p>
+            <ul><li>Book A Table</li><li>Order Takeaway</li><li>Call & Visit</li></ul>
+          </article>
+          <article class="path-item reveal">
+            <span class="path-dot">04</span>
+            <h3>Return</h3>
+            <p>Consistent social storytelling and seasonal campaigns keep the restaurant relevant beyond the first visit and build repeat consideration.</p>
+            <ul><li>Community Content</li><li>Seasonal Campaigns</li><li>Repeat Visits</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="scope-dark section">
+      <div class="container">
+        <div class="center reveal">
+          <span class="eyebrow">Project Scope</span>
+          <h2 class="section-title">A complete digital foundation, not isolated deliverables.</h2>
+        </div>
+        <div class="metrics">
+          <article class="metric reveal"><strong>04</strong><h3>Connected Disciplines</h3><p>Website, SEO, social media and marketing working as one system.</p></article>
+          <article class="metric reveal"><strong>03</strong><h3>Primary Dining Journeys</h3><p>Breakfast, lunch and takeaway pathways made easy to navigate.</p></article>
+          <article class="metric reveal"><strong>01</strong><h3>Responsive Experience</h3><p>A consistent journey across desktop, tablet and mobile screens.</p></article>
+          <article class="metric reveal"><strong>100%</strong><h3>Local-Intent Focus</h3><p>Messaging structured around genuine Busselton dining searches.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <img class="closing-bg" src="https://storage.googleapis.com/msgsndr/h2cb9KLIBwQnVuldURGp/media/3acae39d-b367-4f76-9211-266addeec1b7.jpeg" alt="Hummingbird Busselton restaurant experience" />
+      <div class="closing-inner reveal">
+        <span class="eyebrow">The Outcome</span>
+        <h2>A digital presence that feels as <span>welcoming</span> as the table.</h2>
+        <p>Hummingbird Busselton now has a connected platform for discovery, storytelling and conversion — shaped around how local diners actually choose where to eat.</p>
+        <div class="closing-actions">
+          <a class="btn btn-primary" href="https://hummingbirdbusselton.com.au/" target="_blank" rel="noopener noreferrer">Visit Live Website <span>↗</span></a>
+          <a class="btn btn-ghost" href="#top">Back To Top <span>↑</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>Hummingbird Busselton — Digital Work Case Study</p>
+      <p>Designed by Qrious Curators</p>
+    </div>
+  </footer>
+
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const loader = document.querySelector('.loader');
+  window.setTimeout(() => {
+    loader?.classList.add('hidden');
+    document.body.classList.remove('is-loading');
+  }, 500);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.14 });
+
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
+      event.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+});
+
+</script>
+</body>
+</html>

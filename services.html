@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Qrious Curators – Services</title>
+    <link
+      rel="shortcut icon"
+      href="./assets/logo/fav-icon-one.png"
+      type="image/x-icon"
+    />
+     <link rel="stylesheet" href="./styles/style.css" />
+    <link
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <link rel="stylesheet" href="./styles/style.css"> -->
+    <link rel="stylesheet" href="./styles/services-page.css" />
+  </head>
+
+  <body>
+    <!-- CURSOR -->
+    <div class="qn-wrap">
+      <div class="qn-bar">
+        <a href="./index.html" class="nav-logo">
+          <img src="./assets/logo/logo-one.png" alt="Logo" />
+        </a>
+
+        <button class="qn-toggle" id="qnToggle">
+          <div class="qn-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- ===== OVERLAY ===== -->
+    <div class="qn-overlay" id="qnOverlay">
+      <div class="qn-inner">
+        <div class="qn-center">
+          <div class="qn-main">
+            <a href="./about.html">About</a>
+            <a href="./work.html">Work</a>
+            <a href="./services.html">Services</a>
+          </div>
+    
+          <div class="qn-sub">
+            <a href="./contact.html">Contact</a>
+            <a href="./blog.html">Blogs</a>
+            <a href="./team.html">Our Team</a>
+            <a href="./careers.html">Career</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu" style="display: none;">
+      <span class="mm-close" id="mmClose">✕</span>
+      <a href="./about.html">About</a>
+      <a href="./services.html">Services</a>
+      <a href="./work.html">Work</a>
+      <a href="./team.html">Team</a>
+      <a href="./contact.html">Contact</a>
+    </div>
+
+
+    <!-- GRAIN -->
+    <div id="grain" aria-hidden="true"></div>
+
+    <!-- FIXED FULL-SCREEN BACKGROUND — sirf color/video change hoga, scroll nahi karega -->
+    <div id="fixedBg">
+      <div id="fixedBgColor"></div>
+      <div id="fixedBgMedia">
+        <!-- Active section ka video yahan inject hoga via JS -->
+      </div>
+      <div id="fixedBgOverlay"></div>
+    </div>
+    <!-- <nav>
+      <div class="logo">QRIOUS CURATORS</div>
+      <button class="menu-btn">Menu</button>
+    </nav> -->
+    
+
+    <!-- HERO -->
+    <main id="heroSection">
+      <div class="bg-video-wrap">
+        <video
+          class="bg-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          src="https://stream.mux.com/wk00FbgM3luTCLeHP99aoB6bM56gQhJmy/high.mp4"
+        ></video>
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="services-heading">Services</h1>
+      </div>
+    </main>
+
+    <section class="service-section" id="service-1">
+      <div class="section-bg"></div>
+      <div class="section-bg-media">
+        <video
+          class="bg-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          src="https://stream.mux.com/wk00FbgM3luTCLeHP99aoB6bM56gQhJmy/high.mp4"
+        ></video>
+      </div>
+
+      <div class="service-heading-wrap">
+        <span class="service-number">01 /</span>
+        <h2 class="service-heading">Social Media<br />Marketing</h2>
+      </div>
+    </section>
+
+    <section class="service-section" id="service-2">
+      <div class="section-bg"></div>
+      <div class="section-bg-media">
+        <video autoplay muted loop playsinline src="./images/seoo.mp4"></video>
+      </div>
+
+      <div class="service-heading-wrap">
+        <span class="service-number">02 /</span>
+        <h2 class="service-heading">Search Engine <br />Optimization</h2>
+      </div>
+    </section>
+
+    <!-- ── SECTION 01 ── -->
+    <section class="service-section" id="service-3">
+      <div class="section-bg"></div>
+      <div class="section-bg-media">
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          src="./images/webdev.mp4"
+        ></video>
+      </div>
+
+      <!-- Heading: left side, scrolls with section -->
+      <div class="service-heading-wrap">
+        <span class="service-number">03 /</span>
+        <h2 class="service-heading">Web<br />Development</h2>
+      </div>
+    </section>
+
+    <!-- ── SECTION 02 ── -->
+    <section class="service-section" id="service-4">
+      <div class="section-bg"></div>
+      <div class="section-bg-mediaa">
+        <!-- <video autoplay muted loop playsinline src="./images/graphicDesign.mp4"></video> -->
+      </div>
+
+      <div class="service-heading-wrap">
+        <span class="service-number">04 /</span>
+        <h2 class="service-heading">Graphic<br />Design</h2>
+      </div>
+    </section>
+
+    <!-- ── SECTION 03 ── -->
+    <section class="service-section" id="service-5">
+      <div class="section-bg"></div>
+      <div class="section-bg-media">
+        <video autoplay muted loop playsinline src="./images/highh.mp4"></video>
+      </div>
+
+      <div class="service-heading-wrap">
+        <span class="service-number-3">05 /</span>
+        <h2 class="service-heading">Performance<br />Marketing</h2>
+      </div>
+    </section>
+
+    <section class="service-section" id="service-6">
+      <div class="section-bg"></div>
+      <div class="section-bg-media">
+        <video autoplay muted loop playsinline src="./images/email.mp4"></video>
+      </div>
+
+      <div class="service-heading-wrap">
+        <span class="service-number-3">06 /</span>
+        <h2 class="service-heading">Email<br />Marketing</h2>
+      </div>
+    </section>
+
+    <!-- ── SECTION 04 ── -->
+
+    <div class="spacer"></div>
+
+    <!-- SINGLE FIXED SIDE-INFO — bottom left, shared across all sections -->
+    <div class="side-info" id="globalSideInfo">
+      <p class="service-subtitle" id="globalSubtitle">
+        Create amazing web experiences that captivate and convert
+      </p>
+      <button class="explore-btn" id="exploreBtn">Explore →</button>
+    </div>
+
+    <footer id="footerSection">
+      <div class="bg-video-wrap">
+        <video
+          class="bg-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          src="https://stream.mux.com/wk00FbgM3luTCLeHP99aoB6bM56gQhJmy/high.mp4"
+        ></video>
+      </div>
+      <div class="footer-overlay"></div>
+      
+      <div class="footer-content">
+        <h1 class="services-footer">
+          Let's <br />
+          Connect
+        </h1>
+        <button class="Contact" id="ContactBtn">Contact</button>
+      </div>
+    </footer>
+
+    <script>
+      /* ── HERO PARALLAX ── */
+      /* ── HERO PARALLAX ── */
+      const hero = document.getElementById("heroSection");
+
+      window.addEventListener("scroll", () => {
+        const s = window.scrollY;
+        hero.style.transform = `scale(${1 - s * 0.00015}) translateY(${s * -0.25}px)`;
+        hero.style.opacity = 1 - s * 0.0015;
+        hero.style.filter = `blur(${s * 0.03}px)`;
+      });
+
+      /* ── SECTION DATA ── */
+      const sectionData = {
+        "service-1": {
+          subtitle: "Create amazing web experiences that captivate and convert",
+          bg: "rgba(8, 8, 22, 1)",
+          video:
+            "https://stream.mux.com/Hj7XzvT68mUk0000zhSyGa6rSTBKcvZkDi/high.mp4",
+          link: "./services/socialMedia.html",
+        },
+        "service-2": {
+          subtitle: "Craft intuitive interfaces users love to interact with",
+          bg: "rgba(8, 20, 12, 1)",
+          video: "./images/seoo.mp4",
+          link: "./services/SearchEngineOptimization.html",
+        },
+        "service-3": {
+          subtitle: "Build a brand that resonates, endures and stands out",
+          bg: "rgba(22, 8, 8, 1)",
+          video: "./images/webdev.mp4",
+          link: "./services/website-development.html",
+        },
+        "service-4": {
+          subtitle: "Grow your brand with data-driven strategies",
+          link: "./services/graphic-design.html",
+          video: "./images/graphicDesign.mp4",
+        },
+        "service-5": {
+          subtitle: "Grow your brand with data-driven strategies",
+          video: "./images/highh.mp4",
+          link:"./services/performance-marketing.html"
+        },
+        "service-6": {
+          subtitle: "Grow your brand with data-driven strategies",
+          video: "./images/email.mp4",
+          link: "./services/email-marketing.html"
+        },
+      };
+
+      /* ── ELEMENTS ── */
+      const sections = document.querySelectorAll(".service-section");
+      const globalInfo = document.getElementById("globalSideInfo");
+      const globalSub = document.getElementById("globalSubtitle");
+      const fixedBgColor = document.getElementById("fixedBgColor");
+      const fixedBgMedia = document.getElementById("fixedBgMedia");
+
+      let currentActive = null;
+
+      /* ── SCROLL HANDLER ── */
+      function updateSections() {
+        const winMid = window.innerHeight / 2;
+        const threshold = window.innerHeight * 0.36;
+
+        let anyActive = false;
+
+        sections.forEach((section) => {
+          const rect = section.getBoundingClientRect();
+          const secMid = rect.top + rect.height / 2;
+          const dist = Math.abs(secMid - winMid);
+
+          const id = section.id;
+          const data = sectionData[id];
+
+          if (dist < threshold) {
+            anyActive = true;
+            section.classList.add("active");
+
+            if (currentActive !== id) {
+              currentActive = id;
+
+              /* BACKGROUND COLOR */
+              if (data) fixedBgColor.style.background = data.bg;
+
+              /* VIDEO BACKGROUND */
+              if (data && data.video) {
+                let videoStyle = `width:100%;height:100%;object-fit:cover;object-position:center center;transform:scale(1);`;
+
+                if (data.video.includes("seoo.mp4")) {
+                  videoStyle = `width:100%;height:100%;object-fit:cover;object-position:center center;transform:scale(1.45) translateX(12%);`;
+                }
+
+                fixedBgMedia.innerHTML = `
+            <video autoplay muted loop playsinline src="${data.video}" style="${videoStyle}"></video>
+          `;
+                fixedBgMedia.style.opacity = "1";
+              } else {
+                fixedBgMedia.innerHTML = "";
+                fixedBgMedia.style.opacity = "0";
+              }
+
+              /* SUBTITLE */
+              if (data) {
+                globalSub.textContent = data.subtitle;
+                const btn = document.getElementById("exploreBtn");
+                btn.onclick = () => {
+                  window.location.href = data.link;
+                };
+              }
+            }
+          } else {
+            section.classList.remove("active");
+          }
+        });
+
+        /* ── OVERLAP CHECK: heading se 30px upar tak hi side-info dikhega ── */
+        if (anyActive && currentActive) {
+          const headingWrap = document.querySelector(
+            `#${currentActive} .service-heading-wrap`,
+          );
+          const sideInfo = document.getElementById("globalSideInfo");
+
+          if (headingWrap) {
+            const headingRect = headingWrap.getBoundingClientRect();
+            const sideInfoRect = sideInfo.getBoundingClientRect();
+
+            /* Gap between bottom of heading and top of side-info */
+            const gap = sideInfoRect.top - headingRect.bottom;
+
+            if (gap < 30) {
+              sideInfo.classList.remove("active");
+            } else {
+              sideInfo.classList.add("active");
+            }
+          } else {
+            globalInfo.classList.add("active");
+          }
+        } else {
+          globalInfo.classList.remove("active");
+          fixedBgColor.style.background = "#0d0d10";
+          fixedBgMedia.style.opacity = "0.5";
+          currentActive = null;
+        }
+      }
+
+      /* ── EVENTS ── */
+      window.addEventListener("scroll", updateSections, { passive: true });
+      updateSections();
+    </script>
+    <script src="./scripts/script.js"></script>
+  </body>
+</html>

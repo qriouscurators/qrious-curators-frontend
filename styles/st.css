@@ -1,0 +1,222 @@
+ :root{
+    --bg: #000000;
+    --text: #ffffff;
+    --text-dim: rgba(255,255,255,0.5);
+    --line: rgba(255,255,255,0.25);
+    --line-strong: rgba(255,255,255,0.45);
+  }
+ 
+  *{ box-sizing: border-box; margin:0; padding:0; }
+ 
+  html, body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Raleway', sans-serif;
+  }
+ 
+  .cta-section{
+    background: var(--bg);
+    color: var(--text);
+    padding: 70px 40px 60px;
+  }
+ 
+  /* ---------- Heading ---------- */
+ 
+  .cta-heading{
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+ 
+  .line-row{
+    position: relative;
+    font-size: clamp(58px, 10.5vw, 168px);
+  }
+ 
+  .line-row .line{
+    display: block;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    font-size: inherit;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+ 
+  .line-row.left .line{ text-align: left; }
+ 
+  .line-row.right .line{
+    text-align: right;
+  }
+ 
+  /* divider rows: crop the glyph right at the hairline so
+     everything below the line is hidden, not just overlapped */
+  .line-row.divider{
+    overflow: hidden;
+    height: 0.74em;
+    border-bottom: 1px solid var(--line);
+  }
+ 
+  .cta-heading-bottom-rule{
+    border-bottom: 1px solid var(--line);
+    max-width: 1400px;
+    margin: 24px auto 0;
+  }
+ 
+  /* ---------- Body: links + form ---------- */
+ 
+  .cta-body{
+    max-width: 1400px;
+    margin: 60px auto 0;
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 140px;
+  }
+ 
+  .cta-links{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 4px;
+  }
+ 
+  .cta-links a{
+    color: var(--text);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    width: fit-content;
+    padding-bottom: 3px;
+    border-bottom: 1px solid var(--text);
+    transition: opacity 0.25s ease;
+  }
+ 
+  .cta-links a:hover{
+    opacity: 0.65;
+  }
+ 
+  form{
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  .form-row{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+ 
+  .field{
+    position: relative;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+  }
+ 
+  .field label{
+    position: absolute;
+    top: 20px;
+    left: 0;
+    font-size: 13px;
+    color: var(--text-dim);
+    letter-spacing: 0.01em;
+    pointer-events: none;
+    transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease;
+  }
+ 
+  .field input{
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text);
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    padding-top: 12px;
+  }
+ 
+  .field input:focus + label,
+  .field input:not(:placeholder-shown) + label{
+    top: 2px;
+    transform: scale(0.82);
+    transform-origin: left top;
+    opacity: 0.75;
+  }
+ 
+  .field.focused{
+    border-color: var(--line-strong);
+  }
+ 
+  .field.full{
+    grid-column: 1 / -1;
+  }
+ 
+  .submit-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 26px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+  }
+ 
+  .submit-btn{
+    background: none;
+    border: none;
+    color: var(--text);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 220px;
+    padding: 0;
+    width: 100%;
+    justify-content: space-between;
+  }
+ 
+  .submit-dot{
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--text);
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+ 
+  .submit-btn:hover .submit-dot{
+    transform: translateX(6px);
+  }
+ 
+  .submit-btn:disabled{
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+ 
+  .status-msg{
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: 10px;
+    min-height: 16px;
+  }
+ 
+  /* ---------- Responsive ---------- */
+ 
+  @media (max-width: 900px){
+    .cta-section{ padding: 50px 24px 40px; }
+ 
+    .line-row .line{ font-size: clamp(38px, 11vw, 64px); }
+ 
+    .cta-body{
+      grid-template-columns: 1fr;
+      gap: 44px;
+      margin-top: 44px;
+    }
+ 
+    .form-row{
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+ 
+    .submit-btn{ gap: 24px; }
+  }

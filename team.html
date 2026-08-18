@@ -1,0 +1,625 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About - Qrious Curators</title>
+    <link
+      rel="shortcut icon"
+      href="./assets/logo/fav-icon-one.png"
+      type="image/x-icon"
+
+    />
+    <link rel="stylesheet" href="./styles/last.css" />
+    <link rel="stylesheet" href="./styles/ourteam.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+    <!-- LUSION STYLE INTRO + RIGHT GALLERY RESTORE -->
+    <style>
+      /* Restore the About intro section exactly like the earlier right-side stacked collage */
+      main.shell {
+        width: min(1510px, calc(100% - 88px)) !important;
+        height: clamp(640px, 78vh, 760px) !important;
+        min-height: 640px !important;
+        margin: clamp(92px, 9vw, 145px) auto 0 !important;
+        padding: 0 !important;
+        display: grid !important;
+        grid-template-columns: 63.5% 36.5% !important;
+        align-items: stretch !important;
+        gap: 0 !important;
+        position: relative !important;
+        overflow: hidden !important;
+        border: 1px solid rgba(255,255,255,.16) !important;
+        border-radius: 10px !important;
+        background: linear-gradient(135deg, rgba(255,255,255,.035), rgba(255,255,255,.012)) !important;
+        box-shadow: 0 36px 90px rgba(0,0,0,.34) !important;
+      }
+
+      main.shell > .intro {
+        width: 100% !important;
+        max-width: none !important;
+        min-height: 100% !important;
+        padding: clamp(48px, 5vw, 72px) clamp(34px, 5vw, 68px) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: flex-start !important;
+        position: relative !important;
+        z-index: 4 !important;
+        overflow: visible !important;
+      }
+
+      main.shell > .intro h1 {
+        max-width: 760px !important;
+        margin: 0 !important;
+        font-size: clamp(46px, 4.6vw, 78px) !important;
+        line-height: 1.08 !important;
+        letter-spacing: .02em !important;
+        font-weight: 400 !important;
+      }
+
+      main.shell > .intro .rule {
+        width: min(770px, 100%) !important;
+        margin: clamp(28px, 3.4vw, 44px) 0 24px !important;
+      }
+
+      main.shell > .intro .lead {
+        max-width: 760px !important;
+        margin: 0 !important;
+        font-size: clamp(16px, 1.15vw, 20px) !important;
+        line-height: 1.45 !important;
+      }
+
+      main.shell > .gallery {
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 100% !important;
+        position: relative !important;
+        display: block !important;
+        overflow: visible !important;
+        isolation: isolate !important;
+        transform: translateX(4%) !important;
+      }
+
+      main.shell > .gallery .card {
+        position: absolute !important;
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        transform: none !important;
+        overflow: visible !important;
+        z-index: 1 !important;
+      }
+
+      main.shell > .gallery .frame {
+        width: 100% !important;
+        height: 100% !important;
+        position: relative !important;
+        display: block !important;
+        overflow: hidden !important;
+        border-radius: 10px !important;
+        background: #111 !important;
+        border: 1px solid rgba(255,255,255,.14) !important;
+        box-shadow: 0 28px 70px rgba(0,0,0,.45) !important;
+      }
+
+      main.shell > .gallery .frame img {
+        width: 100% !important;
+        height: 100% !important;
+        display: block !important;
+        object-fit: cover !important;
+        object-position: center !important;
+      }
+
+      /* Left gallery column */
+      main.shell > .gallery .c-top {
+        width: 39% !important;
+        height: 22% !important;
+        left: 3% !important;
+        top: -6% !important;
+        right: auto !important;
+        bottom: auto !important;
+        z-index: 2 !important;
+      }
+
+      main.shell > .gallery .c-mid {
+        width: 39% !important;
+        height: 55% !important;
+        left: 3% !important;
+        top: 17% !important;
+        right: auto !important;
+        bottom: auto !important;
+        z-index: 5 !important;
+      }
+
+      main.shell > .gallery .c-botL {
+        width: 39% !important;
+        height: 33% !important;
+        left: 3% !important;
+        top: 76% !important;
+        right: auto !important;
+        bottom: auto !important;
+        z-index: 3 !important;
+      }
+
+      /* Right gallery column */
+      main.shell > .gallery .c-podium {
+        width: 40% !important;
+        height: 48% !important;
+        left: 49% !important;
+        top: -1% !important;
+        right: auto !important;
+        bottom: auto !important;
+        z-index: 4 !important;
+      }
+
+      main.shell > .gallery .c-track {
+        width: 40% !important;
+        height: 43% !important;
+        left: 49% !important;
+        top: 54% !important;
+        right: auto !important;
+        bottom: auto !important;
+        z-index: 6 !important;
+      }
+
+      @media (max-width: 1280px) {
+        main.shell {
+          width: min(1180px, calc(100% - 48px)) !important;
+          grid-template-columns: 58% 42% !important;
+          height: clamp(620px, 76vh, 720px) !important;
+        }
+
+        main.shell > .intro h1 {
+          font-size: clamp(42px, 4.5vw, 64px) !important;
+        }
+
+        main.shell > .gallery {
+          transform: translateX(2%) !important;
+        }
+      }
+
+      @media (max-width: 980px) {
+        main.shell {
+          width: min(100% - 32px, 780px) !important;
+          height: auto !important;
+          min-height: 0 !important;
+          margin: 92px auto 0 !important;
+          display: block !important;
+          overflow: visible !important;
+          border-radius: 14px !important;
+        }
+
+        main.shell > .intro {
+          min-height: auto !important;
+          padding: 44px 28px 30px !important;
+        }
+
+        main.shell > .gallery {
+          height: 620px !important;
+          min-height: 620px !important;
+          width: 100% !important;
+          transform: none !important;
+          overflow: hidden !important;
+          border-top: 1px solid rgba(255,255,255,.12) !important;
+        }
+
+        main.shell > .gallery .c-top {
+          left: 5% !important;
+          top: 4% !important;
+          width: 42% !important;
+          height: 24% !important;
+        }
+
+        main.shell > .gallery .c-mid {
+          left: 5% !important;
+          top: 32% !important;
+          width: 42% !important;
+          height: 42% !important;
+        }
+
+        main.shell > .gallery .c-botL {
+          left: 5% !important;
+          top: 79% !important;
+          width: 42% !important;
+          height: 25% !important;
+        }
+
+        main.shell > .gallery .c-podium {
+          left: 53% !important;
+          top: 9% !important;
+          width: 42% !important;
+          height: 38% !important;
+        }
+
+        main.shell > .gallery .c-track {
+          left: 53% !important;
+          top: 53% !important;
+          width: 42% !important;
+          height: 40% !important;
+        }
+      }
+
+      @media (max-width: 640px) {
+        main.shell {
+          width: calc(100% - 24px) !important;
+          margin: 78px auto 0 !important;
+          border-radius: 14px !important;
+        }
+
+        main.shell > .intro {
+          padding: 34px 18px 24px !important;
+        }
+
+        main.shell > .intro h1 {
+          font-size: clamp(34px, 10vw, 48px) !important;
+          line-height: 1.08 !important;
+        }
+
+        main.shell > .intro .lead {
+          font-size: 15px !important;
+        }
+
+        main.shell > .gallery {
+          height: auto !important;
+          min-height: 0 !important;
+          display: grid !important;
+          grid-template-columns: 1fr 1fr !important;
+          gap: 12px !important;
+          padding: 12px !important;
+          overflow: visible !important;
+        }
+
+        main.shell > .gallery .card,
+        main.shell > .gallery .c-top,
+        main.shell > .gallery .c-mid,
+        main.shell > .gallery .c-botL,
+        main.shell > .gallery .c-podium,
+        main.shell > .gallery .c-track {
+          position: relative !important;
+          inset: auto !important;
+          left: auto !important;
+          top: auto !important;
+          right: auto !important;
+          bottom: auto !important;
+          width: 100% !important;
+          height: auto !important;
+          aspect-ratio: 4 / 5 !important;
+        }
+
+        main.shell > .gallery .c-mid {
+          grid-column: span 2 !important;
+          aspect-ratio: 16 / 10 !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- CUSTOM CURSOR -->
+    <div id="qc-cur"></div>
+    <div id="qc-cur-ring"></div>
+
+    <!-- NAVBAR -->
+    <div class="qn-wrap">
+      <div class="qn-bar">
+        <a href="./index.html" class="nav-logo">
+          <img src="./assets/logo/logo-one.png" alt="Logo" />
+        </a>
+
+        <button class="qn-toggle" id="qnToggle">
+          <div class="qn-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- ===== OVERLAY ===== -->
+    <div class="qn-overlay" id="qnOverlay">
+      <div class="qn-inner">
+        <div class="qn-center">
+          <div class="qn-main">
+            <a href="./about.html">About</a>
+            <a href="./work.html">Work</a>
+            <a href="./services.html">Services</a>
+          </div>
+    
+          <div class="qn-sub">
+            <a href="./contact.html">Contact</a>
+            <a href="./blog.html">Blogs</a>
+            <a href="./team.html">Our Team</a>
+            <a href="./careers.html">Career</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu" style="display: none;">
+      <span class="mm-close" id="mmClose">✕</span>
+      <a href="./about.html">About</a>
+      <a href="./services.html">Services</a>
+      <a href="./work.html">Work</a>
+      <a href="./team.html">Team</a>
+      <a href="./contact.html">Contact</a>
+    </div>
+    
+     <header class="tc-head">
+      <h1 class="tc-title"> The <span style="color: chocolate;">Q</span>rew</h1>
+      <p>The minds, moods, madness, and marketing behind Qrious Curators.
+</p>
+    </header>
+
+    <section class="tc-carousel" id="tc-carousel" aria-label="Team members">
+      <div class="tc-track" id="tc-track"></div>
+    </section>
+    <!-- ============================================================
+       SECTION 1 — HERO + STAGGERED GALLERY
+       ============================================================ -->
+    <main class="shell">
+        
+      <!-- LEFT -->
+      <section class="intro">
+        <!-- <p class="eyebrow">Our Team</p> -->
+        <h1>
+          Not just a team.<br> A group chat with deadlines.
+
+        </h1>
+
+        <div class="rule"><span class="badge"></span></div>
+
+        <p class="lead">
+          We are a happy bunch of young minds who brainstorm like strategists, execute like machines, celebrate like it’s a campaign win, and somehow turn beautiful chaos into brands people remember.
+          <span class="hi"></span>We work hard, party harder, overthink captions, fight for better ideas, and believe great marketing needs equal parts brain, vibe, and borderline obsession.
+        </p>
+
+        <!-- <a class="cta" href="#tc-carousel"
+          >Meet the team <span class="arrow">→</span></a
+        > -->
+      </section>
+
+      <!-- RIGHT GALLERY -->
+      <section class="gallery">
+        <div class="card c-top">
+          <div class="frame">
+            <img alt="Studio" src="./assets/newmockups/artboard-13.jpeg" />
+            <!-- <span class="tag bottom"><img class="ava" src="./assets/logo/logo-one.png" alt="">QC</span> -->
+          </div>
+        </div>
+
+        <div class="card c-mid">
+          <div class="frame">
+            <img alt="Sim racing" src="./assets/team1/teamcover3.jpg" />
+            <!-- <span class="tag bottom"><img class="ava" src="./assets/logo/logo-one.png" alt="">QC</span> -->
+          </div>
+        </div>
+
+        <div class="card c-botL">
+          <div class="frame">
+            <img alt="Workspace" src="./assets/newmockups/artboard-6.jpeg" />
+          </div>
+        </div>
+
+        <div class="card c-podium">
+          <div class="frame">
+            <img alt="Podium" src="./assets/newmockups/artboard-7.jpeg" />
+            <!-- <span class="tag bottom"><img class="ava" src="./assets/logo/logo-one.png" alt="">QC</span> -->
+          </div>
+        </div>
+
+        <div class="card c-track">
+          <div class="frame">
+            <img alt="Race track" src="./assets/newmockups/artboard-4.jpeg" />
+            <!-- <span class="tag bottom"><img class="ava" src="./assets/logo/logo-one.png" alt="">QC</span> -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============================================================
+       SECTION 2 — STORY
+       ============================================================ -->
+    <section>
+      <!-- <div class="container"> -->
+      <div class="story">
+        <div class="framed">
+          <div class="frame">
+            <img
+              alt="Photo of 7 team members Spring 2026"
+              src="./assets/homeimages/teams.webp"
+            />
+          </div>
+          <span class="corner tl"></span><span class="corner tr"></span
+          ><span class="corner bl"></span><span class="corner br"></span>
+        </div>
+        <div class="ptext">
+          <!-- <p class="eyebrow">The QC story</p> -->
+          <h2>
+Built from curiosity. Powered by chaos. Made for brands that want more.
+</h2>
+          <div class="rule"><span class="badge">635px</span></div>
+          <p class="lead">
+           Qrious Curators didn’t start as a perfectly polished agency story. It started with questions, ideas, experiments, edits, re-edits, and the belief that brands deserve marketing that feels alive.<br>
+We grew into a team that brings together strategy, content, design, websites, performance, and storytelling under one very energetic roof. <br>
+We don’t just create campaigns. We decode brands, find their voice, build their world, and make sure people notice.
+
+          </p>
+        </div>
+      </div>
+      <!-- </div> -->
+    </section>
+
+    <!-- ============================================================
+       SECTION 3 — PARTNER VIDEO
+       ============================================================ -->
+    <div class="video-row">
+      <div class="center-block">
+        <h2>People who make the madness work.</h2>
+        <div class="rule"><span class="badge">635px</span></div>
+        <p class="lead">
+     Behind every post, pitch, campaign, website, shoot, strategy, and “send it for approval” moment is a team that genuinely loves what they do. <br>
+We laugh loudly, work seriously, celebrate small wins like big ones, and treat every brand like a puzzle we’re excited to solve.
+
+
+
+        </p>
+      </div>
+
+      <div class="video-wrap">
+        <div class="frame">
+          <img
+            alt="Photo of 7 team members Spring 2026"
+            src="./assets/office/DSC06146.webp"
+          />
+        </div>
+
+        <!-- <iframe src="https://player.vimeo.com/video/1170350821?byline=false&portrait=false&title=false&transparent=0&h=3dc29a7f08" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe> -->
+      </div>
+    </div>
+
+    <!-- ============================================================
+       SECTION 4 — CULTURE (sticky scroll + floating images)
+       ============================================================ -->
+    <section class="culture-section" id="culture">
+      <div class="culture-sticky">
+        <div class="culture-content">
+          <p class="small-title">Our culture</p>
+
+          <h2>
+           Work hard. Think weird.<br> Celebrate everything.
+
+          </h2>
+
+          <div class="line"></div>
+
+          <p class="culture-para">
+           At Qrious, culture is not a poster on the wall. It’s the way we show up for each other, challenge ideas, fix things fast, hype every win, and turn pressure into possibility. <br>
+         
+
+          </p>
+        </div>
+
+        <div class="floating-images">
+          <div class="float-img img-1">
+            <img src="./team1/avnikhushi.JPG" alt="s" />
+          </div>
+          <div class="float-img img-2">
+            <img src="./team1/x-mas.DNG" alt="" />
+          </div>
+          <div class="float-img img-3">
+            <img src="./team1/crickertt.jpg" alt="" />
+          </div>
+          <div class="float-img img-4">
+            <img src="./team1/abhaysirbday.jpg" alt="" />
+          </div>
+          <div class="float-img img-5">
+            <img src="./team1/preeti2.JPG" alt="" />
+          </div>
+          <div class="float-img img-6">
+            <img src="./team1/prince.JPG" alt="" />
+          </div>
+          <div class="float-img img-7">
+            <img src="./team1/meeting.jpeg" alt="" />
+          </div>
+          <div class="float-img img-8">
+            <img src="./team1/teamh9.JPG" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+     OUR TEAM — CAROUSEL SECTION (tc- namespaced)
+     Ise apne page me jahan team chahiye wahan paste karo.
+     Zaroori: last.css ke end me carousel-namespaced.css ka
+     content hona chahiye, aur carousel-namespaced.js link hona chahiye.
+     ============================================================ -->
+   
+    <!-- ===== FOOTER ===== -->
+    <footer id="qcFooter">
+    
+      <!-- Large Background Logo -->
+      <div class="footer-bg-logo"></div>
+    
+      <div class="footer-inner">
+    
+        <div class="footer-top">
+    
+          <!-- Left -->
+          <div>
+            <div class="footer-brand-name">
+              <div class="nav-logo-dot"></div>
+              Qrious Curators
+            </div>
+    
+            <p class="footer-text">
+              We build brands, websites, and digital experiences that feel refined,
+              relevant, and made to grow.
+            </p>
+    
+            <div class="footer-socials">
+              <!-- <a href="#" class="f-soc">𝕏</a> -->
+              <a href="https://www.linkedin.com/company/qrious-curators" class="f-soc">in</a>
+              <a href="https://www.instagram.com/qrious.curators" class="f-soc">ig</a>
+            </div>
+          </div>
+    
+          <!-- Services -->
+          <div>
+            <!-- <div class="footer-col-ttl">Services</div> -->
+    
+            <ul class="footer-links">
+              <li><a href="./index.html">Home</a></li>
+              <li><a href="./about.html">About</a></li>
+              <li><a href="./work.html">Work</a></li>
+              <li><a href="./services.html">Services</a></li>
+            </ul>
+          </div>
+    
+          <!-- Company -->
+          <div>
+            <!-- <div class="footer-col-ttl">Company</div> -->
+    
+            <ul class="footer-links">
+              <li><a href="./blog.html">Blog</a></li>
+              <li><a href="./contact.html">Contact</a></li>
+              <li><a href="./careers.html">Careers</a></li>
+              <li><a href="./team.html">Team</a></li>
+            </ul>
+          </div>
+    
+        </div>
+    
+        <div class="footer-bottom">
+    
+          <p class="footer-copy">
+            © 2026 Qrious Curators. All rights reserved.
+          </p>
+    
+          <img
+            src="./assets/logo/logo-one.png"
+            alt="Qrious Curators"
+            class="footer-center-logo"
+          >
+    
+          <p class="footer-made">
+            Designed & Built with <span>♥</span>
+          </p>
+    
+        </div>
+    
+      </div>
+    
+    </footer>
+    <script src="./scripts/last.js"></script>
+    <script src="./scripts/ourteam.js"></script>
+    <script src="./scripts/script.js"></script>
+  </body>
+</html>

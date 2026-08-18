@@ -1,0 +1,716 @@
+<style>
+
+body{
+    margin:0;
+    background:#070707;
+    overflow-x:hidden;
+}
+
+/* SECTION */
+
+.premium-about{
+    position:relative;
+    height:400vh;
+    background:#070707;
+}
+
+/* STICKY WRAPPER */
+
+.premium-sticky{
+    position:sticky;
+    top:0;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 6%;
+    box-sizing:border-box;
+}
+
+/* BACKGROUND GLOW */
+
+.bg-glow{
+    position:absolute;
+    width:800px;
+    height:800px;
+
+    background:
+    radial-gradient(circle, rgba(255,255,255,0.05), transparent 70%);
+
+    top:-250px;
+    right:-200px;
+
+    pointer-events:none;
+}
+
+/* HUGE TEXT */
+
+.bg-word{
+    position:absolute;
+
+    bottom:-70px;
+    left:-30px;
+
+    font-size:16vw;
+    font-weight:700;
+
+    color:rgba(255,255,255,0.025);
+
+    letter-spacing:-12px;
+
+    pointer-events:none;
+
+    transition:1s ease;
+}
+
+/* LEFT */
+
+.left-side{
+    width:52%;
+    position:relative;
+    z-index:10;
+}
+
+/* LABEL */
+
+.label{
+    font-size:13px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:#6f6f6f;
+    margin-bottom:35px;
+}
+
+/* CONTENT */
+
+.content-slider{
+    position:relative;
+    height:520px;
+}
+
+/* SLIDE */
+
+.content-slide{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+
+    opacity:0;
+
+    transform:
+    translateY(80px);
+
+    transition:
+    opacity 0.9s cubic-bezier(.19,1,.22,1),
+    transform 0.9s cubic-bezier(.19,1,.22,1);
+}
+
+.content-slide.active{
+    opacity:1;
+
+    transform:
+    translateY(0);
+}
+
+/* HEADING */
+
+.content-slide h2{
+    font-size:120px;
+    line-height:0.88;
+    letter-spacing:-7px;
+
+    margin:0;
+
+    color:#fff;
+
+    font-family:Georgia, serif;
+    font-weight:500;
+}
+
+/* HIGHLIGHT */
+
+.content-slide h2 span{
+    color:#fb923c;
+    font-style:italic;
+}
+
+/* TEXT */
+
+.content-slide p{
+    max-width:650px;
+
+    font-size:18px;
+    line-height:1.9;
+
+    color:#8f8f8f;
+
+    margin-top:35px;
+}
+
+/* METRICS */
+
+.metrics{
+    display:flex;
+    gap:60px;
+    margin-top:45px;
+}
+
+/* ITEM */
+
+.metric-item h3{
+    font-size:42px;
+    color:#fff;
+    margin:0 0 8px;
+    font-weight:500;
+}
+
+.metric-item span{
+    color:#6d6d6d;
+    font-size:14px;
+}
+
+/* BUTTON */
+
+.main-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+
+    margin-top:45px;
+
+    text-decoration:none;
+
+    padding:18px 34px;
+
+    border-radius:60px;
+
+    background:#fff;
+    color:#111;
+
+    transition:0.4s ease;
+}
+
+.main-btn:hover{
+    transform:translateY(-5px);
+    background:#d9c1a4;
+}
+
+/* RIGHT */
+
+.right-side{
+    width:38%;
+    height:100%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+}
+
+/* VISUAL STACK */
+
+.visual-stack{
+    position:relative;
+    width:100%;
+    height:760px;
+}
+
+/* IMAGE CARD */
+
+.visual-card{
+    position:absolute;
+
+    width:380px;
+    height:250px;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    background:#111;
+
+    box-shadow:
+    0 30px 100px rgba(0,0,0,0.45);
+
+    transition:
+    transform 1.2s cubic-bezier(.19,1,.22,1),
+    opacity 1s ease,
+    filter 1s ease;
+
+    will-change:transform;
+}
+
+/* IMAGE */
+
+.visual-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* DARK OVERLAY */
+
+.visual-card::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+    to top,
+    rgba(0,0,0,0.4),
+    rgba(0,0,0,0)
+    );
+}
+
+/* POSITIONS */
+
+.card1{
+    top:20px;
+    left:0;
+}
+
+.card2{
+    top:240px;
+    right:0;
+}
+
+.card3{
+    bottom:30px;
+    left:70px;
+}
+
+/* ACTIVE STATE */
+
+.visual-card.active{
+    opacity:1;
+    filter:blur(0px);
+}
+
+.visual-card.inactive{
+    opacity:0.15;
+    filter:blur(2px);
+}
+
+/* FLOAT EFFECT */
+
+.card1.active{
+    transform:
+    translateY(25px)
+    rotate(-10deg);
+}
+
+.card2.active{
+    transform:
+    translateY(25px)
+    rotate(8deg);
+}
+
+.card3.active{
+    transform:
+    translateY(-20px)
+    translateX(-40px)
+    rotate(-5deg);
+}
+
+/* FLOATING BADGES */
+
+.badge{
+    position:absolute;
+
+    background:rgba(255,255,255,0.05);
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,255,255,0.06);
+
+    padding:18px 22px;
+
+    border-radius:20px;
+
+    z-index:20;
+
+    transition:0.8s ease;
+}
+
+/* BADGES */
+
+.badge1{
+    top:60px;
+    right:0;
+}
+
+.badge2{
+    bottom:70px;
+    right:20px;
+}
+
+/* BADGE TEXT */
+
+.badge h3{
+    color:#fff;
+    font-size:34px;
+    margin:0 0 5px;
+    font-weight:500;
+}
+
+.badge span{
+    color:#7c7c7c;
+    font-size:13px;
+}
+
+/* PROGRESS BAR */
+
+.scroll-line{
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    width:100%;
+    height:2px;
+
+    background:rgba(255,255,255,0.06);
+}
+
+.scroll-progress{
+    width:0%;
+    height:100%;
+    background:#fb923c;
+
+    transition:0.2s linear;
+}
+
+/* MOBILE */
+
+@media(max-width:1100px){
+
+    .premium-sticky{
+        flex-direction:column;
+        justify-content:center;
+        gap:80px;
+    }
+
+    .left-side,
+    .right-side{
+        width:100%;
+    }
+
+    .content-slide h2{
+        font-size:72px;
+        letter-spacing:-3px;
+    }
+
+}
+
+@media(max-width:700px){
+
+    .premium-sticky{
+        padding:0 5%;
+    }
+
+    .content-slide h2{
+        font-size:48px;
+        line-height:1;
+    }
+
+    .content-slide p{
+        font-size:16px;
+    }
+
+    .metrics{
+        gap:30px;
+    }
+
+    .metric-item h3{
+        font-size:28px;
+    }
+
+    .visual-card{
+        width:240px;
+        height:160px;
+    }
+
+    .visual-stack{
+        height:520px;
+    }
+
+}
+
+</style>
+
+
+<section class="premium-about">
+
+    <div class="premium-sticky">
+
+        <div class="bg-glow"></div>
+
+        <div class="bg-word">
+            AGENCY
+        </div>
+
+        <!-- LEFT -->
+
+        <div class="left-side">
+
+            <div class="content-slider">
+
+                <!-- SLIDE 1 -->
+
+                <div class="content-slide active">
+
+                    <h2>
+                        We Build <span>Attention</span>
+                    </h2>
+
+                    <p>
+                        Through storytelling, strategy, and premium campaign execution,
+                        we help modern brands become impossible to ignore online.
+                    </p>
+
+                    <div class="metrics">
+
+                        <div class="metric-item">
+                            <h3>120+</h3>
+                            <span>Brands Worked With</span>
+                        </div>
+
+                        <div class="metric-item">
+                            <h3>48M</h3>
+                            <span>Organic Reach</span>
+                        </div>
+
+                    </div>
+
+                    <a href="#" class="main-btn">
+                        Explore Qrious Curators →
+                    </a>
+
+                </div>
+
+                <!-- SLIDE 2 -->
+
+                <div class="content-slide">
+
+                    <h2>
+                        We Create <span>Momentum</span>
+                    </h2>
+
+                    <p>
+                        Every campaign is crafted to generate engagement,
+                        conversations, and measurable digital growth.
+                    </p>
+
+                    <div class="metrics">
+
+                        <div class="metric-item">
+                            <h3>340%</h3>
+                            <span>Average Growth</span>
+                        </div>
+
+                        <div class="metric-item">
+                            <h3>5.8X</h3>
+                            <span>ROAS Average</span>
+                        </div>
+
+                    </div>
+
+                    <a href="#" class="main-btn">
+                        View Process →
+                    </a>
+
+                </div>
+
+                <!-- SLIDE 3 -->
+
+                <div class="content-slide">
+
+                    <h2>
+                        We Scale <span>Brands</span>
+                    </h2>
+
+                    <p>
+                        We combine creativity and performance marketing
+                        into systems designed for long-term brand impact.
+                    </p>
+
+                    <div class="metrics">
+
+                        <div class="metric-item">
+                            <h3>12M</h3>
+                            <span>Monthly Impressions</span>
+                        </div>
+
+                        <div class="metric-item">
+                            <h3>8+</h3>
+                            <span>Years Experience</span>
+                        </div>
+
+                    </div>
+
+                    <a href="#" class="main-btn">
+                        Start Project →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT -->
+
+        <div class="right-side">
+
+            <div class="visual-stack">
+
+                <!-- CARD 1 -->
+
+                <div class="visual-card card1 active">
+
+                    <img id="img1"
+                    src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop">
+
+                </div>
+
+                <!-- CARD 2 -->
+
+                <div class="visual-card card2 active">
+
+                    <img id="img2"
+                    src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&auto=format&fit=crop">
+
+                </div>
+
+                <!-- CARD 3 -->
+
+                <div class="visual-card card3 active">
+
+                    <img id="img3"
+                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop">
+
+                </div>
+
+                <!-- BADGES -->
+
+                <div class="badge badge1">
+
+                    <h3>+220%</h3>
+                    <span>Engagement Growth</span>
+
+                </div>
+
+                <div class="badge badge2">
+
+                    <h3>12M</h3>
+                    <span>Monthly Impressions</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- PROGRESS -->
+
+        <div class="scroll-line" style="display: none;">
+            <div class="scroll-progress"></div>
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+
+const slides = document.querySelectorAll(".content-slide");
+
+const imageData = [
+
+[
+  "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop"
+],
+
+[
+  "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1200&auto=format&fit=crop"
+],
+
+[
+  "https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1200&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1200&auto=format&fit=crop"
+]
+
+];
+
+const cards = document.querySelectorAll(".visual-card");
+
+const progress = document.querySelector(".scroll-progress");
+
+let currentIndex = 0;
+
+window.addEventListener("scroll",()=>{
+
+    const section = document.querySelector(".premium-about");
+
+    const scrollTop = window.scrollY - section.offsetTop;
+
+    const maxScroll = section.offsetHeight - window.innerHeight;
+
+    const progressWidth = (scrollTop / maxScroll) * 100;
+
+    progress.style.width = `${progressWidth}%`;
+
+    let index = Math.floor(scrollTop / (window.innerHeight * 0.9));
+
+    index = Math.max(0, Math.min(index, 2));
+
+    if(index !== currentIndex){
+
+        currentIndex = index;
+
+        slides.forEach((slide,i)=>{
+
+            slide.classList.toggle("active", i === index);
+
+        });
+
+        cards.forEach((card)=>{
+
+            card.classList.remove("active");
+            card.classList.add("inactive");
+
+        });
+
+        setTimeout(()=>{
+
+            document.getElementById("img1").src = imageData[index][0];
+            document.getElementById("img2").src = imageData[index][1];
+            document.getElementById("img3").src = imageData[index][2];
+
+            cards.forEach((card)=>{
+
+                card.classList.remove("inactive");
+                card.classList.add("active");
+
+            });
+
+        },350);
+
+    }
+
+});
+
+</script>

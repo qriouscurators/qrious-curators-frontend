@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Premium About Section</title>
+
+<style>
+
+body{
+    margin:0;
+    background:#f4f1eb;
+    overflow-x:hidden;
+    font-family:Arial, sans-serif;
+}
+
+/* SECTION */
+
+.premium-about{
+    position:relative;
+    width:100%;
+    min-height:300vh;
+}
+
+/* STICKY IMAGE AREA */
+
+.premium-sticky{
+    position:sticky;
+    top:0;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+}
+
+.premium-image{
+    position:absolute;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    opacity:0;
+    transform:scale(1.08);
+    transition:
+    opacity 1s ease,
+    transform 1.4s ease;
+    filter:brightness(0.78);
+}
+
+.premium-image.active{
+    opacity:1;
+    transform:scale(1);
+}
+
+/* SOFT OVERLAY */
+
+.premium-overlay{
+    position:absolute;
+    inset:0;
+    background:
+    linear-gradient(
+    to right,
+    rgba(0,0,0,0.35),
+    rgba(0,0,0,0.15)
+    );
+    z-index:1;
+}
+
+/* CONTENT WRAPPER */
+
+.premium-content{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:5;
+}
+
+/* SCROLL PANELS */
+
+.premium-panel{
+    width:100%;
+    height:100vh;
+    display:flex;
+    align-items:center;
+    padding:0 7%;
+    box-sizing:border-box;
+}
+
+/* CARD */
+
+.premium-card{
+    width:620px;
+
+    padding:65px;
+
+    background:rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(14px);
+
+    border:1px solid rgba(255,255,255,0.12);
+
+    border-radius:34px;
+
+    color:#fff;
+
+    position:relative;
+
+    overflow:hidden;
+
+    opacity:0;
+
+    transform:
+    translateY(120px)
+    scale(0.96);
+
+    transition:
+    transform 1s cubic-bezier(.19,1,.22,1),
+    opacity 1s ease;
+}
+
+.premium-card.show{
+    opacity:1;
+
+    transform:
+    translateY(0)
+    scale(1);
+}
+
+/* MINIMAL LINE */
+
+.premium-line{
+    width:70px;
+    height:1px;
+    background:#d8c3a5;
+    margin-bottom:28px;
+}
+
+/* SMALL LABEL */
+
+.premium-label{
+    font-size:13px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:#e8d8c0;
+    margin-bottom:25px;
+}
+
+/* HEADING */
+
+.premium-title{
+    font-size:76px;
+    line-height:0.95;
+    letter-spacing:-3px;
+    margin-bottom:32px;
+    font-weight:500;
+    font-family:Georgia, serif;
+}
+
+.premium-title span{
+    font-style:italic;
+    color:#e6d4bc;
+}
+
+/* TEXT */
+
+.premium-text{
+    font-size:18px;
+    line-height:1.9;
+    color:rgba(255,255,255,0.82);
+    margin-bottom:45px;
+}
+
+/* BUTTON */
+
+.premium-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+
+    text-decoration:none;
+
+    padding:18px 34px;
+
+    border-radius:60px;
+
+    background:#fff;
+
+    color:#111;
+
+    font-size:15px;
+
+    transition:0.4s ease;
+}
+
+.premium-btn:hover{
+    transform:translateY(-5px);
+    background:#ece4d8;
+}
+
+/* ALIGNMENTS */
+
+.left-align{
+    justify-content:flex-start;
+}
+
+.right-align{
+    justify-content:flex-end;
+}
+
+/* FLOATING NUMBER */
+
+.premium-number{
+    position:absolute;
+    top:35px;
+    right:40px;
+
+    font-size:90px;
+
+    color:rgba(255,255,255,0.05);
+
+    font-weight:700;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .premium-title{
+        font-size:50px;
+        letter-spacing:-1px;
+    }
+
+    .premium-card{
+        width:100%;
+        padding:40px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .premium-panel{
+        padding:0 5%;
+    }
+
+    .premium-title{
+        font-size:38px;
+    }
+
+    .premium-text{
+        font-size:16px;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<section class="premium-about">
+
+    <!-- STICKY IMAGES -->
+
+    <div class="premium-sticky">
+
+        <div class="premium-overlay"></div>
+
+        <img class="premium-image active"
+        src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1800&auto=format&fit=crop">
+
+        <img class="premium-image"
+        src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1800&auto=format&fit=crop">
+
+        <img class="premium-image"
+        src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?q=80&w=1800&auto=format&fit=crop">
+
+    </div>
+
+    <!-- CONTENT -->
+
+    <div class="premium-content">
+
+        <!-- PANEL 1 -->
+
+        <div class="premium-panel left-align">
+
+            <div class="premium-card">
+
+                <div class="premium-number">
+                    01
+                </div>
+
+                <div class="premium-line"></div>
+
+                <div class="premium-label">
+                    ABOUT OUR STUDIO
+                </div>
+
+                <h2 class="premium-title">
+                    Spaces With <span>Meaning</span>
+                </h2>
+
+                <p class="premium-text">
+                    We design environments that combine timeless aesthetics
+                    with modern sophistication — crafted to feel immersive,
+                    refined, and emotionally connected.
+                </p>
+
+                <a href="#" class="premium-btn">
+                    Explore More →
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- PANEL 2 -->
+
+        <div class="premium-panel right-align">
+
+            <div class="premium-card">
+
+                <div class="premium-number">
+                    02
+                </div>
+
+                <div class="premium-line"></div>
+
+                <div class="premium-label">
+                    OUR APPROACH
+                </div>
+
+                <h2 class="premium-title">
+                    Designed To <span>Elevate</span>
+                </h2>
+
+                <p class="premium-text">
+                    Every project is carefully curated with attention
+                    to proportion, texture, light, and storytelling —
+                    creating a visual experience that feels effortless.
+                </p>
+
+                <a href="#" class="premium-btn">
+                    Discover More →
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- PANEL 3 -->
+
+        <div class="premium-panel left-align">
+
+            <div class="premium-card">
+
+                <div class="premium-number">
+                    03
+                </div>
+
+                <div class="premium-line"></div>
+
+                <div class="premium-label">
+                    OUR VISION
+                </div>
+
+                <h2 class="premium-title">
+                    Modern Yet <span>Timeless</span>
+                </h2>
+
+                <p class="premium-text">
+                    We create luxury experiences that feel contemporary,
+                    elegant, and built to leave a lasting visual impression
+                    across every interaction.
+                </p>
+
+                <a href="#" class="premium-btn">
+                    View Projects →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+
+const panels = document.querySelectorAll(".premium-panel");
+const cards = document.querySelectorAll(".premium-card");
+const images = document.querySelectorAll(".premium-image");
+
+window.addEventListener("scroll",()=>{
+
+    panels.forEach((panel,index)=>{
+
+        const rect = panel.getBoundingClientRect();
+
+        if(
+            rect.top < window.innerHeight * 0.65 &&
+            rect.bottom > window.innerHeight * 0.35
+        ){
+
+            cards[index].classList.add("show");
+
+            images.forEach((img)=>{
+                img.classList.remove("active");
+            });
+
+            images[index].classList.add("active");
+
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="premium-about">
+
+        <div class="premium-sticky">
+    
+            <div class="bg-glow"></div>
+    
+            <div class="bg-word">
+                Q R I O U S
+            </div>
+    
+            <!-- LEFT -->
+    
+            <div class="left-side">
+    
+                <div class="content-slider">
+    
+                    <!-- SLIDE 1 -->
+    
+                    <div class="content-slide active">
+    
+                        <h2>
+                            We Build Attention
+                        </h2>
+    
+                        <p>
+                            Through storytelling, strategy, and premium campaign execution,
+                            we help modern brands become impossible to ignore online.
+                        </p>
+    
+                        <div class="metrics">
+    
+                            <div class="metric-item">
+                                <h3>120+</h3>
+                                <span>Brands Worked With</span>
+                            </div>
+    
+                            <div class="metric-item">
+                                <h3>48M</h3>
+                                <span>Organic Reach</span>
+                            </div>
+    
+                        </div>
+    
+                        <a href="#" class="main-btn">
+                            Explore Qrious Curators →
+                        </a>
+    
+                    </div>
+    
+                    <!-- SLIDE 2 -->
+    
+                    <div class="content-slide">
+    
+                        <h2>
+                            We Create Momentum
+                        </h2>
+    
+                        <p>
+                            Every campaign is crafted to generate engagement,
+                            conversations, and measurable digital growth.
+                        </p>
+    
+                        <div class="metrics">
+    
+                            <div class="metric-item">
+                                <h3>340%</h3>
+                                <span>Average Growth</span>
+                            </div>
+    
+                            <div class="metric-item">
+                                <h3>5.8X</h3>
+                                <span>ROAS Average</span>
+                            </div>
+    
+                        </div>
+    
+                        <a href="#" class="main-btn">
+                            View Process →
+                        </a>
+    
+                    </div>
+    
+                    <!-- SLIDE 3 -->
+    
+                    <div class="content-slide">
+    
+                        <h2>
+                            We Scale Brands
+                        </h2>
+    
+                        <p>
+                            We combine creativity and performance marketing
+                            into systems designed for long-term brand impact.
+                        </p>
+    
+                        <div class="metrics">
+    
+                            <div class="metric-item">
+                                <h3>12M</h3>
+                                <span>Monthly Impressions</span>
+                            </div>
+    
+                            <div class="metric-item">
+                                <h3>8+</h3>
+                                <span>Years Experience</span>
+                            </div>
+    
+                        </div>
+    
+                        <a href="#" class="main-btn">
+                            Start Project →
+                        </a>
+    
+                    </div>
+    
+                </div>
+    
+            </div>
+    
+            <!-- RIGHT -->
+    
+            <div class="right-side">
+    
+                <div class="visual-stack">
+    
+                    <!-- CARD 1 -->
+    
+                    <div class="visual-card card1 active">
+    
+                        <img id="img1"
+                        src="./assets/homeimages/teamh1.JPG">
+    
+                    </div>
+    
+                    <!-- CARD 2 -->
+    
+                    <div class="visual-card card2 active">
+    
+                        <img id="img2"
+                        src="./assets/homeimages/teamh2.JPG">
+    
+                    </div>
+    
+                    <!-- CARD 3 -->
+    
+                    <div class="visual-card card3 active">
+    
+                        <img id="img3"
+                        src="./assets/homeimages/teamh3.JPG">
+    
+                    </div>
+    
+                    <!-- BADGES -->
+    
+                    <div class="badge badge1">
+    
+                        <h3>+220%</h3>
+                        <span>Engagement Growth</span>
+    
+                    </div>
+    
+                    <div class="badge badge2">
+    
+                        <h3>12M</h3>
+                        <span>Monthly Impressions</span>
+    
+                    </div>
+    
+                </div>
+    
+            </div>
+    
+            <!-- PROGRESS -->
+    
+            <div class="scroll-line" style="display: none;">
+                <div class="scroll-progress"></div>
+            </div>
+    
+        </div>
+    
+    </section>
+    
+
+
+    
+/* .premium-about {
+  position: relative;
+  height: auto;
+  background: #070707;
+} */
+
+/* STICKY WRAPPER */
+
+/* .premium-sticky {
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 6%;
+  box-sizing: border-box;
+} */
+
+.premium-about {
+  position: relative;
+  height: 300vh;
+  background: #070707;
+}
+
+.premium-sticky {
+  position: sticky;
+  top: 0;
+
+  width: 100%;
+  height: 100vh;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 6%;
+  box-sizing: border-box;
+}
+
+/* BACKGROUND GLOW */
+
+.bg-glow {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.05), transparent 70%);
+
+  top: -250px;
+  right: -200px;
+
+  pointer-events: none;
+}
+
+/* HUGE TEXT */
+
+.bg-word {
+  position: absolute;
+
+  bottom: -70px;
+  left: -30px;
+
+  font-size: 16vw;
+  font-weight: 700;
+
+  color: rgba(255, 255, 255, 0.025);
+
+  letter-spacing: -12px;
+
+  pointer-events: none;
+
+  transition: 1s ease;
+}
+
+/* LEFT */
+
+.left-side {
+  width: 52%;
+  position: relative;
+  z-index: 10;
+}
+
+/* LABEL */
+
+.label {
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #6f6f6f;
+  margin-bottom: 35px;
+}
+
+/* CONTENT */
+
+.content-slider {
+  position: relative;
+  height: 520px;
+}
+
+/* SLIDE */
+
+.content-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  opacity: 0;
+
+  transform:
+    translateY(80px);
+
+  transition:
+    opacity 0.9s cubic-bezier(.19, 1, .22, 1),
+    transform 0.9s cubic-bezier(.19, 1, .22, 1);
+}
+
+.content-slide.active {
+  opacity: 1;
+
+  transform:
+    translateY(0);
+}
+
+/* HEADING */
+
+.content-slide h2 {
+  font-size: 120px;
+  line-height: 0.88;
+  letter-spacing: -7px;
+
+  margin: 0;
+
+  color: #fff;
+
+  font-family: var(--heading-font);
+  font-weight: 500;
+}
+
+/* HIGHLIGHT */
+
+.content-slide h2 span {
+  color: #fb923c;
+  font-style: italic;
+}
+
+/* TEXT */
+
+.content-slide p {
+  max-width: 650px;
+
+  font-size: 18px;
+  line-height: 1.9;
+
+  color: #8f8f8f;
+  font-family: var(--sub-heading-font);
+  margin-top: 35px;
+}
+
+/* METRICS */
+
+.metrics {
+  display: flex;
+  gap: 60px;
+  margin-top: 45px;
+}
+
+/* ITEM */
+
+.metric-item h3 {
+  font-size: 42px;
+  color: #fff;
+  margin: 0 0 8px;
+  font-weight: 500;
+}
+
+.metric-item span {
+  color: #6d6d6d;
+  font-size: 14px;
+}
+
+/* BUTTON */
+
+.main-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-top: 45px;
+
+  text-decoration: none;
+
+  padding: 18px 34px;
+
+  border-radius: 60px;
+
+  background: #fff;
+  color: #111;
+
+  transition: 0.4s ease;
+}
+
+.main-btn:hover {
+  transform: translateY(-5px);
+  background: #d9c1a4;
+}
+
+/* RIGHT */
+
+.right-side {
+  width: 38%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+}
+
+/* VISUAL STACK */
+
+.visual-stack {
+  position: relative;
+  width: 100%;
+  height: 760px;
+}
+
+/* IMAGE CARD */
+
+.visual-card {
+  position: absolute;
+
+  width: 380px;
+  height: 250px;
+
+  border-radius: 15px;
+
+  overflow: hidden;
+
+  background: #111;
+
+  box-shadow:
+    0 30px 100px rgba(0, 0, 0, 0.45);
+
+  transition:
+    transform 1.2s cubic-bezier(.19, 1, .22, 1),
+    opacity 1s ease,
+    filter 1s ease;
+
+  will-change: transform;
+}
+
+/* IMAGE */
+
+.visual-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* DARK OVERLAY */
+
+.visual-card::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(to top,
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0));
+}
+
+/* POSITIONS */
+
+.card1 {
+  top: 20px;
+  left: 0;
+}
+
+.card2 {
+  top: 240px;
+  right: 0;
+}
+
+.card3 {
+  bottom: 30px;
+  left: 70px;
+}
+
+/* ACTIVE STATE */
+
+.visual-card.active {
+  opacity: 1;
+  filter: blur(0px);
+}
+
+.visual-card.inactive {
+  opacity: 0.15;
+  filter: blur(2px);
+}
+
+/* FLOAT EFFECT */
+
+.card1.active {
+  transform:
+    translateY(25px) rotate(-10deg);
+}
+
+.card2.active {
+  transform:
+    translateY(25px) rotate(8deg);
+}
+
+.card3.active {
+  transform:
+    translateY(-20px) translateX(-40px) rotate(-5deg);
+}
+
+/* FLOATING BADGES */
+
+.badge {
+  position: absolute;
+
+  background: rgba(255, 255, 255, 0.05);
+
+  backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  padding: 18px 22px;
+
+  border-radius: 20px;
+
+  z-index: 20;
+
+  transition: 0.8s ease;
+}
+
+/* BADGES */
+
+.badge1 {
+  top: 60px;
+  right: 0;
+}
+
+.badge2 {
+  bottom: 70px;
+  right: 20px;
+}
+
+/* BADGE TEXT */
+
+.badge h3 {
+  color: #fff;
+  font-size: 34px;
+  margin: 0 0 5px;
+  font-weight: 500;
+}
+
+.badge span {
+  color: #7c7c7c;
+  font-size: 13px;
+}
+
+/* PROGRESS BAR */
+
+.scroll-line {
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 2px;
+
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.scroll-progress {
+  width: 0%;
+  height: 100%;
+  background: #fb923c;
+
+  transition: 0.2s linear;
+}
+
+/* MOBILE */
+
+@media(max-width:1100px) {
+
+  .premium-sticky {
+    flex-direction: column;
+    justify-content: center;
+    gap: 80px;
+  }
+
+  .left-side,
+  .right-side {
+    width: 100%;
+  }
+
+  .content-slide h2 {
+    font-size: 72px;
+    letter-spacing: -3px;
+  }
+
+}
+
+@media(max-width:700px) {
+
+  .premium-sticky {
+    padding: 0 5%;
+  }
+
+  .content-slide h2 {
+    font-size: 48px;
+    line-height: 1;
+  }
+
+  .content-slide p {
+    font-size: 16px;
+  }
+
+  .metrics {
+    gap: 30px;
+  }
+
+  .metric-item h3 {
+    font-size: 28px;
+  }
+
+  .visual-card {
+    width: 240px;
+    height: 160px;
+  }
+
+  .visual-stack {
+    height: 520px;
+  }
+
+}

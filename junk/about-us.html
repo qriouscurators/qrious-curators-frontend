@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>About US — Qrious Curators</title>
+
+  <!-- Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap"
+    rel="stylesheet" />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./styles/style.css" />
+  <link rel="stylesheet" href="./styles/about.css" />
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./assets/logo/fav-icon-one.png" type="image/x-icon" />
+</head>
+
+<body>
+
+  <div id="qc-cur"></div>
+  <div id="qc-cur-ring"></div>
+
+  <header class="qc-header" style="display: none;">
+    <nav class="qc-nav">
+      <a href="#" class="nav-logo">
+        <img decoding="async" loading="eager" src="./assets/logo/logo-one.png" alt="" />
+      </a>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      </button>
+    </nav>
+  </header>
+
+  <!-- NAV -->
+  <div class="qn-wrap">
+    <div class="qn-bar">
+      <a href="./index.html" class="nav-logo">
+        <img decoding="async" loading="eager" src="./assets/logo/logo-one.png" alt="" />
+      </a>
+      <ul class="nav-links" <button class="qn-toggle" id="qnToggle">
+        <div class="qn-icon">
+          <span></span><span></span><span></span>
+        </div>
+        </button>
+    </div>
+  </div>
+
+  <!-- ===== OVERLAY ===== -->
+  <div class="qn-overlay" id="qnOverlay">
+    <div class="qn-inner">
+      <div class="qn-center">
+        <div class="qn-main">
+          <a href="index.html">Home</a>
+          <a href="#">Work</a>
+          <a href="#">Services</a>
+        </div>
+
+        <div class="qn-sub">
+          <a href="#">Contact</a>
+          <a href="#">Blogs</a>
+          <a href="#">Careers</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <main class="main">
+
+      <!-- LEFT -->
+      <div class="left-col">
+        <div class="card-box">
+          <h2>Let's talk about your project.</h2>
+          <form class="contact-form" onsubmit="handleSubmit(event)">
+            <div class="form-field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required />
+            </div>
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required />
+            </div>
+            <div class="form-field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="6" placeholder="Tell me about your project..." required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="right-col">
+        <p class="section-eyebrow">Contact</p>
+        <h2 class="hero-heading">Let's build together.</h2>
+        <p class="hero-sub">Ready to take your business to the next level? 
+</p>
+        <p class="hero-desc">Contact us for expert digital marketing, website design, and development services tailored to your goals. Let's discuss your vision and create solutions that drive real growth.</p>
+
+        <div class="divider"></div>
+
+        <div class="shortcuts-grid">
+          <div class="shortcuts-col">
+            <h3>Shortcuts</h3>
+            <ul>
+              <li><a href="mailto:contact@qriouscurators.com">Direct mail</a></li>
+              <li><a href="https://www.linkedin.com/company/qrious-curators/" target="_blank" rel="noopener">LinkedIn</a></li>
+              <li><a href="https://www.instagram.com/qrious.curators/?hl=en" target="_blank" rel="noopener">Instagram</a></li>
+              <li><a href="https://calendly.com/qriouscurators/discoverycall?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGne-eTwpE1B-v3dMX0a6pNMsXk71ESXREA4ZAwcvAuyD-Wzg9-GG05m2ybsZA_aem_xxmziExdli9KfmKPDNKd2w&utm_id=97760_v0_s00_e0_tv3&month=2026-06" target="_blank" rel="noopener">Book A Call</a></li>
+              
+
+            </ul>
+          </div>
+          <div class="shortcuts-col">
+            <h3>Details</h3>
+            <div class="info-rows">
+              <div class="info-row">
+                <span class="info-label">Based in</span>
+                <span class="info-value">Jaipur, India</span>
+              </div>
+
+           
+            </div>
+            <p class="address-line">138 Vidhyut Nagar, Chitrakoot Marg,<br>Vaishali Nagar, Jaipur, Rajasthan 302021</p>
+            <div class="map-box">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7115.900743359375!2d75.7391269!3d26.9050701!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db51c08b38ec9%3A0xbfa0f7e3d4277634!2sQrious%20Curators!5e0!3m2!1sen!2sin!4v1781845359342!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                title="138 Vidhyut Nagar, Vaishali Nagar, Jaipur"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- BOTTOM -->
+    <footer class="bottombar">
+     <a class="email-link" href="mailto:contact@qriouscurators.com">contact@qriouscurators.com</a>
+    </footer>
+
+  </div>
+
+  <!-- ===== TEAM HEADER ===== -->
+  <section id="team-container">
+    <div class="testi-header rv">
+    </div>
+  </section>
+
+  <!-- ===== TEAM SECTION ===== -->
+
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="qcFooter">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand-name">
+            <div class="nav-logo-dot"></div>
+            Qrious Curators
+          </div>
+
+          <p class="footer-text">
+            We build brands, websites, and digital experiences that feel
+            refined, relevant, and made to grow.
+          </p>
+
+          <div class="footer-socials">
+            <a href="#" class="f-soc">in</a>
+            <a href="#" class="f-soc">ig</a>
+            <a href="#" class="f-soc">fb</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-ttl">Services</div>
+
+          <ul class="footer-links">
+            <li><a href="#">Web Design</a></li>
+            <li><a href="#">Development</a></li>
+            <li><a href="#">Brand Identity</a></li>
+            <li><a href="#">Social Media</a></li>
+            <li><a href="#">Content Creation</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-ttl">Company</div>
+
+          <ul class="footer-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Our Work</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          © 2026 Qrious Curators. All rights reserved.
+        </p>
+
+        <p class="footer-made">
+          Designed &amp; built with <span>♥</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+    <script>
+    function handleSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      alert('Thanks ' + name + '! Your message has been sent.');
+      event.target.reset();
+    }
+  </script>
+
+</body>
+
+</html>

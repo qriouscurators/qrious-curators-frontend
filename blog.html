@@ -1,0 +1,2077 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qrious Blogs</title>
+  <link rel="stylesheet" href="./styles/style.css" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Raleway', Arial, sans-serif;
+      background: #ffffff;
+      color: #000;
+    }
+
+    .hero-page {
+      width: 100%;
+      min-height: 100vh;
+      padding: 12px;
+      background: #ffffff;
+    }
+
+    .hero-wrap {
+      position: relative;
+      width: 100%;
+      min-height: calc(100vh - 24px);
+      overflow: hidden;
+      border-radius: 28px;
+      padding: 46px 56px;
+      background-image: url("images/blok-card.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .hero-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(222, 223, 221, 0.78) 28%,
+          rgba(222, 223, 221, 0.151) 55%,
+          rgba(222, 223, 221, 0.68) 100%
+        ),
+        linear-gradient(
+          to bottom,
+          rgba(116, 116, 116, 0.18),
+          rgba(0, 0, 0, 0.10)
+        );
+      pointer-events: none;
+    }
+
+ 
+
+    .hero-content {
+      position: relative;
+      z-index: 6;
+      max-width: 460px;
+      margin-top: 145px;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(48px, 5.2vw, 88px);
+      line-height: 0.88;
+      letter-spacing: -5px;
+      font-weight: 700;
+      color: #000000;
+      border:#fbfbfb;
+    }
+
+    .hero-content h1 span {
+      color: #9f9f9f;
+      display: block;
+      font-weight: 600;
+    }
+
+    .hero-content p {
+      max-width: 390px;
+      margin-top: 26px;
+      font-size: 15px;
+      line-height: 1.25;
+      font-weight: 500;
+      color: #000000;
+    }
+
+    .begin-btn {    
+      margin-top: 34px;
+      width: 200px;
+      height: 52px;
+      border: none;
+      border-radius: 80px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      padding: 12px 22px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 12px 35px rgba(255,255,255,0.25);
+    }
+
+
+
+    .floating-card {
+      position: absolute;
+      z-index: 7;
+      right: 60px;
+      top: 215px;
+      width: 320px;
+      height: 205px;
+      border: 8px solid #fff;
+      border-radius: 46px;
+      overflow: hidden;
+      color: #fff;
+      background: #000;
+      box-shadow: 0 25px 55px rgba(0,0,0,0.12);
+    }
+
+    .floating-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(1) contrast(1.15);
+      z-index: 0;
+    }
+
+    .floating-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(0,0,0,0.92), rgba(0,0,0,0.15)),
+        linear-gradient(90deg, transparent, rgba(255,70,0,0.95), rgba(255,190,0,0.8), transparent);
+      z-index: 1;
+    }
+
+    .case-pill {
+      position: absolute;
+      z-index: 2;
+      left: 94px;
+      top: 28px;
+      padding: 10px 24px;
+      border: 1px solid rgba(255,255,255,0.7);
+      border-radius: 40px;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .floating-card-content {
+      position: absolute;
+      z-index: 2;
+      left: 32px;
+      bottom: 34px;
+    }
+
+    .star {
+      color: #ff3b00;
+      font-size: 24px;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .floating-card h3 {
+      font-size: 34px;
+      line-height: 0.95;
+      letter-spacing: -2px;
+      font-weight: 500;
+    }
+
+    .floating-card p {
+      margin-top: 8px;
+      font-size: 16px;
+      color: rgba(255,255,255,0.78);
+      font-weight: 500;
+    }
+
+    .card-shadow {
+      position: absolute;
+      z-index: 5;
+      right: 116px;
+      top: 410px;
+      width: 205px;
+      height: 75px;
+      border: 8px solid #fff;
+      border-top: none;
+      border-radius: 0 0 42px 42px;
+      background: rgba(0,0,0,0.82);
+      filter: blur(0.1px);
+    }
+
+    .big-title {
+      position: absolute;
+      left: 42px;
+      bottom: -20px;
+      z-index: 3;
+      font-size: clamp(105px, 17vw, 260px);
+      line-height: 0.72;
+      letter-spacing: 5px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.997);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .slash-shape {
+      position: absolute;
+      z-index: 4;
+      right: 36%;
+      bottom: 315px;
+      width: 82px;
+      height: 92px;
+      background: #fff;
+      transform: skewX(-18deg);
+    }
+
+    .corner-shape {
+      position: absolute;
+      z-index: 4;
+      right: 27%;
+      bottom: 210px;
+      width: 160px;
+      height: 170px;
+      border-right: 80px solid #fff;
+      border-bottom: 80px solid #fff;
+    }
+
+    
+    footer{
+      background-color: #070707;
+    }
+    
+    @media (max-width: 1100px) {
+      .hero-wrap {
+        padding: 34px 28px;
+      }
+
+      .hero-content {
+        margin-top: 110px;
+      }
+
+      .floating-card {
+        width: 330px;
+        height: 205px;
+        right: 34px;
+        top: 250px;
+      }
+
+      .floating-card h3 {
+        font-size: 27px;
+      }
+
+      .big-title {
+        font-size: clamp(90px, 18vw, 210px);
+        letter-spacing: -18px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-page {
+        min-height: auto;
+        padding: 8px;
+      }
+
+      .hero-wrap {
+        min-height: calc(100svh - 16px);
+        border-radius: 22px;
+        padding: 28px 20px 118px;
+        background-position: 58% center;
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .hero-wrap::before {
+        background:
+          linear-gradient(
+            to bottom,
+            rgba(222, 223, 221, 0.94) 0%,
+            rgba(222, 223, 221, 0.82) 34%,
+            rgba(222, 223, 221, 0.52) 68%,
+            rgba(116, 116, 116, 0.18) 100%
+          );
+      }
+
+      .hero-content {
+        width: 100%;
+        max-width: 360px;
+        margin-top: 112px;
+      }
+
+      .hero-content h1 {
+        max-width: 330px;
+        font-size: clamp(48px, 14vw, 66px);
+        line-height: 0.94;
+        letter-spacing: -3.5px;
+        text-wrap: balance;
+      }
+
+      .hero-content p {
+        max-width: 300px;
+        margin-top: 22px;
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .begin-btn {
+        width: 158px;
+        height: 48px;
+        margin-top: 26px;
+        justify-content: center;
+        gap: 0;
+        padding: 0 20px;
+        font-size: 14px;
+      }
+
+      .begin-btn .btn-orb {
+        display: none;
+      }
+
+      .floating-card {
+        width: 270px;
+        height: 170px;
+        right: 22px;
+        top: auto;
+        bottom: 170px;
+        border-radius: 32px;
+        border-width: 5px;
+      }
+
+      .floating-card h3 {
+        font-size: 23px;
+      }
+
+      .floating-card p {
+        font-size: 12px;
+      }
+
+      .case-pill {
+        left: 45px;
+        top: 20px;
+        padding: 7px 22px;
+      }
+
+      .card-shadow,
+      .slash-shape,
+      .corner-shape {
+        display: none;
+      }
+
+      .big-title {
+        left: 16px;
+        bottom: 24px;
+        width: calc(100% - 32px);
+        font-size: clamp(50px, 16vw, 72px);
+        line-height: 0.88;
+        letter-spacing: -2.5px;
+        text-align: center;
+        white-space: nowrap;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-wrap {
+        min-height: calc(100svh - 16px);
+        padding: 24px 18px 108px;
+        background-position: 61% center;
+      }
+
+      .hero-content {
+        margin-top: 104px;
+        max-width: 100%;
+      }
+
+      .hero-content h1 {
+        max-width: 300px;
+        font-size: clamp(44px, 13.2vw, 58px);
+        line-height: 0.96;
+        letter-spacing: -3px;
+      }
+
+      .hero-content p {
+        max-width: 275px;
+        margin-top: 20px;
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .begin-btn {
+        width: 150px;
+        height: 46px;
+        margin-top: 24px;
+        font-size: 13px;
+      }
+
+      .big-title {
+        left: 12px;
+        bottom: 22px;
+        width: calc(100% - 24px);
+        font-size: clamp(46px, 15.2vw, 62px);
+        letter-spacing: -2px;
+      }
+    }
+
+.blog-page {
+      width: 100%;
+      padding: 10px 48px 60px;
+      min-height: 100vh;
+    }
+
+.blog-label {
+  text-align: right;
+  font-size: 12px;
+  color: #ff3b00;
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+
+.blog-hero {
+  max-width: 760px;
+  margin: 0 0 45px auto;
+  text-align: right;
+}
+
+.blog-hero h1 {
+  font-family: 'Raleway', Arial, sans-serif;
+  font-size: clamp(34px, 4.4vw, 56px);
+  line-height: 1.02;
+  letter-spacing: -2.5px;
+  font-weight: 500;
+  text-align: right;
+}
+
+.blog-subtext {
+  max-width: 280px;
+  margin: 28px 0 0 auto;
+  font-size: 11px;
+  line-height: 1.15;
+  color: #666;
+  text-align: right;
+}
+
+    .blog-hero h1 span {
+      color: #9c9c9c;
+    }
+
+    .pill-img {
+      display: inline-block;
+      width: 145px;
+      height: 44px;
+      border-radius: 100px;
+      background: linear-gradient(90deg, #ff3b00, #ffb000, #ff3b00);
+      vertical-align: middle;
+      margin: 0 8px;
+      box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.35);
+    }
+
+    .small-pill {
+      width: 115px;
+      height: 38px;
+    }
+
+    .blog-subtext {
+      max-width: 280px;
+      margin: 28px auto 0;
+      font-size: 11px;
+      line-height: 1.15;
+      color: #666;
+    }
+ .blog-page {
+      width: 100%;
+      padding: 10px 48px 60px;
+      min-height: 100vh;
+    }
+
+.blog-label {
+  text-align: right;
+  font-size: 12px;
+  color: #ff3b00;
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+
+.blog-hero {
+  max-width: 760px;
+  margin: 0 0 45px auto;
+  text-align: right;
+}
+
+.blog-hero h1 {
+  font-family: 'Raleway', Arial, sans-serif;
+  font-size: clamp(34px, 4.4vw, 56px);
+  line-height: 1.02;
+  letter-spacing: -2.5px;
+  font-weight: 500;
+  text-align: right;
+}
+
+.blog-subtext {
+  max-width: 280px;
+  margin: 28px 0 0 auto;
+  font-size: 11px;
+  line-height: 1.15;
+  color: #666;
+  text-align: right;
+}
+
+    .blog-hero h1 span {
+      color: #9c9c9c;
+    }
+
+    .pill-img {
+      display: inline-block;
+      width: 145px;
+      height: 44px;
+      border-radius: 100px;
+      background: linear-gradient(90deg, #ff3b00, #ffb000, #ff3b00);
+      vertical-align: middle;
+      margin: 0 8px;
+      box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.35);
+    }
+
+    .small-pill {
+      width: 115px;
+      height: 38px;
+    }
+
+    .blog-subtext {
+      max-width: 280px;
+      margin: 28px auto 0;
+      font-size: 11px;
+      line-height: 1.15;
+      color: #666;
+    }
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  align-items: start;
+  margin-top: 30px;
+}
+
+.blog-card {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  padding: 24px;
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: #000;
+  color: #fff;
+}
+
+.blog-card:nth-child(4n + 1) {
+  height: 410px;
+}
+
+.blog-card:nth-child(4n + 2) {
+  height: 380px;
+  margin-top: 115px;
+}
+
+.blog-card:nth-child(4n + 3) {
+  height: 410px;
+}
+
+.blog-card:nth-child(4n + 4) {
+  height: 380px;
+  margin-top: 115px;
+ 
+  color: #ffffff;
+}
+
+
+    .blog-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit:cover;
+      z-index: 0;
+    }
+
+    .blog-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.05));
+      z-index: 1;
+    }
+
+    .blog-card.light::after {
+      display: none;
+    }
+
+    .blog-card-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .tag {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      z-index: 3;
+      font-size: 10px;
+      padding: 7px 24px;
+      border: 1px solid currentColor;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .star {
+      color: #ff3b00;
+      font-size: 20px;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .blog-card h3 {
+      font-size: 25px;
+      line-height: 1;
+      font-weight: 400;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .blog-card-meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 2px;
+      font-size: 10px;
+      line-height: 1.4;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.68);
+    }
+
+    .blog-card-meta .meta-dot {
+      opacity: 0.55;
+    }
+
+    .blog-card.light .blog-card-meta {
+      color: #777;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-top: 48px;
+    }
+
+    .page-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid #111;
+      background: transparent;
+      color: #111;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .page-btn.active,
+    .page-btn:hover {
+      background: #111;
+      color: #fff;
+    }
+
+    @media (max-width: 1024px) {
+      .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .blog-page {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .blog-hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .pill-img {
+        width: 100px;
+        height: 32px;
+      }
+    }
+
+
+  </style>
+</head>
+
+<body>
+    <div id="qc-cur"></div>
+    <div id="qc-cur-ring"></div>
+
+  
+    <div class="qn-wrap">
+      <div class="qn-bar">
+        <a href="./index.html" class="nav-logo">
+          <img src="./assets/logo/logo-one.png" alt="Logo" />
+        </a>
+
+        <button class="qn-toggle" id="qnToggle">
+          <div class="qn-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+   
+    <div class="qn-overlay" id="qnOverlay">
+      <div class="qn-inner">
+        <div class="qn-center">
+          <div class="qn-main">
+            <a href="./about.html">About</a>
+            <a href="./work.html">Work</a>
+            <a href="./services.html">Services</a>
+          </div>
+    
+          <div class="qn-sub">
+            <a href="./contact.html">Contact</a>
+            <a href="./blog.html">Blogs</a>
+            <a href="./team.html">Our Team</a>
+            <a href="./careers.html">Career</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   
+    <div class="mobile-menu" id="mobileMenu" style="display: none;">
+      <span class="mm-close" id="mmClose">✕</span>
+      <a href="./about.html">About</a>
+      <a href="./services.html">Services</a>
+      <a href="./work.html">Work</a>
+      <a href="./team.html">Team</a>
+      <a href="./contact.html">Contact</a>
+    </div>
+
+
+  <main class="hero-page">
+    <section class="hero-wrap">
+
+      <div class="hero-content">
+        <h1>
+          Decode
+          digital stories
+        </h1>
+
+        <p>
+          Fresh ideas, sharp insights and creative strategies for brands that want to grow with purpose.
+        </p>
+
+        <button class="begin-btn" type="button" onclick="document.getElementById('blogs-section').scrollIntoView({ behavior: 'smooth' });">
+          <span class="btn-orb"></span>
+          Read now
+        </button>
+      </div>
+
+     
+
+      <div class="card-shadow"></div>
+
+      <div class="big-title">BE QRIOUS</div>
+
+    </section>
+  </main>
+
+  <section class="blog-page" id="blogs-section">
+    <div class="blog-label">Blogs</div>
+
+    <div class="blog-hero">
+      <h1>
+    The best ideas don't announce themselves — you have to<span> know where to look.
+      </h1></span>
+
+      <p class="blog-subtext">
+        Fresh thoughts, bold ideas, and smart strategies for brands that want to grow with clarity.
+      </p>
+    </div>
+
+    <div class="blog-grid" id="blogGrid"></div>
+
+
+  </section>
+
+ 
+  <footer id="qcFooter">
+  
+  
+    <div class="footer-bg-logo"></div>
+  
+    <div class="footer-inner">
+  
+      <div class="footer-top">
+  
+        
+        <div>
+          <div class="footer-brand-name">
+            <div class="nav-logo-dot"></div>
+            Qrious Curators
+          </div>
+  
+          <p class="footer-text">
+            We build brands, websites, and digital experiences that feel refined,
+            relevant, and made to grow.
+          </p>
+  
+                   <div class="footer-socials">
+  <a href="https://www.linkedin.com/company/qrious-curators" class="f-soc" aria-label="LinkedIn">
+    <img src="assets/homeimages/linkdinn.png" alt="LinkedIn" class="f-soc-icon">
+  </a>
+
+  <a href="https://www.instagram.com/qrious.curators" class="f-soc" aria-label="Instagram">
+    <img src="assets/homeimages/instagramm.png" alt="Instagram" class="f-soc-icon">
+  </a>
+</div>
+        </div>
+  
+       
+        <div>
+         
+  
+          <ul class="footer-links">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./work.html">Work</a></li>
+            <li><a href="./services.html">Services</a></li>
+          </ul>
+        </div>
+  
+        
+        <div>
+          
+  
+          <ul class="footer-links">
+            <li><a href="./blog.html">Blog</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+            <li><a href="./careers.html">Careers</a></li>
+            <li><a href="./team.html">Team</a></li>
+          </ul>
+        </div>
+  
+      </div>
+  
+      <div class="footer-bottom">
+  
+        <p class="footer-copy">
+          © 2026 Qrious Curators. All rights reserved.
+        </p>
+  
+        <img
+          src="./assets/logo/logo-one.png"
+          alt="Qrious Curators"
+          class="footer-center-logo"
+        >
+  
+        <p class="footer-made">
+          Designed & Built with <span>♥</span>
+        </p>
+  
+      </div>
+  
+    </div>
+  
+  </footer>
+
+ 
+
+  <script>
+  const API_URL = "http://localhost:5000/api/public/posts";
+
+  async function renderBlogs() {
+    const grid = document.getElementById("blogGrid");
+    grid.innerHTML = "<p>Loading blogs...</p>";
+
+    try {
+      const res = await fetch(API_URL);
+      const data = await res.json();
+
+      if (!data.posts || data.posts.length === 0) {
+        grid.innerHTML = "<p>No blog posts yet.</p>";
+        return;
+      }
+
+      grid.innerHTML = "";
+
+      data.posts.forEach(post => {
+        const card = document.createElement("div");
+        card.className = "blog-card";
+
+        const imgSrc = post.featuredImage
+          ? "http://localhost:5000" + post.featuredImage
+          : "images/artboard-13.jpeg"; // fallback image
+
+        const tagHtml = post.category
+          ? `<div class="tag">${post.category.name}</div>`
+          : "";
+
+        const publishedDate = post.publishedAt || post.createdAt || post.updatedAt;
+
+        const formattedDate = publishedDate
+          ? new Date(publishedDate).toLocaleDateString("en-US", {
+              month: "short",
+              day: "numeric",
+              year: "numeric"
+            })
+          : "";
+
+        const rawContent = typeof post.content === "string"
+          ? post.content
+          : JSON.stringify(post.content || "");
+
+        const contentText = rawContent
+          .replace(/<[^>]*>/g, " ")
+          .replace(/&nbsp;/g, " ")
+          .replace(/&amp;/g, "&")
+          .replace(/\s+/g, " ")
+          .trim();
+
+        const wordCount = contentText
+          ? contentText.split(/\s+/).filter(Boolean).length
+          : 0;
+
+        const readingTime = Math.max(1, Math.ceil(wordCount / 200));
+
+        card.innerHTML = `
+          <img src="${imgSrc}" alt="${post.featuredImageAlt || post.title}">
+          ${tagHtml}
+          <div class="blog-card-content">
+            <h3>${post.title}</h3>
+            <div class="blog-card-meta">
+              ${formattedDate ? `<span>${formattedDate}</span><span class="meta-dot">•</span>` : ""}
+              <span>${readingTime} min read</span>
+            </div>
+          </div>
+        `;
+
+        card.style.cursor = "pointer";
+        card.addEventListener("click", () => {
+          window.location.href = `blog-post.html?slug=${post.slug}`;
+        });
+
+        grid.appendChild(card);
+      });
+    } catch (err) {
+      grid.innerHTML = "<p>Could not load blogs. Please try again later.</p>";
+      console.error(err);
+    }
+  }
+
+  renderBlogs();
+</script>
+  <script src="./scripts/script.js"></script>
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qrious Blogs</title>
+  <link rel="stylesheet" href="./styles/style.css" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Raleway', Arial, sans-serif;
+      background: #ffffff;
+      color: #000;
+    }
+
+    .hero-page {
+      width: 100%;
+      min-height: 100vh;
+      padding: 12px;
+      background: #ffffff;
+    }
+
+    .hero-wrap {
+      position: relative;
+      width: 100%;
+      min-height: calc(100vh - 24px);
+      overflow: hidden;
+      border-radius: 28px;
+      padding: 46px 56px;
+      background-image: url("images/blok-card.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .hero-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(222, 223, 221, 0.78) 28%,
+          rgba(222, 223, 221, 0.151) 55%,
+          rgba(222, 223, 221, 0.68) 100%
+        ),
+        linear-gradient(
+          to bottom,
+          rgba(116, 116, 116, 0.18),
+          rgba(0, 0, 0, 0.10)
+        );
+      pointer-events: none;
+    }
+
+    /* .hero-wrap::after {
+      content: "";
+      position: absolute;
+      left: 18%;
+      top: 42%;
+      width: 58%;
+      height: 95px;
+      z-index: 2;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 60, 0, 0.85),
+        rgba(255, 177, 0, 0.85),
+        rgba(255, 45, 0, 0.70),
+        transparent
+      );
+      filter: blur(18px);
+      opacity: 0.9;
+      pointer-events: none;
+    } */
+
+    .hero-content {
+      position: relative;
+      z-index: 6;
+      max-width: 460px;
+      margin-top: 145px;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(48px, 5.2vw, 88px);
+      line-height: 0.88;
+      letter-spacing: -5px;
+      font-weight: 700;
+      color: #000000;
+      border:#fbfbfb;
+    }
+
+    .hero-content h1 span {
+      color: #9f9f9f;
+      display: block;
+      font-weight: 600;
+    }
+
+    .hero-content p {
+      max-width: 390px;
+      margin-top: 26px;
+      font-size: 15px;
+      line-height: 1.25;
+      font-weight: 500;
+      color: #000000;
+    }
+
+    .begin-btn {    
+      margin-top: 34px;
+      width: 200px;
+      height: 52px;
+      border: none;
+      border-radius: 80px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      padding: 12px 22px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 12px 35px rgba(255,255,255,0.25);
+    }
+
+    /* .btn-orb {
+      width: 78px;
+      height: 54px;
+      border-radius: 50px;
+      background:
+        radial-gradient(circle at 35% 35%, #ffcf5a 0 12%, transparent 13%),
+        linear-gradient(90deg, #ff2a00, #ffb000, #b00000);
+      box-shadow: inset 0 0 18px rgba(0,0,0,0.35);
+    } */
+
+    .floating-card {
+      position: absolute;
+      z-index: 7;
+      right: 60px;
+      top: 215px;
+      width: 320px;
+      height: 205px;
+      border: 8px solid #fff;
+      border-radius: 46px;
+      overflow: hidden;
+      color: #fff;
+      background: #000;
+      box-shadow: 0 25px 55px rgba(0,0,0,0.12);
+    }
+
+    .floating-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(1) contrast(1.15);
+      z-index: 0;
+    }
+
+    .floating-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(0,0,0,0.92), rgba(0,0,0,0.15)),
+        linear-gradient(90deg, transparent, rgba(255,70,0,0.95), rgba(255,190,0,0.8), transparent);
+      z-index: 1;
+    }
+
+    .case-pill {
+      position: absolute;
+      z-index: 2;
+      left: 94px;
+      top: 28px;
+      padding: 10px 24px;
+      border: 1px solid rgba(255,255,255,0.7);
+      border-radius: 40px;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .floating-card-content {
+      position: absolute;
+      z-index: 2;
+      left: 32px;
+      bottom: 34px;
+    }
+
+    .star {
+      color: #ff3b00;
+      font-size: 24px;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .floating-card h3 {
+      font-size: 34px;
+      line-height: 0.95;
+      letter-spacing: -2px;
+      font-weight: 500;
+    }
+
+    .floating-card p {
+      margin-top: 8px;
+      font-size: 16px;
+      color: rgba(255,255,255,0.78);
+      font-weight: 500;
+    }
+
+    .card-shadow {
+      position: absolute;
+      z-index: 5;
+      right: 116px;
+      top: 410px;
+      width: 205px;
+      height: 75px;
+      border: 8px solid #fff;
+      border-top: none;
+      border-radius: 0 0 42px 42px;
+      background: rgba(0,0,0,0.82);
+      filter: blur(0.1px);
+    }
+
+    .big-title {
+      position: absolute;
+      left: 42px;
+      bottom: -20px;
+      z-index: 3;
+      font-size: clamp(105px, 17vw, 260px);
+      line-height: 0.72;
+      letter-spacing: 5px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.997);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .slash-shape {
+      position: absolute;
+      z-index: 4;
+      right: 36%;
+      bottom: 315px;
+      width: 82px;
+      height: 92px;
+      background: #fff;
+      transform: skewX(-18deg);
+    }
+
+    .corner-shape {
+      position: absolute;
+      z-index: 4;
+      right: 27%;
+      bottom: 210px;
+      width: 160px;
+      height: 170px;
+      border-right: 80px solid #fff;
+      border-bottom: 80px solid #fff;
+    }
+
+    
+    footer{
+      background-color: #070707;
+    }
+    
+    @media (max-width: 1100px) {
+      .hero-wrap {
+        padding: 34px 28px;
+      }
+
+      .hero-content {
+        margin-top: 110px;
+      }
+
+      .floating-card {
+        width: 330px;
+        height: 205px;
+        right: 34px;
+        top: 250px;
+      }
+
+      .floating-card h3 {
+        font-size: 27px;
+      }
+
+      .big-title {
+        font-size: clamp(90px, 18vw, 210px);
+        letter-spacing: -18px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-page {
+        min-height: auto;
+        padding: 8px;
+      }
+
+      .hero-wrap {
+        min-height: calc(100svh - 16px);
+        border-radius: 22px;
+        padding: 28px 20px 118px;
+        background-position: 58% center;
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .hero-wrap::before {
+        background:
+          linear-gradient(
+            to bottom,
+            rgba(222, 223, 221, 0.94) 0%,
+            rgba(222, 223, 221, 0.82) 34%,
+            rgba(222, 223, 221, 0.52) 68%,
+            rgba(116, 116, 116, 0.18) 100%
+          );
+      }
+
+      .hero-content {
+        width: 100%;
+        max-width: 360px;
+        margin-top: 112px;
+      }
+
+      .hero-content h1 {
+        max-width: 330px;
+        font-size: clamp(48px, 14vw, 66px);
+        line-height: 0.94;
+        letter-spacing: -3.5px;
+        text-wrap: balance;
+      }
+
+      .hero-content p {
+        max-width: 300px;
+        margin-top: 22px;
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .begin-btn {
+        width: 158px;
+        height: 48px;
+        margin-top: 26px;
+        justify-content: center;
+        gap: 0;
+        padding: 0 20px;
+        font-size: 14px;
+      }
+
+      .begin-btn .btn-orb {
+        display: none;
+      }
+
+      .floating-card {
+        width: 270px;
+        height: 170px;
+        right: 22px;
+        top: auto;
+        bottom: 170px;
+        border-radius: 32px;
+        border-width: 5px;
+      }
+
+      .floating-card h3 {
+        font-size: 23px;
+      }
+
+      .floating-card p {
+        font-size: 12px;
+      }
+
+      .case-pill {
+        left: 45px;
+        top: 20px;
+        padding: 7px 22px;
+      }
+
+      .card-shadow,
+      .slash-shape,
+      .corner-shape {
+        display: none;
+      }
+
+      .big-title {
+        left: 16px;
+        bottom: 24px;
+        width: calc(100% - 32px);
+        font-size: clamp(50px, 16vw, 72px);
+        line-height: 0.88;
+        letter-spacing: -2.5px;
+        text-align: center;
+        white-space: nowrap;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-wrap {
+        min-height: calc(100svh - 16px);
+        padding: 24px 18px 108px;
+        background-position: 61% center;
+      }
+
+      .hero-content {
+        margin-top: 104px;
+        max-width: 100%;
+      }
+
+      .hero-content h1 {
+        max-width: 300px;
+        font-size: clamp(44px, 13.2vw, 58px);
+        line-height: 0.96;
+        letter-spacing: -3px;
+      }
+
+      .hero-content p {
+        max-width: 275px;
+        margin-top: 20px;
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .begin-btn {
+        width: 150px;
+        height: 46px;
+        margin-top: 24px;
+        font-size: 13px;
+      }
+
+      .big-title {
+        left: 12px;
+        bottom: 22px;
+        width: calc(100% - 24px);
+        font-size: clamp(46px, 15.2vw, 62px);
+        letter-spacing: -2px;
+      }
+    }
+
+.blog-page {
+      width: 100%;
+      padding: 10px 48px 60px;
+      min-height: 100vh;
+    }
+
+.blog-label {
+  text-align: right;
+  font-size: 12px;
+  color: #ff3b00;
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+
+.blog-hero {
+  max-width: 760px;
+  margin: 0 0 45px auto;
+  text-align: right;
+}
+
+.blog-hero h1 {
+  font-family: 'Raleway', Arial, sans-serif;
+  font-size: clamp(34px, 4.4vw, 56px);
+  line-height: 1.02;
+  letter-spacing: -2.5px;
+  font-weight: 500;
+  text-align: right;
+}
+
+.blog-subtext {
+  max-width: 280px;
+  margin: 28px 0 0 auto;
+  font-size: 11px;
+  line-height: 1.15;
+  color: #666;
+  text-align: right;
+}
+
+    .blog-hero h1 span {
+      color: #9c9c9c;
+    }
+
+    .pill-img {
+      display: inline-block;
+      width: 145px;
+      height: 44px;
+      border-radius: 100px;
+      background: linear-gradient(90deg, #ff3b00, #ffb000, #ff3b00);
+      vertical-align: middle;
+      margin: 0 8px;
+      box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.35);
+    }
+
+    .small-pill {
+      width: 115px;
+      height: 38px;
+    }
+
+    .blog-subtext {
+      max-width: 280px;
+      margin: 28px auto 0;
+      font-size: 11px;
+      line-height: 1.15;
+      color: #666;
+    }
+ .blog-page {
+      width: 100%;
+      padding: 10px 48px 60px;
+      min-height: 100vh;
+    }
+
+.blog-label {
+  text-align: right;
+  font-size: 12px;
+  color: #ff3b00;
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+
+.blog-hero {
+  max-width: 760px;
+  margin: 0 0 45px auto;
+  text-align: right;
+}
+
+.blog-hero h1 {
+  font-family: 'Raleway', Arial, sans-serif;
+  font-size: clamp(34px, 4.4vw, 56px);
+  line-height: 1.02;
+  letter-spacing: -2.5px;
+  font-weight: 500;
+  text-align: right;
+}
+
+.blog-subtext {
+  max-width: 280px;
+  margin: 28px 0 0 auto;
+  font-size: 11px;
+  line-height: 1.15;
+  color: #666;
+  text-align: right;
+}
+
+    .blog-hero h1 span {
+      color: #9c9c9c;
+    }
+
+    .pill-img {
+      display: inline-block;
+      width: 145px;
+      height: 44px;
+      border-radius: 100px;
+      background: linear-gradient(90deg, #ff3b00, #ffb000, #ff3b00);
+      vertical-align: middle;
+      margin: 0 8px;
+      box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.35);
+    }
+
+    .small-pill {
+      width: 115px;
+      height: 38px;
+    }
+
+    .blog-subtext {
+      max-width: 280px;
+      margin: 28px auto 0;
+      font-size: 11px;
+      line-height: 1.15;
+      color: #666;
+    }
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  align-items: start;
+  margin-top: 30px;
+}
+
+.blog-card {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  padding: 24px;
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: #000;
+  color: #fff;
+}
+
+/* 1st and 3rd cards tall from top */
+.blog-card:nth-child(4n + 1) {
+  height: 410px;
+}
+
+/* Even cards */
+.blog-card:nth-child(4n + 2) {
+  height: 380px;
+  margin-top: 115px;
+}
+
+.blog-card:nth-child(4n + 3) {
+  height: 410px;
+}
+
+.blog-card:nth-child(4n + 4) {
+  height: 380px;
+  margin-top: 115px;
+  /* background: #dcdcdc; */
+  color: #ffffff;
+}
+
+
+    .blog-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit:cover;
+      z-index: 0;
+    }
+
+    .blog-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.05));
+      z-index: 1;
+    }
+
+    .blog-card.light::after {
+      display: none;
+    }
+
+    .blog-card-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .tag {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      z-index: 3;
+      font-size: 10px;
+      padding: 7px 24px;
+      border: 1px solid currentColor;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .star {
+      color: #ff3b00;
+      font-size: 20px;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .blog-card h3 {
+      font-size: 25px;
+      line-height: 1;
+      font-weight: 400;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .blog-card-meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 2px;
+      font-size: 10px;
+      line-height: 1.4;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.68);
+    }
+
+    .blog-card-meta .meta-dot {
+      opacity: 0.55;
+    }
+
+    .blog-card.light .blog-card-meta {
+      color: #777;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-top: 48px;
+    }
+
+    .page-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid #111;
+      background: transparent;
+      color: #111;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .page-btn.active,
+    .page-btn:hover {
+      background: #111;
+      color: #fff;
+    }
+
+    @media (max-width: 1024px) {
+      .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .blog-page {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .blog-hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .pill-img {
+        width: 100px;
+        height: 32px;
+      }
+    }
+
+
+  
+    .blog-card {
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .blog-card:visited {
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+    <div id="qc-cur"></div>
+    <div id="qc-cur-ring"></div>
+
+    <!-- NAVBAR -->
+    <div class="qn-wrap">
+      <div class="qn-bar">
+        <a href="./index.html" class="nav-logo">
+          <img src="./assets/logo/logo-one.png" alt="Logo" />
+        </a>
+
+        <button class="qn-toggle" id="qnToggle">
+          <div class="qn-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- ===== OVERLAY ===== -->
+    <div class="qn-overlay" id="qnOverlay">
+      <div class="qn-inner">
+        <div class="qn-center">
+          <div class="qn-main">
+            <a href="./about.html">About</a>
+            <a href="./work.html">Work</a>
+            <a href="./services2.html">Services</a>
+          </div>
+    
+          <div class="qn-sub">
+            <a href="./contact.html">Contact</a>
+            <a href="./blog.html">Blogs</a>
+            <a href="./team.html">Our Team</a>
+            <a href="./careers.html">Career</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu" style="display: none;">
+      <span class="mm-close" id="mmClose">✕</span>
+      <a href="./about.html">About</a>
+      <a href="./services.html">Services</a>
+      <a href="./work.html">Work</a>
+      <a href="./team.html">Team</a>
+      <a href="./contact.html">Contact</a>
+    </div>
+
+
+  <main class="hero-page">
+    <section class="hero-wrap">
+
+      <div class="hero-content">
+        <h1>
+          Decode
+          digital stories
+        </h1>
+
+        <p>
+          Fresh ideas, sharp insights and creative strategies for brands that want to grow with purpose.
+        </p>
+
+        <button class="begin-btn" type="button" onclick="document.getElementById('blogs-section').scrollIntoView({ behavior: 'smooth' });">
+          <span class="btn-orb"></span>
+          Read now
+        </button>
+      </div>
+
+      <!-- <div class="floating-card">
+        <img src="./images/blog-card.png" alt="Blog feature">
+
+        <div class="case-pill">Blog 01</div>
+
+        <div class="floating-card-content">
+          <span class="star">✸</span>
+          <h3>Marketing insights</h3>
+          <p>Ideas that shape better brands</p>
+        </div>
+      </div> -->
+
+      <div class="card-shadow"></div>
+
+      <!-- <div class="slash-shape"></div>
+      <div class="corner-shape"></div> -->
+
+      <div class="big-title">BE QRIOUS</div>
+
+    </section>
+  </main>
+
+  <section class="blog-page" id="blogs-section">
+    <div class="blog-label">Blogs</div>
+
+    <div class="blog-hero">
+      <h1>
+    The best ideas don't announce themselves — you have to<span> know where to look.
+      </h1></span>
+
+      <p class="blog-subtext">
+        Fresh thoughts, bold ideas, and smart strategies for brands that want to grow with clarity.
+      </p>
+    </div>
+
+    <div class="blog-grid" id="blogGrid"></div>
+
+    <!-- <div class="pagination" id="pagination"></div> -->
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="qcFooter">
+  
+    <!-- Large Background Logo -->
+    <div class="footer-bg-logo"></div>
+  
+    <div class="footer-inner">
+  
+      <div class="footer-top">
+  
+        <!-- Left -->
+        <div>
+          <div class="footer-brand-name">
+            <div class="nav-logo-dot"></div>
+            Qrious Curators
+          </div>
+  
+          <p class="footer-text">
+            We build brands, websites, and digital experiences that feel refined,
+            relevant, and made to grow.
+          </p>
+  
+                   <div class="footer-socials">
+  <a href="https://www.linkedin.com/company/qrious-curators" class="f-soc" aria-label="LinkedIn">
+    <img src="assets/homeimages/linkdinn.png" alt="LinkedIn" class="f-soc-icon">
+  </a>
+
+  <a href="https://www.instagram.com/qrious.curators" class="f-soc" aria-label="Instagram">
+    <img src="assets/homeimages/instagramm.png" alt="Instagram" class="f-soc-icon">
+  </a>
+</div>
+        </div>
+  
+        <!-- Services -->
+        <div>
+          <!-- <div class="footer-col-ttl">Services</div> -->
+  
+          <ul class="footer-links">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./work.html">Work</a></li>
+            <li><a href="./services.html">Services</a></li>
+          </ul>
+        </div>
+  
+        <!-- Company -->
+        <div>
+          <!-- <div class="footer-col-ttl">Company</div> -->
+  
+          <ul class="footer-links">
+            <li><a href="./blog.html">Blog</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+            <li><a href="./careers.html">Careers</a></li>
+            <li><a href="./team.html">Team</a></li>
+          </ul>
+        </div>
+  
+      </div>
+  
+      <div class="footer-bottom">
+  
+        <p class="footer-copy">
+          © 2026 Qrious Curators. All rights reserved.
+        </p>
+  
+        <img
+          src="./assets/logo/logo-one.png"
+          alt="Qrious Curators"
+          class="footer-center-logo"
+        >
+  
+        <p class="footer-made">
+          Designed & Built with <span>♥</span>
+        </p>
+  
+      </div>
+  
+    </div>
+  
+  </footer>
+
+  <!-- <script>
+    const blogs = [
+      {
+        // tag: "Strategy",
+        title: "Bold strategies that shape identities",
+        desc: "How thoughtful positioning helps brands build a stronger presence.",
+        img: "images/artboard-13.jpeg"
+      },
+      {
+        // tag: "Growth",
+        title: "Driving measurable growth through impact",
+        desc: "Content, campaigns, and creative systems that move numbers.",
+        img: "images/post-3.jpg"
+      },
+      {
+        // tag: "Creative",
+        title: "Creative processes with rapid delivery",
+        desc: "How ideas turn into results without losing quality or relevance.",
+        img: "images/artboard-24.webp"
+      },
+      {
+        // tag: "Powerful",
+        title: "A dedicated team behind success",
+        desc: "What it takes to guide a brand from launch to scale.",
+        img: "images/blog-33.webp"
+      }
+    ];
+
+   function renderBlogs() {
+     const grid = document.getElementById("blogGrid");
+     grid.innerHTML = "";
+   
+     blogs.forEach(blog => {
+       const card = document.createElement("div");
+       card.className = blog.light ? "blog-card light" : "blog-card";
+   
+       card.innerHTML = `
+         ${blog.img ? `<img src="${blog.img}" alt="${blog.title}">` : ""}
+   
+         <div class="blog-card-content">
+           <h3>${blog.title}</h3>
+           <p>${blog.desc}</p>
+         </div>
+       `;
+   
+       grid.appendChild(card);
+     });
+   }
+
+   renderBlogs();
+  </script> -->
+
+  <!-- MANUAL BLOG DATA: edit/add blogs only here -->
+  <script type="application/json" id="blogData">
+[
+  {
+    "slug": "why-your-business-needs-a-performance-marketing-agency-in-jaipur",
+    "category": "Performance Marketing",
+    "title": "Why Your Business Needs a Performance Marketing Agency in Jaipur",
+    "date": "2026-08-11",
+    "readingTime": "4 min read",
+    "image": "images/artboard-13.jpeg",
+    "imageAlt": "Performance Marketing Agency in Jaipur",
+    "metaTitle": "Why Your Business Needs a Performance Marketing Agency in Jaipur",
+    "metaDescription": "Learn how a performance marketing agency in Jaipur can help your business reach the right audience, track results and use its marketing budget effectively.",
+    "content": "<p>In today’s digital world, businesses need a strong online presence to reach the right customers. Traditional marketing alone may not be enough to bring steady results. Online advertising, social media, and search campaigns can help businesses connect with people who are already looking for their products or services.</p>\n\n<h2>What Is Performance Marketing?</h2>\n<p><strong>Performance Marketing</strong> focuses on measurable results such as clicks, leads, website visits, and sales. It helps businesses understand how their marketing campaigns are working and where improvements can be made.</p>\n\n<h2>Reach the Right Audience</h2>\n<p>A good marketing strategy helps businesses target people based on their interests, location, and online behavior. For businesses in Jaipur, targeted campaigns can help reach local customers and audiences in other areas.</p>\n\n<h2>Get Measurable Marketing Results</h2>\n<p>Digital campaigns provide useful information about clicks, visitors, leads, and customer activity. This data helps businesses understand what works and make better marketing decisions.</p>\n\n<h2>Make Better Use of Your Marketing Budget</h2>\n<p>Every business wants to use its budget wisely. Digital campaigns allow businesses to track spending and results. Agencies can also test different ads and audiences to find what works best.</p>\n\n<h2>Support Long-Term Business Growth</h2>\n<p>Digital marketing can support long-term <strong>business development</strong> by increasing brand awareness, attracting new customers, and keeping existing customers connected. A consistent strategy can help businesses build a stronger online presence.</p>\n\n<h2>Why Choose a Local Marketing Agency?</h2>\n<p>A local agency can understand the Jaipur market, customer needs, and local competition. This knowledge can help create campaigns that connect better with the target audience.</p>\n\n<h2>What to Look for in a Marketing Agency</h2>\n<p>Choose an agency that understands your goals, communicates clearly, provides regular updates, and tracks campaign results. A good working relationship can make your marketing journey easier and more productive.</p>\n\n<h2>Conclusion</h2>\n<p>A strong digital marketing strategy can help your business reach more customers and create new growth opportunities. The right agency can help you plan campaigns, understand your audience, and use your budget effectively. If you need simple and result-focused digital marketing support, <strong>qriouscurators</strong> can help create strategies that match your business goals.</p>"
+  }
+]
+  </script>
+
+  <script>
+    function formatBlogDate(value) {
+      if (!value) return "";
+      const date = new Date(value + "T00:00:00");
+      return date.toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric"
+      });
+    }
+
+    function getBlogs() {
+      try {
+        return JSON.parse(document.getElementById("blogData").textContent);
+      } catch (error) {
+        console.error("Invalid blog data:", error);
+        return [];
+      }
+    }
+
+    function renderBlogs() {
+      const grid = document.getElementById("blogGrid");
+      const blogs = getBlogs();
+
+      if (!blogs.length) {
+        grid.innerHTML = "<p>No blog posts yet.</p>";
+        return;
+      }
+
+      grid.innerHTML = "";
+
+      blogs.forEach(blog => {
+        const card = document.createElement("a");
+        card.className = "blog-card";
+        card.href = "./blog-post.html?slug=" + encodeURIComponent(blog.slug);
+
+        card.innerHTML = `
+          <img src="${blog.image}" alt="${blog.imageAlt || blog.title}">
+          ${blog.category ? `<div class="tag">${blog.category}</div>` : ""}
+          <div class="blog-card-content">
+            <h3>${blog.title}</h3>
+            <div class="blog-card-meta">
+              <span>${formatBlogDate(blog.date)}</span>
+              <span class="meta-dot">•</span>
+              <span>${blog.readingTime || "5 min read"}</span>
+            </div>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    renderBlogs();
+  </script>
+
+  <script src="./scripts/script.js"></script>
+
+</body>
+</html>

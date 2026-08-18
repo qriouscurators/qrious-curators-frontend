@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Team — Qrious Curators</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & TOKENS ─── */
+:root{
+  --ink:#05050a;--ink2:#0c0c14;--ink3:#14141e;
+  --b:rgba(255,255,255,.07);--bhi:rgba(255,255,255,.14);
+  --white:#f8f8f4;--muted:rgba(255,255,255,.35);--muted2:rgba(255,255,255,.15);
+  --txt:rgba(255,255,255,.78);--txt2:rgba(255,255,255,.44);
+  --amber:#fb923c;--amber2:rgba(251,146,60,.14);--amber3:rgba(251,146,60,.05);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased}
+body{background:var(--ink);color:var(--white);font-family:'DM Sans',sans-serif;overflow-x:hidden;cursor:none}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+::-webkit-scrollbar{width:2px}
+::-webkit-scrollbar-track{background:var(--ink)}
+::-webkit-scrollbar-thumb{background:var(--amber);border-radius:1px}
+
+/* ─── CURSOR ─── */
+#cur,#cr{position:fixed;top:0;left:0;pointer-events:none;border-radius:50%;transform:translate3d(0,0,0) translate(-50%,-50%);z-index:99999;will-change:transform}
+#cur{width:8px;height:8px;background:var(--amber);transition:width .18s,height .18s,background .25s}
+#cr{width:32px;height:32px;border:1px solid rgba(251,146,60,.4);z-index:99998;transition:width .22s,height .22s,border-color .3s}
+body.hov #cur{width:14px;height:14px}
+body.hov #cr{width:52px;height:52px;border-color:rgba(251,146,60,.7)}
+
+/* ─── GRAIN ─── */
+#grain{position:fixed;inset:-5%;pointer-events:none;z-index:9000;opacity:.38;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='.033'/%3E%3C/svg%3E");
+  animation:grain 8s steps(1) infinite;will-change:transform;transform:translate3d(0,0,0)}
+@keyframes grain{0%{transform:translate3d(0,0,0)}20%{transform:translate3d(-2%,-1%,0)}40%{transform:translate3d(1%,2%,0)}60%{transform:translate3d(2%,-2%,0)}80%{transform:translate3d(-1%,1%,0)}100%{transform:translate3d(0,0,0)}}
+
+/* ═══════════════════════════════
+   SECTION WRAPPER
+═══════════════════════════════ */
+#team{
+  position:relative;background:var(--ink2);
+  overflow:hidden;border-top:1px solid var(--b);
+  min-height:100vh;
+}
+
+/* ambient glows */
+.tg{position:absolute;pointer-events:none;border-radius:50%;will-change:transform;transform:translate3d(0,0,0)}
+.tg1{top:-10%;left:-8%;width:700px;height:700px;background:radial-gradient(circle,rgba(251,146,60,.055) 0%,transparent 60%)}
+.tg2{bottom:-20%;right:-5%;width:600px;height:600px;background:radial-gradient(circle,rgba(251,146,60,.04) 0%,transparent 62%)}
+
+/* ─── SECTION HEADER ─── */
+.th{
+  position:relative;z-index:2;
+  padding:100px 72px 0;
+  max-width:1440px;margin:0 auto;
+  display:flex;justify-content:space-between;align-items:flex-end;
+  flex-wrap:wrap;gap:40px;
+}
+.th-l{}
+.th-eye{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'Syne',sans-serif;font-size:10px;font-weight:700;
+  letter-spacing:.32em;text-transform:uppercase;color:var(--amber);margin-bottom:22px;
+}
+.th-bar{width:28px;height:1px;background:var(--amber)}
+.th-h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(44px,6.5vw,90px);
+  font-weight:300;line-height:.92;letter-spacing:-.035em;color:var(--white);
+}
+.th-h2 em{font-style:italic;color:var(--amber)}
+.th-h2 .ghost{-webkit-text-stroke:1px rgba(255,255,255,.18);color:transparent;display:block}
+.th-r{padding-bottom:8px}
+.th-desc{
+  font-size:15px;line-height:1.85;color:var(--txt2);
+  font-weight:300;max-width:400px;margin-bottom:32px;
+}
+.th-desc strong{color:var(--txt);font-weight:400}
+.th-stats{display:flex;gap:0}
+.ts-cell{padding-right:24px;margin-right:24px;border-right:1px solid var(--b)}
+.ts-cell:last-child{border-right:none}
+.ts-n{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:300;line-height:1;letter-spacing:-1px;color:var(--white)}
+.ts-n b{color:var(--amber);font-weight:300}
+.ts-l{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+
+/* ═══════════════════════════════
+   DIAL ARENA
+═══════════════════════════════ */
+.dial-arena{
+  position:relative;z-index:2;
+  width:100%;max-width:1100px;
+  margin:60px auto 0;
+  padding:0 72px 100px;
+  display:flex;align-items:center;justify-content:center;
+}
+.dial-wrap{
+  position:relative;
+  width:min(700px,90vw);
+  height:min(700px,90vw);
+  flex-shrink:0;
+}
+
+/* ── OUTER RING SVG ── */
+.dial-svg{
+  position:absolute;inset:0;width:100%;height:100%;
+  pointer-events:none;z-index:1;
+  will-change:transform;transform:translate3d(0,0,0);
+}
+
+/* ── SLOT ── */
+.slot{
+  position:absolute;
+  width:80px;height:80px;
+  transform-origin:center;
+  cursor:none;
+}
+/* Position each slot on the circle via JS */
+
+.slot-inner{
+  position:relative;
+  width:80px;height:80px;border-radius:50%;
+  border:1.5px solid var(--bhi);
+  overflow:hidden;
+  background:var(--ink3);
+  transition:
+    width .5s cubic-bezier(.16,1,.3,1),
+    height .5s cubic-bezier(.16,1,.3,1),
+    border-radius .5s cubic-bezier(.16,1,.3,1),
+    border-color .4s,
+    box-shadow .4s,
+    transform .4s cubic-bezier(.16,1,.3,1);
+  transform-origin:center center;
+  will-change:width,height,border-radius,transform;
+}
+.slot-inner img{
+  width:100%;height:100%;object-fit:cover;object-position:top;
+  transition:transform .6s cubic-bezier(.16,1,.3,1),filter .4s;
+  filter:grayscale(60%) brightness(.8);
+  will-change:transform,filter;
+  backface-visibility:hidden;
+}
+.slot:hover .slot-inner{
+  width:130px;height:130px;
+  border-radius:16px;
+  border-color:var(--amber);
+  box-shadow:0 12px 30px rgba(0,0,0,.6),0 0 0 1px rgba(251,146,60,.15),0 0 15px rgba(251,146,60,.1);
+  transform:scale(1.02);
+}
+.slot:hover .slot-inner img{
+  transform:scale(1.08);
+  filter:grayscale(0%) brightness(1);
+}
+
+/* Amber ring on active */
+.slot.active .slot-inner{
+  border-color:var(--amber);
+  box-shadow:0 0 0 3px rgba(251,146,60,.3);
+}
+
+/* Number badge */
+.slot-num{
+  position:absolute;
+  bottom:-2px;right:-2px;
+  width:22px;height:22px;border-radius:50%;
+  background:var(--amber);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Syne',sans-serif;font-size:8px;font-weight:800;
+  color:var(--ink);
+  opacity:0;transform:scale(0);
+  transition:opacity .3s,transform .3s;
+  z-index:2;
+}
+.slot:hover .slot-num,
+.slot.active .slot-num{opacity:1;transform:scale(1)}
+
+/* Name label that appears beside slot on hover */
+.slot-label{
+  position:absolute;
+  top:50%;left:calc(100% + 12px);
+  transform:translateY(-50%) translateX(-6px);
+  white-space:nowrap;
+  background:rgba(12,12,20,.9);backdrop-filter:blur(12px);
+  border:1px solid var(--bhi);border-radius:999px;
+  padding:6px 14px;
+  font-family:'Syne',sans-serif;font-size:10px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--white);
+  opacity:0;
+  transition:opacity .3s,transform .3s;
+  pointer-events:none;z-index:3;
+}
+.slot:hover .slot-label{opacity:1;transform:translateY(-50%) translateX(0)}
+/* For slots on the left half of dial, label goes left */
+.slot.label-left .slot-label{
+  left:auto;right:calc(100% + 12px);
+  transform:translateY(-50%) translateX(6px);
+}
+.slot.label-left:hover .slot-label{transform:translateY(-50%) translateX(0)}
+
+/* ── CENTRE DISPLAY ── */
+.dial-center{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:220px;height:220px;
+  border-radius:50%;
+  background:var(--ink);
+  border:1px solid rgba(251,146,60,.18);
+  box-shadow:0 0 0 12px rgba(5,5,10,.8),0 0 0 13px rgba(251,146,60,.08);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  z-index:4;
+  overflow:hidden;
+  padding:24px;
+}
+.dial-center::before{
+  content:'';position:absolute;inset:0;border-radius:50%;
+  background:radial-gradient(circle,rgba(251,146,60,.07) 0%,transparent 65%);
+}
+
+.dc-idle{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  transition:opacity .4s,transform .4s;
+  padding:24px;
+}
+.dc-idle-label{
+  font-family:'Syne',sans-serif;font-size:9px;font-weight:700;
+  letter-spacing:.28em;text-transform:uppercase;color:var(--muted);
+  margin-bottom:10px;
+}
+.dc-idle-count{
+  font-family:'Cormorant Garamond',serif;
+  font-size:52px;font-weight:300;line-height:1;letter-spacing:-2px;color:var(--white);
+}
+.dc-idle-count b{color:var(--amber);font-weight:300}
+.dc-idle-sub{
+  font-family:'Syne',sans-serif;font-size:9px;font-weight:600;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--muted2);
+  margin-top:8px;
+}
+
+/* Active member info in centre */
+.dc-member{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  opacity:0;transform:scale(.9);
+  transition:opacity .4s,transform .4s;
+  padding:24px;
+  pointer-events:none;
+}
+.dc-member.show{opacity:1;transform:scale(1);pointer-events:auto}
+.dc-idle-state .dc-idle{opacity:1;transform:scale(1)}
+.dc-idle-state .dc-member{opacity:0;transform:scale(.9)}
+.dc-hover-state .dc-idle{opacity:0;transform:scale(.9)}
+.dc-hover-state .dc-member{opacity:1;transform:scale(1)}
+
+.dc-photo{
+  width:60px;height:60px;border-radius:50%;
+  overflow:hidden;border:2px solid var(--amber);
+  margin-bottom:10px;flex-shrink:0;
+  box-shadow:0 0 20px rgba(251,146,60,.25);
+}
+.dc-photo img{width:100%;height:100%;object-fit:cover;object-position:top}
+.dc-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px;font-weight:400;line-height:1;
+  letter-spacing:-.01em;color:var(--white);
+  margin-bottom:5px;
+}
+.dc-role{
+  font-family:'Syne',sans-serif;font-size:8.5px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--amber);
+  margin-bottom:8px;
+}
+.dc-tags{display:flex;gap:5px;flex-wrap:wrap;justify-content:center}
+.dc-tag{
+  padding:3px 9px;border-radius:999px;
+  border:1px solid rgba(251,146,60,.22);
+  font-family:'Syne',sans-serif;font-size:7.5px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;color:rgba(251,146,60,.7);
+  background:rgba(251,146,60,.06);
+}
+
+/* ── SIDE INFO PANEL ── */
+.dial-info{
+  margin-left:60px;
+  flex:1;max-width:320px;
+  opacity:0;transform:translateX(-10px);
+  transition:opacity .5s,transform .5s;
+}
+.dial-info.visible{opacity:1;transform:translateX(0)}
+.di-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:80px;font-weight:300;line-height:1;
+  letter-spacing:-3px;color:rgba(255,255,255,.06);
+  margin-bottom:0;
+}
+.di-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:36px;font-weight:400;line-height:1;
+  letter-spacing:-.025em;color:var(--white);
+  margin-bottom:8px;margin-top:-12px;
+}
+.di-name em{font-style:italic;color:var(--amber)}
+.di-role{
+  font-family:'Syne',sans-serif;font-size:10px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--amber);
+  margin-bottom:20px;
+}
+.di-bio{
+  font-size:14px;line-height:1.82;color:var(--txt2);font-weight:300;
+  margin-bottom:20px;
+}
+.di-skills{display:flex;flex-wrap:wrap;gap:7px}
+.di-skill{
+  padding:5px 13px;border-radius:999px;
+  border:1px solid var(--bhi);
+  font-family:'Syne',sans-serif;font-size:9px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  transition:border-color .3s,color .3s,background .3s;
+}
+.di-skill:hover{border-color:rgba(251,146,60,.3);color:var(--amber);background:var(--amber2)}
+
+/* ─── QUOTE + CTA FOOTER ─── */
+.team-footer{
+  position:relative;z-index:2;
+  border-top:1px solid var(--b);
+  background:var(--ink3);
+  content-visibility:auto;
+  contain-intrinsic-size:auto 300px;
+}
+.tf-inner{
+  max-width:1440px;margin:0 auto;
+  padding:80px 72px;
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+}
+.tf-quote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(24px,3vw,40px);font-weight:300;
+  line-height:1.25;letter-spacing:-.025em;
+  font-style:italic;color:var(--white);
+  margin-bottom:24px;
+}
+.tf-quote em{color:var(--amber);font-style:normal}
+.tf-attr{
+  font-family:'Syne',sans-serif;font-size:10px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
+  display:flex;align-items:center;gap:12px;
+}
+.tf-attr::before{content:'';display:inline-block;width:24px;height:1px;background:var(--amber)}
+.tf-right{
+  display:flex;flex-direction:column;gap:24px;
+  align-items:flex-start;
+}
+.tf-join-head{
+  font-family:'Syne',sans-serif;font-size:10px;font-weight:700;
+  letter-spacing:.28em;text-transform:uppercase;color:var(--amber);
+  margin-bottom:4px;
+  display:flex;align-items:center;gap:10px;
+}
+.tf-join-head::before{content:'';width:24px;height:1px;background:var(--amber)}
+.tf-join-body{font-size:15px;line-height:1.8;color:var(--txt2);font-weight:300;max-width:380px}
+.tf-join-body strong{color:var(--txt);font-weight:400}
+.btn-A{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--amber);color:var(--ink);
+  padding:15px 34px;border-radius:999px;
+  font-family:'Syne',sans-serif;font-size:11px;font-weight:800;
+  letter-spacing:.12em;text-transform:uppercase;
+  cursor:none;position:relative;overflow:hidden;
+  transition:transform .25s,box-shadow .3s;
+}
+.btn-A::before{content:'';position:absolute;inset:0;border-radius:999px;background:rgba(0,0,0,.14);transform:translateX(-101%);transition:transform .4s cubic-bezier(.77,0,.175,1)}
+.btn-A:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(251,146,60,.35)}
+.btn-A:hover::before{transform:translateX(0)}
+.btn-A span{position:relative;z-index:1}
+
+/* ─── REVEAL ─── */
+.rv{opacity:0;transform:translateY(36px);transition:opacity .95s ease,transform .95s cubic-bezier(.16,1,.3,1)}
+.rvl{opacity:0;transform:translateX(-36px);transition:opacity .95s ease,transform .95s cubic-bezier(.16,1,.3,1)}
+.rvr{opacity:0;transform:translateX(36px);transition:opacity .95s ease,transform .95s cubic-bezier(.16,1,.3,1)}
+.rv.in,.rvl.in,.rvr.in{opacity:1;transform:translate(0)}
+.d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.22s}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1000px){
+  .dial-info{display:none}
+  .dial-arena{padding:0 24px 80px;flex-direction:column}
+  .th{padding:80px 28px 0;flex-direction:column;align-items:flex-start}
+  .tf-inner{grid-template-columns:1fr;gap:48px;padding:64px 28px}
+}
+@media(max-width:600px){
+  .th{padding:60px 20px 0}
+  .slot{width:60px;height:60px}
+  .slot-inner{width:60px;height:60px}
+  .slot:hover .slot-inner{width:96px;height:96px}
+  .dial-center{width:160px;height:160px}
+  .dc-photo{width:44px;height:44px}
+  .dc-name{font-size:14px}
+  .dial-arena{padding:0 16px 60px}
+}
+</style>
+</head>
+<body>
+<div id="cur"></div>
+<div id="cr"></div>
+<div id="grain" aria-hidden="true"></div>
+
+<section id="team">
+  <div class="tg tg1"></div>
+  <div class="tg tg2"></div>
+
+  <!-- HEADER -->
+  <div class="th">
+    <div class="rvl">
+      <div class="th-eye"><span class="th-bar"></span>The Studio</div>
+      <h2 class="th-h2">
+        Twelve minds.<br>
+        <em>One vision.</em>
+        <span class="ghost">Relentless craft.</span>
+      </h2>
+    </div>
+    <div class="th-r rvr d2">
+      <p class="th-desc">
+        We are a collective of <strong>designers, strategists, developers, and storytellers</strong> — each a specialist, together unstoppable. Hover any member to learn their story.
+      </p>
+      <div class="th-stats">
+        <div class="ts-cell"><div class="ts-n">12<b>+</b></div><div class="ts-l">Members</div></div>
+        <div class="ts-cell"><div class="ts-n">6</div><div class="ts-l">Disciplines</div></div>
+        <div class="ts-cell"><div class="ts-n">4</div><div class="ts-l">Cities</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIAL ARENA -->
+  <div class="dial-arena rv d2">
+    <div class="dial-wrap" id="dialWrap">
+
+      <!-- SVG ring decorations -->
+      <svg class="dial-svg" viewBox="0 0 700 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- outer decorative ring -->
+        <circle cx="350" cy="350" r="330" stroke="rgba(251,146,60,.07)" stroke-width="1" stroke-dasharray="6 10"/>
+        <!-- middle ring -->
+        <circle cx="350" cy="350" r="280" stroke="rgba(251,146,60,.05)" stroke-width=".7"/>
+        <!-- inner ring -->
+        <circle cx="350" cy="350" r="130" stroke="rgba(251,146,60,.12)" stroke-width="1" stroke-dasharray="3 6"/>
+        <!-- tick marks -->
+        <g id="ticks" stroke="rgba(251,146,60,.2)" stroke-width="1">
+          <!-- 12 ticks at 30° intervals -->
+          <line x1="350" y1="28" x2="350" y2="50"/>
+          <line x1="515" y1="75"  x2="504" y2="94" />
+          <line x1="622" y1="235" x2="604" y2="245"/>
+          <line x1="650" y1="420" x2="628" y2="416"/>
+          <line x1="560" y1="584" x2="548" y2="566"/>
+          <line x1="385" y1="666" x2="380" y2="644"/>
+          <line x1="185" y1="625" x2="196" y2="606"/>
+          <line x1="78"  y1="465" x2="98"  y2="460"/>
+          <line x1="50"  y1="280" x2="70"  y2="286"/>
+          <line x1="140" y1="116" x2="155" y2="130"/>
+          <line x1="304" y1="34"  x2="308" y2="56" />
+          <line x1="478" y1="162" x2="465" y2="172"/>
+        </g>
+        <!-- rotating dashes ring (animated via CSS) -->
+        <circle cx="350" cy="350" r="308" stroke="rgba(251,146,60,.09)" stroke-width=".6" stroke-dasharray="2 18"
+          style="animation:spinRing 60s linear infinite;transform-origin:350px 350px"/>
+        <!-- counter-rotate -->
+        <circle cx="350" cy="350" r="258" stroke="rgba(251,146,60,.06)" stroke-width=".5" stroke-dasharray="1 22"
+          style="animation:spinRing 40s linear infinite reverse;transform-origin:350px 350px"/>
+        <style>
+          @keyframes spinRing{to{transform:rotate(360deg)}}
+        </style>
+      </svg>
+
+      <!-- MEMBER SLOTS — positioned by JS -->
+      <div class="slot" id="s0">
+        <div class="slot-inner">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80" alt="" loading="lazy" decoding="async">
+        </div>
+        <div class="slot-num">01</div>
+        <div class="slot-label">Sarah Khan</div>
+      </div>
+      <div class="slot" id="s1">
+        <div class="slot-inner">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80" alt="" loading="lazy" decoding="async">
+        </div>
+        <div class="slot-num">02</div>
+        <div class="slot-label">Arjun Mehta</div>
+      </div>
+      <div class="slot" id="s2">
+        <div class="slot-inner">
+          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80" alt="" loading="lazy" decoding="async">
+        </div>
+        <div class="slot-num">03</div>
+        <div class="slot-label">Emily Roy</div>
+      </div>
+      <div class="slot" id="s3">
+        <div class="slot-inner">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&q=80" alt="" loading="lazy" decoding="async">
+        </div>
+        <div class="slot-num">04</div>
+        <div class="slot-label">Daniel Joseph</div>
+      </div>
+      <div class="slot" id="s4">
+        <div class="slot-inner">
+          <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=300&q=80" alt="" loading="lazy" decoding="async">
+        </div>
+        <div class="slot-num">05</div>
+        <div class="slot-label">Riya Sharma</div>
+      </div>
+      <div class="slot" id="s5">
+        <div class="slot-inner">
+          <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=300&q=80" alt="" loading="lazy" decoding="async">
+        </div>
+        <div class="slot-num">06</div>
+        <div class="slot-label">James Lee</div>
+      </div>
+      <div class="slot" id="s6">
+        <div class="slot-inner">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=300&q=80" alt="" loading="lazy" decoding="async">
+        </div>
+        <div class="slot-num">07</div>
+        <div class="slot-label">Aanya Kapoor</div>
+      </div>
+      <div class="slot" id="s7">
+        <div class="slot-inner">
+          <img src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?auto=format&fit=crop&w=300&q=80" alt="" loading="lazy" decoding="async">
+        </div>
+        <div class="slot-num">08</div>
+        <div class="slot-label">Kabir Sethi</div>
+      </div>
+      <div class="slot" id="s8">
+        <div class="slot-inner">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80" alt="" loading="lazy" decoding="async">
+        </div>
+        <div class="slot-num">09</div>
+        <div class="slot-label">Naina Verma</div>
+      </div>
+      <div class="slot" id="s9">
+        <div class="slot-inner">
+          <img src="https://images.unsplash.com/photo-1504257432389-52343af06ae3?auto=format&fit=crop&w=300&q=80" alt="" loading="lazy" decoding="async">
+        </div>
+        <div class="slot-num">10</div>
+        <div class="slot-label">Rehan Ali</div>
+      </div>
+      <div class="slot" id="s10">
+        <div class="slot-inner">
+          <img src="https://images.unsplash.com/photo-1546961329-78bef0414d7c?auto=format&fit=crop&w=300&q=80" alt="" loading="lazy" decoding="async">
+        </div>
+        <div class="slot-num">11</div>
+        <div class="slot-label">Tanya Dsouza</div>
+      </div>
+      <div class="slot" id="s11">
+        <div class="slot-inner">
+          <img src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?auto=format&fit=crop&w=300&q=80" alt="" loading="lazy" decoding="async">
+        </div>
+        <div class="slot-num">12</div>
+        <div class="slot-label">Vivaan Khurana</div>
+      </div>
+
+      <!-- CENTRE DISPLAY -->
+      <div class="dial-center dc-idle-state" id="dialCenter">
+        <div class="dc-idle">
+          <div class="dc-idle-label">Studio Members</div>
+          <div class="dc-idle-count">12<b>+</b></div>
+          <div class="dc-idle-sub">Hover to explore</div>
+        </div>
+        <div class="dc-member" id="dcMember">
+          <div class="dc-photo"><img id="dcPhoto" src="" alt="" decoding="async"></div>
+          <div class="dc-name" id="dcName">—</div>
+          <div class="dc-role" id="dcRole">—</div>
+          <div class="dc-tags" id="dcTags"></div>
+        </div>
+      </div>
+
+    </div><!-- /.dial-wrap -->
+
+    <!-- SIDE PANEL -->
+    <div class="dial-info" id="dialInfo">
+      <div class="di-num" id="diNum">01</div>
+      <div class="di-name" id="diName">Sarah <em>Khan</em></div>
+      <div class="di-role" id="diRole">Creative Director</div>
+      <div class="di-bio" id="diBio">Leading brand vision and creative output for the studio. 10 years shaping how brands look, feel, and speak.</div>
+      <div class="di-skills" id="diSkills"></div>
+    </div>
+  </div><!-- /.dial-arena -->
+
+  <!-- FOOTER -->
+  <div class="team-footer">
+    <div class="tf-inner">
+      <div class="rv">
+        <blockquote class="tf-quote">
+          "The best work doesn't come from talent alone. It comes from a team that is <em>obsessively curious</em> and refuses to settle for anything less than extraordinary."
+        </blockquote>
+        <div class="tf-attr">Sarah Khan, Creative Director</div>
+      </div>
+      <div class="tf-right rv d2">
+        <div class="tf-join-head">Join the Studio</div>
+        <p class="tf-join-body">We're always looking for <strong>exceptional people</strong> who care deeply about craft. If you want to do the best work of your life — we'd love to hear from you.</p>
+        <a href="mailto:careers@qriouscurators.com" class="btn-A">
+          <span>View Open Roles</span>
+          <span>↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<script>
+/* ─── CURSOR ─── */
+const cur=document.getElementById('cur'),cr=document.getElementById('cr')
+let mx=0,my=0,rx=0,ry=0
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX;
+  my=e.clientY;
+  cur.style.transform=`translate3d(${mx}px,${my}px,0) translate(-50%,-50%)`;
+})
+;(function raf(){
+  rx+=(mx-rx)*.1;
+  ry+=(my-ry)*.1;
+  cr.style.transform=`translate3d(${rx}px,${ry}px,0) translate(-50%,-50%)`;
+  requestAnimationFrame(raf);
+})()
+
+/* ─── MEMBER DATA ─── */
+const MEMBERS=[
+  {name:'Sarah Khan',     first:'Sarah',   last:'Khan',      role:'Creative Director',    bio:'Leading brand vision and creative output. 10 years shaping how brands look, feel, and speak across every medium.',    skills:['Branding','Art Direction','Creative Strategy'],   img:'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80'},
+  {name:'Arjun Mehta',    first:'Arjun',   last:'Mehta',     role:'Brand Strategist',     bio:'Translates business goals into brand positioning that sticks. Believes strategy is the most underrated form of creativity.',  skills:['Positioning','Research','Brand Architecture'],    img:'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80'},
+  {name:'Emily Roy',      first:'Emily',   last:'Roy',       role:'UI / UX Designer',     bio:'Obsesses over interfaces that feel inevitable. From zero to design system — every pixel deliberate, every flow intuitive.', skills:['Figma','Prototyping','Design Systems'],            img:'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80'},
+  {name:'Daniel Joseph',  first:'Daniel',  last:'Joseph',    role:'Performance Marketer', bio:'Turns data into growth. Manages millions in ad spend across Google and Meta with a near-pathological focus on ROAS.',       skills:['Google Ads','Meta','Attribution'],                 img:'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&q=80'},
+  {name:'Riya Sharma',    first:'Riya',    last:'Sharma',    role:'Content Lead',         bio:'Makes brands unmissable through editorial. Writes, directs, edits — and somehow makes it all look effortless.',             skills:['Editorial','Video','Storytelling'],                img:'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=300&q=80'},
+  {name:'James Lee',      first:'James',   last:'Lee',       role:'Video Producer',       bio:'Cinematic instinct meets commercial precision. Produces content that stops the scroll and starts the conversation.',          skills:['Film','Motion Graphics','Direction'],              img:'https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=300&q=80'},
+  {name:'Aanya Kapoor',   first:'Aanya',   last:'Kapoor',    role:'Visual Designer',      bio:'Typography nerd and layout purist. Brings print-craft sensibility to digital work in a way that\'s instantly recognisable.',   skills:['Typography','Print','Layout'],                    img:'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=300&q=80'},
+  {name:'Kabir Sethi',    first:'Kabir',   last:'Sethi',     role:'Web Developer',        bio:'Architects front-ends that perform at the edge. Next.js, React, and a relentless commitment to Core Web Vitals.',            skills:['Next.js','React','Performance'],                   img:'https://images.unsplash.com/photo-1502685104226-ee32379fefbe?auto=format&fit=crop&w=300&q=80'},
+  {name:'Naina Verma',    first:'Naina',   last:'Verma',     role:'Social Media Lead',    bio:'Builds communities that actually care. Platform-native content strategy with an uncanny ability to read algorithmic shifts.',  skills:['Instagram','LinkedIn','Community'],               img:'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80'},
+  {name:'Rehan Ali',      first:'Rehan',   last:'Ali',       role:'Copywriter',           bio:'Words as weapons. Writes brand voice, web copy, and ad creative that moves people to action — elegantly.',                   skills:['Brand Voice','SEO Copy','Ads'],                   img:'https://images.unsplash.com/photo-1504257432389-52343af06ae3?auto=format&fit=crop&w=300&q=80'},
+  {name:'Tanya Dsouza',   first:'Tanya',   last:'Dsouza',    role:'Account Manager',      bio:'The client\'s advocate inside the studio. Ensures every project stays on brief, on time, and above expectation.',             skills:['Client Success','Project Mgmt','Strategy'],      img:'https://images.unsplash.com/photo-1546961329-78bef0414d7c?auto=format&fit=crop&w=300&q=80'},
+  {name:'Vivaan Khurana', first:'Vivaan',  last:'Khurana',   role:'Growth Specialist',    bio:'Connects brand investment to revenue. Analytics, CRO, and growth frameworks that make the numbers tell an honest story.',     skills:['Analytics','CRO','Growth Strategy'],              img:'https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?auto=format&fit=crop&w=300&q=80'},
+]
+
+/* ─── POSITION SLOTS ON DIAL ─── */
+function positionSlots(){
+  const wrap=document.getElementById('dialWrap')
+  const R=wrap.offsetWidth
+  const cx=R/2, cy=R/2
+  const radius=R*0.415  // distance from center to slot center
+  const slotSize=80
+
+  MEMBERS.forEach((_,i)=>{
+    const slot=document.getElementById(`s${i}`)
+    if(!slot) return
+    // Start at top (12 o'clock = -90°) and go clockwise
+    const angleDeg = -90 + (i * 360/12)
+    const angleRad = angleDeg * Math.PI / 180
+    const x = cx + radius * Math.cos(angleRad) - slotSize/2
+    const y = cy + radius * Math.sin(angleRad) - slotSize/2
+    slot.style.left = x+'px'
+    slot.style.top  = y+'px'
+
+    // Label direction: left side of dial → label goes left
+    if(angleDeg > 90 && angleDeg < 270 || angleDeg < -90) {
+      slot.classList.add('label-left')
+    } else if(angleDeg < -90) {
+      slot.classList.add('label-left')
+    }
+    // More precise: if slot is on left half
+    const xCenter = x + slotSize/2
+    if(xCenter < cx) slot.classList.add('label-left')
+  })
+}
+
+/* ─── HOVER INTERACTIONS ─── */
+const dialCenter=document.getElementById('dialCenter')
+const dcMember=document.getElementById('dcMember')
+const dcPhoto=document.getElementById('dcPhoto')
+const dcName=document.getElementById('dcName')
+const dcRole=document.getElementById('dcRole')
+const dcTags=document.getElementById('dcTags')
+const dialInfo=document.getElementById('dialInfo')
+const diNum=document.getElementById('diNum')
+const diName=document.getElementById('diName')
+const diRole=document.getElementById('diRole')
+const diBio=document.getElementById('diBio')
+const diSkills=document.getElementById('diSkills')
+
+let leaveTimer=null
+
+MEMBERS.forEach((m,i)=>{
+  const slot=document.getElementById(`s${i}`)
+  if(!slot) return
+
+  slot.addEventListener('mouseenter',()=>{
+    clearTimeout(leaveTimer)
+    document.body.classList.add('hov')
+
+    // Remove active from all
+    document.querySelectorAll('.slot.active').forEach(s=>s.classList.remove('active'))
+    slot.classList.add('active')
+
+    // Update centre
+    dcPhoto.src = m.img
+    dcName.textContent = m.name
+    dcRole.textContent = m.role
+    dcTags.innerHTML = m.skills.slice(0,2).map(s=>`<span class="dc-tag">${s}</span>`).join('')
+    dialCenter.classList.remove('dc-idle-state')
+    dialCenter.classList.add('dc-hover-state')
+    dcMember.classList.add('show')
+
+    // Update side panel
+    diNum.textContent = String(i+1).padStart(2,'0')
+    diName.innerHTML = `${m.first} <em>${m.last}</em>`
+    diRole.textContent = m.role
+    diBio.textContent = m.bio
+    diSkills.innerHTML = m.skills.map(s=>`<span class="di-skill">${s}</span>`).join('')
+    dialInfo.classList.add('visible')
+  })
+
+  slot.addEventListener('mouseleave',()=>{
+    document.body.classList.remove('hov')
+    slot.classList.remove('active')
+    leaveTimer = setTimeout(()=>{
+      dialCenter.classList.add('dc-idle-state')
+      dialCenter.classList.remove('dc-hover-state')
+      dcMember.classList.remove('show')
+      dialInfo.classList.remove('visible')
+    }, 200)
+  })
+})
+
+/* ─── REVEAL ─── */
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.08})
+document.querySelectorAll('.rv,.rvl,.rvr').forEach(el=>obs.observe(el))
+
+/* ─── BUTTONS ─── */
+document.querySelectorAll('.btn-A').forEach(b=>{
+  b.addEventListener('mouseenter',()=>document.body.classList.add('hov'))
+  b.addEventListener('mouseleave',()=>document.body.classList.remove('hov'))
+})
+
+/* ─── INIT ─── */
+positionSlots()
+window.addEventListener('resize', positionSlots)
+</script>
+</body>
+</html>
