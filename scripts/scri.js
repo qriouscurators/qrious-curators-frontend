@@ -475,21 +475,21 @@ const slides = document.querySelectorAll(".content-slide");
 const imageData = [
 
 [
-  "./assets/homeimages/teamh1.JPG",
-  "./assets/homeimages/teamh2.JPG",
-  "./assets/homeimages/teamh3.JPG"
+  "https://res.cloudinary.com/aym24i3j/image/upload/v1787834881/teamh4.webp",
+  "https://res.cloudinary.com/aym24i3j/image/upload/v1787834877/teamh9.webp",
+  "https://res.cloudinary.com/aym24i3j/image/upload/v1787834877/teamh8.webp"
 ],
 
 [
-  "./assets/homeimages/teamh4.JPG",
-  "./assets/homeimages/teamh5.JPG",
-  "./assets/homeimages/teamh6.JPG"
+  "https://res.cloudinary.com/aym24i3j/image/upload/v1787834877/teamh6.webp",
+  "https://res.cloudinary.com/aym24i3j/image/upload/v1787834877/teamh7.webp",
+  "https://res.cloudinary.com/aym24i3j/image/upload/v1787834876/teamh5.webp"
 ],
 
 [
-  "./assets/homeimages/teamh7.JPG",
-  "./assets/homeimages/teamh8.JPG",
-  "./assets/homeimages/teamh9.JPG"
+  "https://res.cloudinary.com/aym24i3j/image/upload/v1787834877/teamh7.webp",
+  "https://res.cloudinary.com/aym24i3j/image/upload/v1787834877/teamh8.webp",
+  "https://res.cloudinary.com/aym24i3j/image/upload/v1787834877/teamh9.webp"
 ]
 
 ];
