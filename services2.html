@@ -3,29 +3,301 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Services — Qrious Curators</title>
-
-  <!-- Your existing website CSS -->
+  <title>Services | Qrious Curators</title>
+  <meta name="description" content="Strategy, design, experience and technology — the services Qrious Curators uses to build brands that grow." />
   <link rel="stylesheet" href="./styles/style.css" />
 
-  <!-- Isolated services motion CSS -->
-  <link rel="stylesheet" href="./styles/service2.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Raleway:wght@400;500;600;700;800&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Raleway', Arial, sans-serif;
+      background: #000;
+      color: #fff;
+    }
+
+    footer {
+      background-color: #070707;
+    }
+
+    /* ===== TOKENS ===== */
+    :root {
+      --ink: #000;
+      --paper: #eee;
+      --line: rgba(255, 255, 255, 0.15);
+      --accent: #ff3b00;
+      --gut: clamp(20px, 4vw, 56px);
+      --strip: 118px;   /* kitni height me collapsed row dikhegi */
+      --nav: 0px;       /* fixed navbar ki height yahan daalo */
+    }
+
+    .sub,
+    .eyebrow,
+    .tag-line,
+    .idx {
+      font-family: 'Lato', Arial, sans-serif;
+    }
+
+    .wrap {
+      padding-inline: var(--gut);
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.7em;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      color: #e6e6e6;
+    }
+
+    .eyebrow .dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      background: var(--accent);
+    }
+
+    /* ===== HERO ===== */
+    .srv-hero {
+      padding-top: clamp(110px, 16vh, 190px);
+      padding-bottom: clamp(50px, 8vh, 90px);
+    }
+
+    .srv-hero h1 {
+      margin-top: 0.55em;
+      font-size: clamp(22px, 3.7vw, 74px);
+      line-height: 1.16;
+      letter-spacing: -0.02em;
+      font-weight: 600;
+    }
+
+    .srv-hero h1 .muted {
+      display: block;
+      color: #8a8a8a;
+    }
+
+    /* ===== SERVICES (sticky stack) ===== */
+    .services {
+      position: relative;
+    }
+
+    .srow {
+      position: sticky;
+      top: calc(var(--nav) + var(--i) * var(--strip));
+      z-index: calc(var(--i) + 1);
+      background: var(--ink);
+      border-top: 1px solid var(--line);
+      min-height: clamp(420px, 52vh, 520px);
+      padding: 30px var(--gut) 70px;
+      display: grid;
+      grid-template-columns: minmax(120px, 26%) minmax(0, 1fr) minmax(0, 0.6fr);
+      gap: clamp(16px, 3vw, 48px);
+      align-items: start;
+    }
+
+    .idx {
+      padding-top: 16px;
+      font-size: 13px;
+      letter-spacing: 0.32em;
+      color: #d0d0d0;
+    }
+
+    .srow h2 {
+      margin: 0;
+      font-size: clamp(28px, 3.5vw, 46px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      font-weight: 600;
+    }
+
+    .sub {
+      max-width: 52ch;
+      margin-top: 30px;
+      font-size: clamp(14px, 1.05vw, 16.5px);
+      line-height: 1.7;
+      color: #e2e2e2;
+    }
+
+    .tag-list {
+      list-style: none;
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 9px clamp(16px, 3vw, 40px);
+    }
+
+    .tag-line {
+      font-size: 12.5px;
+      letter-spacing: 0.13em;
+      color: #dcdcdc;
+    }
+
+    .smedia {
+      height: clamp(300px, 40vh, 420px);
+      overflow: hidden;
+      background: #171717;
+    }
+
+    .smedia img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* placeholders — apni images aayein to hata dena */
+    .ph-1 { background: linear-gradient(135deg, #4a4f57, #8e949c 55%, #2f333a); }
+    .ph-2 { background: repeating-linear-gradient(90deg, #8f8f8f 0 4px, #adadad 4px 8px); }
+    .ph-3 { background: linear-gradient(160deg, #d5d5d5, #8a8a8a); }
+    .ph-4 { background: linear-gradient(120deg, #e7f24a, #f4f4f4 42%, #c4c4c4); }
+
+    /* ===== WHY US ===== */
+    .why {
+      position: relative;
+      z-index: 20;
+      background: var(--paper);
+      color: #111;
+      padding: clamp(70px, 12vh, 150px) 0 clamp(70px, 12vh, 140px);
+    }
+
+    .why .eyebrow {
+      color: #5c5c5c;
+    }
+
+    .why .why-title {
+      margin: 0.3em 0 clamp(40px, 7vh, 90px);
+      font-size: clamp(44px, 8.6vw, 118px);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      font-weight: 700;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: clamp(28px, 5vw, 90px);
+      align-items: start;
+    }
+
+    .why-visual {
+      position: sticky;
+      top: calc(var(--nav) + 96px);
+      aspect-ratio: 3 / 4;
+      background: #000;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+    }
+
+    .why-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .orb {
+      width: 62%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #ff6a3a, #b0200a 60%, #3d0402);
+      box-shadow: 0 0 90px rgba(255, 59, 0, 0.3);
+    }
+
+    .why-list {
+      display: grid;
+      gap: clamp(30px, 5vh, 58px);
+    }
+
+    .why-item {
+      display: grid;
+      grid-template-columns: 64px minmax(0, 1fr);
+      gap: clamp(14px, 2vw, 34px);
+    }
+
+    .why-item .idx {
+      padding-top: 10px;
+      color: #6f6f6f;
+    }
+
+    .why-item h3 {
+      margin: 0;
+      font-size: clamp(20px, 2.3vw, 30px);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      font-weight: 600;
+    }
+
+    .why-item p {
+      max-width: 58ch;
+      margin-top: 12px;
+      font-family: 'Lato', Arial, sans-serif;
+      font-size: clamp(14px, 1.05vw, 16px);
+      line-height: 1.65;
+      color: #3d3d3d;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .srow {
+        position: static;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        min-height: 0;
+        padding: 28px var(--gut) 44px;
+      }
+
+      .idx {
+        padding-top: 0;
+      }
+
+      .tag-list {
+        grid-template-columns: 1fr;
+      }
+
+      .smedia {
+        order: 9;
+        height: 240px;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .why-visual {
+        position: static;
+        aspect-ratio: 4 / 3;
+      }
+
+      .why-item {
+        grid-template-columns: 44px minmax(0, 1fr);
+      }
+    }
+  </style>
 </head>
 
 <body>
   <div id="qc-cur"></div>
   <div id="qc-cur-ring"></div>
 
-  <!-- =========================
-       EXISTING Qrious NAVBAR
-  ========================== -->
+  <!-- NAVBAR -->
   <div class="qn-wrap">
     <div class="qn-bar">
       <a href="./index.html" class="nav-logo">
-        <img src="./assets/logo/logo-one.png" alt="Qrious Curators Logo" />
+        <img src="./assets/logo/logo-one.png" alt="Logo" />
       </a>
 
-      <button class="qn-toggle" id="qnToggle" type="button" aria-label="Open menu">
+      <button class="qn-toggle" id="qnToggle">
         <div class="qn-icon">
           <span></span>
           <span></span>
@@ -35,13 +307,14 @@
     </div>
   </div>
 
+  <!-- ===== OVERLAY ===== -->
   <div class="qn-overlay" id="qnOverlay">
     <div class="qn-inner">
       <div class="qn-center">
         <div class="qn-main">
           <a href="./about.html">About</a>
           <a href="./work.html">Work</a>
-          <a href="./services.html">Services</a>
+          <a href="./services2.html">Services</a>
         </div>
 
         <div class="qn-sub">
@@ -54,218 +327,157 @@
     </div>
   </div>
 
-  <div class="mobile-menu" id="mobileMenu" style="display:none;">
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu" style="display: none;">
     <span class="mm-close" id="mmClose">✕</span>
     <a href="./about.html">About</a>
-    <a href="./services.html">Services</a>
+    <a href="./services2.html">Services</a>
     <a href="./work.html">Work</a>
     <a href="./team.html">Team</a>
     <a href="./contact.html">Contact</a>
   </div>
 
+  <!-- HERO -->
+  <header class="srv-hero wrap">
+    <div class="eyebrow">// Services <span class="dot"></span></div>
+    <h1>
+      We turn ideas into tailored solutions through
+      <span class="muted">strategy, design, experience and technology.</span>
+    </h1>
+  </header>
 
-  <!-- =========================
-       SERVICES MOTION SECTION
-       IMPORTANT:
-       Do not wrap this in any parent
-       with overflow:hidden/auto or transform.
-  ========================== -->
-  <main class="qc-services-page">
-    <section id="services" class="qc-services-scroll" aria-label="Our services">
-      <div class="qc-services-sticky">
-        <div class="qc-services-stage">
+  <!-- SERVICES -->
+  <section class="services">
 
-          <article class="qc-service-panel" data-title="Brand Strategy">
-            <div class="qc-panel-copy">
-              <div class="qc-panel-icon">◆</div>
-              <div class="qc-panel-text">
-                <p class="qc-eyebrow">Service 01</p>
-                <h2>Brand Strategy</h2>
-                <p>Positioning, brand voice and a clear visual direction that gives every touchpoint one strong point of view.</p>
-              </div>
-              <a class="qc-service-link" href="#">
-                Discover the service <span>↗</span>
-              </a>
+    <article class="srow" style="--i:0">
+      <div class="idx">// S - 1</div>
+      <div>
+        <h2>Strategy</h2>
+        <p class="sub">We define the foundation that drives brands forward. Through research, positioning, and storytelling, we craft strategies that connect, differentiate, and scale.</p>
+        <ul class="tag-list">
+          <li class="tag-line">BRAND STRATEGY</li>
+          <li class="tag-line">BRAND NAMING</li>
+          <li class="tag-line">RESEARCH &amp; ANALYSIS</li>
+          <li class="tag-line">MESSAGING &amp; POSITIONING</li>
+          <li class="tag-line">VERBAL IDENTITY</li>
+          <li class="tag-line">GO-TO-MARKET STRATEGY</li>
+        </ul>
+      </div>
+      <!-- <div class="smedia"><img src="./images/service-strategy.jpg" alt="Strategy"></div> -->
+      <div class="smedia ph-1"></div>
+    </article>
+
+    <article class="srow" style="--i:1">
+      <div class="idx">// S - 2</div>
+      <div>
+        <h2>Design</h2>
+        <p class="sub">We craft identities that speak volumes. From defining your brand's core expression to the systems that carry it, every detail is built to be recognised.</p>
+        <ul class="tag-list">
+          <li class="tag-line">VISUAL IDENTITY</li>
+          <li class="tag-line">PACKAGING</li>
+          <li class="tag-line">ART DIRECTION</li>
+          <li class="tag-line">MOTION &amp; GRAPHICS</li>
+          <li class="tag-line">DESIGN SYSTEMS</li>
+          <li class="tag-line">BRAND GUIDELINES</li>
+        </ul>
+      </div>
+      <div class="smedia ph-2"></div>
+    </article>
+
+    <article class="srow" style="--i:2">
+      <div class="idx">// S - 3</div>
+      <div>
+        <h2>Experience</h2>
+        <p class="sub">We design seamless and intuitive user journeys that elevate interactions. By combining research, strategy, and design, we ensure every touchpoint strengthens connections and drives engagement.</p>
+        <ul class="tag-list">
+          <li class="tag-line">USER RESEARCH</li>
+          <li class="tag-line">INTERACTIVE INTERFACES</li>
+          <li class="tag-line">WIREFRAMING</li>
+          <li class="tag-line">USABILITY TESTING</li>
+          <li class="tag-line">EXPERIENCE DESIGN</li>
+          <li class="tag-line">DESIGN SYSTEMS</li>
+        </ul>
+      </div>
+      <div class="smedia ph-3"></div>
+    </article>
+
+    <article class="srow" style="--i:3">
+      <div class="idx">// S - 4</div>
+      <div>
+        <h2>Technology</h2>
+        <p class="sub">We build digital solutions tailored to scale with your business. Our technology ensures performance, innovation, and reliability at every step.</p>
+        <ul class="tag-list">
+          <li class="tag-line">WEB DEVELOPMENT</li>
+          <li class="tag-line">E-COMMERCE PLATFORMS</li>
+          <li class="tag-line">APP DEVELOPMENT</li>
+          <li class="tag-line">DATA INTEGRATION</li>
+          <li class="tag-line">AI-POWERED SOLUTIONS</li>
+          <li class="tag-line">API DEVELOPMENT</li>
+        </ul>
+      </div>
+      <div class="smedia ph-4"></div>
+    </article>
+
+  </section>
+
+  <!-- WHY US -->
+  <section class="why">
+    <div class="wrap">
+      <div class="eyebrow">// Why us <span class="dot"></span></div>
+      <h2 class="why-title">Why Qrious</h2>
+
+      <div class="why-grid">
+        <!-- <div class="why-visual"><img src="./images/why-qrious.jpg" alt="Why Qrious"></div> -->
+        <div class="why-visual"><div class="orb"></div></div>
+
+        <div class="why-list">
+          <div class="why-item">
+            <div class="idx">// 01</div>
+            <div>
+              <h3>Design with purpose</h3>
+              <p>Every decision is intentional. From structure to typography to user flow, we design with clarity and real business goals in mind — not just aesthetics.</p>
             </div>
+          </div>
 
-            <div class="qc-panel-art qc-art-1" aria-hidden="true">
-              <div class="qc-art-card qc-poster-a"><span>Build a brand<br>people remember.</span></div>
-              <div class="qc-art-card qc-tile-a"></div>
-              <div class="qc-art-card qc-mini-a"><span>VOICE</span><b>01</b></div>
-              <div class="qc-floating-chip">Strategy / Identity</div>
+          <div class="why-item">
+            <div class="idx">// 02</div>
+            <div>
+              <h3>Collaborative approach</h3>
+              <p>We work closely with founders and teams throughout the process. Clear communication, shared thinking, and alignment at every step.</p>
             </div>
-          </article>
+          </div>
 
-
-          <article class="qc-service-panel" data-title="Social Media">
-            <div class="qc-panel-copy">
-              <div class="qc-panel-icon">◫</div>
-              <div class="qc-panel-text">
-                <p class="qc-eyebrow">Service 02</p>
-                <h2>Social Media</h2>
-                <p>Platform-native content systems, monthly storytelling and daily creative that keeps the brand consistently active.</p>
-              </div>
-              <a class="qc-service-link" href="#">
-                Discover the service <span>↗</span>
-              </a>
+          <div class="why-item">
+            <div class="idx">// 03</div>
+            <div>
+              <h3>Built to perform</h3>
+              <p>Beautiful work that also loads fast, ranks well, and converts. Speed and accessibility are part of the craft, not an afterthought.</p>
             </div>
+          </div>
 
-            <div class="qc-panel-art qc-art-2" aria-hidden="true">
-              <div class="qc-phone-shell">
-                <div class="qc-phone-feed">
-                  <div></div><div></div><div></div>
-                </div>
-              </div>
-              <div class="qc-art-card qc-post-a"><span>NEW<br>DROP</span></div>
-              <div class="qc-art-card qc-post-b"><span>STORY<br>FIRST</span></div>
-              <div class="qc-floating-chip">Reels / Stories / Grid</div>
+          <div class="why-item">
+            <div class="idx">// 04</div>
+            <div>
+              <h3>In it for the long run</h3>
+              <p>Launch is the starting line. We stay on to measure, refine, and grow what we've built with you.</p>
             </div>
-          </article>
-
-
-          <article class="qc-service-panel" data-title="Content Production">
-            <div class="qc-panel-copy">
-              <div class="qc-panel-icon">●</div>
-              <div class="qc-panel-text">
-                <p class="qc-eyebrow">Service 03</p>
-                <h2>Content Production</h2>
-                <p>Campaign shoots, product films, UGC and short-form videos planned to look good and perform even better.</p>
-              </div>
-              <a class="qc-service-link" href="#">
-                Discover the service <span>↗</span>
-              </a>
-            </div>
-
-            <div class="qc-panel-art qc-art-3" aria-hidden="true">
-              <div class="qc-video-frame">
-                <span class="qc-play">▶</span>
-                <span class="qc-timeline"></span>
-              </div>
-              <div class="qc-art-card qc-camera-card"><span>00:14</span></div>
-              <div class="qc-art-card qc-portrait-card"></div>
-              <div class="qc-floating-chip">Shoot / Edit / Motion</div>
-            </div>
-          </article>
-
-
-          <article class="qc-service-panel" data-title="Performance Marketing">
-            <div class="qc-panel-copy">
-              <div class="qc-panel-icon">↗</div>
-              <div class="qc-panel-text">
-                <p class="qc-eyebrow">Service 04</p>
-                <h2>Performance Marketing</h2>
-                <p>Paid media, testing and conversion-led creative built around one goal: turning attention into measurable growth.</p>
-              </div>
-              <a class="qc-service-link" href="#">
-                Discover the service <span>↗</span>
-              </a>
-            </div>
-
-            <div class="qc-panel-art qc-art-4" aria-hidden="true">
-              <div class="qc-metric-card"><span>ROAS</span><strong>4.8×</strong><i></i></div>
-              <div class="qc-chart-card"><span class="qc-chart-line"></span></div>
-              <div class="qc-art-card qc-ad-card"><span>AD<br>SET 07</span></div>
-              <div class="qc-floating-chip">Meta / Google / Funnels</div>
-            </div>
-          </article>
-
-
-          <article class="qc-service-panel" data-title="Web Design & Development">
-            <div class="qc-panel-copy">
-              <div class="qc-panel-icon">▣</div>
-              <div class="qc-panel-text">
-                <p class="qc-eyebrow">Service 05</p>
-                <h2>Web Design &amp; Development</h2>
-                <p>Fast, responsive websites with strong visual hierarchy, thoughtful interactions and conversion-ready structure.</p>
-              </div>
-              <a class="qc-service-link" href="#">
-                Discover the service <span>↗</span>
-              </a>
-            </div>
-
-            <div class="qc-panel-art qc-art-5" aria-hidden="true">
-              <div class="qc-browser-card">
-                <div class="qc-browser-top"><i></i><i></i><i></i></div>
-                <div class="qc-browser-body"><span></span><b></b><b></b></div>
-              </div>
-              <div class="qc-code-card">
-                <span>&lt;build&gt;</span>
-                <small>responsive<br>interactive<br>fast</small>
-              </div>
-              <div class="qc-floating-chip">UI / UX / Development</div>
-            </div>
-          </article>
-
-
-          <article class="qc-service-panel" data-title="E-commerce">
-            <div class="qc-panel-copy">
-              <div class="qc-panel-icon">□</div>
-              <div class="qc-panel-text">
-                <p class="qc-eyebrow">Service 06</p>
-                <h2>E-commerce</h2>
-                <p>Shopify storefronts, product journeys and campaign landing pages made to reduce friction from browse to checkout.</p>
-              </div>
-              <a class="qc-service-link" href="#">
-                Discover the service <span>↗</span>
-              </a>
-            </div>
-
-            <div class="qc-panel-art qc-art-6" aria-hidden="true">
-              <div class="qc-product-card">
-                <div class="qc-product-img"></div>
-                <span>New arrival</span>
-                <strong>ADD TO BAG</strong>
-              </div>
-              <div class="qc-cart-card">
-                <span>Cart</span><b>03</b><small>Ready to checkout</small>
-              </div>
-              <div class="qc-floating-chip">Shopify / CRO / Launches</div>
-            </div>
-          </article>
-
-
-          <article class="qc-service-panel" data-title="Creative Campaigns">
-            <div class="qc-panel-copy">
-              <div class="qc-panel-icon">✦</div>
-              <div class="qc-panel-text">
-                <p class="qc-eyebrow">Service 07</p>
-                <h2>Creative Campaigns</h2>
-                <p>Big ideas translated into launch concepts, seasonal campaigns and multi-format executions people actually notice.</p>
-              </div>
-              <a class="qc-service-link" href="#">
-                Discover the service <span>↗</span>
-              </a>
-            </div>
-
-            <div class="qc-panel-art qc-art-7" aria-hidden="true">
-              <div class="qc-campaign-word">MAKE<br>NOISE.</div>
-              <div class="qc-art-card qc-campaign-a"></div>
-              <div class="qc-art-card qc-campaign-b"><span>07</span></div>
-              <div class="qc-floating-chip">Concept / Art Direction</div>
-            </div>
-          </article>
-
-        </div>
-
-        <div class="qc-service-index" aria-hidden="true">
-          <span class="qc-index-number" id="qcIndexNumber">01</span>
-          <span class="qc-index-line"><i id="qcIndexProgress"></i></span>
-          <span class="qc-index-number">07</span>
+          </div>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-
-  <!-- =========================
-       EXISTING Qrious FOOTER
-  ========================== -->
+  <!-- ===== FOOTER ===== -->
   <footer id="qcFooter">
+
+    <!-- Large Background Logo -->
     <div class="footer-bg-logo"></div>
 
     <div class="footer-inner">
+
       <div class="footer-top">
 
+        <!-- Left -->
         <div>
           <div class="footer-brand-name">
             <div class="nav-logo-dot"></div>
@@ -288,6 +500,7 @@
           </div>
         </div>
 
+        <!-- Services -->
         <div>
           <ul class="footer-links">
             <li><a href="./index.html">Home</a></li>
@@ -297,6 +510,7 @@
           </ul>
         </div>
 
+        <!-- Company -->
         <div>
           <ul class="footer-links">
             <li><a href="./blog.html">Blog</a></li>
@@ -309,7 +523,10 @@
       </div>
 
       <div class="footer-bottom">
-        <p class="footer-copy">© 2026 Qrious Curators. All rights reserved.</p>
+
+        <p class="footer-copy">
+          © 2026 Qrious Curators. All rights reserved.
+        </p>
 
         <img
           src="./assets/logo/logo-one.png"
@@ -320,15 +537,14 @@
         <p class="footer-made">
           Designed &amp; Built with <span>♥</span>
         </p>
+
       </div>
+
     </div>
+
   </footer>
 
-
-  <!-- Your existing website JS: navbar, cursor, footer interactions, etc. -->
   <script src="./scripts/script.js"></script>
 
-  <!-- Services stacked-scroll motion -->
-  <script src="./scripts/service2.js"></script>
 </body>
 </html>

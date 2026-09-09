@@ -8,9 +8,9 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles/st.css" />
+    <!-- <link rel="stylesheet" href="./styles/st.css" /> -->
     <link rel="stylesheet" href="./styles/sty.css" />
-    <link rel="stylesheet" href="./styles/about-mobile.css" />
+    <!-- <link rel="stylesheet" href="./styles/about-mobile.css" /> -->
     <link
       rel="shortcut icon"
       href="./assets/logo/fav-icon-one.png"
@@ -170,7 +170,7 @@
     <div class="mobile-menu" id="mobileMenu" style="display: none;">
       <span class="mm-close" id="mmClose">✕</span>
       <a href="./about.html">About</a>
-      <a href="./services.html">Services</a>
+      <a href="./services2.html">Services</a>
       <a href="./work.html">Work</a>
       <a href="./team.html">Team</a>
       <a href="./contact.html">Contact</a>
@@ -3069,16 +3069,14 @@
       };
 
       const clientCityLocations = [
-        { key: "jaipur",     label: "Jaipur",     coord: [75.7873, 26.9124],   labelX: -54, labelY:  24 },
-        { key: "mumbai",     label: "Mumbai",     coord: [72.8777, 19.0760],   labelX: -50, labelY:  28 },
-        { key: "delhi",      label: "Delhi",      coord: [77.1025, 28.7041],   labelX:  44, labelY: -28 },
-        { key: "canberra",   label: "Canberra",   coord: [149.1300, -35.2809], labelX: -54, labelY:  26 },
-        { key: "sydney",     label: "Sydney",     coord: [151.2093, -33.8688], labelX:  48, labelY: -20 },
-        { key: "beijing",    label: "Beijing",    coord: [116.4074, 39.9042],  labelX:  48, labelY: -22 },
-        { key: "new-york",   label: "New York",   coord: [-74.0060, 40.7128],  labelX:  52, labelY: -24 },
-        { key: "washington", label: "Washington", coord: [-77.0369, 38.9072],  labelX: -62, labelY:  27 },
-        { key: "london",     label: "London",     coord: [-0.1276, 51.5072],   labelX: -48, labelY: -26 },
-        { key: "berlin",     label: "Berlin",     coord: [13.4050, 52.5200],   labelX:  45, labelY: -20 }
+        { key: "Jaipur",     label: "Jaipur",     coord: [75.7873, 26.9124],   labelX: -54, labelY:  24 },
+        { key: "Mumbai",     label: "Mumbai",     coord: [72.8777, 19.0760],   labelX: -50, labelY:  28 },
+        { key: "Delhi",      label: "Delhi",      coord: [77.1025, 28.7041],   labelX:  44, labelY: -28 },
+        { key: "Australia",  label: "Sydney",     coord: [151.2093, -33.8688], labelX:  48, labelY: -20 },
+        { key: "China",    label: "Beijing",    coord: [116.4074, 39.9042],  labelX:  48, labelY: -22 },
+        { key: "America", label: "Washington", coord: [-77.0369, 38.9072],  labelX: -62, labelY:  27 },
+        { key: "United Kingdom",     label: "London",     coord: [-0.1276, 51.5072],   labelX: -48, labelY: -26 },
+        { key: "Germany",     label: "Berlin",     coord: [13.4050, 52.5200],   labelX:  45, labelY: -20 }
       ];
 
       function buildCityPopups() {

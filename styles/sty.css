@@ -7993,10 +7993,23 @@ footer::after {
     }
 
 
-    .qg-map-title strong {
-      font-weight: 500;
-      color: #ff7a18;
-    }
+   .qg-map-title strong {
+  font-weight: 500;
+
+  background: linear-gradient(
+    90deg,
+    #FFC21A 0%,
+    #FFB217 20%,
+    #FFA212 40%,
+    #FF9110 60%,
+    #FF8112 80%,
+    #FF7316 100%
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
 
     .qg-map-title.qg-locations {
