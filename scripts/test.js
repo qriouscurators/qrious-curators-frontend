@@ -1,12 +1,30 @@
-/* QC shared scroll scheduler — keeps cinematic scroll motion but prevents multiple independent scroll handlers from firing together. */
-(function(){
-  if(window.QCPerf) return;
-  const jobs=new Set();
-  let raf=0;
-  const flush=()=>{raf=0;jobs.forEach(fn=>{try{fn();}catch(err){console.error(err);}});};
-  window.QCPerf={mobile:()=>window.matchMedia('(max-width: 860px)').matches,onScroll:fn=>{jobs.add(fn);return fn;},request:()=>{if(!raf)raf=requestAnimationFrame(flush);},remove:fn=>jobs.delete(fn)};
-  window.addEventListener('scroll',QCPerf.request,{passive:true});
-})();
+"use strict";
+
+const QC_MOBILE_QUERY = window.matchMedia("(max-width: 767px)");
+const QC_REDUCED_MOTION = window.matchMedia("(prefers-reduced-motion: reduce)");
+const qcScrollTasks = new Set();
+const qcResizeTasks = new Set();
+let qcFramePending = false;
+
+function qcRunFrame() {
+  qcFramePending = false;
+  qcScrollTasks.forEach((task) => { try { task(); } catch (error) { console.error("QC animation task failed", error); } });
+}
+function qcRequestFrame() {
+  if (qcFramePending) return;
+  qcFramePending = true;
+  requestAnimationFrame(qcRunFrame);
+}
+let qcResizeTimer;
+window.addEventListener("scroll", qcRequestFrame, { passive: true });
+window.addEventListener("resize", () => {
+  clearTimeout(qcResizeTimer);
+  qcResizeTimer = setTimeout(() => {
+    qcResizeTasks.forEach((task) => task());
+    qcRequestFrame();
+    if (window.ScrollTrigger) ScrollTrigger.refresh();
+  }, 160);
+}, { passive: true });
 
 // ----------------------------- Testimonial Section ---------------------------------
 
@@ -14,7 +32,7 @@ const testimonialSectionWrap = document.querySelector(".testimonial-section");
 const testimonialCardItems = document.querySelectorAll(".testimonial-card");
 
 function handleStackedTestimonialsScroll() {
-  if (!testimonialSectionWrap || !testimonialCardItems.length) return;
+  if (!testimonialSectionWrap || !testimonialCardItems.length || QC_MOBILE_QUERY.matches || QC_REDUCED_MOTION.matches) return;
   const testimonialSectionBounds = testimonialSectionWrap.getBoundingClientRect();
   const viewportHeight = window.innerHeight;
 
@@ -67,7 +85,7 @@ function handleStackedTestimonialsScroll() {
   });
 }
 
-QCPerf.onScroll(handleStackedTestimonialsScroll);
+qcScrollTasks.add(handleStackedTestimonialsScroll);
 window.addEventListener("load", handleStackedTestimonialsScroll);
 
 // ----------------------------------------------------------------------------------
@@ -75,13 +93,13 @@ window.addEventListener("load", handleStackedTestimonialsScroll);
 const qnToggle = document.getElementById('qnToggle');
 const qnOverlay = document.getElementById('qnOverlay');
 function qnToggleMenu(force){
-  if (!qnOverlay || !qnToggle) return;
+  if (!qnToggle || !qnOverlay) return;
   const isOpen = typeof force === 'boolean' ? force : !qnOverlay.classList.contains('open');
   qnOverlay.classList.toggle('open', isOpen);
   qnToggle.classList.toggle('active', isOpen);
   document.body.style.overflow = isOpen ? 'hidden' : '';
 }
-qnToggle && qnToggle.addEventListener('click', () => qnToggleMenu());
+qnToggle?.addEventListener('click', () => qnToggleMenu());
 document.addEventListener('keydown', (e)=>{
   if(e.key === 'Escape') qnToggleMenu(false);
 });
@@ -90,45 +108,23 @@ document.addEventListener('keydown', (e)=>{
 
 
 (function () {
-  const MIN_TIME = window.matchMedia("(max-width: 860px)").matches ? 1400 : 2200;
-
-  const start = Date.now();
-
-  window.addEventListener("load", function () {
-    const preloader = document.getElementById("preloader");
-    if (!preloader) return;
-
-    const elapsed = Date.now() - start;
-    const remaining = Math.max(0, MIN_TIME - elapsed);
-
-    setTimeout(() => {
-      preloader.classList.add("hide");
-      setTimeout(() => {
-        preloader.style.display = "none";
-      }, 600);
-    }, remaining);
-  });
+  const preloader = document.getElementById("preloader");
+  if (!preloader) return;
+  let hidden = false;
+  const hidePreloader = () => {
+    if (hidden) return;
+    hidden = true;
+    preloader.classList.add("hide");
+    preloader.addEventListener("transitionend", () => preloader.remove(), { once: true });
+  };
+  if (document.readyState === "complete") hidePreloader();
+  else window.addEventListener("load", hidePreloader, { once: true });
+  setTimeout(hidePreloader, 1800);
 })();
 
 // ----------------------------------------------------------------------
 
-/* ---- CURSOR ---- */
-/* ---- HAMBURGER ---- */
-document.getElementById("hamburger")?.addEventListener("click", () => {
-  document.getElementById("mobileMenu").classList.add("open");
-});
 
-document.getElementById("mmClose")?.addEventListener("click", () => {
-  document.getElementById("mobileMenu").classList.remove("open");
-});
-
-document.querySelectorAll(".mobile-menu a").forEach((a) => {
-  a.addEventListener("click", () => {
-    document.getElementById("mobileMenu").classList.remove("open");
-  });
-});
-
-/* ---- HORIZONTAL SCROLL ---- */
 const svcSection = document.getElementById("services");
 const svcTrack = document.getElementById("svcTrack");
 
@@ -143,12 +139,12 @@ function updateSvc() {
   svcTrack.style.transform = `translateX(-${p * maxShift}px)`;
 }
 
-QCPerf.onScroll(updateSvc);
-/* ---- PROCESS CARDS ---- */
+qcScrollTasks.add(updateSvc);
+
 const procSection=document.getElementById('process');
 const procCards=document.querySelectorAll('.p-card');
 function updateProc(){
-  if (!procSection || !procCards.length) return;
+  if (!procSection || !procCards.length || QC_MOBILE_QUERY.matches || QC_REDUCED_MOTION.matches) return;
   const r=procSection.getBoundingClientRect();
   const totalH=procSection.offsetHeight-window.innerHeight;
   const p=Math.max(0,Math.min(1,-r.top/totalH));
@@ -160,38 +156,38 @@ function updateProc(){
     c.style.transition='transform .05s linear,opacity .05s linear';
   });
 }
-QCPerf.onScroll(updateProc);
+qcScrollTasks.add(updateProc);
 
-/* ---- TEAM PARALLAX ---- */
+
 const teamSection=document.getElementById('team');
 const teamCards=document.getElementById('teamCards');
 function updateTeam(){
-  if (!teamSection || !teamCards) return;
+  if (!teamSection || !teamCards || QC_MOBILE_QUERY.matches || QC_REDUCED_MOTION.matches) return;
   const r=teamSection.getBoundingClientRect();
   const totalH=teamSection.offsetHeight-window.innerHeight;
   const p=Math.max(0,Math.min(1,-r.top/totalH));
   const maxY=teamCards.offsetHeight-window.innerHeight+80;
   teamCards.style.transform=`translateX(-50%) translateY(-${p*maxY}px)`;
 }
-QCPerf.onScroll(updateTeam);
+qcScrollTasks.add(updateTeam);
 
-/* ---- MANIFESTO WORD REVEAL ---- */
+
 const words=document.querySelectorAll('.manifesto-word');
 function updateManifesto(){
   const section=document.getElementById('manifesto');
-  if (!section || !words.length) return;
+  if (!section || !words.length || QC_REDUCED_MOTION.matches) return;
   const r=section.getBoundingClientRect();
   const progress=1-r.bottom/window.innerHeight;
   const visible=Math.floor(progress*words.length*4);
   words.forEach((w,i)=>w.classList.toggle('lit',i<visible));
 }
-QCPerf.onScroll(updateManifesto);
+qcScrollTasks.add(updateManifesto);
 
-/* ---- GENERIC REVEAL ---- */
+
 const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('in');});},{threshold:.1});
 document.querySelectorAll('.rv,.rvl,.rvr').forEach(el=>obs.observe(el));
 
-/* ---- SMOOTH ANCHORS ---- */
+
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
     const t=document.querySelector(a.getAttribute('href'));
@@ -199,21 +195,19 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   });
 });
 
-/* ---- FOOTER REVEAL ---- */
+
 const footerObs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.style.opacity='1';});},{threshold:.05});
 document.querySelectorAll('footer').forEach(el=>{el.style.opacity='0';el.style.transition='opacity 1s ease';footerObs.observe(el);});
 
 
-/* ════════════════════════════════════════════
-   D3 WORLD MAP
-════════════════════════════════════════════ */
+
 
 // Cities: [lon, lat] in geographic coords + display offset for badge
 const CITIES = {
   london:  { coord:[-0.12, 51.51],  label:'London',    bdx:-60, bdy:-54 },
   newyork: { coord:[-74.00, 40.71], label:'New York',   bdx:-70, bdy:-54 },
   toronto: { coord:[-79.38, 43.65], label:'Toronto',    bdx: 8,  bdy:-54 },
-  sao:     { coord:[-46.63,-23.55], label:'São Paulo',  bdx:-70, bdy: 16 },
+  sao:     { coord:[-46.63,-23.55], label:'SÃ£o Paulo',  bdx:-70, bdy: 16 },
   berlin:  { coord:[ 13.40, 52.52], label:'Berlin',     bdx: 8,  bdy:-54 },
   dubai:   { coord:[ 55.30, 25.20], label:'Dubai',      bdx: 8,  bdy:-54 },
   mumbai:  { coord:[ 72.88, 19.08], label:'Mumbai',     bdx: 8,  bdy:-54 },
@@ -228,7 +222,7 @@ const ARCS = [
   ['newyork','sao'],['tokyo','sydney'],
 ]
 
-// Countries to highlight (ISO Alpha-2 → used in topojson id)
+// Countries to highlight (ISO Alpha-2 â†’ used in topojson id)
 const HIGHLIGHT_ISO = new Set([
   'GBR','USA','ARE','JPN','AUS','IND','BRA','CAN','DEU',
   'FRA','NLD','SGP','CHN','ZAF','NGA','SAU','KEN','MEX'
@@ -257,13 +251,13 @@ async function drawMap() {
 
   const path = d3.geoPath().projection(projection)
 
-  // ── Sphere (ocean) ──
+  // â”€â”€ Sphere (ocean) â”€â”€
   svg.append('path')
     .datum({type:'Sphere'})
     .attr('class','sphere')
     .attr('d', path)
 
-  // ── Graticule ──
+  // â”€â”€ Graticule â”€â”€
   const graticule = d3.geoGraticule()
   svg.append('path')
     .datum(graticule())
@@ -277,20 +271,20 @@ async function drawMap() {
     .attr('class','graticule-major')
     .attr('d', path)
 
-  // ── Fetch TopoJSON world data ──
+  // â”€â”€ Fetch TopoJSON world data â”€â”€
   let world
   try {
     world = await d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
   } catch(e) {
     // Fallback URL
-    world = await d3.json('https://unpkg.com/world-atlas@2.0.2/countries-110m.json')
+    world = await d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json')
   }
 
   const { feature, mesh } = await import('https://cdn.jsdelivr.net/npm/topojson-client@3/+esm')
 
   const countries = feature(world, world.objects.countries)
 
-  // Country id → ISO lookup (numeric codes)
+  // Country id â†’ ISO lookup (numeric codes)
   const ISO_NUMERIC = {
     '826':'GBR','840':'USA','784':'ARE','392':'JPN','036':'AUS',
     '356':'IND','076':'BRA','124':'CAN','276':'DEU','250':'FRA',
@@ -320,7 +314,7 @@ async function drawMap() {
     .attr('stroke-width','.35')
     .attr('d', path)
 
-  // ── Draw arcs ──
+  // â”€â”€ Draw arcs â”€â”€
   const arcG = svg.append('g').attr('class','arcs-layer')
   ARCS.forEach(([a,b]) => {
     const c1 = CITIES[a].coord
@@ -337,7 +331,7 @@ async function drawMap() {
       .attr('d', arcPath)
   })
 
-  // ── Draw city dots ──
+  // â”€â”€ Draw city dots â”€â”€
   Object.entries(CITIES).forEach(([key, city]) => {
     const [x, y] = projection(city.coord) || [0,0]
     if (!x || !y) return
@@ -390,7 +384,7 @@ async function drawMap() {
   }, 800)
 }
 
-// ── Observe section, draw when visible ──
+// â”€â”€ Observe section, draw when visible â”€â”€
 const mapObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -403,9 +397,9 @@ const mapObs = new IntersectionObserver(entries => {
   })
 }, { threshold: 0.05 })
 
-mapObs.observe(document.getElementById('worldwide'))
+{ const worldwide = document.getElementById('worldwide'); if (worldwide) mapObs.observe(worldwide); }
 
-/* Smooth anchors */
+
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const t = document.querySelector(a.getAttribute('href'))
@@ -424,9 +418,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const scrollY = window.scrollY;
         const windowHeight = window.innerHeight;
 
-        /* =========================================
-           1. VIDEO DOCKING LOGIC
-           ========================================= */
+        
         let dockProgress = scrollY / windowHeight;
         dockProgress = Math.max(0, Math.min(1, dockProgress));
         const rect = targetCard.getBoundingClientRect();
@@ -439,9 +431,7 @@ document.addEventListener("DOMContentLoaded", () => {
         video.style.height = `${currentHeight}px`;
         video.style.transform = `translate(${currentX}px, ${currentY}px)`;
         video.style.borderRadius = `${currentRadius}px`;
-        /* =========================================
-           2. TEXT & DIM OVERLAY REVEAL
-           ========================================= */
+        
         // Wait until the docking scroll is almost done to start fading in the background dim
         const postDockScroll = Math.max(0, scrollY - (windowHeight * 0.8));
         const textRevealProgress = Math.min(1, postDockScroll / 400);
@@ -462,11 +452,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             word.style.transform = `translateY(${translateY}%) rotateZ(${rotateZ}deg)`;
         });
-        /* =========================================
-           3. SECTION EXIT LOGIC
-           Makes the fixed text and dim overlay scroll away naturally
-           when you reach the bottom of the grid.
-           ========================================= */
+        
         const contentBottom = contentArea.offsetTop + contentArea.offsetHeight;
         const scrollBottom = scrollY + windowHeight;
 
@@ -479,8 +465,8 @@ document.addEventListener("DOMContentLoaded", () => {
         textLayer.style.transform = `translateY(${layerExitTranslate}px)`;
         dimOverlay.style.transform = `translateY(${layerExitTranslate}px)`;
     };
-    window.addEventListener('scroll', updateAnimation);
-    window.addEventListener('resize', updateAnimation);
+    qcScrollTasks.add(updateAnimation);
+    qcResizeTasks.add(updateAnimation);
     updateAnimation(); // Initial setup
 });
 
@@ -490,21 +476,21 @@ const slides = document.querySelectorAll(".content-slide");
 const imageData = [
 
 [
-  "./assets/homeimages/teamh1.JPG",
-  "./assets/homeimages/teamh2.JPG",
-  "./assets/homeimages/teamh3.JPG"
+  "https://res.cloudinary.com/aym24i3j/image/upload/v1787834881/teamh4.webp",
+  "https://res.cloudinary.com/aym24i3j/image/upload/v1787834877/teamh9.webp",
+  "https://res.cloudinary.com/aym24i3j/image/upload/v1787834877/teamh8.webp"
 ],
 
 [
-  "./assets/homeimages/teamh4.JPG",
-  "./assets/homeimages/teamh5.JPG",
-  "./assets/homeimages/teamh6.JPG"
+  "https://res.cloudinary.com/aym24i3j/image/upload/v1787834877/teamh6.webp",
+  "https://res.cloudinary.com/aym24i3j/image/upload/v1787834877/teamh7.webp",
+  "https://res.cloudinary.com/aym24i3j/image/upload/v1787834876/teamh5.webp"
 ],
 
 [
-  "./assets/homeimages/teamh7.JPG",
-  "./assets/homeimages/teamh8.JPG",
-  "./assets/homeimages/teamh9.JPG"
+  "https://res.cloudinary.com/aym24i3j/image/upload/v1787834877/teamh7.webp",
+  "https://res.cloudinary.com/aym24i3j/image/upload/v1787834877/teamh8.webp",
+  "https://res.cloudinary.com/aym24i3j/image/upload/v1787834877/teamh9.webp"
 ]
 
 ];
@@ -515,17 +501,16 @@ const progress = document.querySelector(".scroll-progress");
 
 let currentIndex = 0;
 
-const premiumAboutSection = document.querySelector(".premium-about");
-QCPerf.onScroll(()=>{
+function updatePremiumAbout(){
 
-    const section = premiumAboutSection;
-    if (!section || !progress) return;
+    const section = document.querySelector(".premium-about");
+    if (!section || !progress || !slides.length || !cards.length || QC_MOBILE_QUERY.matches || QC_REDUCED_MOTION.matches) return;
 
     const scrollTop = window.scrollY - section.offsetTop;
 
     const maxScroll = section.offsetHeight - window.innerHeight;
 
-    const progressWidth = maxScroll > 0 ? Math.max(0, Math.min(100, (scrollTop / maxScroll) * 100)) : 0;
+    const progressWidth = (scrollTop / maxScroll) * 100;
 
     progress.style.width = `${progressWidth}%`;
 
@@ -567,21 +552,22 @@ QCPerf.onScroll(()=>{
 
     }
 
-});
+}
+qcScrollTasks.add(updatePremiumAbout);
 
 // ------------------------------------------------------------- Testimonials ---------------------------------------------------------------------------------
 
 const reviews = [
-  { q: "Working with Qrious Curators has been an outstanding experience. What truly sets them apart is their content quality — every post feels thoughtfully crafted, visually compelling, and perfectly aligned with our brand voice.", name: "Harsh Jain", role: "Verified Google Review", initials: "HJ" },
-  { q: "If you want jaw dropping graphics for your wedding, call Qrious Curators. Period.", name: "Kanika Agarwal", role: "Local Guide · Verified Review", initials: "KA", guide: true },
-  { q: "Qrious Curators were my complete wedding digital planner — trust me they killed it. What an e-invite they made and all my social media countdowns were on point.", name: "Akshat Goyal", role: "Local Guide · Verified Review", initials: "AG", guide: true },
+  { q: "Working with Qrious Curators has been an outstanding experience. What truly sets them apart is their content quality â€” every post feels thoughtfully crafted, visually compelling, and perfectly aligned with our brand voice.", name: "Harsh Jain", role: "Verified Google Review", initials: "HJ" },
+  { q: "If you want jaw dropping graphics for your wedding, call Qrious Curators. Period.", name: "Kanika Agarwal", role: "Local Guide Â· Verified Review", initials: "KA", guide: true },
+  { q: "Qrious Curators were my complete wedding digital planner â€” trust me they killed it. What an e-invite they made and all my social media countdowns were on point.", name: "Akshat Goyal", role: "Local Guide Â· Verified Review", initials: "AG", guide: true },
   { q: "We recently worked with Qrious for photo editing and retouching of around 150 images. Excellent communication throughout and great quality work.", name: "Angie Ng", role: "Verified Google Review", initials: "AN" },
-  { q: "I highly recommend Qrious Curators. The experience was smooth, clear and I am satisfied about the result. The team always goes an extra mile.", name: "Lina Stanule", role: "Local Guide · Verified Review", initials: "LS", guide: true },
-  { q: "We are a family business since 50+ years and always relied on word of mouth — but because of Qrious Curators we got a way to digital marketing. Their services are extremely personalised.", name: "MDI Nikita Punjabi", role: "Verified Google Review", initials: "NP" },
+  { q: "I highly recommend Qrious Curators. The experience was smooth, clear and I am satisfied about the result. The team always goes an extra mile.", name: "Lina Stanule", role: "Local Guide Â· Verified Review", initials: "LS", guide: true },
+  { q: "We are a family business since 50+ years and always relied on word of mouth â€” but because of Qrious Curators we got a way to digital marketing. Their services are extremely personalised.", name: "MDI Nikita Punjabi", role: "Verified Google Review", initials: "NP" },
   { q: "I have been working with Team QC for 9 months. Their work is actually good, the team is proactive, and they've helped my brand Jain Textile gain a strong online presence.", name: "Harshit Sethi", role: "Verified Google Review", initials: "HS" },
   { q: "Have been their client since past 1 year and everything has been beyond perfect! The team is knowledgeable and very good at what they do.", name: "Prerna Daryanani", role: "Verified Google Review", initials: "PD" },
   { q: "One of the best digital marketing and branding agencies in Jaipur. Their expertise in social media, content creation, website development, and brand strategy drives real growth.", name: "Suniti Verma", role: "Verified Google Review", initials: "SV" },
-  { q: "Qrious Curators have been fantastic for our brand! Their creative strategies boosted our engagement and reach quickly. They're responsive, transparent, and really understand our goals.", name: "Javed Ahmed Khan", role: "Local Guide · Verified Review", initials: "JK", guide: true },
+  { q: "Qrious Curators have been fantastic for our brand! Their creative strategies boosted our engagement and reach quickly. They're responsive, transparent, and really understand our goals.", name: "Javed Ahmed Khan", role: "Local Guide Â· Verified Review", initials: "JK", guide: true },
   { q: "I got my website work done from Qrious Curators. They completed the project on time and as per my expectations. Highly recommended!", name: "Heeralal Soni", role: "Verified Google Review", initials: "HS" },
   { q: "Great work by Abhay and Team for their seamless efforts for my newly launched brand. I'd also like to highlight Social Media Manager Preeti for her outstanding work.", name: "Kanu Sharma", role: "Verified Google Review", initials: "KS" },
   { q: "Excellent digital marketing services! Their strategies significantly improved our online visibility and drove real results. A professional and reliable team.", name: "Ishika Jhalani", role: "Verified Google Review", initials: "IJ" },
@@ -592,7 +578,7 @@ const reviews = [
 
 function buildCard(d) {
   return `<div class="t-card">
-    <div class="t-stars">${'★'.repeat(5).split('').map(s => `<span class="t-star">${s}</span>`).join('')}</div>
+    <div class="t-stars">${'â˜…'.repeat(5).split('').map(s => `<span class="t-star">${s}</span>`).join('')}</div>
     <p class="t-quote">${d.q}</p>
     <div class="t-author">
       <div class="t-avatar">${d.initials}</div>
@@ -616,14 +602,7 @@ document.getElementById('r2').innerHTML = h2 + h2;
 
 
 
-/* =========================================================
-   CINEMATIC SERVICES SECTION JS — REVISIT FIXED VERSION
-   Requires:
-   gsap.min.js
-   ScrollTrigger.min.js
 
-   Use this instead of the previous qc-cine JS.
-========================================================= */
 
 (function () {
   window.addEventListener("load", function () {
@@ -634,14 +613,14 @@ document.getElementById('r2').innerHTML = h2 + h2;
 
     gsap.registerPlugin(ScrollTrigger);
 
-    /*
-      Prevent duplicate timelines if this file is loaded twice
-      or if you are testing with hot reload.
-    */
+    
     qcKillOldCinematicTriggers();
 
-    qcInitCinematicServices();
-    qcInitExperienceCards();
+    const motionMedia = gsap.matchMedia();
+    motionMedia.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
+      qcInitCinematicServices();
+      qcInitExperienceCards();
+    });
     qcRefreshAfterImages();
   });
 
@@ -670,11 +649,7 @@ document.getElementById('r2').innerHTML = h2 + h2;
   }
 
 
-  /* =========================================================
-     PART 1 + PART 2
-     Horizontal service scroll + last card image fullscreen takeover
-     (REWRITTEN — fast, gap-free, Apple-style takeover)
-  ========================================================= */
+  
 
   function qcInitCinematicServices() {
     const section = document.querySelector("#qc-cine-services");
@@ -703,7 +678,7 @@ document.getElementById('r2').innerHTML = h2 + h2;
       ".qc-cine-panel-last .qc-cine-content, .qc-cine-panel-last .qc-cine-num"
     );
 
-    /* ---------- math helpers ---------- */
+    
     const clamp01 = (v) => Math.min(Math.max(v, 0), 1);
     const norm = (v, a, b) => clamp01((v - a) / (b - a));
     const lerp = (a, b, t) => a + (b - a) * t;
@@ -713,17 +688,11 @@ document.getElementById('r2').innerHTML = h2 + h2;
       return Math.max(0, track.scrollWidth - window.innerWidth);
     }
 
-    function getSourceRadius() {
-      return parseFloat(window.getComputedStyle(sourceBox).borderRadius) || 38;
-    }
+    let sourceRadius = parseFloat(window.getComputedStyle(sourceBox).borderRadius) || 38;
+    function getSourceRadius() { return sourceRadius; }
+    qcResizeTasks.add(() => { sourceRadius = parseFloat(window.getComputedStyle(sourceBox).borderRadius) || 38; });
 
-    /* ---------------------------------------------------------
-       TIMELINE MAP (progress 0 -> 1 across the pinned scroll)
-       0.00 – 0.62   horizontal card scroll
-       0.62 – 0.84   image expands from its own rect to fullscreen
-       0.78 – 0.90   optional crossfade to a second "reveal" image
-       0.90 – 1.00   short settle, then unpin straight into next section
-    --------------------------------------------------------- */
+    
     const HORIZONTAL_END = 0.62;
     const EXPAND_START = 0.62;
     const EXPAND_END = 0.84;
@@ -771,17 +740,12 @@ document.getElementById('r2').innerHTML = h2 + h2;
 
     forceStartState();
 
-    /* ---------------------------------------------------------
-       Single render function driven purely by scroll progress.
-       No independent tweens with their own durations — everything
-       is a direct function of `progress`, so the clone's position
-       and the source's visibility can never drift out of sync.
-    --------------------------------------------------------- */
+    
     function renderServices(progress) {
       progress = clamp01(progress);
       const maxShift = getMaxShift();
 
-      // PHASE 1 — horizontal scroll through the cards
+      // PHASE 1 â€” horizontal scroll through the cards
       const hProgress = smooth(norm(progress, 0, HORIZONTAL_END));
       gsap.set(track, { x: -maxShift * hProgress, force3D: true });
 
@@ -803,7 +767,7 @@ document.getElementById('r2').innerHTML = h2 + h2;
       // Track is fully scrolled and stays locked for the rest of the pin.
       gsap.set(track, { x: -maxShift, force3D: true });
 
-      // KEY FIX #1 — measure the source's real on-screen rect fresh,
+      // KEY FIX #1 â€” measure the source's real on-screen rect fresh,
       // every frame, right before using it. At progress === EXPAND_START
       // the lerp below evaluates to exactly this rect, so the clone
       // materializes pixel-perfectly on top of the source in the same
@@ -828,16 +792,16 @@ document.getElementById('r2').innerHTML = h2 + h2;
         force3D: true
       });
 
-      // KEY FIX #2 — the source panel only fades out AFTER the clone is
+      // KEY FIX #2 â€” the source panel only fades out AFTER the clone is
       // already glued on top of it (same rect, higher z-index in CSS).
       // Visually you're always looking at *something* covering that
-      // spot — either the real panel or the clone — never neither.
+      // spot â€” either the real panel or the clone â€” never neither.
       const chromeFade = norm(progress, EXPAND_START, EXPAND_START + 0.05);
       gsap.set(sourceBox, { autoAlpha: 1 - chromeFade });
       gsap.set(previousPanels, { autoAlpha: 1 - chromeFade });
       gsap.set(lastPanelContent, { autoAlpha: 1 - chromeFade, y: -40 * chromeFade });
 
-      // PHASE 2b — optional crossfade to a second "reveal" image once
+      // PHASE 2b â€” optional crossfade to a second "reveal" image once
       // the clone is basically fullscreen. Delete this block (and the
       // cloneNextImg element) if you only want a single-image takeover.
       const swapProgress = smooth(norm(progress, SWAP_START, SWAP_END));
@@ -867,7 +831,7 @@ document.getElementById('r2').innerHTML = h2 + h2;
       start: "top top",
       end: () => "+=" + getScrollDistance(),
       pin: true,
-      scrub: true,          // direct 1:1 scrub — no smoothing lag to desync from
+      scrub: true,          // direct 1:1 scrub â€” no smoothing lag to desync from
       anticipatePin: 1,
       invalidateOnRefresh: true,
       markers: false,
@@ -877,7 +841,7 @@ document.getElementById('r2').innerHTML = h2 + h2;
       onEnterBack: (self) => renderServices(self.progress),
 
       onLeave: () => {
-        // Land on the exact fullscreen frame, then release immediately —
+        // Land on the exact fullscreen frame, then release immediately â€”
         // no lingering hold before the next section appears.
         renderServices(1);
         gsap.set(clone, { autoAlpha: 0 });
@@ -897,10 +861,7 @@ document.getElementById('r2').innerHTML = h2 + h2;
   }
 
 
-  /* =========================================================
-     PART 3 + PART 4
-     Sticky text + floating cards
-  ========================================================= */
+  
 
   function qcInitExperienceCards() {
     const section = document.querySelector("#qc-cine-experience");
@@ -1085,9 +1046,7 @@ document.getElementById('r2').innerHTML = h2 + h2;
     });
 
 
-    /*
-      Sticky text reveal.
-    */
+    
     tl.to(
       ".qc-exp-kicker",
       {
@@ -1167,11 +1126,7 @@ document.getElementById('r2').innerHTML = h2 + h2;
     }
 
 
-    /*
-      0% - 30%: cards 1, 2, 3
-      30% - 60%: cards 4, 5, 6
-      60% - 100%: cards 7, 8, 9
-    */
+    
     animateGroup([0, 1, 2], 0.68, 1.35, false);
     animateGroup([3, 4, 5], 1.52, 2.24, false);
     animateGroup([6, 7, 8], 2.48, 3.34, true);
@@ -1180,51 +1135,46 @@ document.getElementById('r2').innerHTML = h2 + h2;
   }
 
 
-  /* =========================================================
-     REFRESH HANDLING
-  ========================================================= */
+  
 
   function qcRefreshAfterImages() {
-    const images = document.querySelectorAll(
-      "#qc-cine-services img, #qc-cine-experience img"
-    );
-
-    images.forEach(function (img) {
-      if (!img.complete) {
-        img.addEventListener(
-          "load",
-          function () {
-            ScrollTrigger.refresh();
-          },
-          { once: true }
-        );
-
-        img.addEventListener(
-          "error",
-          function () {
-            ScrollTrigger.refresh();
-          },
-          { once: true }
-        );
-      }
-    });
-
-    let resizeTimer;
-
-    window.addEventListener("resize", function () {
-      clearTimeout(resizeTimer);
-
-      resizeTimer = setTimeout(function () {
-        ScrollTrigger.refresh();
-      }, 250);
-    });
-
-    setTimeout(function () {
-      ScrollTrigger.refresh();
-    }, 300);
-
-    setTimeout(function () {
-      ScrollTrigger.refresh();
-    }, 1000);
+    const images = [...document.querySelectorAll("#qc-cine-services img, #qc-cine-experience img")];
+    const pending = images.filter((img) => !img.complete).map((img) => new Promise((resolve) => {
+      img.addEventListener("load", resolve, { once: true });
+      img.addEventListener("error", resolve, { once: true });
+    }));
+    const fontsReady = document.fonts?.ready || Promise.resolve();
+    Promise.all([Promise.allSettled(pending), fontsReady]).then(() => requestAnimationFrame(() => ScrollTrigger.refresh()));
   }
 })();
+ const form = document.getElementById('contactForm');
+  const statusMsg = document.getElementById('statusMsg');
+  const submitBtn = document.getElementById('submitBtn');
+ 
+  if (form && statusMsg && submitBtn) form.addEventListener('submit', function(e){
+    e.preventDefault();
+    submitBtn.disabled = true;
+    statusMsg.textContent = 'Sending...';
+ 
+    // Simulated submit â€” replace with a real endpoint call as needed
+    setTimeout(() => {
+      statusMsg.textContent = 'Thanks â€” we will be in touch shortly.';
+      submitBtn.disabled = false;
+      form.reset();
+    }, 900);
+  });
+function qcInitLazyVideo() {
+  const video = document.querySelector(".nx-floating-video");
+  if (!video || QC_MOBILE_QUERY.matches || QC_REDUCED_MOTION.matches) return;
+  const attach = () => {
+    video.querySelectorAll("source[data-src]").forEach((source) => { source.src = source.dataset.src; source.removeAttribute("data-src"); });
+    video.load();
+    video.play().catch(() => {});
+  };
+  const observer = new IntersectionObserver((entries, io) => {
+    if (!entries.some((entry) => entry.isIntersecting)) return;
+    attach(); io.disconnect();
+  }, { rootMargin: "400px" });
+  observer.observe(video);
+}
+document.addEventListener("DOMContentLoaded", qcInitLazyVideo, { once: true });

@@ -1,4 +1,4 @@
-/* ===================== ROOT ===================== */
+
 :root {
   --black: #000000;
   --off-black: #101011;
@@ -18,8 +18,8 @@
   --heading-font: "Raleway", sans-serif;
   --sub-heading-font: "Lato", sans-serif;
 
-  /* --heading-font: 'Syne',sans-serif */
-  /* --sub-heading-font: "'Cormorant Garamond',serif */
+  
+  
 }
 
 *,
@@ -39,7 +39,7 @@ body {
   color: var(--white);
   font-family: "Raleway", sans-serif;
   overflow-x: hidden;
-  /* cursor:auto; */
+  
 }
 
 img {
@@ -64,92 +64,19 @@ a {
   background: rgba(255, 255, 255, 0.15);
 }
 
-/* ===================== CURSOR ===================== */
-/* #qc-cur {
-  position: fixed;
-  width: 8px;
-  height: 8px;
-  background: var(--accent);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 999999999;
-  transform: translate(-50%, -50%);
-  transition:
-    width 0.2s,
-    height 0.2s,
-    background 0.3s,
-    opacity 0.3s;
-  mix-blend-mode: normal;
-}
 
-#qc-cur-ring {
-  position: fixed;
-  width: 32px;
-  height: 32px;
-  border: 1px solid #fb923c70;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99998;
-  transform: translate(-50%, -50%);
-  transition:
-    width 0.25s,
-    height 0.25s,
-    border-color 0.3s,
-    opacity 0.3s;
-}
 
-body.cur-hover #qc-cur {
-  width: 14px;
-  height: 14px;
-  background: var(--accent);
-}
 
-body.cur-hover #qc-cur-ring {
-  width: 48px;
-  height: 48px;
-  border-color: #fb923c63;
-} */
 
-/* ===================== PRELOADER ===================== */
-/* #preloader{
-  position:fixed;inset:0;background:var(--black);
-  z-index:999999;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:0;
-  transition:opacity .9s ease, visibility .9s ease;
-}
-#preloader.out{opacity:0;visibility:hidden}
-.pl-logo{
-  font-family:var(--sub-heading-font);;
-  font-size:clamp(28px,4vw,52px);font-weight:300;
-  letter-spacing:.12em;color:var(--white);
-  opacity:0;animation:plIn .8s ease .2s forwards;
-  overflow:hidden;
-}
-.pl-logo span{display:inline-block;animation:plChar .6s ease .4s both}
-.pl-tagline{
-  font-family:var(--heading-font);;font-size:11px;font-weight:600;
-  letter-spacing:.3em;text-transform:uppercase;color:var(--muted);
-  margin-top:12px;opacity:0;animation:plIn .6s ease .8s forwards;
-}
-.pl-bar{
-  width:160px;height:1px;background:rgba(255,255,255,.08);
-  margin-top:48px;position:relative;overflow:hidden;
-  opacity:0;animation:plIn .4s ease .9s forwards;
-}
-.pl-bar-fill{
-  position:absolute;inset:0;background:var(--accent);
-  transform:translateX(-100%);animation:plFill 1.4s ease 1s forwards;
-}
-@keyframes plIn{to{opacity:1}}
-@keyframes plChar{from{transform:translateY(100%)}to{transform:translateY(0)}}
-@keyframes plFill{to{transform:translateX(0)}} */
+
 
 #preloader {
   position: fixed;
   width: 100%;
   height: 100vh;
+  height: 100svh;
   background: #030302;
-  /* Match your website background */
+  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -157,12 +84,12 @@ body.cur-hover #qc-cur-ring {
   transition:
     opacity 0.6s ease,
     visibility 0.6s ease;
-  /* display: none; */
+  
 }
 
 #preloader img {
   width: 320px;
-  /* Adjust size */
+  
   height: auto;
 }
 
@@ -171,7 +98,7 @@ body.cur-hover #qc-cur-ring {
   visibility: hidden;
 }
 
-/* ===================== GRAIN OVERLAY ===================== */
+
 #grain {
   position: fixed;
   inset: 0;
@@ -201,7 +128,7 @@ body.cur-hover #qc-cur-ring {
   }
 }
 
-/* ===================== NAV ===================== */
+
 .qc-header {
   position: fixed;
   top: 0;
@@ -646,7 +573,7 @@ body.cur-hover #qc-cur-ring {
   }
 }
 
-/* ─── TOKENS ─── */
+
 :root {
   --ink: #05050a;
   --ink2: #0b0b12;
@@ -706,7 +633,7 @@ a {
   border-radius: 1px;
 }
 
-/* ─── CURSOR ─── */
+
 #cur,
 #cr {
   position: fixed;
@@ -744,7 +671,7 @@ body.hov #cr {
   border-color: rgba(251, 146, 60, 0.7);
 }
 
-/* ─── GRAIN ─── */
+
 #grain {
   position: fixed;
   inset: 0;
@@ -777,23 +704,22 @@ body.hov #cr {
   }
 }
 
-/* ══════════════════════════════════════════════
-   SCROLL VIDEO SECTION
-══════════════════════════════════════════════ */
 
-/* ── Section that holds the scroll "travel" distance ── */
+
+
 #scroll-section {
   position: relative;
-  /* Height = sticky viewport + scroll travel */
+  
   height: 350vh;
   background: var(--ink);
 }
 
-/* ── Sticky container — locks to viewport while scrolling ── */
+
 .scroll-sticky {
   position: sticky;
   top: 0;
   height: 100vh;
+  height: 100svh;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -801,18 +727,18 @@ body.hov #cr {
   background: var(--ink);
 }
 
-/* ── Video wrapper — the element that scales down ── */
+
 .video-shrink-wrap {
   position: absolute;
   inset: 0;
   will-change: transform, border-radius;
-  /* JS drives: scale, border-radius, margin */
+  
   transform: scale(1);
   border-radius: 0px;
   overflow: hidden;
 }
 
-/* ── The actual video ── */
+
 .scroll-video {
   width: 100%;
   height: 100%;
@@ -820,7 +746,7 @@ body.hov #cr {
   object-position: center;
 }
 
-/* ── Dark overlay on video ── */
+
 .video-overlay {
   position: absolute;
   inset: 0;
@@ -833,7 +759,7 @@ body.hov #cr {
   transition: opacity 0.3s;
 }
 
-/* ── Hero text on top of video ── */
+
 .video-hero-text {
   position: absolute;
   inset: 0;
@@ -915,7 +841,7 @@ body.hov #cr {
   }
 }
 
-/* ── Scroll hint at bottom of hero ── */
+
 .scroll-hint {
   position: absolute;
   bottom: 40px;
@@ -981,7 +907,7 @@ body.hov #cr {
   writing-mode: vertical-rl;
 }
 
-/* ── "Shrinking" progress indicator ── */
+
 .shrink-progress {
   position: absolute;
   bottom: 40px;
@@ -1022,17 +948,15 @@ body.hov #cr {
   writing-mode: vertical-rl;
 }
 
-/* ══════════════════════════════════════════════
-   CONTENT SECTION (below video)
-══════════════════════════════════════════════ */
+
 #content-section {
   position: relative;
   background: var(--ink);
   padding-bottom: 120px;
-  /* This section starts immediately after scroll-section */
+  
 }
 
-/* ── Section intro text ── */
+
 .cs-intro {
   max-width: 1440px;
   margin: 0 auto;
@@ -1043,7 +967,7 @@ body.hov #cr {
   align-items: end;
 }
 
-/* Fade-in elements — each gets .fi class, triggered by IntersectionObserver */
+
 .fi {
   opacity: 0;
   transform: translateY(32px);
@@ -1162,7 +1086,7 @@ body.hov #cr {
   font-weight: 400;
 }
 
-/* ── IMAGE GRID 3-column ── */
+
 .img-grid {
   max-width: 1440px;
   margin: 0 auto;
@@ -1180,7 +1104,7 @@ body.hov #cr {
   cursor:auto;
 }
 
-/* Heights for visual rhythm */
+
 .img-cell:nth-child(1) {
   aspect-ratio: 4/5;
 }
@@ -1211,7 +1135,7 @@ body.hov #cr {
   filter: grayscale(0%) brightness(1);
 }
 
-/* Gradient overlay */
+
 .img-cell::before {
   content: "";
   position: absolute;
@@ -1221,7 +1145,7 @@ body.hov #cr {
   pointer-events: none;
 }
 
-/* Amber bottom sweep on hover */
+
 .img-cell::after {
   content: "";
   position: absolute;
@@ -1238,7 +1162,7 @@ body.hov #cr {
   width: 100%;
 }
 
-/* Image label */
+
 .img-label {
   position: absolute;
   bottom: 18px;
@@ -1267,7 +1191,7 @@ body.hov #cr {
   transform: translateY(0);
 }
 
-/* ── TEXT BLOCK (below grid) ── */
+
 .text-block {
   max-width: 1440px;
   margin: 0 auto;
@@ -1350,7 +1274,7 @@ body.hov #cr {
   font-weight: 300;
 }
 
-/* ── MARQUEE between sections ── */
+
 .mid-mq {
   overflow: hidden;
   border-top: 1px solid var(--b);
@@ -1403,7 +1327,7 @@ body.hov #cr {
   flex-shrink: 0;
 }
 
-/* ── FINAL STATEMENT ── */
+
 .statement {
   max-width: 1440px;
   margin: 0 auto;
@@ -1505,7 +1429,7 @@ body.hov #cr {
   z-index: 1;
 }
 
-/* ── SPACER at top so scroll begins away from top of page ── */
+
 .page-intro {
   height: 80px;
   background: var(--ink);
@@ -1547,7 +1471,7 @@ body.hov #cr {
   }
 }
 
-/* ── RESPONSIVE ── */
+
 @media (max-width: 1100px) {
   .cs-intro {
     padding: 80px 36px 56px;
@@ -1619,7 +1543,7 @@ body.hov #cr {
   }
 }
 
-/* ===================== MOBILE MENU ===================== */
+
 .mobile-menu {
   position: fixed;
   inset: 0;
@@ -1680,11 +1604,12 @@ body.hov #cr {
   color: var(--white);
 }
 
-/* ===================== HERO ===================== */
+
 
 #hero {
   position: relative;
   min-height: 100vh;
+  min-height: 100svh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -1986,26 +1911,28 @@ body.hov #cr {
   padding: 0;
 }
 
-/* Fixed Cinematic Video (Layer 1) */
+
 .nx-floating-video {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
+  height: 100svh;
   object-fit: cover;
   z-index: 100;
   will-change: width, height, transform;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
 }
 
-/* Scroll Space for Video Docking */
+
 .nx-scroll-track {
   height: 100vh;
+  height: 100svh;
   width: 100%;
 }
 
-/* Grid Section (Layer 2) */
+
 .nx-content-area {
   background-color: #000000;
   padding: 10vh 1.5vw 20vh 1.5vw;
@@ -2013,15 +1940,16 @@ body.hov #cr {
   z-index: 10;
 }
 
-/* Dim Overlay - Fades in behind text to ensure readability (Layer 3) */
+
 .nx-dim-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
+  height: 100svh;
   z-index: 150;
-  /* Subtle deep emerald tint for a premium identity */
+  
   background: linear-gradient(
     to bottom,
     rgba(4, 15, 8, 0.7),
@@ -2032,27 +1960,28 @@ body.hov #cr {
   will-change: opacity, transform;
 }
 
-/* Centered Sticky Text Container (Layer 4 - Highest) */
+
 .nx-sticky-text-layer {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
+  height: 100svh;
   z-index: 200;
   pointer-events: none;
-  /* Let clicks pass through to the cards/video */
+  
   display: flex;
   align-items: center;
   justify-content: center;
   will-change: transform;
 }
 
-/* Premium Typography Layout */
+
 .nx-docked-text {
   color: #ffffff;
   font-size: 6vw;
-  /* Massive screen presence */
+  
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: -0.03em;
@@ -2064,7 +1993,7 @@ body.hov #cr {
   gap: 1.5vw;
   padding: 0 5vw;
   text-shadow: 0 10px 30px rgba(4, 15, 8, 0.9);
-  /* Deep depth shadow */
+  
 }
 
 .nx-word-mask {
@@ -2072,18 +2001,18 @@ body.hov #cr {
   overflow: hidden;
   padding-bottom: 0.15em;
   padding-right: 0.05em;
-  /* Prevents italics or skewed text from clipping */
+  
 }
 
 .nx-word {
   display: inline-block;
-  /* Added a slight 3D rotation for a much smoother, editorial reveal */
+  
   transform: translateY(120%) rotateZ(4deg);
   transform-origin: bottom left;
   will-change: transform;
 }
 
-/* Card Grid Layout */
+
 .nx-card-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -2091,7 +2020,7 @@ body.hov #cr {
   width: 100%;
 }
 
-/* Premium Borderless Cards */
+
 .nx-grid-card {
   background-color: #050505;
   border: 1px solid transparent;
@@ -2121,7 +2050,7 @@ body.hov #cr {
     filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Hover reveals full color and a subtle premium border */
+
 .nx-grid-card:hover {
   border-color: #1a3320;
 }
@@ -2136,7 +2065,7 @@ body.hov #cr {
   pointer-events: none;
 }
 
-/* Dramatic Stagger for Desktop */
+
 @media (min-width: 901px) {
   .nx-grid-card:nth-child(3n + 2) {
     transform: translateY(15vh);
@@ -2152,7 +2081,7 @@ body.hov #cr {
   }
 }
 
-/* Responsive */
+
 @media (max-width: 900px) {
   .nx-card-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -2187,7 +2116,7 @@ body.hov #cr {
   }
 }
 
-/* ===================== MARQUEE ===================== */
+
 .qc-marquee {
   overflow: hidden;
   background: var(--accent);
@@ -2219,7 +2148,7 @@ body.hov #cr {
 }
 
 .qc-marquee-item::after {
-  content: "◆";
+  content: "â—†";
   font-size: 7px;
   color: rgba(0, 0, 0, 0.35);
 }
@@ -2234,30 +2163,13 @@ body.hov #cr {
   }
 }
 
-/* ===================== ABOUT (two-column asymmetric) ===================== */
 
-/* .premium-about {
-  position: relative;
-  height: auto;
-  background: #070707;
-} */
 
-/* STICKY WRAPPER */
 
-/* .premium-sticky {
-  position: relative;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 
-  padding: 0 6%;
-  box-sizing: border-box;
-} */
+
+
+
 
 .premium-about {
   position: relative;
@@ -2271,6 +2183,7 @@ body.hov #cr {
 
   width: 100%;
   height: 100vh;
+  height: 100svh;
 
   overflow: hidden;
 
@@ -2282,7 +2195,7 @@ body.hov #cr {
   box-sizing: border-box;
 }
 
-/* BACKGROUND GLOW */
+
 
 .bg-glow {
   position: absolute;
@@ -2301,7 +2214,7 @@ body.hov #cr {
   pointer-events: none;
 }
 
-/* HUGE TEXT */
+
 
 .bg-word {
   position: absolute;
@@ -2321,7 +2234,7 @@ body.hov #cr {
   transition: 1s ease;
 }
 
-/* LEFT */
+
 
 .left-side {
   width: 52%;
@@ -2329,7 +2242,7 @@ body.hov #cr {
   z-index: 10;
 }
 
-/* LABEL */
+
 
 .label {
   font-size: 13px;
@@ -2339,14 +2252,14 @@ body.hov #cr {
   margin-bottom: 35px;
 }
 
-/* CONTENT */
+
 
 .content-slider {
   position: relative;
   height: 520px;
 }
 
-/* SLIDE */
+
 
 .content-slide {
   position: absolute;
@@ -2369,7 +2282,7 @@ body.hov #cr {
   transform: translateY(0);
 }
 
-/* HEADING */
+
 
 .content-slide h2 {
   font-size: 120px;
@@ -2384,7 +2297,7 @@ body.hov #cr {
   font-weight: 500;
 }
 
-/* HIGHLIGHT */
+
 
 .content-slide h2 span {
   color: #fb923c;
@@ -2413,7 +2326,7 @@ body.hov #cr {
     background-clip: text;
 }
 
-/* TEXT */
+
 
 .content-slide p {
   max-width: 650px;
@@ -2426,7 +2339,7 @@ body.hov #cr {
   margin-top: 35px;
 }
 
-/* METRICS */
+
 
 .metrics {
   display: flex;
@@ -2434,7 +2347,7 @@ body.hov #cr {
   margin-top: 45px;
 }
 
-/* ITEM */
+
 
 .metric-item h3 {
   font-size: 42px;
@@ -2448,7 +2361,7 @@ body.hov #cr {
   font-size: 14px;
 }
 
-/* BUTTON */
+
 
 .main-btn {
   display: inline-flex;
@@ -2474,7 +2387,7 @@ body.hov #cr {
   background: #d9c1a4;
 }
 
-/* RIGHT */
+
 
 .right-side {
   width: 38%;
@@ -2487,7 +2400,7 @@ body.hov #cr {
   position: relative;
 }
 
-/* VISUAL STACK */
+
 
 .visual-stack {
   position: relative;
@@ -2495,7 +2408,7 @@ body.hov #cr {
   height: 760px;
 }
 
-/* IMAGE CARD */
+
 
 .visual-card {
   position: absolute;
@@ -2519,7 +2432,7 @@ body.hov #cr {
   will-change: transform;
 }
 
-/* IMAGE */
+
 
 .visual-card img {
   width: 100%;
@@ -2527,7 +2440,7 @@ body.hov #cr {
   object-fit: cover;
 }
 
-/* DARK OVERLAY */
+
 
 .visual-card::after {
   content: "";
@@ -2538,7 +2451,7 @@ body.hov #cr {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
 }
 
-/* POSITIONS */
+
 
 .card1 {
   top: 20px;
@@ -2555,7 +2468,7 @@ body.hov #cr {
   left: 70px;
 }
 
-/* ACTIVE STATE */
+
 
 .visual-card.active {
   opacity: 1;
@@ -2567,7 +2480,7 @@ body.hov #cr {
   filter: blur(2px);
 }
 
-/* FLOAT EFFECT */
+
 
 .card1.active {
   transform: translateY(25px) rotate(-10deg);
@@ -2581,7 +2494,7 @@ body.hov #cr {
   transform: translateY(-20px) translateX(-40px) rotate(-5deg);
 }
 
-/* FLOATING BADGES */
+
 
 .badge {
   position: absolute;
@@ -2601,7 +2514,7 @@ body.hov #cr {
   transition: 0.8s ease;
 }
 
-/* BADGES */
+
 
 .badge1 {
   top: 60px;
@@ -2613,7 +2526,7 @@ body.hov #cr {
   right: 20px;
 }
 
-/* BADGE TEXT */
+
 
 .badge h3 {
   color: #fff;
@@ -2627,7 +2540,7 @@ body.hov #cr {
   font-size: 13px;
 }
 
-/* PROGRESS BAR */
+
 
 .scroll-line {
   position: absolute;
@@ -2649,13 +2562,13 @@ body.hov #cr {
   transition: 0.2s linear;
 }
 
-/* MOBILE */
+
 
 @media (max-width: 1100px) {
   .premium-sticky {
     flex-direction: column;
     justify-content: center;
-    /* gap: 80px; */
+    
   }
 
   .content-slider {
@@ -2856,7 +2769,7 @@ body.hov #cr {
   }
 }
 
-/* About Section */
+
 
 .about-story {
   position: relative;
@@ -2869,6 +2782,7 @@ body.hov #cr {
   top: 0;
   width: 100%;
   height: 100vh;
+  height: 100svh;
   overflow: hidden;
 }
 
@@ -2910,6 +2824,7 @@ body.hov #cr {
 .about-story-panel {
   width: 100%;
   height: 100vh;
+  height: 100svh;
   display: flex;
   align-items: center;
   padding: 0 7%;
@@ -3044,6 +2959,7 @@ body.hov #cr {
     position: sticky;
     top: 0;
     height: 100vh;
+  height: 100svh;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -3052,10 +2968,10 @@ body.hov #cr {
     overflow: hidden;
   }
 
-  /* RIGHT (images) comes first visually */
+  
   .right-side {
     display: flex;
-    order: -1;           /* move above left/text side */
+    order: -1;           
     width: 100%;
     height: 220px;
     align-items: center;
@@ -3081,10 +2997,10 @@ body.hov #cr {
   .card2.active { transform: rotate(5deg); }
   .card3.active { transform: translateY(-8px) translateX(0) rotate(-3deg); }
 
-  /* hide badges on mobile — too cluttered */
+  
   .badge { display: none; }
 
-  /* LEFT (text) comes second */
+  
   .left-side {
     order: 1;
     width: 100%;
@@ -3147,7 +3063,7 @@ body.hov #cr {
 }
 
 
-/* ===================== STATS ===================== */
+
 #stats {
   background: var(--surface);
   border-top: 1px solid var(--border);
@@ -3232,7 +3148,7 @@ body.hov #cr {
   }
 }
 
-/* ===================== STACK SECTION ===================== */
+
 #stack {
   padding: 160px 0;
   background: var(--black);
@@ -3345,7 +3261,7 @@ body.hov #cr {
   }
 }
 
-/* ===================== SERVICES HORIZONTAL ===================== */
+
 
 #services {
   position: relative;
@@ -3356,6 +3272,7 @@ body.hov #cr {
   position: sticky;
   top: 0;
   height: 100vh;
+  height: 100svh;
   overflow: hidden;
 }
 
@@ -3363,12 +3280,14 @@ body.hov #cr {
   display: flex;
   width: 600vw;
   height: 100vh;
+  height: 100svh;
   will-change: transform;
 }
 
 .svc-panel {
   width: 100vw;
   height: 100vh;
+  height: 100svh;
   flex: 0 0 100vw;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -3448,7 +3367,7 @@ body.hov #cr {
 }
 
 .svc-box {
-  /* width:clamp(240px,26vw,340px);height:clamp(240px,26vw,340px); */
+  
   border-radius: 28px;
   border: 1px solid var(--border2);
   display: flex;
@@ -3478,9 +3397,7 @@ body.hov #cr {
   );
 }
 
-/* .svc-h2 em {
-  color: #fb923c;
-} */
+
 
 .svc-panel:hover .svc-box {
   transform: translateY(-8px) rotate(2deg);
@@ -3503,7 +3420,7 @@ body.hov #cr {
   }
 }
 
-/* ===================== PROCESS ===================== */
+
 
 #process {
   position: relative;
@@ -3514,6 +3431,7 @@ body.hov #cr {
   position: sticky;
   top: 0;
   height: 100vh;
+  height: 100svh;
   display: flex;
   align-items: center;
   background: var(--off-black);
@@ -3536,7 +3454,7 @@ body.hov #cr {
   font-weight: 700;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  /* color: var(--muted); */
+  
   color: var(--accent);
   margin-bottom: 16px;
   display: block;
@@ -3553,7 +3471,7 @@ body.hov #cr {
 
 .process-head h2 em {
   font-style: italic;
-  /* color: var(--accent); */
+  
 }
 
 .process-row {
@@ -3573,22 +3491,22 @@ body.hov #cr {
   padding: 40px 32px;
   border-radius: 4px;
   background:
-    /* top-left */
+    
     linear-gradient(var(--corner-border-color), var(--corner-border-color)) top
       left / 30px 2px no-repeat,
     linear-gradient(var(--corner-border-color), var(--corner-border-color)) top
       left / 2px 30px no-repeat,
-    /* top-right */
+    
     linear-gradient(var(--corner-border-color), var(--corner-border-color)) top
       right / 30px 2px no-repeat,
     linear-gradient(var(--corner-border-color), var(--corner-border-color)) top
       right / 2px 30px no-repeat,
-    /* bottom-left */
+    
     linear-gradient(var(--corner-border-color), var(--corner-border-color))
       bottom left / 30px 2px no-repeat,
     linear-gradient(var(--corner-border-color), var(--corner-border-color))
       bottom left / 2px 30px no-repeat,
-    /* bottom-right */
+    
     linear-gradient(var(--corner-border-color), var(--corner-border-color))
       bottom right / 30px 2px no-repeat,
     linear-gradient(var(--corner-border-color), var(--corner-border-color))
@@ -3694,16 +3612,10 @@ body.hov #cr {
   }
 }
 
-/* Old stacked testimonial styles removed — replaced by QG global proof section. */
 
-/* ===================== MARQUEE (dark) ===================== */
-/* .qc-marquee-dark {
-  overflow: hidden;
-  background:black;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 1px 0;
-} */
+
+
+
 
 .qc-marquee-dark-track {
   display: flex;
@@ -3726,7 +3638,7 @@ body.hov #cr {
 }
 
 .qc-marquee-dark-item::after {
-  content: "·";
+  content: "Â·";
   color: var(--accent);
   font-size: 20px;
   line-height: 0;
@@ -3772,9 +3684,7 @@ body.hov #cr {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-/* ==========================================
-   NEW SECTION 1: ANIMATED TICKER REEL
-========================================== */
+
 #showcase {
   padding: 160px 52px;
   background: var(--surface);
@@ -3830,7 +3740,7 @@ body.hov #cr {
   align-self: end;
 }
 
-/* 3-column card grid */
+
 .showcase-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -3878,7 +3788,7 @@ body.hov #cr {
   background: linear-gradient(135deg, #0a0f0a 0%, #0d1f0d 50%, #1a3a1a 100%);
 }
 
-/* Fake UI mockup inside card */
+
 .sc-mockup {
   position: absolute;
   inset: 0;
@@ -3948,7 +3858,7 @@ body.hov #cr {
   background: rgba(14, 165, 233, 0.5);
 }
 
-/* Card overlay */
+
 .sc-overlay {
   position: absolute;
   inset: 0;
@@ -4004,7 +3914,7 @@ body.hov #cr {
   font-weight: 600;
 }
 
-/* Permanent label */
+
 .sc-label {
   position: absolute;
   top: 24px;
@@ -4055,9 +3965,7 @@ body.hov #cr {
   }
 }
 
-/* ==========================================
-   NEW SECTION 2: ANIMATED GRADIENT TICKER
-========================================== */
+
 #philosophy {
   padding: 160px 52px;
   background: var(--black);
@@ -4178,9 +4086,7 @@ body.hov #cr {
   }
 }
 
-/* ==========================================
-   NEW SECTION 3: ANIMATED NUMBERS COUNTER
-========================================== */
+
 #impact {
   padding: 160px 52px;
   background: var(--surface);
@@ -4235,7 +4141,7 @@ body.hov #cr {
   color: var(--accent);
 }
 
-/* Impact cards in a horizontal row */
+
 .impact-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -4337,9 +4243,7 @@ body.hov #cr {
   }
 }
 
-/* ==========================================
-   NEW SECTION 4: SCROLLING TEXT REVEAL
-========================================== */
+
 #manifesto {
   padding: 120px 0;
   background: var(--black);
@@ -4381,9 +4285,7 @@ body.hov #cr {
   }
 }
 
-/* ==========================================
-   NEW SECTION 5: AWARDS / RECOGNITION
-========================================== */
+
 #awards {
   padding: 140px 52px;
   background: var(--surface);
@@ -4461,7 +4363,7 @@ body.hov #cr {
 }
 
 .award-cell::after {
-  content: "↗";
+  content: "â†—";
   position: absolute;
   top: 36px;
   right: 36px;
@@ -4493,9 +4395,7 @@ body.hov #cr {
   }
 }
 
-/* ==========================================
-   CTA SECTION
-========================================== */
+
 #contact {
   padding: 180px 52px;
   background: var(--black);
@@ -4607,7 +4507,7 @@ body.hov #cr {
 }
 
 
-/* ===================== BLOG SECTION ===================== */
+
 .qc-blog-section {
   width: 100%;
   padding: 110px 20px;
@@ -4796,7 +4696,7 @@ body.hov #cr {
   transform: scale(1.1);
 }
 
-/* ===================== RESPONSIVE ===================== */
+
 @media (max-width: 1100px) {
   .qc-blog-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -4909,7 +4809,7 @@ body.hov #cr {
 .qc-blog-btn:active {
   transform: translateY(0);
 }
-/* ===================== FOOTER ===================== */
+
 
 footer {
 
@@ -4919,9 +4819,9 @@ footer {
 }
 
 
-/* Bottom Gradient */
 
-/* Soft Bottom Gradient */
+
+
 footer::before {
   content: "";
   position: absolute;
@@ -4940,9 +4840,9 @@ footer::before {
   pointer-events: none;
 }
 
-/* Large Soft Glow */
 
-/* Soft Ambient Glow */
+
+
 footer::after {
   content: "";
   position: absolute;
@@ -4967,7 +4867,7 @@ footer::after {
 }
 
 
-/* Large Background Logo */
+
 
 .footer-bg-logo{
 
@@ -4997,7 +4897,7 @@ footer::after {
 }
 
 
-/* Content */
+
 
 .footer-inner{
 
@@ -5011,7 +4911,7 @@ footer::after {
 }
 
 
-/* Top */
+
 
 .footer-top{
 
@@ -5029,7 +4929,7 @@ footer::after {
 }
 
 
-/* Brand */
+
 
 .footer-brand-name{
 
@@ -5066,7 +4966,7 @@ footer::after {
 }
 
 
-/* Social */
+
 
 .footer-socials{
 
@@ -5111,7 +5011,7 @@ footer::after {
 }
 
 
-/* Titles */
+
 
 .footer-col-ttl{
 
@@ -5127,7 +5027,7 @@ footer::after {
 }
 
 
-/* Links */
+
 
 .footer-links{
 
@@ -5159,7 +5059,7 @@ footer::after {
 }
 
 
-/* Bottom */
+
 
 .footer-bottom{
 
@@ -5177,7 +5077,7 @@ footer::after {
 }
 
 
-/* Copy */
+
 
 .footer-copy,
 .footer-made{
@@ -5195,7 +5095,7 @@ footer::after {
 }
 
 
-/* Center Logo */
+
 
 .footer-center-logo{
 
@@ -5213,7 +5113,7 @@ footer::after {
 }
 
 
-/* Responsive */
+
 
 @media(max-width:900px){
 
@@ -5261,7 +5161,7 @@ footer::after {
   }
 }
 
-/* ===================== REVEAL UTILITY ===================== */
+
 .rv {
   opacity: 0;
   transform: translateY(40px);
@@ -5313,9 +5213,7 @@ footer::after {
   transition-delay: 0.5s;
 }
 
-/* ═══════════════════════════════════════════════
-   WORLDWIDE SECTION
-═══════════════════════════════════════════════ */
+
 #worldwide {
   position: relative;
   background: #0a0a10;
@@ -5323,7 +5221,7 @@ footer::after {
   border-top: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-/* glow layers */
+
 .ww-bg-glow {
   position: absolute;
   inset: 0;
@@ -5342,7 +5240,7 @@ footer::after {
     );
 }
 
-/* ── INTRO HEADER ── */
+
 .ww-header {
   position: relative;
   z-index: 2;
@@ -5442,7 +5340,7 @@ footer::after {
   align-self: center;
 }
 
-/* ── MAP CONTAINER ── */
+
 .ww-map-wrap {
   position: relative;
   z-index: 2;
@@ -5457,7 +5355,7 @@ footer::after {
   justify-content: center;
 }
 
-/* canvas/svg sizing */
+
 #map-canvas {
   width: 100%;
   display: block;
@@ -5465,7 +5363,7 @@ footer::after {
   overflow: hidden;
 }
 
-/* loading state */
+
 .map-loading {
   height: 420px;
   display: flex;
@@ -5502,7 +5400,7 @@ footer::after {
   }
 }
 
-/* D3 map styles */
+
 #map-svg {
   width: 100%;
   height: auto;
@@ -5532,7 +5430,7 @@ footer::after {
   stroke: #fb923c34;
 }
 
-/* graticule lines */
+
 .graticule {
   fill: none;
   stroke: rgba(255, 255, 255, 0.04);
@@ -5546,12 +5444,12 @@ footer::after {
   stroke-dasharray: 4 6;
 }
 
-/* sphere (ocean) */
+
 .sphere {
   fill: rgba(255, 255, 255, 0.02);
 }
 
-/* ── MAP DOTS & ARCS (SVG overlay via D3) ── */
+
 .city-group {
   cursor:auto;
 }
@@ -5599,7 +5497,7 @@ footer::after {
   }
 }
 
-/* Dot rings */
+
 .dot-ring1 {
   fill: none;
   stroke: #fb923c;
@@ -5642,7 +5540,7 @@ footer::after {
   }
 }
 
-/* city label */
+
 .city-label {
   font-family: var(--heading-font);
   font-size: 8.5px;
@@ -5653,7 +5551,7 @@ footer::after {
   pointer-events: none;
 }
 
-/* ── FLOATING CLIENT BADGES ── */
+
 .badge {
   position: absolute;
   display: flex;
@@ -5759,8 +5657,8 @@ footer::after {
   letter-spacing: 0.04em;
 }
 
-/* Badge positions — set dynamically by JS after D3 projection */
-/* fallback % positions for non-JS */
+
+
 .badge[data-city="london"] {
   top: 23%;
   left: 37%;
@@ -5806,7 +5704,7 @@ footer::after {
   left: 44%;
 }
 
-/* ── TICKER ── */
+
 .ww-ticker {
   position: relative;
   z-index: 2;
@@ -5900,13 +5798,13 @@ footer::after {
 }
 
 .ti::after {
-  content: "·";
+  content: "Â·";
   font-size: 18px;
   color: rgba(200, 245, 58, 0.4);
   line-height: 0;
 }
 
-/* ── LOGO ROW ── */
+
 .ww-logos {
   position: relative;
   z-index: 2;
@@ -5981,7 +5879,7 @@ footer::after {
   color: rgba(255, 255, 255, 0.62);
 }
 
-/* ── REVEAL UTILITY ── */
+
 .rv {
   opacity: 0;
   transform: translateY(36px);
@@ -6037,7 +5935,7 @@ footer::after {
   transition-delay: 0.58s;
 }
 
-/* ── RESPONSIVE ── */
+
 @media (max-width: 1024px) {
   .ww-header,
   .ww-map-wrap,
@@ -6078,17 +5976,15 @@ footer::after {
     display: none;
   }
 }
-/* Legacy review-marquee styles removed. */
 
-/* =========================================================
-   CINEMATIC SERVICES SECTION
-   Prefix: qc-cine
-========================================================= */
+
+
 
 .qc-cine-services {
   position: relative;
   width: 100%;
   height: 100vh;
+  height: 100svh;
   background: var(--black, #000);
   overflow: hidden;
   isolation: isolate;
@@ -6098,6 +5994,7 @@ footer::after {
   position: relative;
   width: 100%;
   height: 100vh;
+  height: 100svh;
   overflow: hidden;
   background:
     radial-gradient(circle at 20% 25%, rgba(251, 146, 60, 0.14), transparent 32%),
@@ -6145,6 +6042,7 @@ footer::after {
   flex: 0 0 100vw;
   width: 100vw;
   height: 100vh;
+  height: 100svh;
   padding: clamp(30px, 6vw, 86px);
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(310px, 0.82fr);
@@ -6292,7 +6190,7 @@ footer::after {
 }
 
 
-/* Fullscreen image clone */
+
 
 .qc-cine-clone {
   position: fixed;
@@ -6342,11 +6240,12 @@ footer::after {
 }
 
 
-/* Sticky text + floating cards */
+
 
 .qc-cine-experience {
   position: relative;
   min-height: 100vh;
+  min-height: 100svh;
   background: #000;
   isolation: isolate;
 }
@@ -6355,6 +6254,7 @@ footer::after {
   position: relative;
   width: 100%;
   height: 100vh;
+  height: 100svh;
   overflow: hidden;
   background:
     radial-gradient(circle at 18% 72%, rgba(251,146,60,.15), transparent 30%),
@@ -6420,7 +6320,7 @@ footer::after {
 .qc-exp-kicker {
   align-self: start;
   justify-self: center;
-  /* margin-top: clamp(80px, 11vh, 130px); */
+  
   padding: 9px 15px;
   border: 1px solid var(--border, #fb923c23);
   border-radius: 999px;
@@ -6702,14 +6602,13 @@ footer::after {
   }
 }
 
-/* =========================================================
-   QC LOGO USP ORBIT SECTION
-========================================================= */
+
 
 .qc-logo-orbit-section {
   position: relative;
   width: 100%;
   min-height: 100vh;
+  min-height: 100svh;
   background: #000;
   isolation: isolate;
 }
@@ -6718,6 +6617,7 @@ footer::after {
   position: relative;
   width: 100%;
   height: 100vh;
+  height: 100svh;
   overflow: hidden;
   background:
     radial-gradient(circle at 50% 50%, rgba(251, 146, 60, 0.14), transparent 34%),
@@ -6764,7 +6664,7 @@ footer::after {
 }
 
 
-/* Intro */
+
 
 .qc-orbit-intro {
   position: absolute;
@@ -6820,7 +6720,7 @@ footer::after {
     background-clip: text;
 }
 
-/* Stage */
+
 
 .qc-orbit-stage {
   position: absolute;
@@ -6841,7 +6741,7 @@ footer::after {
 }
 
 
-/* Rings */
+
 
 .qc-orbit-ring {
   position: absolute;
@@ -6876,7 +6776,7 @@ footer::after {
 }
 
 
-/* Logo */
+
 
 .qc-orbit-logo-wrap {
   position: absolute;
@@ -6924,7 +6824,7 @@ footer::after {
 }
 
 
-/* USP Cards */
+
 
 .qc-orbit-usp-card {
   position: absolute;
@@ -6994,7 +6894,7 @@ footer::after {
 }
 
 
-/* Bottom copy */
+
 
 .qc-orbit-bottom-copy {
   position: absolute;
@@ -7029,7 +6929,7 @@ footer::after {
 }
 
 
-/* Responsive */
+
 
 @media (max-width: 900px) {
   .qc-orbit-system {
@@ -7087,7 +6987,7 @@ footer::after {
   }
 }
 
-/* ===== QG TESTIMONIAL + WORLD MAP — EXISTING SITE INTEGRATION ===== */
+
 .qg-global-proof {
   margin: 0 !important;
   padding: 0 !important;
@@ -7140,6 +7040,7 @@ footer::after {
 
       width: 100%;
       height: 100vh;
+  height: 100svh;
 
       overflow: hidden;
 
@@ -7148,7 +7049,7 @@ footer::after {
     }
 
 
-    /* subtle background glow */
+    
 
     .qg-ambient-glow {
       position: absolute;
@@ -7174,9 +7075,7 @@ footer::after {
     }
 
 
-    /* =====================================================
-       INTRO TEXT
-    ===================================================== */
+    
 
     .qg-intro-copy {
       display: none;
@@ -7234,9 +7133,7 @@ footer::after {
     }
 
 
-    /* =====================================================
-       TESTIMONIAL MARQUEE AREA
-    ===================================================== */
+    
 
     .qg-marquee-stage {
       position: absolute;
@@ -7264,7 +7161,7 @@ footer::after {
     }
 
 
-    /* individual row */
+    
 
     .qg-marquee-row {
       width: 100%;
@@ -7275,7 +7172,7 @@ footer::after {
     }
 
 
-    /* infinitely moving track */
+    
 
     .qg-marquee-track {
       display: flex;
@@ -7294,7 +7191,7 @@ footer::after {
     }
 
 
-    /* middle row opposite direction */
+    
 
     .qg-marquee-row.qg-reverse .qg-marquee-track {
       animation-name: qgMarqueeRight;
@@ -7313,12 +7210,7 @@ footer::after {
     }
 
 
-    /*
-      IMPORTANT:
-      JS adds an identical second marquee-group.
-      Therefore translating approximately half the
-      track creates infinite looping.
-    */
+    
 
     @keyframes qgMarqueeLeft {
 
@@ -7366,14 +7258,7 @@ footer::after {
     }
 
 
-    /*
-      THIS is what fixes your reset problem.
-
-      animation-play-state pauses the marquee exactly
-      where it currently is.
-
-      It DOES NOT return transform to 0.
-    */
+    
 
     .qg-global-proof.qg-is-frozen
     .qg-marquee-track {
@@ -7381,9 +7266,7 @@ footer::after {
     }
 
 
-    /* =====================================================
-       TESTIMONIAL CARD
-    ===================================================== */
+    
 
     .qg-testimonial-card {
       position: relative;
@@ -7413,7 +7296,7 @@ footer::after {
     }
 
 
-    /* alternating testimonial colours */
+    
 
     .qg-testimonial-card.qg-card-white {
       background: #ffffff;
@@ -7551,16 +7434,7 @@ footer::after {
     }
 
 
-    /* =====================================================
-       WORLD MAP — PREMIUM WHITE SILHOUETTE
-
-       Pure SVG/code treatment inspired by the supplied reference:
-       - no image background
-       - no globe / grid / atlas styling
-       - one clean white world silhouette
-       - soft lifted shadow
-       - edge-to-edge desktop composition
-    ===================================================== */
+    
 
     .qg-world-layer {
       position: absolute;
@@ -7582,8 +7456,7 @@ footer::after {
       transform-origin: center center;
       pointer-events: none;
 
-      /* No map-image background. Only a very soft light pool so the
-         white silhouette feels designed instead of pasted on. */
+      
       background:
         radial-gradient(
           ellipse at 50% 51%,
@@ -7609,7 +7482,7 @@ footer::after {
     }
 
 
-    /* One merged landmass path = no classroom/geography-diagram feel. */
+    
     .qg-world-land-shadow {
       fill: #000000;
       opacity: 0.42;
@@ -7641,8 +7514,7 @@ footer::after {
     }
 
 
-    /* We deliberately do not draw internal country borders.
-       Client locations are communicated by the orange markers below. */
+    
     .qg-countries-layer,
     .qg-country,
     .qg-land-outline,
@@ -7653,9 +7525,7 @@ footer::after {
     }
 
 
-    /* =====================================================
-       MAP POINTS
-    ===================================================== */
+    
 
     .qg-map-points {
       position: absolute;
@@ -7733,7 +7603,7 @@ footer::after {
     }
 
 
-    /* India main anchor */
+    
 
     .qg-map-point[data-country="india"] {
       width: 10px;
@@ -7770,11 +7640,7 @@ footer::after {
 
 
 
-    /* =====================================================
-       CITY LOCATION POPUPS
-       Jaipur / Mumbai / Delhi / Canberra / Sydney /
-       Beijing / New York / Washington / London / Berlin
-    ===================================================== */
+    
 
     .qg-city-popup {
       position: absolute;
@@ -7887,14 +7753,7 @@ footer::after {
     }
 
 
-    /* =====================================================
-       TESTIMONIAL -> MAP MORPH
-
-       IMPORTANT: .qg-flight-card is the SAME testimonial element
-       the user was looking at. It is temporarily moved to <body>,
-       rounded into a circle, then flown to its map point.
-       No clone / replacement card is created.
-    ===================================================== */
+    
 
     .qg-flight-card {
       position: fixed !important;
@@ -7917,7 +7776,7 @@ footer::after {
       backface-visibility: hidden;
       overflow: hidden;
 
-      /* JS drives this value while the SAME card morphs. */
+      
       --flight-content-opacity: 1;
     }
 
@@ -7936,12 +7795,7 @@ footer::after {
     }
 
 
-    /* =====================================================
-       MAP TITLE SEQUENCE
-
-       Each message appears above the map, then zooms
-       away before the next message arrives.
-    ===================================================== */
+    
 
     .qg-map-title-sequence {
       position: absolute;
@@ -7993,10 +7847,23 @@ footer::after {
     }
 
 
-    .qg-map-title strong {
-      font-weight: 500;
-      color: #ff7a18;
-    }
+   .qg-map-title strong {
+  font-weight: 500;
+
+  background: linear-gradient(
+    90deg,
+    #FFC21A 0%,
+    #FFB217 20%,
+    #FFA212 40%,
+    #FF9110 60%,
+    #FF8112 80%,
+    #FF7316 100%
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
 
     .qg-map-title.qg-locations {
@@ -8007,9 +7874,7 @@ footer::after {
     }
 
 
-    /* =====================================================
-       SCROLL BUTTON
-    ===================================================== */
+    
 
     .qg-scroll-cue {
       position: absolute;
@@ -8104,9 +7969,7 @@ footer::after {
     }
 
 
-    /* =====================================================
-       NOISE
-    ===================================================== */
+    
 
     .qg-noise {
       position: absolute;
@@ -8126,9 +7989,7 @@ footer::after {
     }
 
 
-    /* =====================================================
-       RESPONSIVE
-    ===================================================== */
+    
 
     @media (max-width: 900px) {
 
@@ -8208,7 +8069,7 @@ footer::after {
       }
 
     }
-/* QG city popups — compact mobile labels */
+
 @media (max-width: 600px) {
   .qg-global-proof {
     height: 480vh;
@@ -8227,90 +8088,46 @@ footer::after {
 }
 
 
-/* =========================================================
-   QC PERFORMANCE + MOBILE REFINEMENT
-   Keeps the existing visual language and scroll choreography.
-========================================================= */
-@media (max-width: 860px) {
-  html { scroll-behavior: auto; }
 
-  #grain { animation: none !important; }
+img { height: auto; }
+img[loading="lazy"] { content-visibility: auto; }
+.hero-video, .nx-floating-video { transform: translateZ(0); }
 
-  .qc-nav { padding: 16px 18px; }
-  .nav-links, .nav-cta { display: none; }
-  .nav-hamburger { display: flex; cursor: pointer; }
-
-  .services-sticky { height: 100svh; }
-  .services-track { width: 600vw; height: 100svh; }
-  .svc-panel {
-    height: 100svh;
-    padding: 76px 24px 44px;
-    grid-template-columns: minmax(0,1fr);
-    grid-template-rows: auto auto;
-    gap: 24px;
+@media (max-width: 767px) {
+  #grain { display: none !important; animation: none !important; }
+  .qc-cine-glow, .qc-exp-orb, .qc-orbit-glow, .bg-glow {
+    filter: none !important;
+    opacity: .28 !important;
   }
-  .svc-num { font-size: 72px; top: 22px; right: 24px; }
-  .svc-content { max-width: 100%; }
-
-  .qc-cine-panel {
-    height: 100svh;
-    min-height: 640px;
-    padding: 70px 22px 28px;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto minmax(220px, 42vh);
-    align-content: center;
-    gap: 24px;
-  }
-  .qc-cine-panel::before { inset: 14px; border-radius: 24px; }
-  .qc-cine-content { max-width: 100%; }
-
-  .premium-about { height: 300vh; }
-  .premium-sticky {
-    height: 100svh;
-    min-height: 620px;
-    padding: 90px 20px 30px;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
-    gap: 18px;
-  }
-  .left-side { width: 100%; }
-  .content-slider { height: 310px; }
-  .content-slide h2 {
-    font-size: clamp(48px, 15vw, 82px);
-    letter-spacing: -4px;
-  }
-  .visual-card { max-width: 100%; }
-
-  .p-card { width: min(86vw, 320px); min-height: 330px; padding: 32px 24px; }
-
-  .testimonial-card { will-change: transform, opacity; }
-
-  .nav-links, .nav-cta, .qn-toggle, .qg-scroll-cue button {
+  .qn-bar, .qn-overlay, .glass, [class*="badge"] {
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
   }
-
+  .premium-about, .about-story, #services, #process,
+  .qc-cine-services, .qc-cine-experience, .qc-logo-orbit-section,
+  .qg-global-proof {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  .premium-sticky, .about-story-sticky, .services-sticky, .process-sticky,
+  .qc-cine-services-sticky, .qc-cine-experience-sticky, .qc-logo-orbit-sticky,
+  .qg-global-proof-sticky, .qg-sticky {
+    position: relative !important;
+    top: auto !important;
+    height: auto !important;
+    min-height: 100svh;
+  }
+  .nx-floating-video { background: url("../assets/newmockups/artboard-7.jpeg") center/cover no-repeat; }
   .qg-map-title { filter: none !important; }
-  .qg-world-layer { max-width: 108vw; }
-}
-
-@media (max-width: 600px) {
-  .qc-nav { padding: 14px 16px; }
-  .nav-logo img { height: 2.5rem; }
-  .nav-hamburger { width: 42px; height: 42px; }
-
-  .svc-panel { padding: 70px 18px 32px; gap: 18px; }
-  .svc-num { font-size: 58px; right: 18px; }
-
-  .qc-cine-panel { padding: 64px 16px 22px; gap: 18px; min-height: 600px; }
-  .qc-cine-panel::before { inset: 10px; border-radius: 20px; }
-
-  .premium-sticky { padding: 78px 16px 24px; min-height: 580px; }
-  .content-slider { height: 280px; }
-  .content-slide h2 { font-size: clamp(44px, 14vw, 70px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .001ms !important; }
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+  #grain, .hero-scroll-line { display: none !important; }
 }

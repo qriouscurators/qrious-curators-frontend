@@ -1,0 +1,1458 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Qrious Curators — Creative Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&family=Lato:wght@300;400;700&family=Raleway:wght@300;400;500;600;700;800&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles/test.css" />
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BS34QX0DMH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-BS34QX0DMH');
+    </script>
+
+  <style>
+    svg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+    path {
+      stroke: transparent; /* hide path */
+    }
+    
+    .svc-panel {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .svc-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: var(--panel-bg);
+      background-size: cover;
+      background-position: center;
+      opacity: 0.35;
+      z-index: 0;
+      pointer-events: none;
+    }
+    
+    .svc-content,
+    .svc-visual,
+    .svc-num {
+      position: relative;
+      z-index: 1;
+    }
+
+    .svc-panel {
+      margin-right: 8px;
+    }
+  </style>
+  </head>
+  <body>
+    
+    <div id="qc-cur"></div>
+    <div id="qc-cur-ring"></div>
+
+    
+    <div id="grain" aria-hidden="true"></div>
+
+    
+    <div id="preloader">
+      <div class="preloader-content">
+        <img src="./assets/preloader-2.gif" alt="Loading..." />
+      </div>
+    </div>
+
+    
+    <div class="qn-wrap">
+      <div class="qn-bar">
+        <a href="./index.html" class="nav-logo">
+          <img src="./assets/logo/logo-one.png" alt="" />
+        </a>
+        
+    
+        <button class="qn-toggle" id="qnToggle">
+          <div class="qn-icon">
+            <span></span><span></span><span></span>
+          </div>
+        </button>
+      </div>
+    </div>
+    
+    
+    <div class="qn-overlay" id="qnOverlay">
+      <div class="qn-inner">
+        <div class="qn-center">
+          <div class="qn-main">
+            <a href="./about.html">About</a>
+            <a href="./work.html">Work</a>
+            <a href="./services2.html">Services</a>
+          </div>
+    
+          <div class="qn-sub">
+            <a href="./contact.html">Contact</a>
+            <a href="./blog.html">Blogs</a>
+            <a href="./team.html">Our Team</a>
+            <a href="./careers.html">Career</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <section id="hero">
+      <video
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+      >
+        <source
+          src="./assets/dummy-video.mp4"
+          type="video/mp4"
+        />
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-scroll">
+        <div class="hero-scroll-line"></div>
+        <span class="hero-scroll-label">Scroll</span>
+      </div>
+    </section>
+
+    <div class="nx-main-container">
+
+        
+        <video class="nx-floating-video" muted loop playsinline preload="none"
+          poster="./assets/newmockups/artboard-7.jpeg"
+          data-desktop-src="https://res.cloudinary.com/aym24i3j/video/upload/f_auto,q_auto/v1787659925/Qc-video.mp4">
+            <source data-src="https://res.cloudinary.com/aym24i3j/video/upload/f_auto,q_auto/v1787659925/Qc-video.mp4" type="video/mp4">
+        </video>
+
+        <div class="nx-dim-overlay"></div>
+
+        <div class="nx-sticky-text-layer">
+            <h2 class="nx-docked-text">
+                <span class="nx-word-mask"><span class="nx-word">Designing</span></span>
+                <span class="nx-word-mask"><span class="nx-word">The</span></span>
+                <span class="nx-word-mask"><span class="nx-word">Unseen</span></span>
+                <span class="nx-word-mask"><span class="nx-word">Future</span></span>
+            </h2>
+        </div>
+
+        
+        <div class="nx-scroll-track"></div>
+
+        <div class="nx-content-area">
+            <div class="nx-card-grid">
+                
+                <div class="nx-grid-card">
+                    <img src="/assets/newmockups/artboard-7.jpeg" alt="Architecture" loading="lazy" decoding="async">
+                </div>
+                
+                
+                <div class="nx-grid-card" id="nx-target-slot"></div>
+                
+                <div class="nx-grid-card">
+                    <img src="/assets/newmockups/artboard-6.jpeg" alt="Interior" loading="lazy" decoding="async">
+                </div>
+
+                <div class="nx-grid-card">
+                    <img src="/assets/newmockups/artboard-19.jpeg" alt="Building" loading="lazy" decoding="async">
+                </div>
+
+                <div class="nx-grid-card">
+                    <img src="/assets/newmockups/artboard-12.jpeg" alt="Office" loading="lazy" decoding="async">
+                </div>
+
+                <div class="nx-grid-card">
+                    <img src="/assets/newmockups/artboard-18.jpeg" alt="Abstract" loading="lazy" decoding="async">
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+
+    <section class="premium-about">
+
+        <div class="premium-sticky">
+
+            <div class="qc-cine-glow qc-cine-glow-1"></div>
+            <div class="qc-cine-glow qc-cine-glow-2"></div>
+    
+            <div class="bg-glow"></div>
+    
+            <div class="bg-word">
+                Q R I O U S
+            </div>
+    
+            
+    
+            <div class="left-side">
+    
+                <div class="content-slider">
+    
+                    
+    
+                    <div class="content-slide active">
+    
+                        <h2>
+                            We Build <span class="premium-about-span">Attention</span>
+                        </h2>
+    
+                        <p>
+                            Through storytelling, strategy, and premium campaign execution,
+                            we help modern brands become impossible to ignore online.
+                        </p>
+    
+                        <div class="metrics">
+    
+                            <div class="metric-item">
+                                <h3>120+</h3>
+                                <span>Brands Worked With</span>
+                            </div>
+    
+                            <div class="metric-item">
+                                <h3>48M</h3>
+                                <span>Organic Reach</span>
+                            </div>
+    
+                        </div>
+    
+                        <a href="#" class="main-btn">
+                            Explore Qrious Curators →
+                        </a>
+    
+                    </div>
+    
+                    
+    
+                    <div class="content-slide">
+    
+                        <h2>
+                            We Create <span  class="premium-about-span">Momentum</span>
+                        </h2>
+    
+                        <p>
+                            Every campaign is crafted to generate engagement,
+                            conversations, and measurable digital growth.
+                        </p>
+    
+                        <div class="metrics">
+    
+                            <div class="metric-item">
+                                <h3>340%</h3>
+                                <span>Average Growth</span>
+                            </div>
+    
+                            <div class="metric-item">
+                                <h3>5.8X</h3>
+                                <span>ROAS Average</span>
+                            </div>
+    
+                        </div>
+    
+                        <a href="#" class="main-btn">
+                            View Process →
+                        </a>
+    
+                    </div>
+    
+                    
+    
+                    <div class="content-slide">
+    
+                        <h2>
+                            We Scale <span class="premium-about-span">Brands</span>
+                        </h2>
+    
+                        <p>
+                            We combine creativity and performance marketing
+                            into systems designed for long-term brand impact.
+                        </p>
+    
+                        <div class="metrics">
+    
+                            <div class="metric-item">
+                                <h3>12M</h3>
+                                <span>Monthly Impressions</span>
+                            </div>
+    
+                            <div class="metric-item">
+                                <h3>8+</h3>
+                                <span>Years Experience</span>
+                            </div>
+    
+                        </div>
+    
+                        <a href="#" class="main-btn">
+                            Start Project →
+                        </a>
+    
+                    </div>
+    
+                </div>
+    
+            </div>
+    
+            
+    
+            <div class="right-side">
+    
+                <div class="visual-stack">
+    
+                    
+    
+                    <div class="visual-card card1 active">
+    
+                        <img id="img1"
+                        src="https://res.cloudinary.com/aym24i3j/image/upload/v1787834881/teamh4.webp" loading="lazy" decoding="async">
+    
+                    </div>
+    
+                    
+    
+                    <div class="visual-card card2 active">
+    
+                        <img id="img2"
+                        src="https://res.cloudinary.com/aym24i3j/image/upload/v1787834877/teamh9.webp" loading="lazy" decoding="async">
+    
+                    </div>
+    
+                    
+    
+                    <div class="visual-card card3 active">
+    
+                        <img id="img3"
+                        src="https://res.cloudinary.com/aym24i3j/image/upload/v1787834877/teamh8.webp" loading="lazy" decoding="async">
+    
+                    </div>
+    
+                    
+    
+                    <div class="badge badge1">
+    
+                        <h3>+220%</h3>
+                        <span>Engagement Growth</span>
+    
+                    </div>
+    
+                    <div class="badge badge2">
+    
+                        <h3>12M</h3>
+                        <span>Monthly Impressions</span>
+    
+                    </div>
+    
+                </div>
+    
+            </div>
+    
+            
+    
+            <div class="scroll-line" style="display: none;">
+                <div class="scroll-progress"></div>
+            </div>
+    
+        </div>
+
+    </section>
+
+    
+
+   
+
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    <section id="qc-cine-services" class="qc-cine-services">
+      <div class="qc-cine-services-sticky">
+    
+        <div class="qc-cine-glow qc-cine-glow-1"></div>
+        <div class="qc-cine-glow qc-cine-glow-2"></div>
+    
+        <div class="qc-cine-track" id="qcCineTrack">
+
+          
+<article class="qc-cine-panel">
+  <div class="qc-cine-content">
+    <h2 class="qc-cine-title">Social<br><em>Media</em></h2>
+    <p>
+      Maximize your brand's reach with data-driven social media strategies. From content creation to paid ads — we connect you with your audience where they live.
+    </p>
+  </div>
+
+  <div class="qc-cine-visual">
+    <div class="qc-cine-img-box">
+      <img src="./assets/homeimages/social-marketing.png" alt="Social Media" loading="lazy" decoding="async">
+    </div>
+  </div>
+
+  <div class="qc-cine-num">01</div>
+</article>
+
+
+
+<article class="qc-cine-panel">
+  <div class="qc-cine-content">
+    <h2 class="qc-cine-title">Website<br><em>Development</em></h2>
+    <p>
+      We build dynamic, responsive websites that are visually stunning and user-friendly. From landing pages to complex e-commerce — built for performance every time.
+    </p>
+  </div>
+
+  <div class="qc-cine-visual">
+    <div class="qc-cine-img-box">
+      <img src="./assets/homeimages/website-development.png" alt="Website Development" loading="lazy" decoding="async">
+    </div>
+  </div>
+
+  <div class="qc-cine-num">02</div>
+</article>
+
+
+
+<article class="qc-cine-panel">
+  <div class="qc-cine-content">
+    <h2 class="qc-cine-title">Search<br><em>Engine Optimization</em></h2>
+    <p>
+      From keyword research to technical optimization, we help your website rank higher and reach the right audience organically.
+    </p>
+  </div>
+
+  <div class="qc-cine-visual">
+    <div class="qc-cine-img-box">
+      <img src="./images/Seo.png" alt="Search Engine Optimization" loading="lazy" decoding="async">
+    </div>
+  </div>
+
+  <div class="qc-cine-num">03</div>
+</article>
+
+
+
+<article class="qc-cine-panel">
+  <div class="qc-cine-content">
+    <h2 class="qc-cine-title">Performance<br><em>Marketing</em></h2>
+    <p>
+      From creative testing to paid campaigns, we build performance systems that turn brand attention into measurable business growth.
+    </p>
+  </div>
+
+  <div class="qc-cine-visual">
+    <div class="qc-cine-img-box">
+      <img src="./images/Perfor. Markt.png" alt="Performance Marketing" loading="lazy" decoding="async">
+    </div>
+  </div>
+
+  <div class="qc-cine-num">04</div>
+</article>
+
+
+
+<article class="qc-cine-panel">
+  <div class="qc-cine-content">
+    <h2 class="qc-cine-title">Content<br><em>Production</em></h2>
+    <p>
+      We create engaging, high-quality content that captures attention and communicates your brand's story across digital platforms.
+    </p>
+  </div>
+
+  <div class="qc-cine-visual">
+    <div class="qc-cine-img-box">
+      <img src="./assets/homeimages/content-creation.png" alt="Content Production" loading="lazy" decoding="async">
+    </div>
+  </div>
+
+  <div class="qc-cine-num">05</div>
+</article>
+
+
+
+<article class="qc-cine-panel">
+  <div class="qc-cine-content">
+    <h2 class="qc-cine-title">Creative<br><em>Direction</em></h2>
+    <p>
+      Our creative team brings fresh perspectives to make your brand stand out. From visual concepts to innovative strategies, we bring your vision to life with precision.
+    </p>
+  </div>
+
+  <div class="qc-cine-visual">
+    <div class="qc-cine-img-box">
+      <img src="./assets/homeimages/creative-direction.png" alt="Creative Direction" loading="lazy" decoding="async">
+    </div>
+  </div>
+
+  <div class="qc-cine-num">06</div>
+</article>
+
+
+
+<article class="qc-cine-panel">
+  <div class="qc-cine-content">
+    <h2 class="qc-cine-title">Brand<br><em>Strategy</em></h2>
+    <p>
+      We build brands that are timeless. Through extensive market research, we craft strategies that ensure your brand resonates deeply with your audience.
+    </p>
+  </div>
+
+  <div class="qc-cine-visual">
+    <div class="qc-cine-img-box">
+      <img src="./assets/homeimages/brand-strategy.png" alt="Brand Strategy" loading="lazy" decoding="async">
+    </div>
+  </div>
+
+  <div class="qc-cine-num">07</div>
+</article>
+
+
+
+<article class="qc-cine-panel">
+  <div class="qc-cine-content">
+    <h2 class="qc-cine-title">Public<br><em>Relations</em></h2>
+    <p>
+      We build strong brand relationships through strategic communication, media outreach, and PR campaigns that strengthen your brand's presence and reputation.
+    </p>
+  </div>
+
+  <div class="qc-cine-visual">
+    <div class="qc-cine-img-box">
+      <img src="./assets/homeimages/video-production.jpg" alt="Public Relations" loading="lazy" decoding="async">
+    </div>
+  </div>
+
+  <div class="qc-cine-num">08</div>
+</article>
+          
+    
+          
+          <article class="qc-cine-panel qc-cine-panel-last">
+            <div class="qc-cine-content">
+              <h2 class="qc-cine-title">Beyond<br><em>Services</em></h2>
+              <p>
+                Need something unique? We collaborate with you to design creative solutions that go beyond conventional offerings and deliver meaningful results.
+              </p>
+            </div>
+    
+            <div class="qc-cine-visual">
+              <div class="qc-cine-img-box" id="qcCineSource">
+                <img id="qcCineImage" src="./assets/mockups/qc-lg.png" alt="Search Engine Optimization" loading="lazy" decoding="async">
+              </div>
+            </div>
+          </article>
+    
+        </div>
+      </div>
+    </section>
+    
+    
+    <div class="qc-cine-clone" id="qcCineClone" aria-hidden="true">
+      <img
+        class="qc-cine-clone-img qc-cine-clone-img-base"
+        src="./images/Seo.png"
+        alt=""
+       loading="lazy" decoding="async">
+    
+      <img
+        class="qc-cine-clone-img qc-cine-clone-img-next"
+        id="qcCineNextImage"
+        src="./assets/mockups/qc-lg-two.png"
+        alt=""
+       loading="lazy" decoding="async">
+    </div>
+    
+    
+    <section id="qc-cine-experience" class="qc-cine-experience">
+      <div class="qc-cine-experience-sticky">
+    
+        <div class="qc-exp-orb qc-exp-orb-1"></div>
+        <div class="qc-exp-orb qc-exp-orb-2"></div>
+    
+        <div class="qc-exp-copy">
+    
+          <h2>
+            <span class="qc-exp-line">Designing ideas with purpose,</span>
+            <span class="qc-exp-line">and turning them into <em>meaningful experiences</em></span>
+          </h2>
+
+          <p class="qc-exp-sub">
+            Every scroll, every motion, every detail is designed to make your brand feel premium, memorable, and conversion-ready.
+          </p>
+        </div>
+    
+        <div class="qc-floating-cards">
+    
+          <article class="qc-floating-card qc-fc-1">
+            <img src="https://qriouscurators.com/assets/workimages/work1.webp" alt="" loading="lazy" decoding="async">
+            <h3>Hummingbird</h3>
+            <p>A lifestyle brand shaped with clean visuals, clear storytelling, and memorable positioning.</p>
+          </article>
+          
+          <article class="qc-floating-card qc-fc-2">
+            <img src="https://qriouscurators.com/assets/workimages/work2.webp" alt="" loading="lazy" decoding="async">
+            <h3>Mahttab</h3>
+            <p>Demi-fine jewellery content focused on affordable luxury, festive styling, trust, and appeal.</p>
+          </article>
+          
+          <article class="qc-floating-card qc-fc-3">
+            <img src="https://qriouscurators.com/assets/workimages/work3.webp" alt="" loading="lazy" decoding="async">
+            <h3>JB Marble Decor</h3>
+            <p>Premium marble decor branding highlighting fireplaces, tables, craftsmanship, and luxury interior projects.</p>
+          </article>
+          
+          <article class="qc-floating-card qc-fc-4">
+            <img src="https://qriouscurators.com/assets/workimages/work4.webp" alt="" loading="lazy" decoding="async">
+            <h3>Kapish</h3>
+            <p>Jewellery creatives built around hallmarked quality, daily trust, and elegant collection storytelling.</p>
+          </article>
+          
+          <article class="qc-floating-card qc-fc-5">
+            <img src="https://qriouscurators.com/assets/workimages/work5.webp" alt="" loading="lazy" decoding="async">
+            <h3>J'Adore</h3>
+            <p>Premium brand visuals crafted with soft storytelling, polished design, and conversion-focused content.</p>
+          </article>
+          
+          <article class="qc-floating-card qc-fc-6">
+            <img src="https://qriouscurators.com/assets/workimages/work6.webp" alt="" loading="lazy" decoding="async">
+            <h3>Out Bari</h3>
+            <p>Food and hamper content built around celebrations, gifting, cravings, and shareable moments.</p>
+          </article>
+          
+          <article class="qc-floating-card qc-fc-7">
+            <img src="https://qriouscurators.com/assets/workimages/work7.webp" alt="" loading="lazy" decoding="async">
+            <h3>Nirankar Stones</h3>
+            <p>Stone craftsmanship storytelling focused on heritage, architecture, detailing, and premium project execution.</p>
+          </article>
+          
+          <article class="qc-floating-card qc-fc-8">
+            <img src="https://qriouscurators.com/assets/workimages/work8.webp" alt="" loading="lazy" decoding="async">
+            <h3>Vedana</h3>
+            <p>Fashion content shaped around everyday outfits, festive edits, styling, and sales communication.</p>
+          </article>
+          
+          <article class="qc-floating-card qc-fc-9">
+            <img src="https://qriouscurators.com/assets/workimages/work9.webp" alt="" loading="lazy" decoding="async">
+            <h3>Ideal Coffee Machine</h3>
+            <p>Coffee machine marketing focused on product clarity, B2B leads, conversions, and growth.</p>
+          </article>
+    
+        </div>
+      </div>
+    </section>
+
+   
+    
+    <section id="qc-logo-orbit-section" class="qc-logo-orbit-section">
+      <div class="qc-logo-orbit-sticky">
+    
+        <div class="qc-orbit-bg-grid"></div>
+        <div class="qc-orbit-glow qc-orbit-glow-1"></div>
+        <div class="qc-orbit-glow qc-orbit-glow-2"></div>
+    
+        <div class="qc-orbit-intro">
+          <p>Our creative system</p>
+          <h2>
+            Everything moves around<br>
+            <span>one clear vision</span>
+          </h2>
+        </div>
+    
+        <div class="qc-orbit-stage">
+    
+          <div class="qc-orbit-system" id="qcOrbitSystem">
+    
+            <div class="qc-orbit-ring qc-orbit-ring-1"></div>
+            <div class="qc-orbit-ring qc-orbit-ring-2"></div>
+            <div class="qc-orbit-ring qc-orbit-ring-3"></div>
+    
+            
+            <div class="qc-orbit-logo-wrap" id="qcOrbitLogo">
+              <img src="./assets/mockups/circular-logo.png" alt="Qrious Curators Logo" loading="lazy" decoding="async">
+            </div>
+    
+            
+            <article class="qc-orbit-usp-card qc-orbit-card-1">
+              <span>01</span>
+              <h3>Strategy</h3>
+              <p>Every move begins with clarity, research, and direction.</p>
+            </article>
+    
+            <article class="qc-orbit-usp-card qc-orbit-card-2">
+              <span>02</span>
+              <h3>Creativity</h3>
+              <p>Premium ideas crafted to make your brand visually unforgettable.</p>
+            </article>
+    
+            <article class="qc-orbit-usp-card qc-orbit-card-3">
+              <span>03</span>
+              <h3>Execution</h3>
+              <p>Clean web, content, and campaign systems built with precision.</p>
+            </article>
+    
+            <article class="qc-orbit-usp-card qc-orbit-card-4">
+              <span>04</span>
+              <h3>Growth</h3>
+              <p>Everything is optimized to create visibility, leads, and results.</p>
+            </article>
+    
+          </div>
+    
+        </div>
+    
+        
+    
+      </div>
+    </section>
+      
+  
+    
+    
+  
+    
+    
+
+    
+    
+    
+    <section
+  class="qg-global-proof"
+  id="qgGlobalProof"
+>
+
+  <div class="qg-proof-sticky">
+
+    <div class="qg-ambient-glow"></div>
+
+
+    
+
+    <div
+      class="qg-intro-copy"
+      id="qgIntroCopy"
+    >
+
+      <span>
+        What our clients say
+      </span>
+
+      <h2>
+        Stories from clients<br>
+        around the world.
+      </h2>
+
+    </div>
+
+
+    
+
+    <div
+      class="qg-marquee-stage"
+      id="qgMarqueeStage"
+    >
+
+
+      
+
+      <div class="qg-marquee-row">
+
+        <div class="qg-marquee-track">
+
+          <div class="qg-marquee-group">
+
+
+            <article
+              class="qg-testimonial-card"
+              data-id="client-01"
+              data-country="usa"
+            >
+
+              <div class="qg-testimonial-head">
+
+                <div class="client">
+
+                  <div class="qg-client-avatar">
+                    NC
+                  </div>
+
+                  <div class="qg-client-meta">
+                    <strong>North & Co.</strong>
+                    <small>United States</small>
+                  </div>
+
+                </div>
+
+                <div class="qg-quote-mark">"</div>
+
+              </div>
+
+              <p>
+                They understood the brief instantly and
+                transformed it into something much stronger.
+              </p>
+
+            </article>
+
+
+            <article
+              class="qg-testimonial-card"
+              data-id="client-02"
+              data-country="australia"
+            >
+
+              <div class="qg-testimonial-head">
+
+                <div class="client">
+
+                  <div class="qg-client-avatar">
+                    AV
+                  </div>
+
+                  <div class="qg-client-meta">
+                    <strong>AV Studio</strong>
+                    <small>Australia</small>
+                  </div>
+
+                </div>
+
+                <div class="qg-quote-mark">"</div>
+
+              </div>
+
+              <p>
+                Working across different time zones never
+                felt like working across borders.
+              </p>
+
+            </article>
+
+
+            <article
+              class="qg-testimonial-card"
+              data-id="client-03"
+              data-country="india"
+            >
+
+              <div class="qg-testimonial-head">
+
+                <div class="client">
+
+                  <div class="qg-client-avatar">
+                    AK
+                  </div>
+
+                  <div class="qg-client-meta">
+                    <strong>AK Group</strong>
+                    <small>India</small>
+                  </div>
+
+                </div>
+
+                <div class="qg-quote-mark">"</div>
+
+              </div>
+
+              <p>
+                The team brought strategy and execution
+                together beautifully.
+              </p>
+
+            </article>
+
+
+            <article
+              class="qg-testimonial-card"
+              data-id="client-04"
+              data-country="china"
+            >
+
+              <div class="qg-testimonial-head">
+
+                <div class="client">
+
+                  <div class="qg-client-avatar">
+                    HX
+                  </div>
+
+                  <div class="qg-client-meta">
+                    <strong>HX Creative</strong>
+                    <small>China</small>
+                  </div>
+
+                </div>
+
+                <div class="qg-quote-mark">"</div>
+
+              </div>
+
+              <p>
+                Clear thinking, great communication and
+                consistently strong creative direction.
+              </p>
+
+            </article>
+
+
+            <article
+              class="qg-testimonial-card"
+              data-id="client-05"
+              data-country="europe"
+            >
+
+              <div class="qg-testimonial-head">
+
+                <div class="client">
+
+                  <div class="qg-client-avatar">
+                    ST
+                  </div>
+
+                  <div class="qg-client-meta">
+                    <strong>Studio T</strong>
+                    <small>Europe</small>
+                  </div>
+
+                </div>
+
+                <div class="qg-quote-mark">"</div>
+
+              </div>
+
+              <p>
+                They quickly became an extension of
+                our internal creative team.
+              </p>
+
+            </article>
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      
+
+      <div class="qg-marquee-row qg-reverse">
+
+        <div class="qg-marquee-track">
+
+          <div class="qg-marquee-group">
+
+
+            <article
+              class="qg-testimonial-card"
+              data-id="client-06"
+              data-country="india"
+            >
+
+              <div class="qg-testimonial-head">
+
+                <div class="client">
+
+                  <div class="qg-client-avatar">
+                    RA
+                  </div>
+
+                  <div class="qg-client-meta">
+                    <strong>RA Collective</strong>
+                    <small>India</small>
+                  </div>
+
+                </div>
+
+                <div class="qg-quote-mark">"</div>
+
+              </div>
+
+              <p>
+                Every detail felt considered from the
+                very first conversation.
+              </p>
+
+            </article>
+
+
+            <article
+              class="qg-testimonial-card"
+              data-id="client-07"
+              data-country="usa"
+            >
+
+              <div class="qg-testimonial-head">
+
+                <div class="client">
+
+                  <div class="qg-client-avatar">
+                    BL
+                  </div>
+
+                  <div class="qg-client-meta">
+                    <strong>BL Labs</strong>
+                    <small>United States</small>
+                  </div>
+
+                </div>
+
+                <div class="qg-quote-mark">"</div>
+
+              </div>
+
+              <p>
+                A genuinely collaborative experience
+                from strategy to final delivery.
+              </p>
+
+            </article>
+
+
+            <article
+              class="qg-testimonial-card"
+              data-id="client-08"
+              data-country="europe"
+            >
+
+              <div class="qg-testimonial-head">
+
+                <div class="client">
+
+                  <div class="qg-client-avatar">
+                    MO
+                  </div>
+
+                  <div class="qg-client-meta">
+                    <strong>Modo</strong>
+                    <small>Europe</small>
+                  </div>
+
+                </div>
+
+                <div class="qg-quote-mark">"</div>
+
+              </div>
+
+              <p>
+                The quality of thinking was evident
+                across every stage of the project.
+              </p>
+
+            </article>
+
+
+            <article
+              class="qg-testimonial-card"
+              data-id="client-09"
+              data-country="australia"
+            >
+
+              <div class="qg-testimonial-head">
+
+                <div class="client">
+
+                  <div class="qg-client-avatar">
+                    MS
+                  </div>
+
+                  <div class="qg-client-meta">
+                    <strong>Made Studio</strong>
+                    <small>Australia</small>
+                  </div>
+
+                </div>
+
+                <div class="qg-quote-mark">"</div>
+
+              </div>
+
+              <p>
+                Sharp creative ideas with a very smooth
+                and dependable process.
+              </p>
+
+            </article>
+
+
+            <article
+              class="qg-testimonial-card"
+              data-id="client-10"
+              data-country="china"
+            >
+
+              <div class="qg-testimonial-head">
+
+                <div class="client">
+
+                  <div class="qg-client-avatar">
+                    LY
+                  </div>
+
+                  <div class="qg-client-meta">
+                    <strong>LY Studio</strong>
+                    <small>China</small>
+                  </div>
+
+                </div>
+
+                <div class="qg-quote-mark">"</div>
+
+              </div>
+
+              <p>
+                Great understanding of both brand
+                strategy and visual communication.
+              </p>
+
+            </article>
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+
+
+    
+
+    <div
+      class="qg-world-layer"
+      id="qgWorldLayer"
+    >
+
+      <svg
+        id="qgWorldMapSvg"
+        aria-hidden="true"
+      ></svg>
+
+
+      <div
+        class="qg-map-points"
+        id="qgMapPoints"
+      >
+
+
+        <div
+          class="qg-map-point"
+          data-country="usa"
+        >
+          <span class="qg-map-label">
+            USA
+          </span>
+        </div>
+
+
+        <div
+          class="qg-map-point"
+          data-country="europe"
+        >
+          <span class="qg-map-label">
+            Europe
+          </span>
+        </div>
+
+
+        <div
+          class="qg-map-point"
+          data-country="india"
+        >
+          <span class="qg-map-label">
+            India
+          </span>
+        </div>
+
+
+        <div
+          class="qg-map-point"
+          data-country="china"
+        >
+          <span class="qg-map-label">
+            China
+          </span>
+        </div>
+
+
+        <div
+          class="qg-map-point"
+          data-country="australia"
+        >
+          <span class="qg-map-label">
+            Australia
+          </span>
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+
+    
+
+    <div
+      class="qg-map-title-sequence"
+      id="qgMapTitleSequence"
+      aria-hidden="true"
+    >
+
+      <h3 class="qg-map-title">
+        Across <strong>&nbsp;borders.</strong>
+      </h3>
+
+      <h3 class="qg-map-title">
+        Trusted around <strong>&nbsp;the world.</strong>
+      </h3>
+
+      <h3 class="qg-map-title qg-locations">
+        USA · EUROPE · INDIA · CHINA · AUSTRALIA
+      </h3>
+
+    </div>
+
+
+
+    
+
+    <div
+      class="qg-scroll-cue"
+      id="qgScrollCue"
+    >
+
+      <button
+        type="button"
+        id="qgScrollButton"
+      >
+
+        Scroll to explore
+
+        <span class="qg-scroll-arrow">
+          ↓
+        </span>
+
+      </button>
+
+    </div>
+
+
+    <div class="qg-noise"></div>
+
+  </div>
+
+</section>
+
+    
+    
+
+    
+    <section id="worldwide">
+      <div class="ww-bg-glow"></div>
+
+      
+
+      
+      <div class="ww-map-wrap-main">
+        <div class="ww-map-wrap">
+          <div id="map-canvas" style="position: relative">
+            <div class="map-loading" id="mapLoading">Loading world map</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+     
+    <section class="qc-blog-section">
+      <div class="qc-blog-container">
+
+        <div class="qc-blog-head">
+          <span class="qc-blog-kicker">BLOGS & INSIGHTS</span>
+          <h2>Ideas that help brands <span>move with clarity.</span> </h2>
+          <p>
+            Explore thoughtful strategies, creative processes, and growth-led ideas
+            built for brands that want to scale with purpose.
+          </p>
+        </div>
+    
+        <div class="qc-blog-grid">
+    
+          <a href="">
+            <article class="qc-blog-card qc-blog-card-tall">
+              <img src="https://qriouscurators.com/images/artboard-13.jpeg" alt="Brand strategy blog" loading="lazy" decoding="async">
+              <div class="qc-blog-overlay"></div>
+            
+              <div class="qc-blog-logo">
+                <span>Q</span>
+              </div>
+            
+              <div class="qc-blog-content">
+                <h3>Bold strategies that shape identities</h3>
+                <p>How thoughtful positioning helps brands build a stronger presence.</p>
+              </div>
+          
+            </article>
+          </a>
+    
+          <a href="">
+            <article class="qc-blog-card qc-blog-card-low">
+              <img src="./assets/newmockups/artboard-19.jpeg" alt="Growth marketing blog" loading="lazy" decoding="async">
+              <div class="qc-blog-overlay"></div>
+      
+              <div class="qc-blog-content">
+                <h3>Driving measurable growth through impact</h3>
+                <p>Content, campaigns, and creative systems that move numbers.</p>
+              </div>
+            </article>
+          </a>
+    
+          <a href="">
+            <article class="qc-blog-card qc-blog-card-tall">
+              <img src="./assets/newmockups/artboard-18.jpeg" alt="Creative process blog" loading="lazy" decoding="async">
+              <div class="qc-blog-overlay"></div>
+      
+              <div class="qc-blog-content">
+                <h3>Creative processes with rapid delivery</h3>
+                <p>How ideas turn into results without losing quality or relevance.</p>
+              </div>
+  
+            </article>
+          </a>
+    
+          <a href="">
+            <article class="qc-blog-card qc-blog-card-low">
+              <img src="./assets/homeimages/creative-direction.png" alt="Team success blog" loading="lazy" decoding="async">
+              <div class="qc-blog-overlay"></div>
+      
+              <div class="qc-blog-content">
+                <h3>A dedicated team behind success</h3>
+                <p>What it takes to guide a brand from launch to scale.</p>
+              </div>
+
+            </article> 
+          </a>
+    
+        </div>
+      </div>
+    </section>
+
+    
+  
+
+    
+    <footer id="qcFooter">
+    
+      
+      <div class="footer-bg-logo"></div>
+    
+      <div class="footer-inner">
+    
+        <div class="footer-top">
+    
+          
+          <div>
+            <div class="footer-brand-name">
+              
+              
+            </div>
+    
+            <p class="footer-text">
+              We build brands, websites, and digital experiences that feel refined,
+              relevant, and made to grow.
+            </p>
+    
+           <div class="footer-socials">
+  <a href="https://www.linkedin.com/company/qrious-curators" class="f-soc" aria-label="LinkedIn">
+    <img src="assets/homeimages/linkdinn.png" alt="LinkedIn" class="f-soc-icon" loading="lazy" decoding="async">
+  </a>
+
+  <a href="https://www.instagram.com/qrious.curators" class="f-soc" aria-label="Instagram">
+    <img src="assets/homeimages/instagramm.png" alt="Instagram" class="f-soc-icon" loading="lazy" decoding="async">
+  </a>
+</div>
+          </div>
+    
+          
+          <div>
+            <ul class="footer-links">
+              <li><a href="./index.html">Home</a></li>
+              <li><a href="./about.html">About</a></li>
+              <li><a href="./work.html">Work</a></li>
+              <li><a href="./services.html">Services</a></li>
+            </ul>
+          </div>
+    
+          
+          <div>
+            <ul class="footer-links">
+              <li><a href="./blog.html">Blog</a></li>
+              <li><a href="./contact.html">Contact</a></li>
+              <li><a href="./careers.html">Careers</a></li>
+              <li><a href="./team.html">Team</a></li>
+            </ul>
+          </div>
+    
+        </div>
+    
+        <div class="footer-bottom">
+    
+          <p class="footer-copy">
+            © 2026 Qrious Curators. All rights reserved.
+          </p>
+    
+          <img
+            src="./assets/logo/logo-one.png"
+            alt="Qrious Curators"
+            class="footer-center-logo"
+           loading="lazy" decoding="async">
+    
+          <p class="footer-made">
+            Designed & Built with <span>♥</span>
+          </p>
+    
+        </div>
+    
+      </div>
+    
+    </footer>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+    <script defer src="./scripts/test.js"></script>
+  
+    
+    
+      <script defer src="./scripts/test2.js"></script>
+  </body>
+</html>
