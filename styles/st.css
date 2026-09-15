@@ -7422,19 +7422,43 @@ footer::after {
     }
 
     .qg-testimonial-card.qg-card-orange {
-      background: #ff6a00;
+      background: linear-gradient(
+      90deg,
+      #FFC21A 0%,
+      #FFB217 20%,
+      #FFA212 40%,
+      #FF9110 60%,
+      #FF8112 80%,
+      #FF7316 100%
+  );;
       color: #ffffff;
       border-color: rgba(255,106,0,0.9);
     }
 
     .qg-testimonial-card.qg-card-white .qg-client-avatar {
-      background: #ff6a00;
+      background: linear-gradient(
+      90deg,
+      #FFC21A 0%,
+      #FFB217 20%,
+      #FFA212 40%,
+      #FF9110 60%,
+      #FF8112 80%,
+      #FF7316 100%
+  );;
       color: #ffffff;
     }
 
     .qg-testimonial-card.qg-card-orange .qg-client-avatar {
       background: #ffffff;
-      color: #ff6a00;
+      color: linear-gradient(
+      90deg,
+      #FFC21A 0%,
+      #FFB217 20%,
+      #FFA212 40%,
+      #FF9110 60%,
+      #FF8112 80%,
+      #FF7316 100%
+  );;
     }
 
     .qg-testimonial-card.qg-card-white .qg-client-meta small,
@@ -7993,10 +8017,21 @@ footer::after {
     }
 
 
-    .qg-map-title strong {
-      font-weight: 500;
-      color: #ff7a18;
-    }
+.qg-map-title strong {
+  font-weight: 500;
+  background: linear-gradient(
+    90deg,
+    #FFC21A 0%,
+    #FFB217 20%,
+    #FFA212 40%,
+    #FF9110 60%,
+    #FF8112 80%,
+    #FF7316 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
 
     .qg-map-title.qg-locations {
